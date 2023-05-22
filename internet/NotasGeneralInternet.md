@@ -1,0 +1,160 @@
+[Volver al Menú](root.md)
+
+- AND
+- OR
+- NOT
+- NAND
+- NOR
+- XOR
+- XNOR
+
+# `Ver ip de una pagina web`
+
+Hacer ping a esa web desde la consola del windows sin el www y el https
+
+```
+ping google.com
+```
+
+# `Kernel`:
+
+El Kernel o núcleo, es una parte fundamental del sistema operativo que se encarga de conceder el acceso al hardware de forma segura para todo el software que lo solicita, el Kernel es una pequeña e invisible parte del sistema operativo, pero la más importante, ya que sin esta no podría funcionar. Todos los sistemas operativos tienen un Kernel, incluso Windows 10, pero quizá el más famoso es el Kernel de Linux, que ahora además está integrado en Windows 10 con sus últimas actualizaciones.
+
+# `Software`:
+
+Sistema formal de un sistema informático, que comprende el conjunto de los componentes lógicos necesarios que hace posible la realización de tareas específicas, en contraposición a los componentes físicos que son llamados hardware.
+
+# `Hardware`:
+
+Se refiere a las partes físicas, tangibles, de un sistema informático, sus componentes eléctricos, electrónicos, electromecánicos.
+
+# `Firmaware`:
+
+Es un software que maneja físicamente al hardware.
+
+El programa BIOS de una computadora es un firmware cuyo propósito es activar una máquina desde su encendido y preparar el entorno para cargar un sistema operativo en la memoria RAM y disco duro.
+
+# `Driver`:
+
+Un driver o controlador es un software que se encarga de decirle al sistema operativo cómo hay que usar un periférico o un componente del ordenador. Sin él, el sistema operativo no puede reconocer el hardware.
+
+La mayoría de los drivers críticos que controlan la CPU, la memoria, la tarjeta de red, la tarjeta gráfica, etc., ya están integrados en el sistema operativo. Pero suelen ser controladores genéricos que no ofrecen el máximo rendimiento.
+
+# `IP`
+
+- `ipv4` = 32 bits 255.255.255.255 2\*\*32
+- `ipv6` = 128 bits 2\*\*128
+
+# `Estructuras de datos`
+
+## ` Linked List`:
+
+Es una estructura de datos que consiste en una secuencia de nodos, donde cada nodo contiene un campo de datos y un campo de enlace.
+Los nodos se enlazan entre sí de tal manera que cada nodo contiene un enlace al siguiente nodo de la secuencia.
+El primer nodo de la secuencia se denomina nodo cabeza y el último nodo se denomina nodo cola.
+El nodo cola contiene un enlace nulo, que indica el final de la secuencia.
+La secuencia de nodos se denomina lista enlazada.
+Las listas enlazadas son una de las estructuras de datos más simples y más utilizadas.
+Las listas enlazadas son muy útiles cuando no se conoce de antemano el número de elementos que se van a almacenar en la estructura de datos.
+Las listas enlazadas son muy eficientes en la inserción y eliminación de elementos en cualquier posición de la secuencia.
+Sin embargo, las listas enlazadas son poco eficientes en la búsqueda de elementos en la secuencia.
+
+## `Stack`:
+
+Es una estructura de datos que permite almacenar y recuperar datos en un orden LIFO (Last In, First Out).
+
+## `Queue`:
+
+Es una estructura de datos que permite almacenar y recuperar datos en el orden en que se introdujeron.
+
+## `Graph`:
+
+Es una estructura de datos que permite almacenar y recuperar datos en forma de grafo. Contiene nodos que estan conectados por medio de aristas o vertices.
+
+## `Tree`:
+
+Es una estructura de datos que permite almacenar y recuperar datos en forma de árbol de manera jerarquica y puede tener muchos hijos.
+
+## `Binary Tree`:
+
+Es un arbol donde puede tener maximo 0, 1 o 2 hijos. Hay varios tipos, el full, completo y perfecto.
+
+## `Heap (Max heap - Min heap)`:
+
+Es un tipo especial de arbol binario donde el valor de cada nodo es mayor o igual que el valor de sus hijos.
+
+## `AVL Tree`:
+
+Es un arbol binario de busqueda balanceado, donde la diferencia de altura entre los subarboles izquierdo y derecho no puede ser mayor a 1.
+
+## `Decision Tree`:
+
+Es un arbol binario que se utiliza para clasificar datos, donde cada nodo representa una caracteristica y cada rama representa una decision.
+
+## `Red-Black Tree`:
+
+Es un arbol binario de busqueda balanceado, donde cada nodo tiene un color, rojo o negro
+
+## `Matrix`:
+
+Es una estructura de datos compuesta por fils y columnas.
+
+## `Hash table`:
+
+Es una estructura que da keys unicos a valores.
+
+## `Gap Buffer`:
+
+Es un array dinamico que permite de forma eficiente agregar o eliminar elmenetos en cualquier posicion cerca de la misma locacion.
+
+## `Array`:
+
+Un array es una estructura de datos que permite almacenar un conjunto de datos del mismo tipo. Su posicionamiento en la memoria es contiguo.
+
+# `ISO Model (Open System Interconnection Model)`:
+
+Es un modelo de referencia para la arquitectura de sistemas de información, que se utiliza para describir la organización de los datos y la lógica de los procesos de negocio en un sistema de información.
+
+## `7 Layers (Please Do Not Throw Sausage Pizza Away)`
+
+### `Datos - Appliation Layer`:
+
+Es la capa mas alta de la arquitectura, es la que se comunica con el usuario y es la que se comunica con el sistema operativo.
+
+### `Datos - Presentation Layer`:
+
+Aquí tendremos los servicios responsables de que la representación de la información sea coherente en ambos extremos de la comunicación.
+
+### `Datos - Session Layer`:
+
+Se encarga de establecer,administrar y finalizar las sesiones entre dos hosts que se estan comunicando.
+
+### `Segmento - Transport Layer`:
+
+Está encargado de la transferencia libre de errores de los datos entre el emisor y el receptor, aunque no estén directamente conectados, así como de mantener el flujo de la red. (segementacion, retransmision, control de flujo)
+
+### `Paquetes - Network Layer`:
+
+Provee principalmente los servicios de envío, enrutamiento(routing) y control de congestionamiento de los datos (paquetes de datos) de un nodo a otro en la red, esta es la capa más inferior en cuanto a manejo de transmisiones punto a punto.
+
+### `Tramas - Data Link Layer`:
+
+La capa de enlace de datos proporciona tránsito de datos confiable a través de un enlace físico. Al hacerlo, la capa se ocupa del direccionamiento físico (comparado con el lógico) , la topología de red, el acceso a la red, la notificación de errores, entrega ordenada de tramas y control de flujo.
+
+### `Bits - Physical Layer`:
+
+La capa física se encarga de definir todos los aspectos relacionados con los elementos físicos de conexión de los dispositivos a la red, así como de establecer los procedimientos para transmitir la información sobre la serial física empleada. En este sentido, puede decirse que la capa física es la encargada de definir cuatro tipos de características de los elementos de interconexión: Mecánicas, Eléctricas, Funcionales y De procedimiento.
+
+# `TCP/ IP Model (Transmission Control Protocol / Internet Protocol)`:
+
+## `Datos -Appliation`:
+
+Es la capa mas alta de la arquitectura, es la que se comunica con el usuario y es la que se comunica con el sistema operativo.
+
+## `Segmentos - Transport Layer`:
+
+Es la capa que se encarga de la presentacion de los datos, es decir, la capa que se encarga de la interfaz de usuario.
+
+## `Paquetes -Internet Layer`:
+
+Tramas -Network Access Layer:

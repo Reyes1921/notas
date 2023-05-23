@@ -93,7 +93,7 @@ M lib/simplegit.rb
 
 - The -u tells Git to remember the parameters, so that next time we can simply run `git push` and Git will know what to do.
 
-# `git diff`
+## `git diff`
 
 - Show changes between commits, commit and working tree, etc
 
@@ -156,6 +156,14 @@ e = 5
 ## `git config --get remote.origin.url`
 
 Obtener la url del respositorio actual
+
+## `git remote -v`
+
+you will get a list of handles and associated URLs
+
+## `git remote remove origin`
+
+To remove your handler, use the remove command on remote, followed by the handler name – which, in our case, is origin.
 
 ## `git reset`
 

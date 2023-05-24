@@ -28,6 +28,10 @@ The `<aside>` content should be indirectly related to the surrounding content.
 
 Defines additional details that the user can view or hide
 
+# `<summary>`
+
+Defines a visible heading for a `<details>` element
+
 # `<figcaption>`
 
 The `<figcaption>` tag defines a caption for a `<figure>` element. The `<figcaption>` element can be placed as the first or as the last child of a `<figure>` element.
@@ -96,9 +100,6 @@ Browsers, such as screen readers for disabled users, can use this element to det
 
 Defines a section in a document
 
-# `<summary>`
-
-Defines a visible heading for a `<details>` element
 
 # `<time>`
 

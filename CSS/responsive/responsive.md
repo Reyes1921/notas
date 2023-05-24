@@ -19,11 +19,17 @@ The width=device-width part sets the width of the page to follow the screen-widt
 
 The initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser.
 
-<p style="color: red">1. Do NOT use large fixed width elements</p> - For example, if an image is displayed at a width wider than the viewport it can cause the viewport to scroll horizontally. Remember to adjust this content to fit within the width of the viewport.
+<p style="color: red">1. Do NOT use large fixed width elements</p> 
 
-<p style="color: red">2. Do NOT let the content rely on a particular viewport width to render well</p> - Since screen dimensions and width in CSS pixels vary widely between devices, content should not rely on a particular viewport width to render well.
+- For example, if an image is displayed at a width wider than the viewport it can cause the viewport to scroll horizontally. Remember to adjust this content to fit within the width of the viewport.
 
-<p style="color: red">3. Use CSS media queries to apply different styling for small and large screens</p> - Setting large absolute CSS widths for page elements will cause the element to be too wide for the viewport on a smaller device. Instead, consider using relative width values, such as width: 100%. Also, be careful of using large absolute positioning values. It may cause the element to fall outside the viewport on small devices.
+<p style="color: red">2. Do NOT let the content rely on a particular viewport width to render well</p> 
+
+- Since screen dimensions and width in CSS pixels vary widely between devices, content should not rely on a particular viewport width to render well.
+
+<p style="color: red">3. Use CSS media queries to apply different styling for small and large screens</p> 
+
+- Setting large absolute CSS widths for page elements will cause the element to be too wide for the viewport on a smaller device. Instead, consider using relative width values, such as width: 100%. Also, be careful of using large absolute positioning values. It may cause the element to fall outside the viewport on small devices.
 
 # `Responsive Web Design - Images`
 
@@ -208,7 +214,7 @@ meaning of the `not`, `only` and and keywords:
 
 `only`: The `only` keyword prevents older browsers that do not support media queries with media features from applying the specified styles. It has no effect on modern browsers.
 
-and: The and keyword combines a media feature with a media type or other media features.
+`and`: The `and` keyword combines a media feature with a media type or other media features.
 
 They are all optional. However, if you use `not` or `only`, you must also specify a media type.
 

@@ -1096,3 +1096,5 @@ Estos eventos solo pueden ser capturados en elementos dentro del mismo DOM.
 Si enviamos un evento personalizado CustomEvent, debemos establecer explícitamente composed: true.
 
 Tenga en cuenta que en caso de componentes anidados, un shadow DOM puede estar anidado dentro de otro. En ese caso los eventos se propagan a través de los límites de todos los shadow DOM. Entonces, si se pretende que un evento sea solo para el componente inmediato que lo encierra, podemos enviarlo también en el shadow host y establecer `composed: false`. Entonces saldrá al shadow DOM del componente, pero no se propagará hacia un DOM de mayor nivel.
+
+[TOP](#web-components)

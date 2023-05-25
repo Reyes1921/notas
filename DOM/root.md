@@ -9,8 +9,3 @@
 
 - [Introducción a los eventos](events/events.md)
 
-
-
-# `Extra`
-
-- [Web Components](components/components.md)

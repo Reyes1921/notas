@@ -10,29 +10,28 @@ Aquí hay una lista con los eventos del DOM más utilizados, solo para echar un 
 
 `Eventos del mouse:`
 
-- click – cuando el mouse hace click sobre un elemento (los dispositivos touch lo generan con un toque).
-- contextmenu – cuando el mouse hace click derecho sobre un elemento.
-- mouseover / mouseout – cuando el cursor del mouse ingresa/abandona un elemento.
-- mousedown / mouseup – cuando el botón del mouse es presionado/soltado sobre un elemento.
-- mousemove – cuando el mouse se mueve.
+- `click` – cuando el mouse hace click sobre un elemento (los dispositivos touch lo generan con un toque).
+- `contextmenu` – cuando el mouse hace click derecho sobre un elemento.
+- `mouseover` / `mouseout` – cuando el cursor del mouse ingresa/abandona un elemento.
+- `mousedown` / `mouseup` – cuando el botón del mouse es presionado/soltado sobre un elemento.
+- `mousemove` – cuando el mouse se mueve.
 
 `Eventos del teclado:`
 
-- keydown / keyup – cuando se presiona/suelta una tecla.
-- Eventos del elemento form:
+- `keydown` / `keyup` – cuando se presiona/suelta una tecla.
 
-- submit – cuando el visitante envía un `<form>`.
-- focus – cuando el visitante se centra sobre un elemento, por ejemplo un `<input>`.
+`Eventos del elemento form:`
+
+- `submit` – cuando el visitante envía un `<form>`.
+- `focus` – cuando el visitante se centra sobre un elemento, por ejemplo un `<input>`.
 
 `Eventos del documento:`
 
-- DOMContentLoaded --cuando el HTML es cargado y procesado, el DOM está completamente construido
+- `DOMContentLoaded` --cuando el HTML es cargado y procesado, el DOM está completamente construido
 
 `Eventos del CSS:`
 
-- transitionend – cuando una animación CSS concluye.
-
-Hay muchos más eventos. Entraremos en más detalles con eventos particulares en los siguientes capítulos.
+- `transitionend` – cuando una animación CSS concluye.
 
 ## `Controladores de eventos`
 
@@ -755,7 +754,7 @@ Si manejamos un evento en JavaScript, es posible que no queramos que suceda la a
 
 Hay dos formas de decirle al navegador que no queremos que actúe:
 
-La forma principal es utilizar el objeto event. Hay un método event.preventDefault().
+La forma principal es utilizar el objeto event. Hay un método `event.preventDefault()`.
 Si el controlador se asigna usando `on<event>` (no por addEventListener), entonces devolver false también funciona igual.
 
 En este HTML, un clic en un enlace no conduce a la navegación. El navegador no hace nada:

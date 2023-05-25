@@ -144,19 +144,6 @@ Hay 12 tipos de nodos. En la práctica generalmente trabajamos con 4 de ellos:
 - nodos de texto – contienen texto.
 - comentarios – a veces podemos colocar información allí, no se mostrará, pero JS puede leerla desde el DOM.
 
-<h2 style='color: green'>Resumen</h2>
-
-Un documento HTML/XML esta representado dentro del navegador como un árbol de nodos (DOM).
-
-Las etiquetas se convierten en nodos de elemento y forman la estructura.
-El texto se convierte en nodos de texto.
-…etc, todos los elementos de HTML tienen su lugar en el DOM, incluso los comentarios.
-Podemos utilizar las herramientas para desarrolladores para inspeccionar el DOM y modificarlo manualmente.
-
-Aquí cubrimos los conceptos básicos, las acciones más importantes y más utilizadas, para comenzar. Hay una extensa documentación acerca de las herramientas para desarrolladores de Chrome en https://developers.google.com/web/tools/chrome-devtools. La mejor forma de aprender a usar las herramientas es hacer clic en ellas, leer los menús: la mayoría de las opciones son obvias. Más adelante, cuando tenga conocimiento general sobre ellas, lea los documentos y elija el resto.
-
-Los nodos del DOM tienen propiedades y métodos que nos permiten desplazarnos entre ellos, modificarlos, movernos por la página, y más. Empezaremos a realizar todo esto en los siguientes capítulos.
-
 # `Recorriendo el DOM`
 
 El DOM nos permite hacer cualquier cosa con sus elementos y contenidos, pero lo primero que tenemos que hacer es llegar al objeto correspondiente del DOM.
@@ -234,30 +221,6 @@ Los enlaces son similares a los de arriba, solo que tienen dentro la palabra Ele
 - `previousElementSibling`, `nextElementSibling` – elementos vecinos.
 - `parentElement` – elemento padre.
 
-## `Más enlaces: tablas`
-
-Hasta ahora hemos descrito las propiedades de navegación básicas.
-
-Ciertos tipos de elementos del DOM pueden tener propiedades adicionales, específicas de su tipo, por conveniencia.
-
-Las tablas son un gran ejemplo de ello, y representan un particular caso importante:
-
-El elemento `<table>` soporta estas propiedades (añadidas a las que hemos dado anteriormente):
-
-- table.rows – la colección de elementos`<tr>` de la tabla.
-- table.caption/tHead/tFoot – referencias a los elementos `<caption>`, `<thead>`, `<tfoot>`.
-- table.tBodies – la colección de elementos `<tbody>` (pueden ser muchos según el estándar, pero siempre habrá al menos uno, aunque no esté en el HTML el navegador lo pondrá en el DOM).
-`<thead>`, `<tfoot>`, `<tbody>` estos elementos proporcionan las propiedades de las filas.
-
-- tbody.rows – la colección dentro de `<tr>`.
-`<tr>`:
-
-- tr.cells – la colección de celdas `<td>` y `<th>` dentro del `<tr>` dado.
-- tr.sectionRowIndex – la posición (índice) del `<tr>` dado dentro del `<thead>`/`<tbody>`/`<tfoot>` adjunto.
-- tr.rowIndex – el número de ``<tr>`` en la tabla en su conjunto (incluyendo todas las filas de una tabla).
-`<td>` and <`th>`:
-
-- td.cellIndex – el número de celdas dentro del adjunto `<tr>`.
 
 <h2 style='color: green'>Resumen</h2>
 
@@ -456,16 +419,16 @@ Hay 6 métodos principales para buscar nodos en el DOM:
 </tbody>
 </table>
 
-Los más utilizados son `querySelector` y `querySelectorAll`, pero getElementBy* puede ser de ayuda esporádicamente o encontrarse en scripts antiguos.
+Los más utilizados son `querySelector` y `querySelectorAll`, pero `getElementBy`* puede ser de ayuda esporádicamente o encontrarse en scripts antiguos.
 
 Aparte de eso:
 
-- Existe elem.matches(css) para comprobar si elem coincide con el selector CSS dado.
-- Existe elem.closest(css) para buscar el ancestro más cercano que coincida con el selector CSS dado. El propio elem también se comprueba.
+- Existe elem.`matches`(css) para comprobar si elem coincide con el selector CSS dado.
+- Existe elem.`closest`(css) para buscar el ancestro más cercano que coincida con el selector CSS dado. El propio elem también se comprueba.
 
 Y mencionemos un método más para comprobar la relación hijo-padre, ya que a veces es útil:
 
-- elemA.contains(elemB) devuelve true si elemB está dentro de elemA (un descendiente de elemA) o cuando elemA==elemB.
+- elemA.`contains`(elemB) devuelve true si elemB está dentro de elemA (un descendiente de elemA) o cuando elemA==elemB.
 
 
 # `Propiedades del nodo: tipo, etiqueta y contenido`
@@ -1217,44 +1180,44 @@ Si la llamamos después, el contenido existente del documento es borrado.
 
 <h2 style="color:green">Resumen</h2>
 
-- Métodos para crear nuevos nodos:
+Métodos para crear nuevos nodos:
 
-  - document.createElement(tag) – crea un elemento con la etiqueta HTML dada
-  - document.createTextNode(value) – crea un nodo de texto (raramente usado)
-  - elem.cloneNode(deep) – clona el elemento. Si deep==true, lo clona con todos sus descendientes.
+  - document.`createElement`(tag) – crea un elemento con la etiqueta HTML dada
+  - document.`createTextNode`(value) – crea un nodo de texto (raramente usado)
+  - elem.`cloneNode`(deep) – clona el elemento. Si deep==true, lo clona con todos sus descendientes.
 
-- Inserción y eliminación:
+Inserción y eliminación:
 
-  - node.append(...nodes or strings) – inserta en node, al final
-  - node.prepend(...nodes or strings) – inserta en node, al principio
-  - node.before(...nodes or strings) –- inserta inmediatamente antes de node
-  - node.after(...nodes or strings) –- inserta inmediatamente después de node
-  - node.replaceWith(...nodes or strings) –- reemplaza node
-  - node.remove() –- quita el node.
+  - node.`append`(...nodes or strings) – inserta en node, al final
+  - node.`prepend`(...nodes or strings) – inserta en node, al principio
+  - node.`before`(...nodes or strings) –- inserta inmediatamente antes de node
+  - node.`after`(...nodes or strings) –- inserta inmediatamente después de node
+  - node.`replaceWith`(...nodes or strings) –- reemplaza node
+  - node.`remove`() –- quita el node.
 
-Los strings de texto son insertados “como texto”.
+    Los strings de texto son insertados “como texto”.
 
-- También hay métodos “de vieja escuela”:
+También hay métodos “de vieja escuela”:
 
-  - parent.appendChild(node)
-  - parent.insertBefore(node, nextSibling)
-  - parent.removeChild(node)
-  - parent.replaceChild(newElem, node)
+  - parent.`appendChild`(node)
+  - parent.`insertBefore`(node, nextSibling)
+  - parent.`removeChild`(node)
+  - parent.`replaceChild`(newElem, node)
 
-Todos estos métodos devuelven node.
+  Todos estos métodos devuelven node.
 
-- Dado cierto HTML en html, elem.insertAdjacentHTML(where, html) lo inserta dependiendo del valor where:
+Dado cierto HTML en html, elem.insertAdjacentHTML(where, html) lo inserta dependiendo del valor where:
 
-  - "beforebegin" – inserta html inmediatamente antes de elem
-  - "afterbegin" – inserta html en elem, al principio
-  - "beforeend" – inserta html en elem, al final
-  - "afterend" – inserta html inmediatamente después deelem
+  - "`beforebegin`" – inserta html inmediatamente antes de elem
+  - "`afterbegin`" – inserta html en elem, al principio
+  - "`beforeend`" – inserta html en elem, al final
+  - "`afterend`" – inserta html inmediatamente después deelem
 
-También hay métodos similares, elem.insertAdjacentText y elem.insertAdjacentElement, que insertan strings de texto y elementos, pero son raramente usados.
+    También hay métodos similares, elem.insertAdjacentText y elem.insertAdjacentElement, que insertan strings de texto y elementos, pero son raramente usados.
 
-- Para agregar HTML a la página antes de que haya terminado de cargar:
+Para agregar HTML a la página antes de que haya terminado de cargar:
 
-  - document.write(html)
+  - document.`write`(html)
 
 Después de que la página fue cargada tal llamada borra el documento. Puede verse principalmente en scripts viejos.
 
@@ -1470,8 +1433,8 @@ Hay dos conceptos en CSS:
 
 Para manejar clases, hay dos propiedades del DOM:
 
-- className – el valor de la cadena, perfecto para manejar todo el conjunto de clases.
-- classList – el objeto con los métodos: add/remove/toggle/contains, perfecto para clases individuales.
+- `className` – el valor de la cadena, perfecto para manejar todo el conjunto de clases.
+- `classList` – el objeto con los métodos: add/remove/toggle/contains, perfecto para clases individuales.
 
 Para cambiar los estilos:
 

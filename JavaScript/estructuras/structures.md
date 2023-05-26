@@ -155,7 +155,7 @@ Métodos y propiedades:
 
 La iteración sobre Map y Set siempre está en el orden de inserción, por lo que no podemos decir que estas colecciones están desordenadas, pero no podemos reordenar elementos u obtener un elemento directamente por su número.
 
-# `WeakMap y WeakSet`
+## `WeakMap y WeakSet`
 
 WeakMap es una colección similar a Map que permite solo objetos como propiedades y los elimina junto con el valor asociado una vez que se vuelven inaccesibles por otros medios.
 
@@ -168,7 +168,7 @@ Esto viene al costo de no tener soporte para clear, size, keys, values…
 WeakMap yWeakSet se utilizan como estructuras de dato “secundarias” además del almacenamiento de objetos “principal”.
 Una vez que el objeto se elimina del almacenamiento principal, si solo se encuentra como la clave de WeakMap o en unWeakSet, se limpiará automáticamente.
 
-## `Structured Data`
+# `Structured Data`
 
 Structured data is used by search-engines, like Google, to understand the content of the page, as well as to gather information about the web and the world in general.
 
@@ -235,7 +235,7 @@ JavaScript proporciona métodos:
 
 **Workin with JSON**
 
--`JSON.stringify`
+### `JSON.stringify`
 
 Aquí hacemos JSON.stringify a student:
 
@@ -305,7 +305,7 @@ alert( JSON.stringify(meetup, ['title', 'participants']) );
 // {"title":"Conference","participants":[{},{}]}
 ```
 
--Formato: espacio
+### `Formato: espacio`
 
 El tercer argumento de JSON.stringify(value, replacer, space) es el número de espacios a utilizar para un formato agradable.
 
@@ -345,11 +345,11 @@ alert(JSON.stringify(user, null, 2));
 */
 ```
 
--“toJSON” Personalizado
+### `“toJSON” Personalizado`
 
 Tal como toString para conversión de String, un objeto puede proporcionar el método toJSON para conversión a JSON. JSON.stringify automáticamente la llama si está disponible.
 
--`JSON.parse`
+### `JSON.parse`
 
 Para decodificar un string JSON, necesitamos otro método llamado JSON.parse. Es decir pasar de json a objeto.
 
@@ -381,11 +381,11 @@ alert( numbers[1] ); // 1
 - Ambos métodos admiten funciones transformadoras para lectura/escritura inteligente.
 - Si un objeto tiene toJSON, entonces es llamado porJSON.stringify.
 
-# Indexed collections
+# `Indexed collections`
 
 Indexed Collections are collections that have numeric indices i.e. the collections of data that are ordered by an index value. In JavaScript, an array is an indexed collection. An array is an ordered set of values that has a numeric index.
 
-## Typed Arrays
+## `Typed Arrays`
 
 In Javascript, a typed array is an array-like buffer of binary data. There is no JavaScript property or object named TypedArray, but properties and methods can be used with typed array objects.
 

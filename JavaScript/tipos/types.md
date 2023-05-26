@@ -9,15 +9,72 @@ Type coercion is the automatic or implicit conversion of values from one data ty
 ## `Explicit Type Casting`
 Type casting means transferring data from one data type to another by explicitly specifying the type to convert the given data to. Explicit type casting is normally done to make data compatible with other variables. Examples of typecasting methods are parseInt(), parseFloat(), toString().
 
--Conversion de tipos
+### `Conversion de tipos`
+
+La mayoría de las veces, los operadores y funciones convierten automáticamente los valores que se les pasan al tipo correcto. Esto es llamado “conversión de tipo”.
+
 ```
 String()
-tostring ()
+toString()
 Number()
 Boolean()
 ParseInt ()
 ParseFloat ()
 ```
+`ToString` 
+
+La conversión a string ocurre cuando necesitamos la representación en forma de texto de un valor.
+```
+let value = true;
+alert(typeof value); // boolean
+
+value = String(value); // ahora value es el string "true"
+alert(typeof value); // string
+```
+
+`ToNumber`
+
+La conversión numérica ocurre automáticamente en funciones matemáticas y expresiones. La conversión explícita es requerida usualmente cuando leemos un valor desde una fuente basada en texto, como lo son los campos de texto en los formularios, pero que esperamos que contengan un valor numérico.
+
+Si el string no es un número válido, el resultado de la conversión será `NaN`
+
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Se convierte en…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>undefined</code></td>
+<td><code>NaN</code></td>
+</tr>
+<tr>
+<td><code>null</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>true&nbsp;and&nbsp;false</code></td>
+<td><code>1</code> y <code>0</code></td>
+</tr>
+<tr>
+<td><code>string</code></td>
+<td>Se eliminan los espacios (incluye espacios, tabs <code>\t</code>, saltos de línea <code>\n</code>, etc.) al inicio y final del texto. Si el string resultante es vacío, el resultado es <code>0</code>, en caso contrario el número es “leído” del string. Un error devuelve <code>NaN</code>.</td>
+</tr>
+</tbody>
+</table>
+
+`ToBoolean`
+
+La conversión a boolean es la más simple.
+
+Ocurre en operaciones lógicas (más adelante veremos test condicionales y otras cosas similares), pero también puede realizarse de forma explícita llamando a la función Boolean(value).
+
+Las reglas de conversión:
+
+- Los valores que son intuitivamente “vacíos”, como `0`, `""`, `null`, `undefined`, y `NaN`, se convierten en false.
+- Otros valores se convierten en true.
 
 ## `Duck Tiping`
 

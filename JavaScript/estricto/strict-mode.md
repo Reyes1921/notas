@@ -28,3 +28,18 @@ function(){
     console.log(pi); // ReferenceError: pi is not defined
 }
 ``` 
+
+## `¿Deberíamos utilizar “use strict”?`
+La pregunta podría parecer obvia, pero no lo es.
+
+Uno podría recomendar que se comiencen los script con "use strict"… ¿Pero sabes lo que es interesante?
+
+El JavaScript moderno admite “clases” y “módulos”, estructuras de lenguaje avanzadas (que seguramente llegaremos a ver), que automáticamente habilitan use strict. Entonces no necesitamos agregar la directiva "use strict" si las usamos.
+
+Entonces, por ahora "use strict"; es un invitado bienvenido al tope de tus scripts. Luego, cuando tu código sea todo clases y módulos, puedes omitirlo.
+
+A partir de ahora tenemos que saber acerca de use strict en general.
+
+En los siguientes capítulos, a medida que aprendamos características del lenguaje, veremos las diferencias entre el modo estricto y el antiguo. Afortunadamente no hay muchas y realmente hacen nuestra vida mejor.
+
+Todos los ejemplos en este tutorial asumen modo estricto salvo que (muy raramente) se especifique lo contrario.

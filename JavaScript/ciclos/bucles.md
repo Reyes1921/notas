@@ -183,8 +183,8 @@ alert('Listo!');
 
 La directiva `continue` también puede usar usada con una etiqueta. En este caso, la ejecución del código salta a la siguiente iteración del bucle etiquetado.
 
-[TOP](#loops-and-iterations)
-
 ## `Nota Importante`
 
-JavaScript's forEach() function executes a function on every element in an array. However, since forEach() is a function rather than a loop, JavaScript errors out if you try to use continue:
+JavaScript's `forEach()` function executes a function on every element in an array. However, since `forEach()` is a function rather than a loop, JavaScript errors out if you try to use continue:
+
+[TOP](#loops-and-iterations)

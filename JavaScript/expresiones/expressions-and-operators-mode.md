@@ -261,6 +261,17 @@ alert(!0); // true
 
 El operador “nullish coalescing” (fusión de null) se escribe con un doble signo de cierre de interrogación `??`.
 
+Ejemplo: 
+
+```
+let firstName = null;
+let lastName = null;
+let nickName = "Supercoder";
+
+// Muestra el primer valor definido:
+alert(firstName ?? lastName ?? nickName ?? "Anonymous"); // Supercoder
+```
+
 Como este trata a null y a undefined de forma similar, usaremos un término especial para este artículo. Diremos que una expresión es “definida” cuando no es null ni undefined.
 
 El resultado de `a ?? b`:
@@ -278,11 +289,23 @@ result = (a !== null && a !== undefined) ? a : b;
 ```
 
 - El operador ?? tiene una precedencia muy baja, un poco más alta que ? y =.
-- Está prohibido su uso con || y && sin paréntesis explícitos.
 
--Nullish parecido al || pero ?? devuelve el primer valor que este definido por (a ?? b ?? c ??).
+### `Uso de ?? con && y ||`
 
--No se pueden usar juntos ||, &&, ?? o usarlos pero con parentesis siempre son como harry,hermino y ron xD.
+Por motivos de seguridad, JavaScript prohíbe el uso de ?? junto con los operadores && y ||, salvo que la precedencia sea explícitamente especificada con paréntesis.
+
+El siguiente código desencadena un error de sintaxis:
+```
+let x = 1 && 2 ?? 3; // Syntax error
+```
+La limitación es debatible. Fue agregada a la especificación del lenguaje con propósito de evitar equivocaciones cuando la gente comenzara a reemplazar || por ??.
+
+Usa paréntesis explícitos para solucionarlo:
+```
+let x = (1 && 2) ?? 3; // Funciona
+
+alert(x); // 2
+```
 
 # `String Operators`
 
@@ -296,7 +319,7 @@ Al usar cualquier otro operador con strings el valor resultante es siempre enter
 
 Si es 2+2+'2' primero se tratan los enteros normal y luego se concatena el resultado seria "42" si es al reves '2'+2+2 se concatena primero y el resultado es "222".
 
-# `Operador ternario` ‘?’ (Conditional operators)
+# `Operador ternario ‘?’ (Conditional operators)`
 
 La Sintaxis es:
 

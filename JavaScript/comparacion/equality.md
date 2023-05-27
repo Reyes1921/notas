@@ -61,11 +61,11 @@ Si uno de los operandos es un objeto y el otro es un número o una cadena, convi
 
 - Si los operandos tienen el mismo tipo, se comparan de la siguiente manera:
 
-String: devuelve verdadero solo si ambos operandos tienen los mismos caracteres y en el mismo orden.
+`String`: devuelve verdadero solo si ambos operandos tienen los mismos caracteres y en el mismo orden.
 
-Number: devuelve verdadero solo si ambos operandos tienen el mismo valor. +0 y -0 se tratan como el mismo valor. Si alguno de los operandos es NaN, devuelve falso.
+`Number`: devuelve verdadero solo si ambos operandos tienen el mismo valor. +0 y -0 se tratan como el mismo valor. Si alguno de los operandos es NaN, devuelve falso.
 
-Boolean: retorna verdadero solo si ambos operandos son verdaderos o falsos.
+`Boolean`: retorna verdadero solo si ambos operandos son verdaderos o falsos.
 
 La diferencia más notable entre este operador y el operador de igualdad estricta (===) es que el operador de igualdad estricta no realiza la conversión de tipos.
 
@@ -102,9 +102,9 @@ a. Return Number::sameValue(x, y).
 
 ## `Same-value-zero equality`
 
-Similar to same-value equality, but +0 and -0 are considered equal.
+Similar to `same-value equality`, but +0 and -0 are considered equal.
 
-Same-value-zero equality is not exposed as a JavaScript API, but can be implemented with custom code:
+`Same-value-zero` equality is not exposed as a JavaScript API, but can be implemented with custom code:
 ```
 function sameValueZero(x, y) {
   if (typeof x === "number" && typeof y === "number") {
@@ -115,4 +115,4 @@ function sameValueZero(x, y) {
 }
 ```
 
-Same-value-zero only differs from strict equality by treating NaN as equivalent, and only differs from same-value equality by treating -0 as equivalent to 0. This makes it usually have the most sensible behavior during searching, especially when working with NaN. It's used by Array.prototype.includes(), TypedArray.prototype.includes(), as well as Map and Set methods for comparing key equality.
+`Same-value-zero` only differs from strict equality by treating NaN as equivalent, and only differs from `same-value equality` by treating -0 as equivalent to 0. This makes it usually have the most sensible behavior during searching, especially when working with NaN. It's used by Array.prototype.includes(), TypedArray.prototype.includes(), as well as Map and Set methods for comparing key equality.

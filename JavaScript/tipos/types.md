@@ -7,7 +7,7 @@ Type conversion (or typecasting) means the transfer of data from one data type t
 Type coercion is the automatic or implicit conversion of values from one data type to another (such as strings to numbers). Type conversion is similar to type coercion because they convert values from one data type to another with one key difference — type coercion is implicit. In contrast, type conversion can be either implicit or explicit.
 
 ## `Explicit Type Casting`
-Type casting means transferring data from one data type to another by explicitly specifying the type to convert the given data to. Explicit type casting is normally done to make data compatible with other variables. Examples of typecasting methods are parseInt(), parseFloat(), toString().
+Type casting means transferring data from one data type to another by explicitly specifying the type to convert the given data to. Explicit type casting is normally done to make data compatible with other variables. Examples of typecasting methods are `parseInt()`, `parseFloat()`, `toString()`.
 
 ### `Conversion de tipos`
 
@@ -92,7 +92,6 @@ Implicit type conversion happens when the compiler or runtime automatically conv
 []+{} // "[object Object]"
 {}+[] // 0
 {}+{} // NaN
-```
 ```
 
 - Convertir un valor a string concatenando con un string vacio

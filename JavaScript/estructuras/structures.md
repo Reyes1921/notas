@@ -14,13 +14,13 @@ Map es, al igual que Objet, una colección de datos identificados por claves. Pe
 
 Los métodos y propiedades son:
 
-- new Map() – crea el mapa.
-- map.set(clave, valor) – almacena el valor asociado a la clave.
-- map.get(clave) – devuelve el valor de la clave. Será undefined si la clave no existe en map.
-- map.has(clave) – devuelve true si la clave existe en map, false si no existe.
-- map.delete(clave) – elimina el valor de la clave.
-- map.clear() – elimina todo de map.
-- map.size – tamaño, devuelve la cantidad actual de elementos.
+- `new Map()` – crea el mapa.
+- `map.set(clave, valor)` – almacena el valor asociado a la clave.
+- `map.get(clave)` – devuelve el valor de la clave. Será undefined si la clave no existe en map.
+- `map.has(clave)` – devuelve true si la clave existe en map, false si no existe.
+- `map.delete(clave)` – elimina el valor de la clave.
+- `map.clear()` – elimina todo de map.
+- `map.size` – tamaño, devuelve la cantidad actual de elementos.
 
 ```
 let map = new Map();
@@ -45,11 +45,11 @@ Por lo tanto, debemos usar los métodos de Map: set, get y demás.
 Iteración sobre Map
 Para recorrer un map, hay 3 métodos:
 
-- map.keys() –- devuelve un iterable para las claves.
-- map.values() -– devuelve un iterable para los valores.
-- map.entries() -– devuelve un iterable para las entradas [clave, valor]. Es el que usa por defecto en for..of.
+- `map.keys()` –- devuelve un iterable para las claves.
+- `map.values()` -– devuelve un iterable para los valores.
+- `map.entries()` -– devuelve un iterable para las entradas [clave, valor]. Es el que usa por defecto en for..of.
 
-Además, Map tiene un método forEach incorporado, similar al de Array:
+Además, Map tiene un método `forEach` incorporado, similar al de Array:
 
 ```
 // recorre la función para cada par (clave, valor)
@@ -60,12 +60,12 @@ recipeMap.forEach( (value, key, map) => {
 
 `Object.entries`: Map desde Objeto
 
-Si tenemos un objeto plano y queremos crear un Map a partir de él, podemos usar el método incorporado Object.entries(obj) que devuelve un
+Si tenemos un objeto plano y queremos crear un Map a partir de él, podemos usar el método incorporado `Object.entries(obj)` que devuelve un
 array de pares clave/valor para un objeto exactamente en ese formato.
 
 `Object.fromEntries`: Objeto desde Map
 
-Existe el método Object.fromEntries que hace lo contrario: dado un array de pares [clave, valor], crea un objeto a partir de ellos:
+Existe el método `Object.fromEntries` que hace lo contrario: dado un array de pares [clave, valor], crea un objeto a partir de ellos:
 
 ## `SET`
 
@@ -73,14 +73,14 @@ Un Set es una colección de tipo especial: “conjunto de valores” (sin claves
 
 Sus principales métodos son:
 
-- new Set(iterable) – crea el set. El argumento opcional es un objeto iterable (generalmente un array) con valores para inicializarlo.
-- set.add(valor) – agrega un valor, y devuelve el set en sí.
-- set.delete(valor) – elimina el valor, y devuelve true si el valor existía al momento de la llamada; si no, devuelve false.
-- set.has(valor) – devuelve true si el valor existe en el set, si no, devuelve false.
-- set.clear() – elimina todo el continido del set.
-- set.size – es la cantidad de elementos.
+- `new Set(iterable)` – crea el set. El argumento opcional es un objeto iterable (generalmente un array) con valores para inicializarlo.
+- `set.add(valor)` – agrega un valor, y devuelve el set en sí.
+- `set.delete(valor)` – elimina el valor, y devuelve true si el valor existía al momento de la llamada; si no, devuelve false.
+- `set.has(valor)` – devuelve true si el valor existe en el set, si no, devuelve false.
+- `set.clear()` – elimina todo el continido del set.
+- `set.size` – es la cantidad de elementos.
 
-La característica principal es que llamadas repetidas de set.add(valor) con el mismo valor no hacen nada. Esa es la razón por la cual cada valor aparece en Set solo una vez.
+La característica principal es que llamadas repetidas de `set.add(valor)` con el mismo valor no hacen nada. Esa es la razón por la cual cada valor aparece en Set solo una vez.
 
 Por ejemplo, vienen visitantes y queremos recordarlos a todos. Pero las visitas repetidas no deberían llevar a duplicados. Un visitante debe ser “contado” solo una vez.
 
@@ -109,7 +109,7 @@ for (let user of set) {
 ```
 
 Iteración sobre Set
-Podemos recorrer Set con for..of o usando forEach:
+Podemos recorrer Set con `for..of` o usando `forEach`:
 
 ```
 let set = new Set(["oranges", "apples", "bananas"]);
@@ -128,13 +128,13 @@ set.forEach((value, valueAgain, set) => {
 
 Métodos y propiedades:
 
-- new Map() – crea el mapa.
-- map.set(clave, valor) – almacena el valor para la clave.
-- map.get(clave) – devuelve el valor de la clave: será undefined si la clave no existe en Map.
-- map.has(clave) – devuelvetrue si la clave existe, y false si no existe.
-- map.delete(clave) – elimina el valor de esa clave.
-- map.clear() – limpia el Map.
-- map.size – devuelve la cantidad de elementos en el Map.
+- `new Map()` – crea el mapa.
+- `map.set(clave, valor)` – almacena el valor para la clave.
+- `map.get(clave)` – devuelve el valor de la clave: será undefined si la clave no existe en Map.
+- `map.has(clave)` – devuelvetrue si la clave existe, y false si no existe.
+- `map.delete(clave)` – elimina el valor de esa clave.
+- `map.clear()` – limpia el Map.
+- `map.size` – devuelve la cantidad de elementos en el Map.
 
 La diferencia con un Objeto regular:
 
@@ -142,16 +142,16 @@ Cualquier clave. Los objetos también pueden ser claves.
 
 Métodos adicionales convenientes, y la propiedad size.
 
-**Set**: es una colección de valores únicos.
+`Set`: es una colección de valores únicos.
 
 Métodos y propiedades:
 
-- new Set(iterable) – crea el set. Tiene un argumento opcional, un objeto iterable (generalmente un array) de valores para inicializarlo.
-- set.add(valor) – agrega un valor, devuelve el set en sí.
-- set.delete(valor) – elimina el valor, devuelve true si valor existe al momento de la llamada; si no, devuelve false.
-- set.has(valor) – devuelve true si el valor existe en el set, si no, devuelve false.
-- set.clear() – elimina todo del set.
-- set.size – es la cantidad de elementos.
+- `new Set(iterable)` – crea el set. Tiene un argumento opcional, un objeto iterable (generalmente un array) de valores para inicializarlo.
+- `set.add(valor)` – agrega un valor, devuelve el set en sí.
+- `set.delete(valor)` – elimina el valor, devuelve true si valor existe al momento de la llamada; si no, devuelve false.
+- `set.has(valor)` – devuelve true si el valor existe en el set, si no, devuelve false.
+- `set.clear()` – elimina todo del set.
+- `set.size` – es la cantidad de elementos.
 
 La iteración sobre Map y Set siempre está en el orden de inserción, por lo que no podemos decir que estas colecciones están desordenadas, pero no podemos reordenar elementos u obtener un elemento directamente por su número.
 
@@ -264,9 +264,7 @@ alert(json);
 */
 ```
 
-El método JSON.stringify(student) toma al objeto y lo convierte a un string.
-
--Excluyendo y transformando: sustituto
+El método `JSON.stringify(student)` toma al objeto y lo convierte a un string.
 
 La sintaxis completa de JSON.stringify es:
 
@@ -377,7 +375,7 @@ alert( numbers[1] ); // 1
 
 - JSON es un formato de datos que tiene su propio estándar independiente y librerías para la mayoría de los lenguajes de programación.
 - JSON admite objetos simples, arrays, strings, números, booleanos y null.
-- JavaScript proporciona los métodos JSON.stringify para serializar en JSON y JSON.parse para leer desde JSON.
+- JavaScript proporciona los métodos `JSON.stringify` para serializar en JSON y `JSON.parse` para leer desde JSON.
 - Ambos métodos admiten funciones transformadoras para lectura/escritura inteligente.
 - Si un objeto tiene toJSON, entonces es llamado porJSON.stringify.
 

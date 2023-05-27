@@ -300,6 +300,16 @@ Hay muchos otros tipos de objetos en JavaScript:
 
 Los objetos en JavaScript son muy poderosos. Aquí acabamos de arañar la superficie de un tema que es realmente enorme. Trabajaremos estrechamente con los objetos y aprenderemos más sobre ellos en otras partes del tutorial.
 
+# `Referencias de objetos y copia`
+
+Una de las diferencias fundamentales entre objetos y primitivos es que los objetos son almacenados y copiados “por referencia”, en cambio los primitivos: strings, number, boolean, etc.; son asignados y copiados “como un valor completo”.
+
+Esto es fácil de entender si miramos un poco “bajo cubierta” de lo que pasa cuando copiamos por valor.
+
+## `Comparación por referencia`
+
+Dos objetos son iguales solamente si ellos son el mismo objeto.
+
 ## `Clonación y mezcla, Object.assign`
 
 Entonces copiar una variable de objeto crea una referencia adicional al mismo objeto.
@@ -386,12 +396,60 @@ Aquí, copia todas las propiedades de user en un objeto vacío y lo devuelve.
 
 También hay otras formas de clonar un objeto, por ejemplo usando la sintaxis spread clone = {...user}, cubierto más adelante en el tutorial.
 
+# `Métodos del objeto, "this"`
+
+
+## `“this” en métodos`
+
+Es común que un método de objeto necesite acceder a la información almacenada en el objeto para cumplir su tarea.
+
+Por ejemplo, el código dentro de `user.sayHi()` puede necesitar el nombre del usuario `user`.
+
+`Para acceder al objeto, un método puede usar la palabra clave this.`
+
+El valor de `this` es el objeto “antes del punto”, el usado para llamar al método.
+
+Por ejemplo:
+```
+let user = {
+  name: "John",
+  age: 30,
+
+  sayHi() {
+    // "this" es el "objeto actual"
+    alert(this.name);
+  }
+
+};
+
+user.sayHi(); // John
+```
+
+## `“this” no es vinculado`
+
+En JavaScript, la palabra clave `this` se comporta de manera distinta a la mayoría de otros lenguajes de programación. Puede ser usado en cualquier función, incluso si no es el método de un objeto.
+
+No hay error de sintaxis en el siguiente ejemplo:
+
+```
+function sayHi() {
+  alert( this.name );
+}
+```
+
+# `Constructor, operador "new"`
+
+El sintaxis habitual {...} nos permite crear un objeto. Pero a menudo necesitamos crear varios objetos similares, como múltiples usuarios, elementos de menú, etcétera.
+
+Esto se puede realizar utilizando el constructor de funciones y el operador "new".
+
 ## `Funcion constructora`
 
 La función constructora es técnicamente una función normal. Aunque hay dos convenciones:
 
-Son nombradas con la primera letra mayúscula.
-Sólo deben ejecutarse con el operador "new".
+- Son nombradas con la primera letra mayúscula.
+- Sólo deben ejecutarse con el operador "new".
+
 Por ejemplo:
 
 ```
@@ -405,37 +463,44 @@ let user = new User("Jack");
 alert(user.name); // Jack
 alert(user.isAdmin); // false
 ```
+Cuando una función es ejecutada con new, realiza los siguientes pasos:
 
-Tomemos nota otra vez: técnicamente cualquier función (excepto las de flecha pues no tienen this) puede ser utilizada como constructor.
-Puede ser llamada con new, y ejecutará el algoritmo de arriba.
-La “primera letra mayúscula” es un acuerdo general, para dejar en claro que la función debe ser ejecutada con new.
+- Se crea un nuevo objeto vacío y se asigna a this.
+- Se ejecuta el cuerpo de la función. Normalmente se modifica this y se le agrega nuevas propiedades.
+- Se devuelve el valor de this.
 
-Si tenemos muchas líneas de código todas sobre la creación de un único objeto complejo, podemos agruparlas en un constructor de función que es llamado inmediatamente de esta manera:
-
-Crea una función e inmediatamente la llama con new
-
+En otras palabras, new User(...) realiza algo como:
 ```
-let user = new function() {
-  this.name = "John";
+function User(name) {
+  // this = {};  (implícitamente)
+
+  // agrega propiedades a this
+  this.name = name;
   this.isAdmin = false;
 
-  // ...otro código para creación de usuario
-  // tal vez lógica compleja y sentencias
-  // variables locales etc
+  // return this;  (implícitamente)
+}
+```
+Entonces let user = new User("Jack") da el mismo resultado que:
+```
+let user = {
+  name: "Jack",
+  isAdmin: false
 };
 ```
 
-Este constructor no puede ser llamado de nuevo porque no es guardado en ninguna parte, sólo es creado y llamado. Por lo tanto este truco apunta a encapsular el código que construye el objeto individual, sin reutilización futura.
+## `Return desde constructores`
 
-Normalmente, los constructores no tienen una sentencia return. Su tarea es escribir todo lo necesario al this, y automáticamente este se convierte en el resultado.
+Normalmente, los constructores no tienen una sentencia re`turn. Su tarea es escribir todo lo necesario al this, y automáticamente este se convierte en el resultado.
 
 Pero si hay una sentencia return, entonces la regla es simple:
 
-Si return es llamado con un objeto, entonces se devuelve tal objeto en vez de this.
-Si return es llamado con un tipo de dato primitivo, es ignorado.
-En otras palabras, return con un objeto devuelve ese objeto, en todos los demás casos se devuelve this.
+- Si `return` es llamado con un objeto, entonces se devuelve tal objeto en vez de this.
+- Si `return` es llamado con un tipo de dato primitivo, es ignorado.
 
-Por ejemplo, aquí return anula this al devolver un objeto:
+En otras palabras, `return` con un objeto devuelve ese objeto, en todos los demás casos se devuelve this.
+
+Por ejemplo, aquí `return` anula this al devolver un objeto:
 
 ```
 function BigUser() {
@@ -448,7 +513,7 @@ function BigUser() {
 alert( new BigUser().name );  // Godzilla, recibió ese objeto
 ```
 
-Y aquí un ejemplo con un return vacío (o podemos colocar un primitivo después de él, no importa):
+Y aquí un ejemplo con un `return` vacío (o podemos colocar un primitivo después de él, no importa):
 
 ```
 function SmallUser() {
@@ -463,6 +528,7 @@ alert( new SmallUser().name );  // John
 
 Normalmente los constructores no tienen una sentencia return. Aquí mencionamos el comportamiento especial con devolución de objetos principalmente por el bien de la integridad.
 
+<h2 style="color: red">Omitir paréntesis</h2>
 Por cierto, podemos omitir paréntesis después de new, si no tiene argumentos:
 
 ```
@@ -473,32 +539,100 @@ let user = new User();
 
 Omitir paréntesis aquí no se considera “buen estilo”, pero la especificación permite esa sintaxis.
 
-### `Encadenamiento opcional '?.'`
+## `Métodos en constructor`
 
-El encadenamiento opcional ?. es una forma a prueba de errores para acceder a las propiedades anidadas de los objetos, incluso si no existe una propiedad intermedia.
+Utilizar constructor de funciones para crear objetos nos da mucha flexibilidad. La función constructor puede tener argumentos que definan cómo construir el objeto y qué colocar dentro.
+
+Por supuesto podemos agregar a this no sólo propiedades, sino también métodos.
+
+Por ejemplo, new User(name) de abajo, crea un objeto con el name dado y el método sayHi:
+```
+function User(name) {
+  this.name = name;
+
+  this.sayHi = function() {
+    alert( "Mi nombre es: " + this.name );
+  };
+}
+
+let john = new User("John");
+
+john.sayHi(); // Mi nombre es: John
+
+/*
+john = {
+   name: "John",
+   sayHi: function() { ... }
+}
+*/
+```
+
+# `Encadenamiento opcional '?.'`
+
+El encadenamiento opcional `?.` es una forma a prueba de errores para acceder a las propiedades anidadas de los objetos, incluso si no existe una propiedad intermedia.
+
+## `El problema de la propiedad que no existe`
+
+Como ejemplo, digamos que tenemos objetos user que contienen información de nuestros usuarios.
+
+La mayoría de nuestros usuarios tienen la dirección en la propiedad user.address, con la calle en user.address.street, pero algunos no la proporcionaron.
+
+En tal caso, cuando intentamos obtener user.address.streeten un usuario sin dirección obtendremos un error:
+```
+let user = {}; // usuario sin propiedad "address"
+
+alert(user.address.street); // Error!
+```
+
+## `Encadenamiento opcional`
+
+El encadenamiento opcional `?.` detiene la evaluación y devuelve undefined si el valor antes del` ?.` es undefined o null.
+
+De aquí en adelante en este artículo, por brevedad, diremos que algo “existe” si no es null o undefined.
 
 En otras palabras, value?.prop:
 
-funciona como value.prop si value existe,
-de otro modo (cuando value es undefined/null) devuelve undefined.
-Aquí está la forma segura de acceder a user.address.street usando ?.:
+- funciona como value.prop si value existe,
+- de otro modo (cuando value es undefined/null) devuelve undefined.
 
+Aquí está la forma segura de acceder a user.address.street usando ?.:
 ```
 let user = {}; // El usuario no tiene dirección
 
 alert( user?.address?.street ); // undefined (no hay error)
 ```
 
-Deberíamos usar ?. solo donde está bien que algo no exista.
+El código es corto y claro, no hay duplicación en absoluto
+
+<h2 style="color: red">No abuses del encadenamiento opcional</h2>
+
+Deberíamos usar `?.` solo donde está bien que algo no exista.
 
 Por ejemplo, si de acuerdo con la lógica de nuestro código, el objeto user debe existir, pero address es opcional, entonces deberíamos escribir ` user.address?.street` y no `user?.address?.street. `
 
 De esta forma, si por un error user no está definido, lo sabremos y lo arreglaremos. De lo contrario, los errores de codificación pueden silenciarse donde no sea apropiado y volverse más difíciles de depurar.
 
-Otros casos: ?.(), ?.[]
-El encadenamiento opcional ?. no es un operador, es una construcción de sintaxis especial que también funciona con funciones y corchetes.
+## `Short-circuiting (Cortocircuitos)`
 
-Por ejemplo, ?.() se usa para llamar a una función que puede no existir.
+Como se dijo antes, el ?. detiene inmediatamente (“cortocircuito”) la evaluación si la parte izquierda no existe.
+
+Entonces, si a la derecha de ?. hay funciones u operaciones adicionales, estas no se ejecutarán:
+
+Por ejemplo:
+``` 
+let user = null;
+let x = 0;
+
+user?.sayHi(x++); // no hay "user", por lo que la ejecución no alcanza a sayHi ni a x++
+
+alert(x); // 0, el valor no se incrementa
+```
+
+## `Otros casos: ?.(), ?.[]`
+
+El encadenamiento opcional `?.` no es un operador, es una construcción de sintaxis especial que también funciona con funciones y corchetes.
+
+Por ejemplo, `?.()` se usa para llamar a una función que puede no existir.
 
 ```
 let userAdmin = {
@@ -514,93 +648,144 @@ userAdmin.admin?.(); // I am admin
 userGuest.admin?.(); // no pasa nada (no existe tal método)
 ```
 
-La sintaxis de encadenamiento opcional ?. tiene tres formas:
+<h2 style="color: green">Resumen</h2>
 
-obj?.prop – devuelve obj.prop si obj existe, si no, undefined.
-obj?.[prop] – devuelve obj[prop] si obj existe, si no, undefined.
-obj.method?.() – llama a obj.method() si obj.method existe, si no devuelve undefined.
+La sintaxis de encadenamiento opcional `?.` tiene tres formas:
 
-# `Prototipos y herencia (delegacion de objeto)`
+- `obj?.prop` – devuelve `obj.prop` si obj existe, si no, undefined.
+- `obj?.[prop]` – devuelve `obj[prop]` si obj existe, si no, undefined.
+- `obj.method?.()` – llama a `obj.method()` si obj.method existe, si no devuelve undefined.
 
-### `Herencia prototípica`
+Como podemos ver, todos ellos son sencillos y fáciles de usar. El `?.` comprueba si la parte izquierda es null/undefined y permite que la evaluación continúe si no es así.
 
-En programación, a menudo queremos tomar algo y extenderlo.
+Una cadena de `?.` permite acceder de forma segura a las propiedades anidadas.
 
-Por ejemplo: tenemos un objeto user con sus propiedades y métodos, y queremos hacer que admin y guest sean variantes ligeramente modificadas del mismo. Nos gustaría reutilizar lo que tenemos en user; no queremos copiar ni reimplementar sus métodos, sino solamente construir un nuevo objeto encima del existente.
+Aún así, debemos aplicar `?.` con cuidado, solamente donde sea aceptable que, de acuerdo con nuestra lógica, la parte izquierda no exista. Esto es para que no nos oculte errores de programación, si ocurren.
 
-En JavaScript, los objetos tienen una propiedad oculta especial `[[Prototype]]` (como se menciona en la especificación); que puede ser null, o hacer referencia a otro objeto llamado “prototipo”:
+# `Conversión de objeto a valor primitivo`
 
-Cuando leemos una propiedad de object, si JavaScript no la encuentra allí la toma automáticamente del prototipo. En programación esto se llama “herencia prototípica”.
+¿Qué sucede cuando los objetos se suman `obj1 + obj2`, se restan `obj1 - obj2` o se imprimen utilizando `alert(obj)`?
 
-La propiedad [[Prototype]] es interna y está oculta, pero hay muchas formas de configurarla.
+JavaScript no permite personalizar cómo los operadores trabajan con los objetos. Al contrario de otros lenguajes de programación como Ruby o C++, no podemos implementar un método especial para manejar una suma (u otros operadores).
 
-Una de ellas es usar el nombre especial **proto**, así:
+En ese caso, los objetos se convierten automáticamente en valores primitivos, y luego se lleva a cabo la operación sobre esos primitivos, y resultan en un valor primitivo.
 
-<h2 style='color: green'>Resumen</h2>
+Esto es una limitación importante: el resultado de `obj1 + obj2` (u otra operación) ¡no puede ser otro objeto!
 
-- En JavaScript, todos los objetos tienen una propiedad oculta [[Prototype]] que es: otro objeto, o null.
-- Podemos usar obj.**proto** para acceder a ella (un getter/setter histórico, también hay otras formas que se cubrirán pronto).
-- El objeto al que hace referencia [[Prototype]] se denomina “prototipo”.
-- Si en obj queremos leer una propiedad o llamar a un método que no existen, entonces JavaScript intenta encontrarlos en el prototipo.
-- Las operaciones de escritura/eliminación actúan directamente sobre el objeto, no usan el prototipo (suponiendo que sea una propiedad de datos, no un setter).
-- Si llamamos a obj.method(), y method se toma del prototipo, this todavía hace referencia a obj. Por lo tanto, los métodos siempre funcionan con el objeto actual, incluso si se heredan.
-- El bucle for..in itera sobre las propiedades propias y heredadas. Todos los demás métodos de obtención de valor/clave solo operan en el objeto mismo.
+Por ejemplo no podemos hacer objetos que representen vectores o matrices (o conquistas o lo que sea), sumarlas y esperar un objeto “sumado” como resultado. Tal objetivo arquitectural cae automáticamente “fuera del tablero”.
 
-### `F.prototype`
+Como técnicamente no podemos hacer mucho aquí, no se hacen matemáticas con objetos en proyectos reales. Cuando ocurre, con alguna rara excepción es por un error de código.
 
-[mas informacion](https://es.javascript.info/function-prototype)
+En este capítulo cubriremos cómo un objeto se convierte a primitivo y cómo podemos personalizarlo.
 
-### `Prototipos nativos`
+Tenemos dos propósitos:
 
-La propiedad "prototype" es ampliamente utilizada por el núcleo de JavaScript mismo. Todas las funciones de constructor integradas lo usan.
+- Nos permitirá entender qué ocurre en caso de errores de código, cuando tal operación ocurre accidentalmente.
+- Hay excepciones, donde tales operaciones son posibles y se ven bien. Por ejemplo al restar o comparar fechas (objetos Date). Las discutiremos más adelante.
 
-<img src="native-prototypes-classes.svg" width="600">
+## `Reglas de conversión`
 
-<h2 style='color: green'>Resumen</h2>
+En el capítulo Conversiones de Tipos, hemos visto las reglas para las conversiones de valores primitivos numéricos, strings y booleanos. Pero dejamos un hueco en los objetos. Ahora, como sabemos sobre métodos y símbolos, es posible completarlo.
 
-- Todos los objetos integrados siguen el mismo patrón:
-- Los métodos se almacenan en el prototipo (Array.prototype, Object.prototype, Date.prototype, etc.)
-- El objeto en sí solo almacena los datos (elementos de arreglo, propiedades de objeto, la fecha)
-- Los primitivos también almacenan métodos en prototipos de objetos contenedores: Number.prototype, String.prototype y Boolean.prototype. Solo undefined y null no tienen objetos contenedores.
-- Los prototipos integrados se pueden modificar o completar con nuevos métodos. Pero no se recomienda cambiarlos. El único caso permitido es probablemente cuando agregamos un nuevo estándar que aún no es soportado por el motor de JavaScript.
+- No hay conversión a boolean. Todos los objetos son true en un contexto booleano, tan simple como eso. Solo hay conversiones numéricas y de strings.
+- La conversión numérica ocurre cuando restamos objetos o aplicamos funciones matemáticas. Por ejemplo, los objetos de tipo Date (que se cubrirán en el capítulo Fecha y Hora) se pueden restar, y el resultado de date1 - date2 es la diferencia horaria entre dos fechas.
+- En cuanto a la conversión de strings: generalmente ocurre cuando imprimimos un objeto como en alert(obj) y en contextos similares.
 
-### `Métodos prototipo, objetos sin __proto__`
+## `Hints (sugerencias)`
 
-- Para crear un objeto con un prototipo dado, use:
+¿Cómo decide JavaScript cuál conversión aplicar?
 
-1. sintaxis literal: { **proto**: ... }, permite especificar multiples propiedades
-2. o Object.create(proto, [descriptors]), permite especificar descriptores de propiedad.
-   El Object.create brinda una forma fácil de hacer la copia superficial de un objeto con todos sus descriptores:
+Hay tres variantes de conversión de tipos que ocurren en varias situaciones. Son llamadas “hints” y están descriptas en la especificación:
 
+`"string"`
+Para una conversión de objeto a string, cuando hacemos una operación que espera un string en un objeto, como `alert`:
 ```
-let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj));
+// salida
+alert(obj);
+
+// utilizando un objeto como clave
+anotherObj[obj] = 123;
+```
+`"number"`
+Para una conversión de objeto a número, como cuando hacemos operaciones matemáticas:
+```
+// conversión explícita
+let num = Number(obj);
+
+// matemáticas (excepto + binario)
+let n = +obj; // + unario
+let delta = date1 - date2;
+
+// comparación menor que / mayor que
+let greater = user1 > user2;
+```
+La mayoría de las funciones matemáticas nativas también incluyen tal conversión.
+
+`"default"`
+Ocurre en casos raros cuando el operador “no está seguro” de qué tipo esperar.
+
+Por ejemplo, el operador binario + puede funcionar con strings (los concatena) y números (los suma). Entonces, si el + binario obtiene un objeto como argumento, utiliza la sugerencia "default" para convertirlo.
+
+También, si un objeto es comparado utilizando == con un string, un número o un símbolo, tampoco está claro qué conversión se debe realizar, por lo que se utiliza la sugerencia "default".
+```
+// + binario utiliza la sugerencia "default"
+let total = obj1 + obj2;
+
+// obj == número utiliza la sugerencia "default"
+if (user == 1) { ... };
+```
+## `Symbol.toPrimitive`
+
+Empecemos por el primer método. Hay un símbolo incorporado llamado Symbol.toPrimitive que debe utilizarse para nombrar el método de conversión, así:
+```
+obj[Symbol.toPrimitive] = function(hint) {
+  // aquí va el código para convertir este objeto a un primitivo
+  // debe devolver un valor primitivo
+  // hint = "sugerencia", uno de: "string", "number", "default"
+};
 ```
 
-- Los métodos modernos para obtener y establecer el prototipo son:
+Si el método Symbol.toPrimitive existe, es usado para todos los hints y no serán necesarios más métodos.
 
-1. `Object.getPrototypeOf(obj)` – devuelve el [[Prototype]] de obj (igual que el getter de **proto**).
+Por ejemplo, aquí el objeto user lo implementa:
+```
+let user = {
+  name: "John",
+  money: 1000,
 
-2. `Object.setPrototypeOf(obj, proto)` – establece el [[Prototype]] de obj en proto (igual que el setter de **proto**).
+  [Symbol.toPrimitive](hint) {
+    alert(`sugerencia: ${hint}`);
+    return hint == "string" ? `{name: "${this.name}"}` : this.money;
+  }
+};
 
-- No está recomendado obtener y establecer el prototipo usando los getter/setter nativos de **proto**. Ahora están en el Anexo B de la especificación.
+// demostración de conversiones:
+alert(user); // sugerencia: string -> {name: "John"}
+alert(+user); // sugerencia: number -> 1000
+alert(user + 500); // sugerencia: default -> 1500
+```
 
-- También hemos cubierto objetos sin prototipo, creados con Object.create(null) o {**proto**: null}.
+Como podemos ver en el código, user se convierte en un string autodescriptivo o en una cantidad de dinero, depende de la conversión. Un único método user[Symbol.toPrimitive] maneja todos los casos de conversión.
 
-Estos objetos son usados como diccionarios, para almacenar cualquier (posiblemente generadas por el usuario) clave.
+## `toString/valueOf`
 
-- Normalmente, los objetos heredan métodos nativos y getter/setter de **proto** desde Object.prototype, haciendo sus claves correspondientes “ocupadas” y potencialmente causar efectos secundarios. Con el prototipo null, los objetos están verdaderamente vacíos.
+[Mas Información](https://es.javascript.info/object-toprimitive)
+
+# `Prototypes`
+[Prototype](prototype/prototype.md)
 
 # `Built-in objects`
 
 Built-in objects, or "global objects", are those built into the language specification itself. There are numerous built-in objects with the JavaScript language, all of which are accessible at the global scope. Some examples are:
 
-**-Number**
+- `Number`
 
-**-Math**
+- `Math`
 
-**-Date**: Este objeto almacena la fecha, la hora, y brinda métodos para administrarlas. Por ejemplo, podemos usarlo para almacenar horas de creación o modificación, medir tiempo, o simplemente mostrar en pantalla la fecha actual.
+- `Date`: Este objeto almacena la fecha, la hora, y brinda métodos para administrarlas. Por ejemplo, podemos usarlo para almacenar horas de creación o modificación, medir tiempo, o simplemente mostrar en pantalla la fecha actual.
 
--Creación
+`Creación`
+
 Para crear un nuevo objeto Date se lo instancia con new Date() junto con uno de los siguientes argumentos `new Date()`
 
 Sin argumentos – crea un objeto Date para la fecha y la hora actuales:
@@ -627,47 +812,48 @@ new Date(2011, 0, 1); // Igual que la línea de arriba, sólo que a los últimos
 Acceso a los componentes de la fecha
 Existen métodos que sirven para obtener el año, el mes, y los demás componentes a partir de un objeto de tipo Date:
 
-- getFullYear(): Devuelve el año (4 dígitos)
-- getMonth(): Devuelve el mes, de 0 a 11.
-- getDate(): Devuelve el día del mes desde 1 a 31. Nótese que el nombre del método no es muy intuitivo.
-- getHours(), getMinutes(), getSeconds(), getMilliseconds(): Devuelve los componentes del horario correspondientes.
-- getDay(): Devuelve el día de la semana, partiendo de 0 (Domingo) hasta 6 (Sábado). El primer día siempre es el Domingo. Por más que en algunos países no sea así, no se puede modificar.
+- `getFullYear()`: Devuelve el año (4 dígitos)
+- `getMonth()`: Devuelve el mes, de 0 a 11.
+- `getDate()`: Devuelve el día del mes desde 1 a 31. Nótese que el nombre del método no es muy intuitivo.
+- `getHours()`, getMinutes(), getSeconds(), getMilliseconds(): Devuelve los componentes del horario correspondientes.
+- `getDay()`: Devuelve el día de la semana, partiendo de 0 (Domingo) hasta 6 (Sábado). El primer día siempre es el Domingo. Por más que en algunos países no sea así, no se puede modificar.
 
 Todos los métodos mencionados anteriormente devuelven los componentes correspondientes a la zona horaria local.
 
-También existen sus contrapartes UTC, que devuelven el día, mes, año, y demás componentes, para la zona horaria UTC+0: getUTCFullYear(), getUTCMonth(), getUTCDay(). Solo debemos agregarle el "UTC" justo después de "get".
+También existen sus contrapartes UTC, que devuelven el día, mes, año, y demás componentes, para la zona horaria UTC+0: `getUTCFullYear()`, `getUTCMonth()`, `getUTCDay()`. Solo debemos agregarle el "UTC" justo después de "get".
 
-- getTime()
+- `getTime()`
   Devuelve el timestamp para una fecha determinada – cantidad de milisegundos transcurridos a partir del 1° de Enero de 1970 UTC+0.
 
-- getTimezoneOffset()
+- `getTimezoneOffset()`
   Devuelve la diferencia entre UTC y el huso horario de la zona actual, en minutos:
 
--Estableciendo los componentes de la fecha
+- `Estableciendo los componentes de la fecha`
+
 Los siguientes métodos permiten establecer los componentes de fecha y hora:
 
-- setFullYear(year, [month], [date])
-- setMonth(month, [date])
-- setDate(date)
-- setHours(hour, [min], [sec], [ms])
-- setMinutes(min, [sec], [ms])
-- setSeconds(sec, [ms])
-- setMilliseconds(ms)
-- setTime(milliseconds) (Establece la cantidad de segundos transcurridos desde 01.01.1970 GMT+0)
+- `setFullYear(year, [month], [date])`
+- `setMonth(month, [date])`
+- `setDate(date)`
+- `setHours(hour, [min], [sec], [ms])`
+- `setMinutes(min, [sec], [ms])`
+- `setSeconds(sec, [ms])`
+- `setMilliseconds(ms)`
+- `setTime(milliseconds) (Establece la cantidad de segundos transcurridos desde 01.01.1970 GMT+0)`
 
-A excepción de setTime(), todos los demás métodos poseen una variante UTC, por ejemplo: setUTCHours().
+A excepción de `setTime()`, todos los demás métodos poseen una variante UTC, por ejemplo: setUTCHours().
 
 Como podemos ver, algunos métodos nos permiten fijar varios componentes al mismo tiempo, por ej. setHours. Los componentes que no son mencionados no se modifican.
 
--`Autocorrección`: La autocorrección es una característica muy útil de los objetos Date. Podemos fijar valores fuera de rango, y se ajustarán automáticamente.
+- `Autocorrección`: La autocorrección es una característica muy útil de los objetos Date. Podemos fijar valores fuera de rango, y se ajustarán automáticamente.
 
--`Date.now()`: Podemos utilizar el método especial Date.now() que nos devuelve el timestamp actual.
+- `Date.now()`: Podemos utilizar el método especial Date.now() que nos devuelve el timestamp actual.
 
 Es el equivalente semántico a new Date().getTime(), pero no crea una instancia intermediaria del objeto Date. De esta manera, el proceso es mas rápido y, por consiguiente, no afecta a la recolección de basura.
 
 Mayormente se utiliza por conveniencia o cuando la performance del código es fundamental, como por ejemplo en juegos de JavaScript u otras aplicaciones específicas.
 
--`Benchmarking`
+- `Benchmarking`
 
 Si queremos realizar una medición de performance confiable de una función que vaya a consumir muchos recursos de CPU, debemos hacerlo con precaución.
 
@@ -689,13 +875,13 @@ function diffGetTime(date1, date2) {
 
 Es mas rapido `getTime()`
 
-**-String**
+`String`
 
-**-Error**
+`Error`
 
-**-Function**
+`Function`
 
-**-Boolean**
+`Boolean`
 
 # `TypeOf Operator`
 
@@ -742,42 +928,3 @@ Usualmente, tales paréntesis contienen expresiones matemáticas tales como (2 +
 Algunos prefieren typeof(x), aunque la sintaxis typeof x es mucho más común.
 
 [TOP](#objetos)
-
-
-<h2 style="color: red">Nota</h2>
-
-The main difference between using obj.prop and obj[prop] is that the former requires the property name to be a valid identifier, while the latter allows you to use any string value as an index. This means that with obj.prop you can only access properties that have valid identifier names, such as 'foo' or 'bar', while with obj[prop] you can use any string value as an index, such as '1' or 'some string'. Additionally, the bracket notation allows you to access properties whose names are stored in variables, which is not possible with the dot notation.
-
--Referencias de objetos y copia
-Una de las diferencias fundamentales entre objetos y primitivos es que los objetos son almacenados y copiados “por referencia”,
-en cambio los primitivos: strings, number, boolean, etc.; son asignados y copiados “como un valor completo”.
-
--Comparación por referencia
-Dos objetos son iguales solamente si ellos son el mismo objeto.
-
-Por ejemplo, aquí a y b tienen referencias al mismo objeto, por lo tanto son iguales:
-
-```
-let a = {};
-let b = a; // copia la referencia
-
-alert( a == b ); // true, verdadero. Ambas variables hacen referencia al mismo objeto
-alert( a === b ); // true
-```
-
--“this” en métodos
-Es común que un método de objeto necesite acceder a la información almacenada en el objeto para cumplir su tarea.
-Por ejemplo, el código dentro de user.sayHi() puede necesitar el nombre del usuario user.
-Para acceder al objeto, un método puede usar la palabra clave this.
-El valor de this es el objeto “antes del punto”, el usado para llamar al método.
-
--“this” no es vinculado
-En JavaScript, la palabra clave this se comporta de manera distinta a la mayoría de otros lenguajes de programación. Puede ser usado en cualquier función, incluso si no es el método de un objeto.
-
-No hay error de sintaxis en el siguiente ejemplo:
-
-```
-function sayHi() {
-  alert( this.name );
-}
-```

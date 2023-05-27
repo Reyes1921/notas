@@ -25,12 +25,6 @@
 
 - Deberías imaginar a las variables como tentáculos, en lugar de cajas. Ellas no contienen valores; ellas los agarran—dos vinculaciones pueden referirse al mismo valor.
 
-## `Conversión de objeto a valor primitivo`
-
-Los objetos se convierten automáticamente en valores primitivos, y luego se lleva a cabo la operación sobre esos primitivos, y resultan en un valor primitivo.
-
-Esto es una limitación importante: el resultado de obj1 + obj2 (u otra operación) ¡no puede ser otro objeto!
-
 - El operador + es el unico que funciona con strings y los concatena y el valor resultante siempre es string.
 
 - Al usar cualquier otro operador con strings el valor resultante es siempre entero.

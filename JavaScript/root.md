@@ -1,6 +1,4 @@
-# Bienvenido Reyes
-
-## MENÚ
+# MENÚ
 
 # `Primera Parte`
 
@@ -20,6 +18,8 @@
 
 - [Equality Comparisons](comparacion/equality.md)
 
+# `Segunda Parte`
+
 - [Bucles e iteraciones (Loops and Iterations)](ciclos/bucles.md)
 
 - [Flujo de control(Control Flow)](control/flow.md)
@@ -28,13 +28,13 @@
 
 - [Funciones (Functions)](funciones/functions.md)
 
-# `Segunda Parte`
-
 - [Strict Mode](estricto/strict-mode.md)
 
 - [This](this/this_keyword.md)
 
 - [Asynchronous JavaScript](async/async.md)
+
+# `Tercera Parte`
 
 - [Working with APIs](apis/apis.md)
 

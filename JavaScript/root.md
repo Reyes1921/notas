@@ -16,9 +16,9 @@
 
 - [Estructuras de datos (Data Structures)](estructuras/structures.md)
 
-- [Equality Comparisons](comparacion/equality.md)
-
 # `Segunda Parte`
+
+- [Equality Comparisons](comparacion/equality.md)
 
 - [Bucles e iteraciones (Loops and Iterations)](ciclos/bucles.md)
 
@@ -32,9 +32,9 @@
 
 - [This](this/this_keyword.md)
 
-- [Asynchronous JavaScript](async/async.md)
-
 # `Tercera Parte`
+
+- [Asynchronous JavaScript](async/async.md)
 
 - [Working with APIs](apis/apis.md)
 

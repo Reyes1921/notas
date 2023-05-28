@@ -2,11 +2,11 @@
 
 # `Funciones`
 
--Parametro es cuando se define la funcion y argumento es cuando se ingresa el valor real al momento de usar la funcion.
+- Parametro es cuando se define la funcion y argumento es cuando se ingresa el valor real al momento de usar la funcion.
 
--Las funciones son valores. Se pueden asignar, copiar o declarar en cualquier lugar del código.
+- Las funciones son valores. Se pueden asignar, copiar o declarar en cualquier lugar del código.
 
--Podemos copiar el valor de una funcion sin llamarla es decir usar parentesis.
+- Podemos copiar el valor de una funcion sin llamarla es decir usar parentesis.
 
 ```
 function sayHi() {   // (1) crear

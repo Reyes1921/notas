@@ -25,7 +25,7 @@ Las funciones anónimas son funciones que no tienen nombre. Son como las que vim
 
 ## `Declaración de Función `
 
--Una Declaración de Función sólo es visible dentro del bloque de código en el que reside.
+Una Declaración de Función sólo es visible dentro del bloque de código en el que reside.
 
 ```
 function sayHi() {
@@ -442,20 +442,6 @@ Existen otras maneras además de los paréntesis para decirle a JavaScript que q
 
 En todos los casos de arriba declaramos una expresión de función y la ejecutamos inmediatamente. Tomemos nota de nuevo: Ahora no hay motivo para escribir semejante código.
 
-## `Avoid polluting the global namespace`
-
-Because our application could include many functions and global variables from different source files, it's important to limit the number of global variables. If we have some initiation code that we don't need to use again, we could use the IIFE pattern. As we will not reuse the code again, using IIFE in this case is better than using a function declaration or a function expression.
-
-```
-(() => {
-  // some initiation code
-  let firstVariable;
-  let secondVariable;
-})();
-
-// firstVariable and secondVariable will be discarded after the function is executed.
-```
-
 # `Arguments object`
 
 The arguments object is an Array-like object accessible inside functions that contains the values of the arguments passed to that function, available within all non-arrow functions. You can refer to a function's arguments inside that function by using its arguments object. It has entries for each argument the function was called with, with the first entry's index at 0. But, in modern code, rest parameters should be preferred.
@@ -563,7 +549,7 @@ El dilema de velocidad versus elegancia es interesante. Puedes verlo como una es
 
 Casi cualquier programa se puede hacer más rápido haciendolo más grande y complicado. El programador tiene que decidir acerca de cual es un equilibrio apropiado.
 
-**Dos formas de pensar**
+`Dos formas de pensar`
 
 Para comenzar con algo simple, escribamos una función pow(x, n) que eleve x a una potencia natural den. En otras palabras, multiplica x por sí mismo n veces.
 
@@ -620,10 +606,6 @@ pow(2, 2) = 2 * pow(2, 1)
 pow(2, 1) = 2
 ```
 
-### `Base de la recursividad`
-
-### `Paso recursivo`
-
 <h2 style='color: green'>Resumen</h2>
 
 - Recursion es concepto de programación que significa que una función se llama a sí misma. Las funciones recursivas se pueden utilizar para resolver ciertas tareas de manera elegante.
@@ -677,7 +659,7 @@ Si no se encuentra una variable en ninguna parte, en el modo estricto se trata d
 
 ### `Paso 4. Devolviendo una función`
 
-Todas las funciones recuerdan el entorno léxico en el que fueron realizadas. Técnicamente, no hay magia aquí: todas las funciones tienen la propiedad oculta llamada [[Environment], que mantiene la referencia al entorno léxico donde se creó la función.
+Todas las funciones recuerdan el entorno léxico en el que fueron realizadas. Técnicamente, no hay magia aquí: todas las funciones tienen la propiedad oculta llamada `[[Environment]`, que mantiene la referencia al entorno léxico donde se creó la función.
 
 ## `Closure (clausura)`
 

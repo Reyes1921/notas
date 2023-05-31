@@ -323,3 +323,5 @@ const Navigation = () => {
 Components can either be created using the class based approach or a functional approach. These components are simple classes (made up of multiple functions that add functionality to the application). All class based components are child classes for the Component class of ReactJS.
 
 Although the class components are supported in React, it is encouraged to write functional components and make use of hooks in modern React applications.
+
+[TOP](#components)

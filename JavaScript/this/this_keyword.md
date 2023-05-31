@@ -13,7 +13,7 @@ In JavaScript, the `this` keyword is a little different compared to other langua
 
 # `Function Borrowing (Préstamo de método)`
 
-Function borrowing allows us to use the methods of one object on a different object without having to make a copy of that method and maintain it in two separate places. It is accomplished through the use of .call(), .apply(), or .bind(), all of which exist to explicitly set `this` on the method we are borrowing.
+Function borrowing allows us to use the methods of one object on a different object without having to make a copy of that method and maintain it in two separate places. It is accomplished through the use of `.call()`, `.apply()`, or `.bind()`, all of which exist to explicitly set `this` on the method we are borrowing.
 
 Ahora hagamos una pequeña mejora en la función de hash:
 
@@ -249,9 +249,9 @@ sayHi.call( admin ); // Admin
 
 ## `apply`
 
-En vez de func.call(this, ...arguments), podríamos usar func.apply(this, arguments).
+En vez de `func.call(this, ...arguments)`, podríamos usar `func.apply(this, arguments)`.
 
-La sintaxis del método incorporado func.apply es:
+La sintaxis del método incorporado `func.apply` es:
 
 ```
 func.apply(context, args)
@@ -344,7 +344,7 @@ La sintaxis básica es:
 let bound = func.bind(context, [arg1], [arg2], ...);
 ```
 
-El resultado de func.bind(context) es un “objeto exótico”, una función similar a una función regular que se puede llamar como función; esta pasa la llamada de forma transparente a func estableciendo this = context.
+El resultado de `func.bind(context)` es un “objeto exótico”, una función similar a una función regular que se puede llamar como función; esta pasa la llamada de forma transparente a func estableciendo this = context.
 
 En otras palabras, llamar a boundFunc es como llamar a func pero con un this fijo.
 
@@ -363,7 +363,7 @@ let funcUser = func.bind(user);
 funcUser(); // John
 ```
 
-Aquí func.bind(user) es como una “variante vinculada” de func, con this = user fijo en ella.
+Aquí `func.bind(user)` es como una “variante vinculada” de func, con this = user fijo en ella.
 
 Todos los argumentos se pasan al func original “tal cual”, por ejemplo:
 

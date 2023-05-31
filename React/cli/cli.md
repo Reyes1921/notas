@@ -4,9 +4,9 @@
 
 `Vite` (French word for "quick", pronounced /vit/, like "`veet`") is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts:
 
-A dev server that provides rich feature enhancements over native ES modules, for example extremely `fast Hot Module Replacement (HMR)`.
+- A dev server that provides rich feature enhancements over native ES modules, for example extremely `fast Hot Module Replacement (HMR)`.
 
-A build command that bundles your code with `Rollup`, pre-configured to output highly optimized static assets for production.
+- A build command that bundles your code with `Rollup`, pre-configured to output highly optimized static assets for production.
 
 `Vite` is opinionated and comes with sensible defaults out of the box, but is also highly extensible via its Plugin API and JavaScript API with full typing support.
 
@@ -94,8 +94,6 @@ Vite aims to address these issues by leveraging new advancements in the ecosyste
 
 ## `Slow Server Start`
 
-When cold-starting the dev server, a bundler-based build setup has to eagerly crawl and build your entire application before it can be served.
-
 Vite improves the dev server start time by first dividing the modules in an application into two categories: `dependencies` and `source code`.
 
 - `Dependencies` are mostly plain JavaScript that do not change often during development. Some large `dependencies` (e.g. component libraries with hundreds of modules) are also quite expensive to process. `Dependencies` may also be shipped in various module formats (e.g. ESM or CommonJS).
@@ -139,7 +137,7 @@ That said, `esbuild` has progressed a lot in the past years, and we won't rule o
 
 # `Create React App`
 
-create-react-app is a command line interface tool built by Facebook for creating new React projects with a modern build setup and pre-configured packages. It allows developers to quickly set up a new React project without having to worry about configuration or webpack setup. To use create-react-app, you'll first need to have Node.js installed on your machine.
+`create-react-app` is a command line interface tool built by Facebook for creating new React projects with a modern build setup and pre-configured packages. It allows developers to quickly set up a new React project without having to worry about configuration or webpack setup. To use create-react-app, you'll first need to have Node.js installed on your machine.
 
 Create React App is the CLI based tool and is the best way to start building a new single-page application in React.
 

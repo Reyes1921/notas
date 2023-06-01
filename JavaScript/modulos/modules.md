@@ -4,8 +4,6 @@
 
 A medida que nuestra aplicación crece, queremos dividirla en múltiples archivos, llamados “módulos”. Un módulo puede contener una clase o una biblioteca de funciones para un propósito específico.
 
-Durante mucho tiempo, JavaScript existió sin una sintaxis de módulo a nivel de lenguaje. Eso no fue un problema, porque inicialmente los scripts eran pequeños y simples, por lo que no era necesario.
-
 Pero con el tiempo los scripts se volvieron cada vez más complejos, por lo que la comunidad inventó una variedad de formas de organizar el código en módulos, bibliotecas especiales para cargar módulos a pedido.
 
 Para nombrar algunos (por razones históricas):
@@ -29,27 +27,6 @@ Los módulos pueden cargarse entre sí y usar directivas especiales export e imp
 - La palabra clave `export` etiqueta las variables y funciones que deberían ser accesibles desde fuera del módulo actual.
 
 - `import` permite importar funcionalidades desde otros módulos.
-
-Por ejemplo, si tenemos un archivo sayHi.js que exporta una función:
-
-```
-// 📁 sayHi.js
-export function sayHi(user) {
-  alert(`Hello, ${user}!`);
-}
-```
-
-…Luego, otro archivo puede importarlo y usarlo:
-
-```
-// 📁 main.js
-import {sayHi} from './sayHi.js';
-
-alert(sayHi); // function...
-sayHi('John'); // Hello, John!
-```
-
-La directiva `import` carga el módulo por la ruta `./sayHi.js` relativo con el archivo actual, y asigna la función exportada sayHi a la variable correspondiente.
 
 Como los módulos admiten palabras clave y características especiales, debemos decirle al navegador que un script debe tratarse como un módulo, utilizando el atributo `<script type =" module ">`.
 
@@ -79,26 +56,6 @@ Cada módulo tiene su propio alcance de nivel superior. En otras palabras, las v
 
 Si el mismo módulo se importa en varios otros módulos, su código se ejecuta solo una vez: en el primer import. Luego, sus exportaciones se otorgan a todos los importadores que siguen.
 
-Eso tiene consecuencias importantes para las que debemos estar prevenidos.
-
-Echemos un vistazo usando ejemplos:
-
-Primero, si ejecutar un código de módulo trae efectos secundarios, como mostrar un mensaje, importarlo varias veces lo activará solo una vez, la primera vez:
-
-```
-// 📁 alert.js
-alert("Módulo es evaluado!");
-// Importar el mismo módulo desde archivos distintos
-
-// 📁 1.js
-import `./alert.js`; // Módulo es evaluado!
-
-// 📁 2.js
-import `./alert.js`; // (no muestra nada)
-```
-
-El segundo import no muestra nada, porque el módulo ya fue evaluado.
-
 ### `import.meta`
 
 El objeto `import.meta` contiene la información sobre el módulo actual.
@@ -114,11 +71,7 @@ Su contenido depende del entorno. En el navegador, contiene la URL del script, o
 
 ## `En un módulo, “this” es indefinido (undefined)`
 
-Esa es una característica menor, pero para completar, debemos mencionarla.
-
-En un módulo, el nivel superior this no está definido.
-
-Compárelo con scripts que no sean módulos, donde this es un objeto global:
+Esa es una característica menor, pero para completar, debemos mencionarla. En un módulo, el nivel superior this no está definido. Compárelo con scripts que no sean módulos, donde this es un objeto global:
 
 ```
 <script>
@@ -293,19 +246,9 @@ Tenga en cuenta que export antes de una clase o una función no la hace una expr
 
 La mayoría de las guías de estilos JavaScript no recomiendan los punto y comas después de declarar funciones y clases.
 
-Es por esto que no hay necesidad de un punto y coma al final de export class y export function:
-
-````
-export function sayHi(user) {
-  alert(`Hello, ${user}!`);
-}  // no ; at the end```
-````
-
 # `Export separado de la declaración`
 
-También podemos colocar export por separado.
-
-Aquí primero declaramos y luego exportamos:
+También podemos colocar export por separado. Aquí primero declaramos y luego exportamos:
 
 ```
 // 📁 say.js
@@ -438,21 +381,6 @@ Las importaciones sin llaves se ven mejor. Un error común al comenzar a usar m�
 | import {User} from ...  | import User from ...            |
 
 Técnicamente, podemos tener exportaciones predeterminadas y con nombre en un solo módulo, pero en la práctica la gente generalmente no las mezcla. Un módulo tiene exportaciones con nombre o la predeterminada.
-
-## `El nombre “default”`
-
-En algunas situaciones, la palabra clave `default` se usa para hacer referencia a la exportación predeterminada.
-
-Por ejemplo, para exportar una función por separado de su definición:
-
-```
-function sayHi(user) {
-  alert(`Hello, ${user}!`);
-}
-
-// lo mismo que si agregamos "export default" antes de la función
-export {sayHi as default};
-```
 
 ## `Unas palabras contra exportaciones predeterminadas`
 

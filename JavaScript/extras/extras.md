@@ -145,14 +145,14 @@ alert(firstName); // John
 alert(surname);  // Smith
 ```
 
--Los elementos no deseados de un array también pueden ser descartados por medio de una coma extra:
+- Los elementos no deseados de un array también pueden ser descartados por medio de una coma extra:
 
 ```
 let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
 alert( title ); // Consul
 ```
 
--Podemos usar cualquier “asignable” en el lado izquierdo.
+- Podemos usar cualquier “asignable” en el lado izquierdo.
 
 ```
 let user = {};
@@ -162,7 +162,7 @@ alert(user.name); // John
 alert(user.surname); // Smith
 ```
 
--Hay un conocido truco para intercambiar los valores de dos variables usando asignación desestructurante:
+- Hay un conocido truco para intercambiar los valores de dos variables usando asignación desestructurante:
 
 ```
 let guest = "Jane";
@@ -176,7 +176,7 @@ alert(`${guest} ${admin}`); // Pete Jane (¡intercambiados con éxito!)
 
 Aquí creamos un array temporal de dos variables e inmediatamente lo desestructuramos con el orden cambiado.
 
--Si queremos también obtener todo lo que sigue, podemos agregarle un parámetro que obtiene “el resto” usando puntos suspensivos “…”`:
+- Si queremos también obtener todo lo que sigue, podemos agregarle un parámetro que obtiene “el resto” usando puntos suspensivos “…”`:
 
 ```
 let [name1, name2, ...rest] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
@@ -187,7 +187,7 @@ alert(rest[1]); // of the Roman Republic
 alert(rest.length); // 2
 ```
 
--Si el array es más corto que la lista de variables a la izquierda, no habrá errores. Los valores ausentes son considerados undefined:
+- Si el array es más corto que la lista de variables a la izquierda, no habrá errores. Los valores ausentes son considerados undefined:
 
 ```
 let [firstName, surname] = [];
@@ -196,7 +196,7 @@ alert(firstName); // undefined
 alert(surname); // undefined
 ```
 
--Si queremos un valor “predeterminado” para reemplazar el valor faltante, podemos proporcionarlo utilizando =:
+- Si queremos un valor “predeterminado” para reemplazar el valor faltante, podemos proporcionarlo utilizando =:
 
 ```
 let [name = "Guest", surname = "Anonymous"] = ["Julius"];
@@ -211,7 +211,7 @@ alert(surname); // Anonymous (predeterminado utilizado)
 let {var1, var2} = {var1:…, var2:…}
 ```
 
--Debemos tener un símil-objeto en el lado derecho, el que queremos separar en variables.
+- Debemos tener un símil-objeto en el lado derecho, el que queremos separar en variables.
 
 ```
 let options = {
@@ -227,16 +227,16 @@ alert(width);  // 100
 alert(height); // 200
 ```
 
--No importa el orden sino los nombres. Esto también funciona:
+- No importa el orden sino los nombres. Esto también funciona:
 
 ```
 let {height, width, title} = { title: "Menu", height: 200, width: 100 }
 ```
 
--Si queremos asignar una propiedad a una variable con otro nombre, por ejemplo que options.width vaya en la variable llamada w, lo podemos establecer usando dos puntos:
--Para propiedades potencialmente faltantes podemos establecer valores predeterminados utilizando "=" al igual que el array.
--Al igual que con arrays o argumentos de función, los valores predeterminados pueden ser cualquier expresión e incluso llamados a función, las que serán evaluadas si el valor no ha sido proporcionado.
--Podemos usar el patrón resto de la misma forma que lo usamos con arrays. Esto no es soportado en algunos navegadores antiguos (para IE, use el polyfill Babel), pero funciona en los navegadores modernos.
+- Si queremos asignar una propiedad a una variable con otro nombre, por ejemplo que options.width vaya en la variable llamada w, lo podemos establecer usando dos puntos:
+- Para propiedades potencialmente faltantes podemos establecer valores predeterminados utilizando "=" al igual que el array.
+- Al igual que con arrays o argumentos de función, los valores predeterminados pueden ser cualquier expresión e incluso llamados a función, las que serán evaluadas si el valor no ha sido proporcionado.
+- Podemos usar el patrón resto de la misma forma que lo usamos con arrays. Esto no es soportado en algunos navegadores antiguos (para IE, use el polyfill Babel), pero funciona en los navegadores modernos.
 
 ```
 let options = {
@@ -285,28 +285,7 @@ alert(item1);  // Cake
 alert(item2);  // Donut
 ```
 
--Argumentos de función inteligentes
-Hay momentos en que una función tiene muchos argumentos, la mayoría de los cuales son opcionales. Eso es especialmente cierto para las interfaces de usuario. Imagine una función que crea un menú. Puede tener ancho, altura, título, elementos de lista, etcétera.
-
-```
-// pasamos un objeto a la función
-let options = {
-  title: "My menu",
-  items: ["Item1", "Item2"]
-};
-
-// ...y los expande inmediatamente a variables
-function showMenu({title = "Untitled", width = 200, height = 100, items = []}) {
-  // title, items – desde options
-  // width, height – usan los predeterminados
-  alert( `${title} ${width} ${height}` ); // My Menu 200 100
-  alert( items ); // Item1, Item2
-}
-
-showMenu(options);
-```
-
--También podemos usar desestructuración más compleja con objetos anidados y mapeo de dos puntos:
+- También podemos usar desestructuración más compleja con objetos anidados y mapeo de dos puntos:
 
 ```
 let options = {
@@ -328,7 +307,7 @@ function showMenu({
 showMenu(options);
 ```
 
--Por favor observe que tal desestructuración supone que showMenu() tiene un argumento. Si queremos todos los valores predeterminados, debemos especificar un objeto vacío:
+- Por favor observe que tal desestructuración supone que showMenu() tiene un argumento. Si queremos todos los valores predeterminados, debemos especificar un objeto vacío:
 
 ```
 showMenu({}); // ok, todos los valores son predeterminados
@@ -336,7 +315,7 @@ showMenu({}); // ok, todos los valores son predeterminados
 showMenu(); // esto daría un error
 ```
 
--Podemos solucionar esto, poniendo {} como valor predeterminado para todo el objeto de argumentos:
+- Podemos solucionar esto, poniendo {} como valor predeterminado para todo el objeto de argumentos:
 
 ```
 function showMenu({ title = "Menu", width = 100, height = 200 } = {}) {
@@ -345,44 +324,6 @@ function showMenu({ title = "Menu", width = 100, height = 200 } = {}) {
 
 showMenu(); // Menu 100 200
 ```
-
-# `La vieja "var`
-
-## `“var” no tiene alcance (visibilidad) de bloque.`
-
-Las variables declaradas con var pueden: tener a la función como entorno de visibilidad, o bien ser globales. Su visibilidad atraviesa los bloques.
-
-Por ejemplo:
-
-```
-if (true) {
-  var test = true; // uso de "var" en lugar de "let"
-}
-
-alert(test); // true, la variable vive después del if
-```
-
-## `“var” tolera redeclaraciones`
-
-Declarar la misma variable con let dos veces en el mismo entorno es un error:
-
-```
-let user;
-let user; // SyntaxError: 'user' ya fue declarado
-```
-
-Con var podemos redeclarar una variable muchas veces. Si usamos var con una variable ya declarada, simplemente se ignora:
-
-```
-var user = "Pete";
-
-var user = "John"; // este "var" no hace nada (ya estaba declarado)
-// ...no dispara ningún error
-
-alert(user); // John
-```
-
-## `Las variables “var” pueden ser declaradas debajo del lugar en donde se usan`
 
 # `Objeto Global`
 

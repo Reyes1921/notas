@@ -161,8 +161,6 @@ alert("Hola");
 
 La primera línea “pone la llamada en el calendario después de 0 ms”. Pero el planificador solo “verificará el calendario” una vez que se haya completado el script actual, por lo que “Hola” es primero y “Mundo” después.
 
-También hay casos de uso avanzados relacionados con el navegador y el tiempo de espera cero (zero-delay), que discutiremos en el capítulo Loop de eventos: microtareas y macrotareas.
-
 # `Callbacks`
 
 Muchas funciones son proporcionadas por el entorno de host de Javascript que permiten programar acciones asíncronas. En otras palabras, acciones que iniciamos ahora, pero que terminan más tarde.
@@ -995,8 +993,6 @@ Todas las microtareas se completan antes de que se lleve a cabo cualquier otro m
 Eso es importante, ya que garantiza que el entorno de la aplicación es básicamente el mismo (sin cambios de coordenadas del mouse, sin nuevos datos de red, etc.) entre las microtareas.
 
 Si quisiéramos ejecutar una función de forma asíncrónica (después del código actual), pero antes de que se procesen los cambios o se manejen nuevos eventos, podemos programarla con queueMicrotask.
-
-Aquí hay un ejemplo con la “barra de progreso de conteo”, similar al que se mostró anteriormente, pero se usa queueMicrotask en lugar desetTimeout. Puedes ver que se renderiza al final. Al igual que el código sincrónico:
 
 <h2 style='color: green'>Resumen</h2>
 

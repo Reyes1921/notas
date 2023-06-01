@@ -2,6 +2,8 @@
 
 # `Using Chrome Dev Tools`
 
+[More General Info](https://www.freecodecamp.org/news/mastering-chrome-developer-tools-next-level-front-end-development-techniques-3ac0b6fe8a3/)
+
 ## `Shortcuts`
 
 `ctrl + shift + i`: Abrir o cerrar la consola
@@ -122,4 +124,5 @@ You've found a fix for the bug. All that's left is to try out your fix by editin
 
 Enter the dev tools and check out the `Lighthouse` tab. This is essentially a series of tests which analyses the currently open website on a bunch of metrics related to `performance`, `page speed`, `accessibility`, etc. Feel free to run the tests by clicking the Analyse Page Load button (you might want to do this in an incognito tab to avoid errors arising from extensions you’re using). Once you have the results, take your time and read through them (and do click through to the reference pages mentioned alongside each test result to know more about it!)
 
-[More General Info](https://www.freecodecamp.org/news/mastering-chrome-developer-tools-next-level-front-end-development-techniques-3ac0b6fe8a3/)
+
+[TOP](#shortcuts)

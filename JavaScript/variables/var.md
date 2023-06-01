@@ -21,6 +21,44 @@ Es la declaración de variable de vieja escuela. Normalmente no lo utilizamos en
 
 The `var` statement declares a function-scoped or globally-scoped variable, optionally initializing it to a value. Puede ser redeclarada y reasignada.
 
+# `La vieja "var`
+
+## `“var” no tiene alcance (visibilidad) de bloque.`
+
+Las variables declaradas con var pueden: tener a la función como entorno de visibilidad, o bien ser globales. Su visibilidad atraviesa los bloques.
+
+Por ejemplo:
+
+```
+if (true) {
+  var test = true; // uso de "var" en lugar de "let"
+}
+
+alert(test); // true, la variable vive después del if
+```
+
+## `“var” tolera redeclaraciones`
+
+Declarar la misma variable con let dos veces en el mismo entorno es un error:
+
+```
+let user;
+let user; // SyntaxError: 'user' ya fue declarado
+```
+
+Con var podemos redeclarar una variable muchas veces. Si usamos var con una variable ya declarada, simplemente se ignora:
+
+```
+var user = "Pete";
+
+var user = "John"; // este "var" no hace nada (ya estaba declarado)
+// ...no dispara ningún error
+
+alert(user); // John
+```
+
+## `Las variables “var” pueden ser declaradas debajo del lugar en donde se usan`
+
 ## `let`
 
 Es la forma moderna de declaración de una variable.

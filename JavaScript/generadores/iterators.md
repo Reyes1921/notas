@@ -305,15 +305,11 @@ En una función regular, para combinar los resultados de muchas otras funciones,
 
 En JavaScript moderno, los generadores rara vez se utilizan. Pero a veces son útiles, porque la capacidad de una función para intercambiar datos con el código de llamada durante la ejecución es bastante única. Y, seguramente, son geniales para hacer objetos iterables.
 
-Además, en el próximo capítulo aprenderemos los generadores asíncronos, que se utilizan para leer flujos de datos generados asincrónicamente (por ejemplo, recuperaciones paginadas a través de una red) en bucles for await ... of.
-
 En la programación web, a menudo trabajamos con datos transmitidos, por lo que ese es otro caso de uso muy importante.
 
 # `Iteradores y generadores asíncronos`
 
 Los iteradores asíncronos nos permiten iterar sobre los datos que vienen de forma asíncrona, en una petición. Como, por ejemplo, cuando descargamos algo por partes a través de una red. Y los generadores asíncronos lo hacen aún más conveniente.
-
-Veamos primero un ejemplo simple, para comprender la sintaxis y luego revisar un caso de uso de la vida real.
 
 # `Repaso de iterables`
 
@@ -503,3 +499,5 @@ Los iteradores y generadores normales funcionan bien con los datos que no llevan
 Cuando esperamos que los datos lleguen de forma asíncrona, con demoras, se pueden usar sus contrapartes asíncronas, y `for await..of` en lugar de ` `.
 
 Diferencias sintácticas entre iteradores asíncronos y normales:
+
+[TOP](#iterables)

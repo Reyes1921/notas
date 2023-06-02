@@ -4,20 +4,6 @@
 
 # `Fetch`
 
-JavaScript puede enviar peticiones de red al servidor y cargar nueva información siempre que se necesite.
-
-Por ejemplo, podemos utilizar una petición de red para:
-
-- Crear una orden,
-
-- Cargar información de usuario,
-
-- Recibir las últimas actualizaciones desde un servidor,
-
-- …etc.
-
-…Y todo esto sin la necesidad de refrescar la página.
-
 Se utiliza el término global “AJAX” (abreviado Asynchronous JavaScript And XML, en español: “JavaScript y XML Asincrónico”) para referirse a las peticiones de red originadas desde JavaScript. Sin embargo, no estamos necesariamente condicionados a utilizar XML dado que el término es antiguo y es por esto que el acrónimo XML se encuentra aquí. Probablemente lo hayáis visto anteriormente.
 
 Existen múltiples maneras de enviar peticiones de red y obtener información de un servidor.
@@ -275,51 +261,6 @@ function submit() {
 
 [Mas Informacion](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
-<h2 style="color: green">Resumen</h2>
-
-Una petición fetch típica está formada por dos llamadas await:
-
-```
-let response = await fetch(url, options); // resuelve con los encabezados de respuesta
-let result = await response.json(); // accede al cuerpo de respuesta como json
-```
-
-También se puede acceder sin utilizar await:
-
-```
-fetch(url, options)
-  .then(response => response.json())
-  .then(result => /* procesa resultado */)
-```
-
-Propiedades de respuesta:
-
-- `response.status` – Código HTTP de la respuesta.
-
-- `response.ok` – Devuelve true si el código HTTP es 200-299.
-
-- `response.headers` – Objeto simil-Map que contiene los encabezados HTTP.
-
-Métodos para obtener el cuerpo de la respuesta:
-
-- `response.text()` – lee y devuelve la respuesta en formato texto,
-
-- `response.json()` – convierte la respuesta como un JSON,
-
-- `response.formData()` – devuelve la respuesta como un objeto FormData (codificación multipart/form-data, explicado en el siguiente capítulo),
-
-- `response.blob()` – devuelve la respuesta como Blob (datos binarios tipados),
-
-- `response.arrayBuffer()` – devuelve la respuesta como un objeto ArrayBuffer (datos binarios de bajo nivel)
-
-Opciones de fetch hasta el momento:
-
-- `method` – método HTTP,
-
-- `headers` – un objeto los encabezados de la petición (no todos los encabezados están permitidos),
-
-- `body` – los datos/información a enviar (cuerpo de la petición) como string, FormData, BufferSource, Blob u objeto UrlSearchParams.
-
 # `FormData`
 
 Este capítulo trata sobre el envío de formularios HTML: con o sin archivos, con campos adicionales y cosas similares.
@@ -406,34 +347,6 @@ Este ejemplo envía una imagen desde un `<canvas>` junto con algunos campos más
   </script>
 </body>
 ```
-
-<h2 style="color: green">Resumen</h2>
-
-Los objetos `FormData` son utilizados para capturar un formulario HTML y enviarlo utilizando `fetch` u otro método de red.
-
-Podemos crear el objeto con `new FormData(form)` desde un formulario HTML, o crear un objeto sin un formulario en absoluto y agregar los campos con los siguientes métodos:
-
-- formData.append(nombre, valor)
-
-- formData.append(nombre, blob, nombreDeArchivo)
-
-- formData.set(nombre, valor)
-
-- formData.set(nombre, blob, nombreDeArchivo)
-
-Nótese aquí dos particularidades:
-
-- El método `set` remueve campos con el mismo nombre, mientras que `append` no. Esta es la única diferencia entre estos dos métodos.
-
-- Para enviar un archivo, se requiere de tres argumentos, el último argumento es el nombre del archivo, el cual normalmente es tomado desde el sistema de archivos del usuario por el `<input type="file">`.
-
-Otros métodos son:
-
-- formData.delete(nombre)
-
-- formData.get(nombre)
-
-- formData.has(nombre)
 
 # `Fetch: Progreso de la descarga`
 
@@ -696,17 +609,7 @@ let results = await Promise.all([...fetchJobs, ourJob]);
 // se abortan todos los fetch y nuestra tarea.
 ```
 
-<h2 style="color: green">Resumen</h2>
-
-- `AbortController` es un simple objeto que genera un evento abort sobre su propiedad `signal` cuando el método `abort()` es llamado (y también establece `signal`.aborted en true).
-
-- `fetch` está integrado con él: pasamos la propiedad `signal` como opción, y entonces `fetch` la escucha, así se vuelve posible abortar `fetch`.
-
-- Podemos usar `AbortController` en nuestro código. La interacción "llamar `abort()`" → "escuchar evento abort" es simple y universal. Podemos usarla incluso sin `fetch`.
-
 # `Fetch: Cross-Origin Requests`
-
-# `XMLHttpRequest`
 
 Si enviamos una petición `fetch` hacia otro sitio seguramente fallará.
 
@@ -890,60 +793,469 @@ Access-Control-Allow-Credentials: true
 
 Cabe destacar que: `Access-Control-Allow-Origin` no se puede utilizar con un asterisco `*` para solicitudes con credenciales. Tal como se muestra a arriba debe proveer el origen exacto. Esto es una medida adicional de seguridad, para asegurar de que el servidor conozca exactamente en quién confiar para que le envíe este tipo de solicitudes.
 
-<h2 style="color: green">Resumen</h2>
+# `Fetch API`
 
-Desde el punto de vista del navegador, existen dos tipos de solicitudes de origen cruzado: solicitudes “seguras” y todas las demás.
+Veamos el resto de API, para cubrir todas sus capacidades.
 
-Solicitudes seguras deben cumplir las siguientes condiciones:
+<h2 style="color: red">Por favor tome nota:</h2>
+Ten en cuenta: la mayoría de estas opciones se utilizan con poca frecuencia. Puedes saltarte este capítulo y seguir utilizando bien fetch.
 
-- Método: GET, POST o HEAD.
+Aún así, es bueno saber lo que puede hacer fetch, por lo que si surge la necesidad, puedes regresar y leer los detalles.
 
-- Cabeceras – solo podemos establecer:
+Aquí está la lista completa de todas las posibles opciones de fetch con sus valores predeterminados (alternativas en los comentarios):
 
-- - `Accept`
+```
+let promise = fetch(url, {
+  method: "GET", // POST, PUT, DELETE, etc.
+  headers: {
+    // el valor del encabezado Content-Type generalmente se establece automáticamente
+    // dependiendo del cuerpo de la solicitud
+    "Content-Type": "text/plain;charset=UTF-8"
+  },
+  body: undefined, // string, FormData, Blob, BufferSource, o URLSearchParams
+  referrer: "about:client", // o "" para no enviar encabezado de Referrer,
+  // o una URL del origen actual
+  referrerPolicy: "strict-origin-when-cross-origin", // no-referrer-when-downgrade, no-referrer, origin, same-origin...
+  mode: "cors", // same-origin, no-cors
+  credentials: "same-origin", // omit, include
+  cache: "default", // no-store, reload, no-cache, force-cache, o only-if-cached
+  redirect: "follow", // manual, error
+  integrity: "", // un hash, como "sha256-abcdef1234567890"
+  keepalive: false, // true
+  signal: undefined, // AbortController para cancelar la solicitud
+  window: window // null
+});
+```
 
-- - `Accept-Language`
+Una lista impresionante, ¿verdad?
 
-- - `Content-Language`
+Cubrimos completamente method, headers y body en el capítulo Fetch.
 
-- - ` Content-Type` con el valor `application/x-www-form-urlencoded`, `multipart/form-data` o `text/plain`.
+La opción signal está cubierta en Fetch: Abort.
 
-La diferencia esencial es que las solicitudes seguras eran posibles desde los viejos tiempos utilizando las etiquetas `<form>` o `<script>`, mientras que las solicitudes “inseguras” fueron imposibles para el navegador durante mucho tiempo.
+## `mode`
 
-Por lo tanto, en la práctica, la diferencia se encuentra en que las solicitudes seguras son realizadas de forma directa, utilizando la cabecera `Origin`, mientras que para las otras el navegador realiza una solicitud extra de “pre-vuelo” para requerir la autorización.
+La opción mode es una protección que evita solicitudes cross-origin ocasionales:
 
-Para una solicitud segura:
+- "cors" – por defecto, se permiten las solicitudes cross-origin predeterminadas, como se describe en Fetch: Cross-Origin Requests,
+- "same-origin" – las solicitudes cross-origin están prohibidas,
+- "no-cors" – solo se permiten solicitudes cross-origin seguras.
 
-- → El navegador envía una cabecera Origin con el origen.
+Esta opción puede ser útil cuando la URL de fetch proviene de un tercero y queremos un “interruptor de apagado” para limitar las capacidades cross-origin.
 
-- ← Para solicitudes sin credenciales (no enviadas por defecto), el servidor debe establecer:
+## `credentials`
 
-- - Access-Control-Allow-Origin como \* o el mismo valor que en Origin.
+La opción credentials especifica si fetch debe enviar cookies y encabezados de autorización HTTP con la solicitud.
 
-- ← Para solicitudes con credenciales, el servidor deberá establecer:
+- "same-origin" – el valor predeterminado, no enviar solicitudes cross-origin,
+- "include" – enviar siempre, requiere Access-Control-Allow-Credentials del servidor cross-origin para que JavaScript acceda a la respuesta, que se cubrió en el capítulo Fetch: Cross-Origin Requests,
+- "omit" – nunca enviar, incluso para solicitudes del mismo origen.
 
-- - Access-Control-Allow-Origin con el mismo valor que en Origin.
+[Mas Información](https://es.javascript.info/fetch-api)
 
-- - Access-Control-Allow-Credentials en true
+# `Objetos URL`
 
-Adicionalmente, para garantizar a JavaScript acceso a cualquier cabecera de la respuesta, con excepción de `Cache-Control`, `Content-Language`, `Content-Type`, `Expires`, `Last-Modified` o `Pragma`, el servidor debe agregarlas como permitidas en la lista de la cabecera `Access-Control-Expose-Headers`.
+La clase URL incorporada brinda una interfaz conveniente para crear y analizar URLs.
 
-Para solicitudes inseguras, se utiliza una solicitud preliminar “pre-vuelo” antes de la solicitud principal:
+No hay métodos de networking que requieran exactamente un objeto URL, los strings son suficientemente buenos para eso. Así que técnicamente no tenemos que usar URL. Pero a veces puede ser realmente útil.
 
-- → El navegador envía una solicitud del tipo OPTIONS a la misma URL, con las cabeceras:
+## `Creando una URL`
 
-- - Access-Control-Request-Method con el método requerido.
+```
+new URL(url, [base])
+```
 
-- - Access-Control-Request-Headers listado de las cabeceras inseguras.
+- `url` – La URL completa o ruta única (si se establece base, mira a continuación),
+- `base` – una URL base opcional: si se establece y el argumento url solo tiene una ruta, entonces la URL se genera relativa a base.
 
-- ← El servidor debe responder con el código de estado 200 y las cabeceras:
+Por ejemplo:
 
-- - Access-Control-Allow-Methods con la lista de todos los métodos permitidos,
+```
+let url = new URL('https://javascript.info/profile/admin');
+```
 
-- - Access-Control-Allow-Headers con una lista de cabeceras permitidas,
+Estas dos URLs son las mismas:
 
-- - Access-Control-Max-Age con los segundos en los que se podrá almacenar la autorización en caché.
+```
+let url1 = new URL('https://javascript.info/profile/admin');
+let url2 = new URL('/profile/admin', 'https://javascript.info');
+```
 
-- Tras lo cual la solicitud es enviada, y se aplica el esquema previo “seguro”.
+El objeto URL inmediatamente nos permite acceder a sus componentes, por lo que es una buena manera de analizar la url, por ej.:
+
+```
+let url = new URL('https://javascript.info/url');
+
+alert(url.protocol); // https:
+alert(url.host);     // javascript.info
+alert(url.pathname); // /url
+```
+Aquí está la hoja de trucos para los componentes URL:
+
+<img src="url-object.svg">
+
+- `href` es la url completa, igual que url.toString()
+- `protocol` acaba con el carácter dos puntos :
+- `search` – un string de parámetros, comienza con el signo de interrogación ?
+- `hash` comienza con el carácter de hash #
+También puede haber propiedades user y password si la autenticación HTTP esta presente: http://login:password@site.com (no mostrados arriba, raramente usados)
+
+## `Parámetros de búsqueda “?…”`
+
+Digamos que queremos crear una url con determinados parámetros de búsqueda, por ejemplo, `https://google.com/search?query=JavaScript.`
+
+Podemos proporcionarlos en el string URL:
+
+`new URL('https://google.com/search?query=JavaScript')`
+
+…Pero los parámetros necesitan estar codificados si contienen espacios, letras no latinas, entre otros (Más sobre eso debajo).
+
+Por lo que existe una propiedad URL para eso: url.searchParams, un objeto de tipo URLSearchParams.
+
+Esta proporciona métodos convenientes para los parámetros de búsqueda:
+
+- `append(name, value)` – añade el parámetro por name,
+- `delete(name)` – elimina el parámetro por name,
+- `get(name)` – obtiene el parámetro por name,
+- `getAll(name)` – obtiene todos los parámetros con el mismo name (Eso es posible, por ej. ?user=John&user=Pete),
+- `has(name)` – comprueba la existencia del parámetro por name,
+- `set(name, value)` – establece/reemplaza el parámetro,
+- `sort()` – ordena parámetros por name, raramente necesitado,
+- …y además es iterable, similar a Map.
+
+## `Codificación`
+
+Existe un estándar RFC3986 que define cuales caracteres son permitidos en URLs y cuales no.
+
+Esos que no son permitidos, deben ser codificados, por ejemplo letras no latinas y espacios – reemplazados con sus códigos UTF-8, con el prefijo %, tal como %20 (un espacio puede ser codificado con +, por razones históricas, pero esa es una excepción).
+
+La buena noticia es que los objetos URL manejan todo eso automáticamente. Nosotros sólo proporcionamos todos los parámetros sin codificar, y luego convertimos la URL a string:
+
+```
+// Usando algunos caracteres cirílicos para este ejemplo
+
+let url = new URL('https://ru.wikipedia.org/wiki/Тест');
+
+url.searchParams.set('key', 'ъ');
+alert(url); //https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D1%81%D1%82?key=%D1%8A
+```
+
+## `Codificando strings`
+
+En los viejos tiempos, antes de que los objetos URL aparecieran, la gente usaba strings para las URL.
+
+A partir de ahora, los objetos URL son frecuentemente más convenientes, pero también aún pueden usarse los strings. En muchos casos usando un string se acorta el código.
+
+Aunque si usamos un string, necesitamos codificar/decodificar caracteres especiales manualmente.
+
+Existen funciones incorporadas para eso:
+
+- `encodeURI` – Codifica la URL como un todo.
+- `decodeURI` – La decodifica de vuelta.
+- `encodeURIComponent` – Codifica un componente URL, como un parametro de busqueda, un hash, o un pathname.
+- `decodeURIComponent` – La decodifica de vuelta.
+
+# `XMLHttpRequest`
+
+`XMLHttpRequest` es un objeto nativo del navegador que permite hacer solicitudes HTTP desde JavaScript.
+
+A pesar de tener la palabra “XML” en su nombre, se puede operar sobre cualquier dato, no solo en formato XML. Podemos cargar y descargar archivos, dar seguimiento y mucho más.
+
+Ahora hay un método más moderno `fetch` que en algún sentido hace obsoleto a `XMLHttpRequest`.
+
+En el desarrollo web moderno `XMLHttpRequest` se usa por tres razones:
+
+- Razones históricas: necesitamos soportar scripts existentes con XMLHttpRequest.
+- Necesitamos soportar navegadores viejos, y no queremos polyfills (p.ej. para mantener los scripts pequeños).
+- Necesitamos hacer algo que fetch no puede todavía, ej. rastrear el progreso de subida.
+
+## `Lo básico`
+
+XMLHttpRequest tiene dos modos de operación: sincrónica y asíncrona.
+
+Para hacer la petición, necesitamos seguir 3 pasos:
+
+- 1. Crear el objeto XMLHttpRequest:
+
+  `let xhr = new XMLHttpRequest();`
+  
+- 2. Inicializarlo, usualmente justo después de new XMLHttpRequest:
+
+  `xhr.open(method, URL, [async, user, password])`
+
+Este método especifica los parámetros principales para la petición:
+
+- `method` – método HTTP. Usualmente "GET" o "POST".
+- `URL` – la URL a solicitar, una cadena, puede ser un objeto URL.
+- `async` – si se asigna explícitamente a false, entonces la petición será asincrónica. Cubriremos esto un poco más adelante.
+- `user`, `password` – usuario y contraseña para autenticación HTTP básica (si se requiere).
+
+Por favor, toma en cuenta que la llamada a open, contrario a su nombre, no abre la conexión. Solo configura la solicitud, pero la actividad de red solo empieza con la llamada del método `send`.
+
+- 3. Enviar.
+
+  `xhr.send([body])`
+
+Este método abre la conexión y envía ka solicitud al servidor. El parámetro adicional body contiene el cuerpo de la solicitud.
+
+Algunos métodos como GET no tienen un cuerpo. Y otros como POST usan el parámetro body para enviar datos al servidor.
+
+- 4. Escuchar los eventos de respuesta xhr.
+
+Estos son los tres eventos más comúnmente utilizados:
+
+- `load` – cuando la solicitud está; completa (incluso si el estado HTTP es 400 o 500), y la respuesta se descargó por completo.
+- `error` – cuando la solicitud no pudo ser realizada satisfactoriamente, ej. red caída o una URL inválida.
+- `progress` – se dispara periódicamente mientras la respuesta está siendo descargada, reporta cuánto se ha descargado.
+
+```
+xhr.onload = function() {
+  alert(`Cargado: ${xhr.status} ${xhr.response}`);
+};
+
+xhr.onerror = function() { // solo se activa si la solicitud no se puede realizar
+  alert(`Error de red`);
+};
+
+xhr.onprogress = function(event) { // se dispara periódicamente
+  // event.loaded - cuántos bytes se han descargado
+  // event.lengthComputable = devuelve true si el servidor envía la cabecera Content-Length (longitud del contenido)
+  // event.total - número total de bytes (si `lengthComputable` es `true`)
+  alert(`Recibido ${event.loaded} of ${event.total}`);
+};
+```
+
+Aquí un ejemplo completo. El siguiente código carga la URL en /article/xmlhttprequest/example/load desde el servidor e imprime el progreso:
+
+```
+// 1. Crea un nuevo objeto XMLHttpRequest
+let xhr = new XMLHttpRequest();
+
+// 2. Configuración: solicitud GET para la URL /article/.../load
+xhr.open('GET', '/article/xmlhttprequest/example/load');
+
+// 3. Envía la solicitud a la red
+xhr.send();
+
+// 4. Esto se llamará después de que la respuesta se reciba
+xhr.onload = function() {
+  if (xhr.status != 200) { // analiza el estado HTTP de la respuesta
+    alert(`Error ${xhr.status}: ${xhr.statusText}`); // ej. 404: No encontrado
+  } else { // muestra el resultado
+    alert(`Hecho, obtenidos ${xhr.response.length} bytes`); // Respuesta del servidor
+  }
+};
+
+xhr.onprogress = function(event) {
+  if (event.lengthComputable) {
+    alert(`Recibidos ${event.loaded} de ${event.total} bytes`);
+  } else {
+    alert(`Recibidos ${event.loaded} bytes`); // sin Content-Length
+  }
+
+};
+
+xhr.onerror = function() {
+  alert("Solicitud fallida");
+};
+```
+
+Una vez el servidor haya respondido, podemos recibir el resultado en las siguientes propiedades de `xhr`:
+
+`status`
+Código del estado HTTP (un número): 200, 404, 403 y así por el estilo, puede ser 0 en caso de una falla no HTTP.
+
+`statusText`
+Mensaje del estado HTTP (una cadena): usualmente OK para 200, Not Found para 404, Forbidden para 403 y así por el estilo.
+
+`response` (scripts antiguos deben usar responseText)
+El cuerpo de la respuesta del servidor.
+
+## `Tipo de respuesta`
+
+Podemos usar la propiedad xhr.responseType para asignar el formato de la respuesta:
+
+- "" (`default`) – obtiene una cadena,
+- "`text`" – obtiene una cadena,
+- "`arraybuffer`" – obtiene un ArrayBuffer (para datos binarios, ve el capítulo ArrayBuffer, arrays binarios),
+- "`blob`" – obtiene un Blob (para datos binarios, ver el capítulo Blob),
+- "`document`" – obtiene un documento XML (puede usar XPath y otros métodos XML) o un documento HTML (en base al tipo MIME del dato recibido),
+- "`json`" – obtiene un JSON (automáticamente analizado).
+
+## `Estados`
+
+`XMLHttpRequest` cambia entre estados a medida que avanza. El estado actual es accesible como `xhr.readyState`.
+
+Todos los estados, como en la especificación:
+
+```
+UNSENT = 0; // estado inicial
+OPENED = 1; // llamada abierta
+HEADERS_RECEIVED = 2; // cabeceras de respuesta recibidas
+LOADING = 3; // la respuesta está cargando (un paquete de datos es recibido)
+DONE = 4; // solicitud completa
+```
+
+Un objeto `XMLHttpRequest` escala en orden `0` → `1` → `2` → `3` → … → `3` → `4`. El estado 3 se repite cada vez que un paquete de datos se recibe a través de la red.
+
+## `Abortando solicitudes`
+
+Podemos terminar la solicitud en cualquier momento. La llamada a xhr.abort() hace eso:
+```
+xhr.abort(); // termina la solicitud
+```
+Este dispara el evento abort, y el xhr.status se convierte en 0.
+
+## `Solicitudes sincrónicas`
+
+Si en el método `open` el tercer parámetro `async` se asigna como `false`, la solicitud se hace sincrónicamente.
+
+En otras palabras, la ejecución de JavaScript se pausa en el `send()` y se reanuda cuando la respuesta es recibida. Algo como los comandos `alert` o `prompt`.
+
+Puede verse bien, pero las llamadas sincrónicas son rara vez utilizadas porque bloquean todo el JavaScript de la página hasta que la carga está completa. En algunos navegadores se hace imposible hacer scroll. Si una llamada síncrona toma mucho tiempo, el navegador puede sugerir cerrar el sitio web “colgado”.
+
+Algunas capacidades avanzadas de XMLHttpRequest, como solicitar desde otro dominio o especificar un tiempo límite, no están disponibles para solicitudes síncronas. Tampoco, como puedes ver, la indicación de progreso.
+
+La razón de esto es que las solicitudes sincrónicas son utilizadas muy escasamente, casi nunca. No hablaremos más sobre ellas.
+
+## `Cabeceras HTTP`
+
+`XMLHttpRequest` permite tanto enviar cabeceras personalizadas como leer cabeceras de la respuesta.
+
+Existen 3 métodos para las cabeceras HTTP:
+
+`setRequestHeader(name, value)`
+Asigna la cabecera de la solicitud con los valores name y value provistos.
+
+`getResponseHeader(name)`
+Obtiene la cabecera de la respuesta con el name dado (excepto Set-Cookie y Set-Cookie2).
+
+`getAllResponseHeaders()`
+Devuelve todas las cabeceras de la respuesta, excepto por Set-Cookie y Set-Cookie2.
+
+## `POST, Formularios`
+
+Para hacer una solicitud POST, podemos utilizar el objeto FormData nativo.
+
+La sintaxis:
+```
+let formData = new FormData([form]); // crea un objeto, opcionalmente se completa con un <form>
+formData.append(name, value); // añade un campo
+```
+
+Lo creamos, opcionalmente lleno desde un formulario, append (agrega) más campos si se necesitan, y entonces:
+```
+xhr.open('POST', ...) – se utiliza el método POST.
+xhr.send(formData) para enviar el formulario al servidor.
+```
+
+## `Progreso de carga`
+
+El evento `progress` se dispara solo en la fase de descarga.
+
+Esto es: si hacemos un `POST` de algo, `XMLHttpRequest` primero sube nuestros datos (el cuerpo de la respuesta), entonces descarga la respuesta.
+
+Si estamos subiendo algo grande, entonces seguramente estaremos interesados en rastrear el progreso de nuestra carga. Pero `xhr.onprogress` no ayuda aquí.
+
+Hay otro objeto, sin métodos, exclusivamente para rastrear los eventos de subida: `xhr.upload`.
+
+Este genera eventos similares a `xhr`, pero ``xhr.upload`` se dispara solo en las subidas:
+
+- `loadstart` – carga iniciada.
+- `progress` – se dispara periódicamente durante la subida.
+- `abort` – carga abortada.
+- `error` – error no HTTP.
+- `load` – carga finalizada con éxito.
+- `timeout` – carga caducada (si la propiedad timeout está asignada).
+- `loadend` – carga finalizada con éxito o error.
+
+## `Solicitudes de origen cruzado (Cross-origin)`
+
+`XMLHttpRequest` puede hacer solicitudes de origen cruzado, utilizando la misma política CORS que se solicita.
+
+Tal como `fetch`, no envía cookies ni autorización HTTP a otro origen por omisión. Para activarlas, asigna `xhr.withCredentials` como `true`:
+
+```
+let xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.open('POST', 'http://anywhere.com/request');
+...
+```
+
+# `Carga de archivos reanudable`
+
+Con el método fetch es bastante fácil cargar un archivo.
+
+¿Cómo reanudar la carga de un archivo despues de perder la conexión? No hay una opción incorporada para eso, pero tenemos las piezas para implementarlo.
+
+Las cargas reanudables deberían venir con indicación de progreso, ya que esperamos archivos grandes (Si necesitamos reanudar). Entonces, ya que fetch no permite rastrear el progreso de carga, usaremos XMLHttpRequest.
+
+## `Evento de progreso poco útil`
+
+Para reanudar la carga, necesitamos saber cuánto fue cargado hasta la pérdida de la conexión.
+
+Disponemos de xhr.upload.onprogress para rastrear el progreso de carga.
+
+Desafortunadamente, esto no nos ayudará a reanudar la descarga, Ya que se origina cuando los datos son enviados, ¿pero fue recibida por el servidor? el navegador no lo sabe.
+
+Para reanudar una carga, necesitamos saber exactamente el número de bytes recibidos por el servidor. Y eso solo lo sabe el servidor, por lo tanto haremos una solicitud adicional.
+
+## `Algoritmos`
+
+- Primero, crear un archivo id, para únicamente identificar el archivo que vamos a subir:
+
+`let fileId = file.name + '-' + file.size + '-' + file.lastModified;`
+
+Eso es necesario para reanudar la carga, para decirle al servidor lo que estamos reanudando.
+
+Si el nombre o tamaño de la última fecha de modificación cambia, entonces habrá otro fileId.
+
+- Envía una solicitud al servidor, preguntando cuántos bytes tiene, así:
+
+```
+let response = await fetch('status', {
+  headers: {
+    'X-File-Id': fileId
+  }
+});
+
+// El servidor tiene tanta cantidad de bytes
+let startByte = +await response.text();
+```
+
+Esto asume que el servidor rastrea archivos cargados por el encabezado X-File-Id. Debe ser implementado en el lado del servidor.
+
+Si el archivo no existe aún en el servidor, entonces su respuesta debe ser 0.
+
+- Entonces, podemos usar el método Blob slice para enviar el archivo desde startByte:
+
+```
+xhr.open("POST", "upload");
+
+// Archivo, de modo que el servidor sepa qué archivo subimos
+xhr.setRequestHeader('X-File-Id', fileId);
+
+// El byte desde el que estamos reanudando, así el servidor sabe que estamos reanudando
+xhr.setRequestHeader('X-Start-Byte', startByte);
+
+xhr.upload.onprogress = (e) => {
+  console.log(`Uploaded ${startByte + e.loaded} of ${startByte + e.total}`);
+};
+
+// El archivo puede ser de input.files[0] u otra fuente
+xhr.send(file.slice(startByte));
+```
+Aquí enviamos al servidor ambos archivos id como `X-File-Id`, para que de esa manera sepa que archivos estamos cargando, y el byte inicial como` X-Start-Byte`, para que sepa que no lo estamos cargando inicialmente, si no reanudándolo.
+
+El servidor debe verificar sus registros, y si hubo una carga de ese archivo, y si el tamaño de carga actual es exactamente` X-Start-Byte`, entonces agregarle los datos.
+
+## `Sondeo largo`
+
+El “sondeo largo” es la forma más sencilla de tener una conexión persistente con el servidor. No utiliza ningún protocolo específico como “WebSocket” o “SSE”.
+
+[Mas Información](https://es.javascript.info/long-polling)
+
+# `WebSocket`
 
 [TOP](#working-with-apis)

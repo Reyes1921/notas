@@ -1258,4 +1258,299 @@ El “sondeo largo” es la forma más sencilla de tener una conexión persisten
 
 # `WebSocket`
 
+El protocolo WebSocket, descrito en la especificación RFC 6455, brinda una forma de intercambiar datos entre el navegador y el servidor por medio de una conexión persistente. Los datos pueden ser pasados en ambas direcciones como paquetes “packets”, sin cortar la conexión y sin pedidos adicionales de HTTP “HTTP-requests”.
+
+WebSocket es especialmente bueno para servicios que requieren intercambio de información continua, por ejemplo juegos en línea, sistemas de negocios en tiempo real, entre otros.
+
+## `Un ejemplo simple`
+
+Para abrir una conexión websocket, necesitamos crearla new WebSocket usando el protocolo especial ws en la url:
+
+`let socket = new WebSocket("ws://javascript.info");`
+
+También hay una versión encriptada wss://. Equivale al HTTPS para los websockets.
+
+<h2 style="color: red">Siempre dé preferencia a wss://</h2>
+
+Una vez que el socket es creado, debemos escuchar los eventos que ocurren en él. Hay en total 4 eventos:
+
+- `open` – conexión establecida,
+- `message` – datos recibidos,
+- `error` – error en websocket,
+- `close` – conexión cerrada.
+
+…Y si queremos enviar algo, socket.send(data) lo hará.
+
+Aquí un ejemplo:
+
+```
+let socket = new WebSocket("wss://javascript.info/article/websocket/demo/hello");
+
+socket.onopen = function(e) {
+  alert("[open] Conexión establecida");
+  alert("Enviando al servidor");
+  socket.send("Mi nombre es John");
+};
+
+socket.onmessage = function(event) {
+  alert(`[message] Datos recibidos del servidor: ${event.data}`);
+};
+
+socket.onclose = function(event) {
+  if (event.wasClean) {
+    alert(`[close] Conexión cerrada limpiamente, código=${event.code} motivo=${event.reason}`);
+  } else {
+    // ej. El proceso del servidor se detuvo o la red está caída
+    // event.code es usualmente 1006 en este caso
+    alert('[close] La conexión se cayó');
+  }
+};
+
+socket.onerror = function(error) {
+  alert(`[error]`);
+};
+```
+
+Para propósitos de demostración, tenemos un pequeño servidor server.js, escrito en Node.js, ejecutándose para el ejemplo de arriba. Este responde con “Hello from server, John”, espera 5 segundos, y cierra la conexión.
+
+Entonces verás los eventos `open` → `message` → `close`.
+
+## `Abriendo un websocket`
+
+Cuando se crea new `WebSocket(url)`, comienza la conexión de inmediato.
+
+Durante la conexión, el navegador (usando cabeceras o “header”) le pregunta al servidor: “¿Soportas Websockets?” y si si el servidor responde “Sí”, la comunicación continúa en el protocolo WebSocket, que no es HTTP en absoluto.
+
+Aquí hay un ejemplo de cabeceras de navegador para una petición hecha por `new WebSocket("wss://javascript.info/chat")`.
+
+```
+GET /chat
+Host: javascript.info
+Origin: https://javascript.info
+Connection: Upgrade
+Upgrade: websocket
+Sec-WebSocket-Key: Iv8io/9s+lYFgZWcXczP8Q==
+Sec-WebSocket-Version: 13
+```
+
+- `Origin` – La página de origen del cliente, ej. https://javascript.info. Los objetos WebSocket son cross-origin por naturaleza. No existen las cabeceras especiales ni otras limitaciones. De cualquier manera los servidores viejos son incapaces de manejar WebSocket, asi que no hay problemas de compatibilidad. Pero la cabecera Origin es importante, pues habilita al servidor decidir si permite o no la comunicación WebSocket con el sitio web.
+- `Connection: Upgrade` – señaliza que el cliente quiere cambiar el protocolo.
+Upgrade: websocket – el protocolo requerido es “websocket”.
+- `Sec-WebSocket-Key` – una clave de aleatoria generada por el navegador, usada para asegurar que el servidor soporta el protocolo WebSocket. Es aleatoria para evitar que servidores proxy almacenen en cache la comunicación que sigue.
+- `Sec-WebSocket-Version` – Versión del protocolo WebSocket, 13 es la actual.
+
+<h2 style="color: red">El intercambio WebSocket no puede ser emulado</h2>
+No podemos usar XMLHttpRequest o fetch para hacer este tipo de peticiones HTTP, porque JavaScript no tiene permitido establecer esas cabeceras.
+
+## `Extensiones y subprotocolos`
+
+Puede tener las cabeceras adicionales Sec-WebSocket-Extensions y Sec-WebSocket-Protocol que describen extensiones y subprotocolos.
+
+Por ejemplo:
+
+- `Sec-WebSocket-Extensions`: deflate-frame significa que el navegador soporta compresión de datos. una extensión es algo relacionado a la transferencia de datos, funcionalidad que extiende el protocolo WebSocket. La cabecera Sec-WebSocket-Extensions es enviada automáticamente por el navegador, con la lista de todas las extensiones que soporta.
+
+- `Sec-WebSocket-Protocol`: soap, wamp significa que queremos transferir no cualquier dato, sino datos en protocolos SOAP o WAMP (“The WebSocket Application Messaging Protocol”). Los subprotocolos de WebSocket están registrados en el catálogo IANA. Entonces, esta cabecera describe los formatos de datos que vamos a usar.
+
+## `Transferencia de datos`
+
+La comunicación WebSocket consiste de “frames” (cuadros) de fragmentos de datos, que pueden ser enviados de ambos lados y pueden ser de varias clases:
+
+- “`text frames`” – c`ontiene datos de texto que las partes se mandan entre sí.
+- “`binary data frames`” – contiene datos binarios que las partes se mandan entre sí.
+- “`ping/pong frames`” son usados para testear la conexión; enviados desde el servidor, el navegador responde automáticamente.
+- También existe “connection close frame”, y algunos otros frames de servicio.
+
+En el navegador, trabajamos directamente solamente con frames de texto y binarios.
+
+Cuando recibimos datos, el texto siempre viene como string. Y para datos binarios, podemos elegir entre los formatos Blob y ArrayBuffer.
+
+`Blob` es un objeto binario de alto nivel que se integra directamente con `<a>`, `<img>` y otras etiquetas, así que es una opción predeterminada saludable. Pero para procesamiento binario, para acceder a bytes individuales, podemos cambiarlo a "arraybuffer":
+
+## `Limitaciones de velocidad`
+
+Supongamos que nuestra app está generando un montón de datos para enviar. Pero el usuario tiene una conexión de red lenta, posiblemente internet móvil fuera de la ciudad.
+
+Podemos llamar socket.send(data) una y otra vez. Pero los datos serán acumulados en memoria (en un “buffer”) y enviados solamente tan rápido como la velocidad de la red lo permita.
+
+La propiedad socket.bufferedAmount registra cuántos bytes quedan almacenados (“buffered”) hasta el momento esperando a ser enviados a la red.
+
+Podemos examinarla para ver si el “socket” está disponible para transmitir.
+```
+// examina el socket cada 100ms y envía más datos
+// solamente si todos los datos existentes ya fueron enviados
+setInterval(() => {
+  if (socket.bufferedAmount == 0) {
+    socket.send(moreData());
+  }
+}, 100);
+```
+
+## `Cierre de conexión`
+
+Normalmente, cuando una parte quiere cerrar la conexión (servidor o navegador, ambos tienen el mismo derecho), envía un “frame de cierre de conexión” con un código numérico y un texto con el motivo.
+
+El método para eso es:
+
+`socket.close([code], [reason]);`
+
+- `code` es un código especial de cierre de WebSocket (opcional)
+- `reason` es un string que describe el motivo de cierre (opcional)
+
+Los códigos más comunes:
+
+- `1000` – cierre normal. Es el predeterminado (usado si no se proporciona code),
+- `1006` – no hay forma de establecerlo manualmente, indica que la conexión se perdió (no hay frame de cierre).
+
+Hay otros códigos como:
+
+- `1001` – una parte se va, por ejemplo el server se está apagando, o el navegador deja la página,
+- `1009` – el mensaje es demasiado grande para procesar,
+- `1011` – error inesperado en el servidor,
+- …y así.
+
+## `Estado de la conexión`
+
+Para obtener el estado (state) de la conexión, tenemos la propiedad `socket.readyState` con valores:
+
+- `0` – “CONNECTING”: la conexión aún no fue establecida,
+- `1` – “OPEN”: comunicando,
+- `2` – “CLOSING”: la conexión se está cerrando,
+- `3` – “CLOSED”: la conexión está cerrada.
+
+# `Eventos enviados por el servidor`
+
+La especificación de los Eventos enviados por el servidor describe una clase incorporada `EventSource`, que mantiene la conexión con el servidor y permite recibir eventos de él.
+
+Similar a `WebSocket`, la conexión es persistente.
+
+Pero existen varias diferencias importantes:
+
+<table>
+<thead>
+<tr>
+<th><code>WebSocket</code></th>
+<th><code>EventSource</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bidireccional: tanto el cliente como el servidor pueden intercambiar mensajes</td>
+<td>Unidireccional: solo el servidor envía datos</td>
+</tr>
+<tr>
+<td>Datos binarios y de texto</td>
+<td>Solo texto</td>
+</tr>
+<tr>
+<td>Protocolo WebSocket</td>
+<td>HTTP regular</td>
+</tr>
+</tbody>
+</table>
+
+EventSource es una forma menos poderosa de comunicarse con el servidor que `WebSocket`.
+
+¿Por qué debería uno usarlo?
+
+El motivo principal: es más sencillo. En muchas aplicaciones, el poder de WebSocket es demasiado.
+
+Necesitamos recibir un flujo de datos del servidor: tal vez mensajes de chat o precios de mercado, o lo que sea. Para eso es bueno EventSource. También admite la reconexión automática, algo que debemos implementar manualmente con WebSocket. Además, es HTTP común, no un protocolo nuevo.
+
+## `Recibir mensajes`
+
+Para comenzar a recibir mensajes, solo necesitamos crear un new EventSource(url).
+
+El navegador se conectará a la url y mantendrá la conexión abierta, esperando eventos.
+
+El servidor debe responder con el estado 200 y el encabezado Content-Type:text/event-stream, entonces mantener la conexión y escribir mensajes en el formato especial.
+
+## `Solicitudes Cross-origin`
+
+`EventSource` admite solicitudes cross-origin, como fetch o cualquier otro método de red. Podemos utilizar cualquier URL:
+
+`let source = new EventSource("https://another-site.com/events");`
+
+El servidor remoto obtendrá el encabezado `Origin` y debe responder con `Access-Control-Allow-Origin` para continuar.
+
+Para pasar las credenciales, debemos configurar la opción adicional withCredentials, así:
+```
+let source = new EventSource("https://another-site.com/events", {
+  withCredentials: true
+});
+```
+
+## `Reconexión`
+
+Tras la creación con `new EventSource`, el cliente se conecta al servidor y, si la conexión se interrumpe, se vuelve a conectar.
+
+Eso es muy conveniente, ya que no tenemos que preocuparnos por eso.
+
+Hay un pequeño retraso entre las reconexiones, unos segundos por defecto.
+
+El servidor puede establecer la demora recomendada usando retry: dentro de la respuesta (en milisegundos):
+```
+retry: 15000
+data: Hola, configuré el retraso de reconexión en 15 segundos
+```
+El retry: puede venir junto con algunos datos, o como un mensaje independiente.
+
+<h2 style="color: red">Por favor tome nota:</h2>
+Cuando una conexión finalmente se cierra, no hay forma de “reabrirla”. Si queremos conectarnos de nuevo, simplemente crea un nuevo EventSource.
+
+## `ID del mensaje`
+
+Cuando una conexión se interrumpe debido a problemas de red, ninguna de las partes puede estar segura de qué mensajes se recibieron y cuáles no.
+
+Para reanudar correctamente la conexión, cada mensaje debe tener un campo id, así:
+```
+data: Mensaje 1
+id: 1
+
+data: Mensaje 2
+id: 2
+
+data: Mensaje 3
+data: de dos líneas
+id: 3
+```
+
+Cuando se recibe un mensaje con `id`:, el navegador:
+
+- Establece la propiedad `eventSource.lastEventId` a su valor.
+- Tras la reconexión, el navegador envía el encabezado `Last-Event-ID` con ese `id`, para que el servidor pueda volver a enviar los siguientes mensajes.
+
+## `Estado de conexión: readyState`
+
+El objeto `EventSource` tiene la propiedad readyState, que tiene uno de tres valores:
+```
+EventSource.CONNECTING = 0; // conectando o reconectando
+EventSource.OPEN = 1;       // conectado
+EventSource.CLOSED = 2;     // conexión cerrada
+```
+Cuando se crea un objeto, o la conexión no funciona, siempre es `EventSource.CONNECTING` (es igual a 0).
+
+Podemos consultar esta propiedad para conocer el estado de `EventSource`.
+
+## `Tipos de eventos`
+
+Por defecto, el objeto EventSource genera tres eventos:
+
+- `message` – un mensaje recibido, disponible como event.data.
+- `open` – la conexión está abierta.
+- `error` – no se pudo establecer la conexión, por ejemplo, el servidor devolvió el estado HTTP 500.
+
+Por ejemplo:
+```
+event: join
+data: Bob
+
+data: Hola
+
+event: leave
+data: Bob
+```
+
+
+
 [TOP](#working-with-apis)

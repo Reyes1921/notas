@@ -650,4 +650,73 @@ Aunque `import()` parece una llamada de función, es una sintaxis especial que s
 
 Por lo tanto, no podemos copiar `import` a una variable o usar `call/apply` con ella. No es una función.
 
+# `CommonJS`
+
+`CommonJS` modules are the original way to package JavaScript code for Node.js. Node.js also supports the ESModules standard used by browsers and other JavaScript runtimes, but CJS is still widely used in backend Node.js applications. Sometimes these modules will be written with a .cjs extension.
+
+CommonJS is a set of standards used to implement modules on JavaScript. The project was started by Mozilla engineer Kevin Dangoor in 2009. CommonJS is mainly used in server-side JS apps with Node, as browsers don't support the use of CommonJS. As a side comment, Node used to only support CommonJS to implement modules, but nowadays it also supports ESmodules which is a more modern approach.
+
+So let's see how CommonJS looks in actual code.
+
+To implement modules, you need a Node app on your computer first. So create one by running `npm init -y`.
+
+First let's create a main.js file with a simple function in it.
+
+```
+const testFunction = () => {
+    console.log('Im the main function')
+}
+
+testFunction()
+```
+
+Ok now let's say we want to have another function called from our main file, but we don't want the function in it as it's not part of our core feature. For this, let's create a mod1.js file and add this code to it:
+
+```
+const mod1Function = () => console.log('Mod1 is alive!')
+module.exports = mod1Function
+```
+
+`module.exports` is the keyword we use to declare all we want to export from that file.
+
+To use this function in our main.js file, we can do it like this:
+
+```
+mod1Function = require('./mod1.js')
+
+const testFunction = () => {
+    console.log('Im the main function')
+    mod1Function()
+}
+
+testFunction()
+```
+
+See that we declare whatever we want to use and then assign that to the `require` of the file we want to use.
+
+If we wanted to export more than one thing from a single module, we can do it like this:
+
+```
+const mod1Function = () => console.log('Mod1 is alive!')
+const mod1Function2 = () => console.log('Mod1 is rolling, baby!')
+
+module.exports = { mod1Function, mod1Function2 }
+```
+
+And on the main.js file we can use both functions like this:
+
+```
+({ mod1Function, mod1Function2 } = require('./mod1.js'))
+
+const testFunction = () => {
+    console.log('Im the main function')
+    mod1Function()
+    mod1Function2()
+}
+
+testFunction()
+```
+
+And that's pretty much it. Quite simple, right? It is simple but it's a powerful tool to use. =)
+
 [TOP](#modulos)

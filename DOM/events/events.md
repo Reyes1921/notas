@@ -394,7 +394,7 @@ Una propagación de evento empieza desde el elemento objetivo hacia arriba. Norm
 
 Pero cualquier manejador podría decidir que el evento se ha procesado por completo y detener su propagación.
 
-El método para esto es event.stopPropagation().
+El método para esto es `event.stopPropagation()`.
 
 Por ejemplo, aquí body.onclick no funciona si haces clic en `<button>`:
 

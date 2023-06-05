@@ -112,6 +112,10 @@ let bag = {
 alert( bag.apple ); // 5 si fruit es="apple"
 ```
 
+El significado de una propiedad calculada es simple: `[fruit]` significa que se debe tomar la clave de la propiedad fruit.
+
+Entonces, si un visitante ingresa "apple", bag se convertirá en {apple: 5}.
+
 Podemos usar expresiones más complejas dentro de los corchetes:
 
 ```

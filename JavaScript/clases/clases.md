@@ -474,6 +474,254 @@ Pero las clases nativas son una excepción. No heredan estáticos el uno del otr
 
 Por ejemplo, tanto `Array` como `Date` heredan de `Object`, por lo que sus instancias tienen métodos de `Object.prototype`. Pero `Array.[[Prototype]]` no hace referencia a `Object`, por lo que no existe, por ejemplo, el método estático `Array.keys()` (o `Date.keys()`).
 
+# `Comprobación de clase: "instanceof"`
 
+El operador instanceof permite verificar si un objeto pertenece a una clase determinada. También tiene en cuenta la herencia. Tal verificación puede ser necesaria en muchos casos. Aquí lo usaremos para construir una función polimórfica, la que trata los argumentos de manera diferente dependiendo de su tipo.
+
+## `El operador instanceof`
+
+```
+obj instanceof Class
+```
+
+Devuelve true si obj pertenece a la Class o una clase que hereda de ella.
+
+Por ejemplo:
+```
+class Rabbit {}
+let rabbit = new Rabbit();
+
+// ¿Es un objeto de la clase Rabbit?
+alert( rabbit instanceof Rabbit ); // verdadero
+```
+También funciona con funciones de constructor:
+```
+// en lugar de clase
+function Rabbit() {}
+
+alert( new Rabbit() instanceof Rabbit ); // verdadero
+```
+
+…Y con clases integradas como Array:
+
+```
+let arr = [1, 2, 3];
+alert( arr instanceof Array ); // verdadero
+alert( arr instanceof Object ); // verdadero
+```
+
+Normalmente, `instanceof` examina la cadena de prototipos para la verificación. También podemos establecer una lógica personalizada en el método estático Symbol.hasInstance.
+
+El algoritmo de obj `instanceof` Class funciona más o menos de la siguiente manera:
+
+- Si hay un método estático Symbol.hasInstance, simplemente llámelo: `Class[Symbol.hasInstance](obj)`. Debería devolver true o false, y hemos terminado. Así es como podemos personalizar el comportamiento de `instanceof`.
+
+```
+// Instalar instancia de verificación que asume que
+// cualquier cosa con propiedad canEat es un animal
+
+class Animal {
+  static [Symbol.hasInstance](obj) {
+    if (obj.canEat) return true;
+  }
+}
+
+let obj = { canEat: true };
+
+alert(obj instanceof Animal); // verdadero: Animal[Symbol.hasInstance](obj) es llamada
+```
+
+- La mayoría de las clases no tienen Symbol.hasInstance. En ese caso, se utiliza la lógica estándar: obj instanceOf Class comprueba si Class.prototype es igual a uno de los prototipos en la cadena de prototipos obj.
+
+```
+obj.__proto__ === Class.prototype?
+obj.__proto__.__proto__ === Class.prototype?
+obj.__proto__.__proto__.__proto__ === Class.prototype?
+...
+// si alguna respuesta es verdadera, devuelve true
+// de lo contrario, si llegamos al final de la cadena, devuelve false
+```
+
+Por cierto, también hay un método `objA.isPrototypeOf(objB)`, que devuelve true si objA está en algún lugar de la cadena de prototipos para objB. Por lo tanto, la prueba de obj instanceof Class se puede reformular como `Class.prototype.isPrototypeOf(obj)`.
+
+Es divertido, ¡pero el constructor Class en sí mismo no participa en el chequeo! Solo importa la cadena de prototipos y `Class.prototype`.
+
+Eso puede llevar a consecuencias interesantes cuando se cambia una propiedad prototype después de crear el objeto.
+
+Como aquí:
+
+```
+function Rabbit() {}
+let rabbit = new Rabbit();
+
+// cambió el prototipo
+Rabbit.prototype = {};
+
+// ...ya no es un conejo!
+alert( rabbit instanceof Rabbit ); // falso
+```
+
+## `Bonificación: Object.prototype.toString para el tipo`
+
+Ya sabemos que los objetos simples se convierten en cadenas como `[objetc Objetc]`:
+
+```
+let obj = {};
+
+alert(obj); // [object Object]
+alert(obj.toString()); // lo mismo
+```
+
+Esa es su implementación de toString. Pero hay una característica oculta que hace que toString sea mucho más poderoso que eso. Podemos usarlo como un typeof extendido y una alternativa para instanceof.
+
+Por esta especificación, el toString incorporado puede extraerse del objeto y ejecutarse en el contexto de cualquier otro valor. Y su resultado depende de ese valor.
+
+- Para un número, será `[object Number]`
+- Para un booleano, será `[objetc Boolean]`
+- Para null: `[objetc Null]`
+- Para undefined: `[objetc Undefined]`
+- Para matrices: `[Object Array]`
+- … etc (personalizable).
+
+```
+// copie el método toString en una variable a conveniencia
+let objectToString = Object.prototype.toString;
+
+// ¿que tipo es este?
+let arr = [];
+
+alert( objectToString.call(arr) ); // [object Array]
+```
+
+Internamente, el algoritmo toString examina this y devuelve el resultado correspondiente. Más ejemplos:
+
+```
+let s = Object.prototype.toString;
+
+alert( s.call(123) ); // [object Number]
+alert( s.call(null) ); // [object Null]
+alert( s.call(alert) ); // [object Function]
+```
+
+## `Symbol.toStringTag`
+
+El comportamiento del objeto `toString` se puede personalizar utilizando una propiedad de objeto especial `Symbol.toStringTag`.
+
+```
+let user = {
+  [Symbol.toStringTag]: "User"
+};
+
+alert( {}.toString.call(user) ); // [object User]
+```
+
+Para la mayoría de los objetos específicos del entorno, existe dicha propiedad. Aquí hay algunos ejemplos específicos del navegador:
+
+```
+// toStringTag para el objeto y clase específicos del entorno:
+alert( window[Symbol.toStringTag]); // ventana
+alert( XMLHttpRequest.prototype[Symbol.toStringTag] ); // XMLHttpRequest
+
+alert( {}.toString.call(window) ); // [object Window]
+alert( {}.toString.call(new XMLHttpRequest()) ); // [object XMLHttpRequest]
+```
+
+<h2 style="color: green">Resumen</h2>
+
+Resumamos los métodos de verificación de tipos que conocemos:
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>trabaja para</th>
+<th>retorna</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>typeof</code></td>
+<td>primitivos</td>
+<td>cadena</td>
+</tr>
+<tr>
+<td><code>{}.toString</code></td>
+<td>primitivos, objetos incorporados, objetos con <code>Symbol.toStringTag</code></td>
+<td>cadena</td>
+</tr>
+<tr>
+<td><code>instanceof</code></td>
+<td>objetos</td>
+<td>true/false</td>
+</tr>
+</tbody>
+</table>
+
+Como podemos ver, `{}.toString` es técnicamente un `typeof` “más avanzado”.
+
+Y el operador `instanceof` realmente brilla cuando estamos trabajando con una jerarquía de clases y queremos verificar si la clase tiene en cuenta la herencia.
+
+# `Los Mixins`
+
+En JavaScript podemos heredar de un solo objeto. Solo puede haber un `[[Prototype]]` para un objeto. Y una clase puede extender únicamente otra clase.
+
+Pero a veces eso se siente restrictivo. Por ejemplo, tenemos una clase `StreetSweeper` y una clase `Bicycle`, y queremos hacer su combinación: un `StreetSweepingBicycle`.
+
+O tenemos una clase `User` y una clase `EventEmitter` que implementa la generación de eventos, y nos gustaría agregar la funcionalidad de `EventEmitter` a User, para que nuestros usuarios puedan emitir eventos.
+
+Hay un concepto que puede ayudar aquí, llamado `“mixins”`.
+
+Como se define en Wikipedia, un `mixin` es una clase que contiene métodos que pueden ser utilizados por otras clases sin necesidad de heredar de ella.
+
+En otras palabras, un `mixin` proporciona métodos que implementan cierto comportamiento, pero su uso no es exclusivo, lo usamos para agregar el comportamiento a otras clases.
+
+## `Un ejemplo de mixin`
+
+La forma más sencilla de implementar un mixin en JavaScript es hacer un objeto con métodos útiles, para que podamos combinarlos fácilmente en un prototipo de cualquier clase.
+
+Por ejemplo, aquí el mixin `sayHiMixin` se usa para agregar algo de “diálogo” a `User`:
+
+```
+// mixin
+let sayHiMixin = {
+  sayHi() {
+    alert(`Hola ${this.name}`);
+  },
+  sayBye() {
+    alert(`Adiós ${this.name}`);
+  }
+};
+
+// uso:
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+// copia los métodos
+Object.assign(User.prototype, sayHiMixin);
+
+// Ahora el User puede decir hola
+new User("tío").sayHi(); // Hola tío!
+```
+
+No hay herencia, sino un simple método de copia. Entonces, User puede heredar de otra clase y también incluir el mixin para “mezclar” los métodos adicionales, como este:
+
+## `EventMixin`
+
+Ahora hagamos un mixin para la vida real.
+
+Una característica importante de muchos objetos del navegador (por ejemplo) es que pueden generar eventos. Los eventos son una excelente manera de “transmitir información” a cualquiera que lo desee. Así que hagamos un mixin que nos permita agregar fácilmente funciones relacionadas con eventos a cualquier clase/objeto.
+
+[Mas Información](https://es.javascript.info/mixins)
+
+`Mixin` – es un término genérico de programación orientado a objetos: una clase que contiene métodos para otras clases.
+
+Algunos lenguajes permiten la herencia múltiple. JavaScript no admite la herencia múltiple, pero los mixins se pueden implementar copiando métodos en el prototipo.
+
+Podemos usar mixins como una forma de expandir una clase agregando múltiples comportamientos, como el manejo de eventos que hemos visto anteriormente.
+
+Los mixins pueden convertirse en un punto de conflicto si sobrescriben accidentalmente los métodos de clase existentes. Por lo tanto, generalmente debes planificar correctamente la definición de métodos de un mixin, para minimizar la probabilidad de que suceda.
 
 [TOP](#classes)

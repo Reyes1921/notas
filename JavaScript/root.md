@@ -14,9 +14,9 @@
 
 - [Type Casting](tipos/types.md)
 
-- [Estructuras de datos (Data Structures)](estructuras/structures.md)
-
 # `Segunda Parte`
+
+- [Estructuras de datos (Data Structures)](estructuras/structures.md)
 
 - [Equality Comparisons](comparacion/equality.md)
 
@@ -28,17 +28,19 @@
 
 - [Funciones (Functions)](funciones/functions.md)
 
+# `Tercera Parte`
+
 - [Strict Mode](estricto/strict-mode.md)
 
 - [This](this/this_keyword.md)
-
-# `Tercera Parte`
 
 - [Asynchronous JavaScript](async/async.md)
 
 - [Working with APIs](apis/apis.md)
 
 - [Classes](clases/clases.md)
+
+# `Cuarta Parte`
 
 - [Iterators and Generators](generadores/iterators.md)
 

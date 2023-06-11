@@ -28,13 +28,6 @@ let user = {     // un objeto
 
 Una propiedad tiene una clave (también conocida como “nombre” o “identificador”) antes de los dos puntos `":"` y un valor a la derecha.
 
-En el objeto `user` hay dos propiedades:
-
-- La primera propiedad tiene la clave `"name"` y el valor `"John"`.
-- La segunda tienen la clave `"age"` y el valor `30`.
-
-Podemos agregar, eliminar y leer archivos de él en cualquier momento.
-
 Agregar
 `user.isAdmin = true;`
 
@@ -273,42 +266,9 @@ Nota que todas las construcciones “for” nos permiten declarar variables para
 
 Además podríamos usar otros nombres de variables en lugar de key. Por ejemplo, "for (let prop in obj)" también se usa bastante.
 
-<h2 style="color: green">Resumen</h2>
-
-Los objetos son arreglos asociativos con varias características especiales.
-
-Almacenan propiedades (pares de clave-valor), donde:
-
-- Las claves de propiedad deben ser cadenas o símbolos (generalmente strings).
-- Los valores pueden ser de cualquier tipo.
-
-Para acceder a una propiedad, podemos usar:
-
-- La notación de punto: obj.property.
-- La notación de corchetes `obj["property"]`. Los corchetes permiten tomar la clave de una variable, como `obj[varWithKey]`.
-
-Operadores adicionales:
-
-- Para eliminar una propiedad: delete obj.prop.
-- Para comprobar si existe una propiedad con la clave proporcionada: "key" in obj.
-- Para crear bucles sobre un objeto: bucle for (let key in obj).
-
-Lo que hemos estudiado en este capítulo se llama “`objeto simple`”, o solamente `Object`.
-
-Hay muchos otros tipos de objetos en JavaScript:
-
-- `Array` para almacenar colecciones de datos ordenados,
-- `Date` para almacenar la información sobre fecha y hora,
-- `Error` para almacenar información sobre un error.
-- …Y así.
-
-Los objetos en JavaScript son muy poderosos. Aquí acabamos de arañar la superficie de un tema que es realmente enorme. Trabajaremos estrechamente con los objetos y aprenderemos más sobre ellos en otras partes del tutorial.
-
 # `Referencias de objetos y copia`
 
 Una de las diferencias fundamentales entre objetos y primitivos es que los objetos son almacenados y copiados “por referencia”, en cambio los primitivos: strings, number, boolean, etc.; son asignados y copiados “como un valor completo”.
-
-Esto es fácil de entender si miramos un poco “bajo cubierta” de lo que pasa cuando copiamos por valor.
 
 ## `Comparación por referencia`
 
@@ -372,15 +332,7 @@ alert(user.canView); // true
 alert(user.canEdit); // true
 ```
 
-Si la propiedad por copiar ya existe, se sobrescribe:
-
-```
-let user = { name: "John" };
-
-Object.assign(user, { name: "Pete" });
-
-alert(user.name); // ahora user = { name: "Pete" }
-```
+Si la propiedad por copiar ya existe, se sobrescribe
 
 También podemos usar Object.assign para hacer una clonación simple:
 
@@ -398,7 +350,7 @@ alert(clone.age); // 30
 
 Aquí, copia todas las propiedades de user en un objeto vacío y lo devuelve.
 
-También hay otras formas de clonar un objeto, por ejemplo usando la sintaxis spread clone = {...user}, cubierto más adelante en el tutorial.
+También hay otras formas de clonar un objeto, por ejemplo usando la sintaxis spread `clone = {...user}`, cubierto más adelante en el tutorial.
 
 # `Métodos del objeto, "this"`
 
@@ -412,22 +364,6 @@ Por ejemplo, el código dentro de `user.sayHi()` puede necesitar el nombre del u
 `Para acceder al objeto, un método puede usar la palabra clave this.`
 
 El valor de `this` es el objeto “antes del punto”, el usado para llamar al método.
-
-Por ejemplo:
-```
-let user = {
-  name: "John",
-  age: 30,
-
-  sayHi() {
-    // "this" es el "objeto actual"
-    alert(this.name);
-  }
-
-};
-
-user.sayHi(); // John
-```
 
 ## `“this” no es vinculado`
 
@@ -495,7 +431,7 @@ let user = {
 
 ## `Return desde constructores`
 
-Normalmente, los constructores no tienen una sentencia re`turn. Su tarea es escribir todo lo necesario al this, y automáticamente este se convierte en el resultado.
+Normalmente, los constructores no tienen una sentencia return. Su tarea es escribir todo lo necesario al this, y automáticamente este se convierte en el resultado.
 
 Pero si hay una sentencia return, entonces la regla es simple:
 
@@ -503,32 +439,6 @@ Pero si hay una sentencia return, entonces la regla es simple:
 - Si `return` es llamado con un tipo de dato primitivo, es ignorado.
 
 En otras palabras, `return` con un objeto devuelve ese objeto, en todos los demás casos se devuelve this.
-
-Por ejemplo, aquí `return` anula this al devolver un objeto:
-
-```
-function BigUser() {
-
-  this.name = "John";
-
-  return { name: "Godzilla" };  // <-- devuelve este objeto
-}
-
-alert( new BigUser().name );  // Godzilla, recibió ese objeto
-```
-
-Y aquí un ejemplo con un `return` vacío (o podemos colocar un primitivo después de él, no importa):
-
-```
-function SmallUser() {
-
-  this.name = "John";
-
-  return; // <-- devuelve this
-}
-
-alert( new SmallUser().name );  // John
-```
 
 Normalmente los constructores no tienen una sentencia return. Aquí mencionamos el comportamiento especial con devolución de objetos principalmente por el bien de la integridad.
 
@@ -594,9 +504,9 @@ El encadenamiento opcional `?.` detiene la evaluación y devuelve undefined si e
 
 De aquí en adelante en este artículo, por brevedad, diremos que algo “existe” si no es null o undefined.
 
-En otras palabras, value?.prop:
+En otras palabras, `value?.prop`:
 
-- funciona como value.prop si value existe,
+- funciona como `value.prop` si value existe,
 - de otro modo (cuando value es undefined/null) devuelve undefined.
 
 Aquí está la forma segura de acceder a user.address.street usando ?.:
@@ -651,20 +561,6 @@ userAdmin.admin?.(); // I am admin
 
 userGuest.admin?.(); // no pasa nada (no existe tal método)
 ```
-
-<h2 style="color: green">Resumen</h2>
-
-La sintaxis de encadenamiento opcional `?.` tiene tres formas:
-
-- `obj?.prop` – devuelve `obj.prop` si obj existe, si no, undefined.
-- `obj?.[prop]` – devuelve `obj[prop]` si obj existe, si no, undefined.
-- `obj.method?.()` – llama a `obj.method()` si obj.method existe, si no devuelve undefined.
-
-Como podemos ver, todos ellos son sencillos y fáciles de usar. El `?.` comprueba si la parte izquierda es null/undefined y permite que la evaluación continúe si no es así.
-
-Una cadena de `?.` permite acceder de forma segura a las propiedades anidadas.
-
-Aún así, debemos aplicar `?.` con cuidado, solamente donde sea aceptable que, de acuerdo con nuestra lógica, la parte izquierda no exista. Esto es para que no nos oculte errores de programación, si ocurren.
 
 # `Conversión de objeto a valor primitivo`
 
@@ -773,7 +669,7 @@ Como podemos ver en el código, user se convierte en un string autodescriptivo o
 
 ## `toString/valueOf`
 
-[Mas Información](https://es.javascript.info/object-toprimitive)
+[Mas Información](https://es.javascript.info/object-toprimitive#tostring-valueof)
 
 # `Prototypes`
 [Prototype](prototype/prototype.md)
@@ -819,7 +715,7 @@ Existen métodos que sirven para obtener el año, el mes, y los demás component
 - `getFullYear()`: Devuelve el año (4 dígitos)
 - `getMonth()`: Devuelve el mes, de 0 a 11.
 - `getDate()`: Devuelve el día del mes desde 1 a 31. Nótese que el nombre del método no es muy intuitivo.
-- `getHours()`, getMinutes(), getSeconds(), getMilliseconds(): Devuelve los componentes del horario correspondientes.
+- `getHours()`, `getMinutes()`, `getSeconds()`, `getMilliseconds()`: Devuelve los componentes del horario correspondientes.
 - `getDay()`: Devuelve el día de la semana, partiendo de 0 (Domingo) hasta 6 (Sábado). El primer día siempre es el Domingo. Por más que en algunos países no sea así, no se puede modificar.
 
 Todos los métodos mencionados anteriormente devuelven los componentes correspondientes a la zona horaria local.
@@ -830,7 +726,7 @@ También existen sus contrapartes UTC, que devuelven el día, mes, año, y demá
   Devuelve el timestamp para una fecha determinada – cantidad de milisegundos transcurridos a partir del 1° de Enero de 1970 UTC+0.
 
 - `getTimezoneOffset()`
-  Devuelve la diferencia entre UTC y el huso horario de la zona actual, en minutos:
+  Devuelve la diferencia entre UTC y el uso horario de la zona actual, en minutos:
 
 - `Estableciendo los componentes de la fecha`
 

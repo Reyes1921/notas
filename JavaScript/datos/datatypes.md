@@ -297,15 +297,6 @@ Ahora se vuelve obvio por qué a > Z.
 Todas las letras minúsculas van después de las mayúsculas ya que sus códigos son mayores.
 Algunas letras como Ö se mantienen apartadas del alfabeto principal. Aquí el código es mayor que cualquiera desde a hasta z.
 
-- Existen 3 tipos de entrecomillado. Los backticks permiten que una cadena abarque varias líneas e incorporar expresiones ${…}.
-- Strings en JavaScript son codificados usando UTF-16.
-- Podemos usar caracteres especiales como \n e insertar letras por su código único usando \u ....
-- Para obtener un carácter, usa: [].
-- Para obtener un substring, usa: slice o substring.
-- Para convertir un string en minúsculas/mayúsculas, usa: toLowerCase/toUpperCase.
-- Para buscar por un substring, usa: indexOf, o includes/startsWith/endsWith para chequeos simples.
-- Para comparar strings de acuerdo al lenguaje, usa: localeCompare, de otra manera serán comparados como códigos de carácter.
-
 Existen varios otros métodos útiles en cadenas:
 
 - str.`trim()` – remueve (“recorta”) espacios desde el comienzo y final de un string.

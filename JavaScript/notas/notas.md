@@ -33,13 +33,9 @@
 
 - La diferencia con ++valor y valor++ es que cuando se llama si es ++valor devuelve el valor incrementado si no lo devuelve sin el incremento pero en realidad los dos suman solo que si se llaman en ese momento se ve la diferencia.
 
-  Ejemplo si llamo let valor = 0; ++valor o a = ++valor devuelve el valor incrementado (1) si llamo valor igual (1) y lo mismo pasa con let valor =0; let valor++ si lo llamo es (0) pero si llamo a valor es (1).
-
 - El incremento/decremento solo funciona con las variables numericas, usarlos con enteros o tros valores da syntax error.
 
 - Cuando esta la coma (,) se ignora todo lo que esta a su izquierda ejemplo: a=(1+2,3+4) = 3+4 = 7.
-
-- BigInt son numeros muy grandes se escribe asi 100128930128930n. Los numeros en js soportan hasta (2\*\*53-1) por eso el BigInt.
 
 - Number(undefined) = NaN, Number(null) = 0.
 

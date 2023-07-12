@@ -119,4 +119,9 @@ Podemos usarlo para rastrear cambios introducidos por otras partes de nuestro c�
 
 `MutationObserver` puede rastrear cualquier cambio. Las opciones de config permiten establecer qué se va a observar, se usa para optimización y no desperdiciar recursos en llamados al callback innecesarios.
 
+# `Selection y Range`
+
+[Mas Información](https://es.javascript.info/selection-range)
+
+
 [TOP](#mutation-observer)

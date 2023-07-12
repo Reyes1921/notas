@@ -12,6 +12,12 @@
 
 - [Data Manipulation Language (DML)](sql/dml.md)
 
+- [Aggregate Queries](sql/queries.md)
+
+- [Data Constraints](sql/constraints.md)
+
+- [JOIN Queries](sql/joins.md)
+
 # `PostgreSQL   `
 
 - [PostgreSQL](postgre/postgre.md)

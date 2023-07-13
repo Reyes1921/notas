@@ -136,4 +136,4 @@ CROSS JOIN Departments;
 
 This statement will return a result set which is the combination of each row from `Employees` with each row from `Departments`.
 
-[TOP](#data-constraints)
+[TOP](#sql-join-queries)

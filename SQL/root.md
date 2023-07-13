@@ -18,6 +18,14 @@
 
 - [JOIN Queries](sql/joins.md)
 
+- [Sub Queries](sql/sub-queries.md)
+
+- [Advanced SQL Functions](sql/advanced.md)
+
+- [Indexes](sql/indexes.md)
+
+- [Transactions](sql/transactions.md)
+
 # `PostgreSQL   `
 
 - [PostgreSQL](postgre/postgre.md)

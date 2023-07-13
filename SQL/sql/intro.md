@@ -30,7 +30,7 @@ Ahora que comprendes cómo funcionan las bases de datos relacionales, puedes com
 
 - `Structured Data`: RDBMS allows data storage in a structured way, using rows and columns in tables. This makes it easy to manipulate the data using SQL (Structured Query Language), ensuring efficient and flexible usage.
 
-- `ACID Properties`: ACID stands for Atomicity, Consistency, Isolation, and Durability. These properties ensure reliable and safe data manipulation in a RDBMS, making it suitable for mission-critical applications.
+- `ACID Properties`: ACID stands for `Atomicity`, `Consistency`, `Isolation`, and `Durability`. These properties ensure reliable and safe data manipulation in a RDBMS, making it suitable for mission-critical applications.
 
 - `Normalization`: RDBMS supports data normalization, a process that organizes data in a way that reduces data redundancy and improves data integrity.
 

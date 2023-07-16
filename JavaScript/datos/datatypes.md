@@ -92,9 +92,9 @@ El formato interno para strings es siempre UTF-16, no está vinculado a la codif
 
 ## `Comillas`
 
-```
 No poseen metodos o propiedades, se comparan por valor y son inmutables.
 
+```
 let single = 'comillas simples';
 let double = "comillas dobles";
 let backticks = `backticks`;

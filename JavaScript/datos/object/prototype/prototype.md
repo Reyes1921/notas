@@ -221,3 +221,5 @@ Aunque hay un método especial para esto también:
 Estos objetos son usados como diccionarios, para almacenar cualquier (posiblemente generadas por el usuario) clave.
 
 Normalmente, los objetos heredan métodos nativos y getter/setter de `__proto__` desde `Object.prototype`, haciendo sus claves correspondientes “ocupadas” y potencialmente causar efectos secundarios. Con el prototipo null, los objetos están verdaderamente vacíos.
+
+[TOP](#prototipos-y-herencia-delegacion-de-objeto)

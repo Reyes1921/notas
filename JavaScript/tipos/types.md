@@ -117,3 +117,5 @@ var texto = 'Hola';
 Como debemos convertir tipos de datos en JavaScript? 
 
 Con las funciones o con los operadores? la verdad es lo mismo
+
+[TOP](#type-casting)

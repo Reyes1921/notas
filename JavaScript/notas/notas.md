@@ -25,12 +25,6 @@
 
 - Deberías imaginar a las variables como tentáculos, en lugar de cajas. Ellas no contienen valores; ellas los agarran—dos vinculaciones pueden referirse al mismo valor.
 
-- El operador + es el unico que funciona con strings y los concatena y el valor resultante siempre es string.
-
-- Al usar cualquier otro operador con strings el valor resultante es siempre entero.
-
-- Si es 2+2+'2' primero se tratan los enteros normal y luego se concatena el resultado seria "42" si es al reves '2'+2+2 se concatena primero y el resultado es "222".
-
 - La diferencia con ++valor y valor++ es que cuando se llama si es ++valor devuelve el valor incrementado si no lo devuelve sin el incremento pero en realidad los dos suman solo que si se llaman en ese momento se ve la diferencia.
 
 - El incremento/decremento solo funciona con las variables numericas, usarlos con enteros o tros valores da syntax error.

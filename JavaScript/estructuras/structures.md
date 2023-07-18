@@ -230,8 +230,8 @@ JSON no admite comentarios. Agregar un comentario a JSON lo hace inválido.
 
 JavaScript proporciona métodos:
 
-- JSON.stringify para convertir objetos a JSON.
-- JSON.parse para convertir JSON de vuelta a un objeto.
+- JSON.stringify para convertir objetos a JSON. (String)
+- JSON.parse para convertir JSON de vuelta a un objeto. (Object)
 
 **Workin with JSON**
 

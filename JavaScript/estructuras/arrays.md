@@ -21,10 +21,6 @@ let arr = new Array(); // raramente usado
 let arr = [];
 
 let fruits = ["Apple", "Orange", "Plum"];
-
-alert( fruits[0] ); // Apple
-alert( fruits[1] ); // Orange
-alert( fruits[2] ); // Plum
 ```
 
 Un array puede almacenar elementos de cualquier tipo.
@@ -93,17 +89,17 @@ Un array es una clase especial de objeto. Los corchetes usados para acceder a un
 
 Ellos extienden los objetos proveyendo métodos especiales para trabajar con colecciones ordenadas de datos y también la propiedad length. Pero en el corazón es aún un objeto.
 
-…Pero lo que hace a los array realmente especiales es su representación interna. El motor trata de almacenarlos en áreas de memoria contigua, uno tras otro, justo como muestra la ilustración en este capítulo. Hay otras optimizaciones también para hacer que los arrays trabajen verdaderamente rápido.
+…Pero lo que hace a los array realmente especiales es su representación interna. El motor trata de almacenarlos en áreas de memoria contigua, uno tras otro.
 
 Pero todo esto se puede malograr si dejamos de trabajarlos como arrays de colecciones ordenadas y comenzamos a usarlos como si fueran objetos comunes.
 
-Las formas de malograr un array:
+<h2 style="color: red">Las formas de malograr un array:</h2>
 
 - Agregar una propiedad no numérica como arr.test = 5.
 - Generar agujeros como: agregar `arr[0]` y luego `arr[1000]` (y nada entre ellos).
 - Llenar el array en orden inverso, como `arr[1000]`, `arr[999]` y así.
 
-Piensa en los arrays como estructuras especiales para trabajar con datos ordenados. Ellos proveen métodos especiales para ello.Los arrays están cuidadosamente afinados dentro de los motores JavaScript para funcionar con datos ordenados contiguos, por favor úsalos de esa manera. Y si necesitas claves arbitrarias, hay altas chances de que en realidad necesites objetos comunes {}.
+Piensa en los arrays como estructuras especiales para trabajar con datos ordenados. Ellos proveen métodos especiales para ello. Los arrays están cuidadosamente afinados dentro de los motores JavaScript para funcionar con datos ordenados contiguos, por favor úsalos de esa manera. Y si necesitas claves arbitrarias, hay altas chances de que en realidad necesites objetos comunes {}.
 
 ## `Performance`
 
@@ -314,12 +310,7 @@ En su lugar puedes utilizar el bucle `for..of` para comparar arrays elemento a e
 
 # `Metodos Arrays`
 
-Los arrays (también llamados arreglos o matrices) cuentan con muchos métodos. Para hacer las cosas más sencillas, en este capítulo se encuentran divididos en dos partes.
-
 ## `Splice`
-
-Los arrays son objetos, por lo que podemos intentar con delete:
-El elemento fue borrado, pero el array todavía tiene 3 elementos; podemos ver que arr.length == 3.
 
 El método arr.splice funciona como una navaja suiza para arrays. Puede hacer todo: insertar, remover y remplazar elementos.
 
@@ -392,10 +383,9 @@ arr.forEach(function(item, index, array) {
 
 ```
 
--Buscar dentro de un array
-Ahora vamos a ver métodos que buscan elementos dentro de un array.
-
 ## `Buscar dentro de un array`
+
+Ahora vamos a ver métodos que buscan elementos dentro de un array.
 
 ## `indexOf/lastIndexOf e includes`
 
@@ -421,7 +411,6 @@ El método arr.lastIndexOf es lo mismo que indexOf, pero busca de derecha a izqu
 
 ## `find y findIndex/findLastIndex`
 
--find y findIndex/findLastIndex
 Imaginemos que tenemos un array de objetos. ¿Cómo podríamos encontrar un objeto con una condición específica?
 
 Para este tipo de casos es útil el método arr.find(fn)
@@ -507,7 +496,6 @@ let result = arr.map(function(item, index, array) {
 
 ## `sort`
 
--sort(fn)
 Cuando usamos arr.sort(), este ordena el propio array cambiando el orden de los elementos.
 
 Ejemplo:
@@ -586,8 +574,6 @@ arr.every(callback(element[, index[, array]])[, thisArg])
 
 La función callback es llamada para cada elemento del array de manera similar a map. Si todos los resultados son true, devuelve true, si no, false.
 
-El método `every` ejecuta la función callback dada una vez por cada elemento presente en el arreglo hasta encontrar uno que haga retornar un valor falso a callback (un valor que resulte falso cuando se convierta a booleano). Si no se encuentra tal elemento, el método `every` de inmediato retorna false. O si callback retorna verdadero para todos los elementos, `every` retornará true. callback es llamada sólo para índices del arreglo que tengan valores asignados; no se llama para índices que hayan sido eliminados o a los que no se les haya asignado un valor.
-
 Estos métodos se comportan con similitud a los operadores `||` y `&&:` si `fn` devuelve un valor verdadero, `arr.some()` devuelve true y detiene la iteración de inmediato; si `fn` devuelve un valor falso, `arr.every()` devuelve false y detiene la iteración también.
 
 Podemos usar every para comparar arrays:
@@ -611,10 +597,6 @@ arr.some(callback(element[, index[, array]])[, thisArg])
 ```
 
 true si la función callback devuelve un valor truthy para cualquier elemento del array; en caso contrario, false.
-
-`some()` ejecuta la función callback una vez por cada elemento presente en el array hasta que encuentre uno donde callback retorna un valor verdadero (true). Si se encuentra dicho elemento, `some()` retorna true inmediatamente. Si no, `some() `retorna false. callback es invocada sólo para los índices del array que tienen valores asignados; no es invocada para índices que han sido borrados o a los que nunca se les han asignado valores.
-
-Estos métodos se comportan con similitud a los operadores `||` y `&&:` si `fn` devuelve un valor verdadero, `arr.some()` devuelve true y detiene la iteración de inmediato; si `fn` devuelve un valor falso, `arr.every()` devuelve false y detiene la iteración también.
 
 ## `fill`
 
@@ -657,8 +639,6 @@ alert( arr ); // 5,4,3,2,1
 También devuelve el array arr después de revertir el orden.
 
 ## `split y join`
-
-Analicemos una situación de la vida real. Estamos programando una app de mensajería y y el usuario ingresa una lista de receptores delimitada por comas: Celina, David, Federico. Pero para nosotros un array sería mucho más práctico que una simple string. ¿Cómo podemos hacer para obtener un array?
 
 El método `str.split(delim)` hace precisamente eso. Separa la string en elementos según el delimitante delim dado y los devuelve como un array.
 
@@ -725,11 +705,7 @@ arr4.flat(Infinity);
 
 ## `reduce/reduceRight`
 
-Cuando necesitamos iterar sobre un array podemos usar forEach, for o for..of.
-
-Cuando necesitamos iterar y devolver un valor por cada elemento podemos usar map.
-
-Los métodos arr.reduce y arr.reduceRight también pertenecen a ese grupo de acciones, pero son un poco más complejos. Se los utiliza para calcular un único valor a partir del array.
+Cuando necesitamos iterar sobre un array podemos usar forEach, for o for..of. Cuando necesitamos iterar y devolver un valor por cada elemento podemos usar map. Los métodos arr.reduce y arr.reduceRight también pertenecen a ese grupo de acciones, pero son un poco más complejos. Se los utiliza para calcular un único valor a partir del array.
 
 La sintaxis es la siguiente:
 
@@ -747,26 +723,6 @@ alert(result); // 15
 ```
 
 El método arr.reduceRight realiza lo mismo, pero va de derecha a izquierda.
-
--Array.isArray
-Los arrays no conforman un tipo diferente. Están basados en objetos.
-
-Por eso typeof no ayuda a distinguir un objeto común de un array:
-
-```
-alert(typeof {}); // object
-alert(typeof []); // object (lo mismo)
-```
-
-…Pero los arrays son utilizados tan a menudo que tienen un método especial para eso: Array.isArray(value). Este devuelve true si el valor es un array y false si no lo es.
-
-```
-alert(Array.isArray({})); // false
-
-alert(Array.isArray([])); // true
-```
-
-Por favor tener en cuenta que sort, reverse y splice modifican el propio array
 
 ## `Array.isArray`
 

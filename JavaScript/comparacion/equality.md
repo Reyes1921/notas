@@ -116,3 +116,5 @@ function sameValueZero(x, y) {
 ```
 
 `Same-value-zero` only differs from strict equality by treating NaN as equivalent, and only differs from `same-value equality` by treating -0 as equivalent to 0. This makes it usually have the most sensible behavior during searching, especially when working with NaN. It's used by Array.prototype.includes(), TypedArray.prototype.includes(), as well as Map and Set methods for comparing key equality.
+
+[TOP](#equality-comparisons)

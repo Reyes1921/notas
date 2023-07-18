@@ -21,8 +21,7 @@ sayHi(); // Hola         // esto también funciona (por qué no lo haría)
 
 ## `Funciones anónimas`
 
-Las funciones anónimas son funciones que no tienen nombre. Son como las que vimos en la clase anterior.
-
+Las funciones anónimas son funciones que no tienen nombre.
 ## `Declaración de Función `
 
 Una Declaración de Función sólo es visible dentro del bloque de código en el que reside.
@@ -162,9 +161,7 @@ function f(arg1, ...rest, arg2) { // arg2 después de ...rest ?!
 
 ## `Sintaxis Spread`
 
-Acabamos de ver cómo obtener un array de la lista de parámetros.
-
-Pero a veces necesitamos hacer exactamente lo opuesto.
+Acabamos de ver cómo obtener un array de la lista de parámetros. Pero a veces necesitamos hacer exactamente lo opuesto.
 
 Por ejemplo, existe una función nativa Math.max que devuelve el número más grande de una lista:
 
@@ -181,10 +178,6 @@ let arr = [3, 5, 1];
 
 alert( Math.max(arr) ); // NaN
 ```
-
-Y seguramente no podremos listar manualmente los ítems en el código Math.max(arr[0], arr[1], arr[2]), porque tal vez no sepamos cuántos son. A medida que nuestro script se ejecuta, podría haber muchos elementos, o podría no haber ninguno. Y eso podría ponerse feo.
-
-¡Operador Spread al rescate! Es similar a los parámetros rest, también usa ..., pero hace exactamente lo opuesto.
 
 Cuando ...arr es usado en el llamado de una función, “expande” el objeto iterable arr en una lista de argumentos.
 
@@ -620,6 +613,8 @@ pow(2, 1) = 2
 
 The lexical environment for a function f simply refers to the environment enclosing that function's definition in the source code.
 
+El ámbito léxico se refiere al alcance de una variable en el código fuente, y es determinado por el contexto en el que se declara la variable. Este tipo de alcance es establecido en tiempo de compilación y permanece constante durante la ejecución del programa. Esto significa que una variable definida dentro de una función solo será accesible dentro de esa función, y no en otras funciones o bloques de código fuera de ella. Esto asegura que las variables tengan un comportamiento predecible y evita posibles conflictos entre nombres de variables en diferentes partes del programa.
+
 #### `Paso 1. Variables`
 
 En JavaScript, todas las funciones en ejecución, el bloque de código {...} y el script en su conjunto tienen un objeto interno (oculto) asociado, conocido como Entorno léxico.
@@ -969,6 +964,32 @@ Para pasar algo a una función creada como new Function, debemos usar sus argume
 # `Funcion pura`
 
 Una función pura es un tipo específico de función de producción-de-valores que no solo no tiene efectos secundarios pero que tampoco depende de los efectos secundarios de otro código—por ejemplo, no lee vinculaciones globales cuyos valores puedan cambiar. Una función pura tiene la propiedad agradable de que cuando se le llama con los mismos argumentos, siempre produce el mismo valor (y no hace nada más). Una llamada a tal función puede ser sustituida por su valor de retorno sin cambiar el significado del código. Cuando no estás seguro de que una función pura esté funcionando correctamente, puedes probarla simplemente llamándola, y saber que si funciona en ese contexto, funcionará en cualquier contexto. Las funciones no puras tienden a requerir más configuración para poder ser probadas.
+
+## `Ejemplos`
+
+```
+function suma(a, b) {
+  return a + b;
+}
+```
+
+```
+function longitud(arr) {
+  return arr.length;
+}
+```
+
+```
+function cuadrado(n) {
+  return n * n;
+}
+```
+
+```
+function concatena(a, b) {
+  return a + b;
+}
+```
 
 <h2 style='color: green'>Resumen</h2>
 

@@ -58,7 +58,6 @@ while (i < 3) { // muestra 0, luego 1, luego 2
 ```
 # `for...in` statement
 
--El bucle "for..in"
 Para recorrer todas las claves de un objeto existe una forma especial de bucle: `for..in`. Esto es algo completamente diferente a la construcción `for(;;)`
 
 La sintaxis:

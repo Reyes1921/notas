@@ -169,8 +169,6 @@ try {
 }
 ```
 
-### `Herencia adicional`
-
 <h2 style='color: green'>Resumen</h2>
 
 - Podemos heredar de Error y otras clases de error incorporadas normalmente. Solo necesitamos cuidar la propiedad name y no olvidemos llamar super.

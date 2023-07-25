@@ -88,3 +88,5 @@ El orden de importancia, de menor a mayor importancia, es el siguiente:
 - tipo de regla de `transition`
 
 Los tipos de reglas de transition (transición) y animation (animación) tienen más importancia que las reglas normales. En el caso de las transiciones, es más importante que los tipos de reglas !important. Esto se debe a que cuando una animación o transición se activa, su comportamiento esperado es cambiar el estado visual.
+
+[TOP](#the-cascade)

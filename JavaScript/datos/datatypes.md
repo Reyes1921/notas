@@ -303,6 +303,8 @@ Existen varios otros métodos útiles en cadenas:
 
 - str.`repeat(n)` – repite el string n veces.
 
+- str.`padStart(n,y)` - The padStart() method pads the current string with another string (multiple times, if needed) until the resulting string reaches the given length. The padding is applied from the start of the current string.
+
 What `String.raw` actually does is taking a template literal, processing all substitutions (${variable}, e.g.), but ignoring well-known escape-sequences.
 
 ```

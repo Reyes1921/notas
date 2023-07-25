@@ -111,3 +111,4 @@ aside p {
 	all: unset;
 }
 ```
+[TOP](#inheritance)

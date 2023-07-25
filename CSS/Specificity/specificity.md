@@ -220,3 +220,5 @@ Sigamos con el ejemplo del botón por ahora y cambiemos el CSS a esto:
 El botón tiene un fondo gris, porque ambos selectores tienen una puntuación de especificidad idéntica ( 0-1-0 ).
 
 Esta es la única instancia en la que gana el CSS más nuevo. Para hacerlo, debe coincidir con la especificidad de otro selector que apunte al mismo elemento.
+
+[TOP](#specificity)

@@ -88,3 +88,5 @@ A sticky element toggles between relative and fixed, depending on the scroll pos
     <td>Sets the top margin edge for a positioned box</td>
   </tr>
   </tbody></table>
+
+  [TOP](#positioning)

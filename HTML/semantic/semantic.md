@@ -170,3 +170,5 @@ listings, etc.</td>
 <td>Defines a date/time</td>
 </tr>
 </tbody></table>
+
+[TOP](#semantic-html)

@@ -123,3 +123,41 @@ One of the main differences between `npm` and `npx` is that `npm` installs packa
 Another difference between the two tools is that `npx` is installed automatically with `npm` version 5.2 and higher, so it is readily available without the need for an additional installation. Additionally, `npx` allows you to execute packages directly from the registry without having to install them.
 
 Overall, while `npm` and `npx` are both command-line tools that are used in the Node.js ecosystem, they have different functions and are used for different purposes. If you need to install and manage packages, use `npm`, but if you need to execute packages or don't want to globally install them, use `npx`.
+
+# `npm workspaces`
+
+Workspace is a generic term that refers to the set of npm CLI features that support managing multiple packages from your local file system from within a singular top-level root package.
+
+This set of features makes up for a much more streamlined workflow handling linked packages from the local file system. Automating the linking process as part of npm install and avoiding manually having to use npm link in order to add references to packages that should be symlinked into the current node_modules folder.
+
+We also refer to these packages being auto-symlinked during npm install as a single workspace, meaning it's a nested package within the current local file system that is explicitly defined in the package.json workspaces configuration.
+
+## `Better explained`
+
+npm workspaces is a feature in npm that allows developers to work with multiple packages in a single repository, commonly known as a monorepo. Essentially, npm workspaces enable you to share code between different packages in the same repository. This can help improve the organization of your codebase and make it easier to manage interdependent packages.
+
+Here are a few examples of how npm workspaces can be used:
+
+When you have multiple packages that share dependencies, you can use workspaces to manage those dependencies. This can help reduce duplicate code and make it easier to maintain the codebase.
+
+If you have different applications that share some common code, you can use workspaces to manage that shared code in one place.
+
+If you have a large codebase with many packages, you can use workspaces to improve the build and test times of your codebase. By running builds and tests concurrently, you can significantly reduce the time it takes to build and test your entire codebase.
+
+Overall, npm workspaces can help you improve the organization, maintainability, and scalability of your codebase.
+
+# `Creating Packages`
+
+npm packages allow you to bundle some specific functionality into a reusable package which can then be uploaded to some package registry such as npm or GitHub packages and then be installed and reused in projects using npm.
+
+[Tutorial](https://www.freecodecamp.org/news/how-to-make-a-beautiful-tiny-npm-package-and-publish-it-2881d4307f78/)
+
+## `Private Packages`
+
+[Tutorial](https://snyk.io/blog/best-practices-create-modern-npm-package/)
+
+## `Public Packages`
+
+[Tutorial](https://snyk.io/blog/best-practices-create-modern-npm-package/)
+
+[TOP](#npm)

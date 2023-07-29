@@ -6,6 +6,8 @@
 
 - [What is SQL?](sql/sql.md)
 
+- [Practicas](sql/practicas.md)
+
 - [Basic SQL Syntax](sql/syntax.md)
 
 - [Data Definition Language (DDL)](sql/ddl.md)

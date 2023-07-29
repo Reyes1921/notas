@@ -1,3 +1,7 @@
 # MENÚ
 
-- [NPM](npm.md)
+- [npm](npm.md)
+
+- [yarn](yarn.md)
+
+- [pnpm](pnpm.md)

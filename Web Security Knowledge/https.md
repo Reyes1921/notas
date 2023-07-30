@@ -1,6 +1,6 @@
-[Volver al Menú](protocolos.md)
+[Volver al Menú](root.md)
 
-# `What is HTTP?`
+# `HTTPS`
 
 The Hypertext Transfer Protocol (HTTP) is the foundation of the World Wide Web, and is used to load webpages using hypertext links. HTTP is an application layer protocol designed to transfer information between networked devices and runs on top of other layers of the network protocol stack. A typical flow over HTTP involves a client machine making a request to a server, which then sends a response message.
 
@@ -56,15 +56,15 @@ Let's break these down:
 
 HTTP status codes are 3-digit codes most often used to indicate whether an HTTP request has been successfully completed. Status codes are broken into the following 5 blocks:
 
-- # 1xx Informational
+- `# 1xx Informational`
 
-- # 2xx Success
+- `# 2xx Success`
 
-- # 3xx Redirection
+- `# 3xx Redirection`
 
-- # 4xx Client Error
+- `# 4xx Client Error`
 
-- # 5xx Server Error
+- `# 5xx Server Error`
 
 The “xx” refers to different numbers between 00 and 99.
 
@@ -112,6 +112,8 @@ A root store is basically a database of trusted CAs
 
 Apple, Windows, and Mozilla run their own root stores that they pre-install in your computer or device.
 
+
 [Mas Informacion](https://howhttps.works/why-do-we-need-https/)
 
-[TOP](#what-is-http)
+
+[TOP](#https)

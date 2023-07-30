@@ -265,24 +265,4 @@ Sin embargo, hay algunas notas:
 - La mayoría de recursos empiezan a cargarse cuando son agregados al documento. Pero `<img>` es una excepción, comienza la carga cuando obtiene una fuente “.src” (*).
 - Para `<iframe>`, el evento iframe.onload se dispara cuando el iframe ha terminado de cargar, tanto para una carga exitosa como en caso de un error.
 
-## `Política de origen cruzado`
-
-Hay una regla: los scripts de un sitio no pueden acceder al contenido de otro sitio. Por ejemplo: un script de `https://facebook.com` no puede leer la bandeja de correos del usuario en `https://gmail.com`.
-`
-O para ser más precisos, un origen (el trío dominio/puerto/protocolo) no puede acceder al contenido de otro. Entonces, incluso si tenemos un sub-dominio o solo un puerto distinto, son considerados orígenes diferentes sin acceso al otro.
-
-Esta regla también afecta a recursos de otros dominios.
-
-Si usamos un script de otro dominio y tiene un error, no podemos obtener detalles del error.
-
-`Para permitir el acceso de origen cruzado, la etiqueta <script> necesita tener el atributo crossorigin, además el servidor remoto debe proporcionar cabeceras especiales.`
-
-Hay 3 niveles de acceso de origen cruzado:
-
-- Sin el atributo `crossorigin` – acceso prohibido.
-- `crossorigin="anonymous"` – acceso permitido si el servidor responde con la cabecera `Access-Control-Allow-Origin` con `*` o nuestro origen. El navegador no envía la información de la autorización y cookies al servidor remoto.
-- `crossorigin="use-credentials"` – acceso permitido si el servidor envia de vuelta la cabecera `Access-Control-Allow-Origin` con nuestro origen y `Access-Control-Allow-Credentials: true`. El navegador envía la información de la autorización y las cookies al servidor remoto.
-
-
-
 [TOP](#el-documento-y-carga-de-recursos)

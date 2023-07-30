@@ -110,3 +110,4 @@ When the user enters a URL into the browser, it will first check the local cache
 
 [More Information](https://web.dev/howbrowserswork/)
 
+[TOP](#browser)

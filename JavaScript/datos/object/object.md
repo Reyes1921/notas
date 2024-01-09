@@ -2,7 +2,7 @@
 
 # `Objetos`
 
-En contraste, los objetos son usados para almacenar colecciones de varios datos y entidades más complejas asociados con un nombre clave. En JavaScript, los objetos penetran casi todos los aspectos del lenguaje. Por lo tanto, debemos comprenderlos primero antes de profundizar en cualquier otro lugar.
+Los objetos son usados para almacenar colecciones de varios datos y entidades más complejas asociados con un nombre clave. En JavaScript, los objetos penetran casi todos los aspectos del lenguaje. Por lo tanto, debemos comprenderlos primero antes de profundizar en cualquier otro lugar.
 
 Podemos crear un objeto usando las llaves {…} con una lista opcional de propiedades. Una propiedad es un par `“key:value”`, donde key es un string (también llamado “nombre clave”), y value puede ser cualquier cosa. P.D. Para fines prácticos de la lección, nos referiremos a este par de conceptos como `“clave:valor”`.
 
@@ -276,10 +276,6 @@ Dos objetos son iguales solamente si ellos son el mismo objeto.
 
 ## `Clonación y mezcla, Object.assign`
 
-Entonces copiar una variable de objeto crea una referencia adicional al mismo objeto.
-
-Pero ¿y si necesitamos duplicar un objeto?
-
 Podemos crear un nuevo objeto y replicar la estructura del existente iterando a través de sus propiedades y copiándolas en el nivel primitivo.
 
 Como esto:
@@ -491,7 +487,7 @@ Como ejemplo, digamos que tenemos objetos user que contienen información de nue
 
 La mayoría de nuestros usuarios tienen la dirección en la propiedad user.address, con la calle en user.address.street, pero algunos no la proporcionaron.
 
-En tal caso, cuando intentamos obtener user.address.streeten un usuario sin dirección obtendremos un error:
+En tal caso, cuando intentamos obtener user.address.street en un usuario sin dirección obtendremos un error:
 ```
 let user = {}; // usuario sin propiedad "address"
 
@@ -683,6 +679,8 @@ Built-in objects, or "global objects", are those built into the language specifi
 - `Math`
 
 - `Date`: Este objeto almacena la fecha, la hora, y brinda métodos para administrarlas. Por ejemplo, podemos usarlo para almacenar horas de creación o modificación, medir tiempo, o simplemente mostrar en pantalla la fecha actual.
+
+# `Date`
 
 `Creación`
 

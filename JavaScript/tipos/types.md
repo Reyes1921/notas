@@ -14,7 +14,7 @@ Type casting means transferring data from one data type to another by explicitly
 La mayoría de las veces, los operadores y funciones convierten automáticamente los valores que se les pasan al tipo correcto. Esto es llamado “conversión de tipo”.
 
 ```
-String()
+String() 
 toString()
 Number()
 Boolean()
@@ -24,6 +24,10 @@ ParseFloat ()
 `ToString` 
 
 La conversión a string ocurre cuando necesitamos la representación en forma de texto de un valor.
+
+The `String()` function is a versatile tool for converting various types of values into strings. It accommodates a wide range of data types, including numbers, booleans, objects, arrays, and even null and undefined.
+
+The `toString()` method is a more specialized approach to value-to-string conversion, applicable to objects and certain primitive types. Unlike String(), which can be used on many types, toString() is a method that needs to be available on the value's prototype chain. 
 ```
 let value = true;
 alert(typeof value); // boolean

@@ -166,3 +166,5 @@ let objCopy = { ...obj };
 
 - reverseInParentheses
 - almostIncreasingSequence
+
+[TOP](#notas-de-ejercicios)

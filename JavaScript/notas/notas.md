@@ -21,8 +21,6 @@
 
 - Los puntos y comas no son necesarios después de los bloques de código {...} y los constructores de sintaxis como los bucles. Pero incluso si colocásemos un punto y coma “extra” en alguna parte, eso no sería un error. Solo sería ignorado.
 
-- En el alert se lee de izquierda a derecha de resto de derecha a izquierda y se toma en cuanta la precedencia del operador pero si hay parentesis se anula la precedencia.
-
 - Deberías imaginar a las variables como tentáculos, en lugar de cajas. Ellas no contienen valores; ellas los agarran—dos vinculaciones pueden referirse al mismo valor.
 
 - La diferencia con ++valor y valor++ es que cuando se llama si es ++valor devuelve el valor incrementado si no lo devuelve sin el incremento pero en realidad los dos suman solo que si se llaman en ese momento se ve la diferencia.
@@ -107,12 +105,4 @@ if (!Math.trunc) { // no existe tal función
 
 NO ES RECOMENDABLE USAR != Y ==, ES MEJOR USAR !== Y ===
 
-- Usar continue en alguna parte de un ciclo que no se haga nada mas, ejemplo:
-
-```
-if(var == true){
-  continue;
-}else{
-  return false;
-}
-```
+[TOP](#notas-generales)

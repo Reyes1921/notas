@@ -308,3 +308,5 @@ doc/**/*.txt
 ## `gitignore templates`
 
 [Templates](https://github.com/github/gitignore)
+
+[TOP](#git---the-stupid-content-tracker)

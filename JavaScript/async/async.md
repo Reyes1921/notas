@@ -64,8 +64,6 @@ Los principiantes a veces cometen un error al agregar paréntesis () después de
 setTimeout(sayHi(), 1000);
 ```
 
-Eso no funciona, porque `setTimeout` espera una referencia a una función. Y aquí `sayHi()` ejecuta la función, y el resultado de su ejecución se pasa a `setTimeout`. En nuestro caso, el resultado de `sayHi()` es undefined (la función no devuelve nada), por lo que no habrá nada planificado.
-
 ## `Cancelando con clearTimeout`
 
 Una llamada a setTimeout devuelve un “identificador de temporizador” timerId que podemos usar para cancelar la ejecución.
@@ -296,10 +294,6 @@ new Promise((resolve, reject) => {
 ```
 
 # `Encadenamiento de promesas`
-
-Las promesas proporcionan un par de maneras para hacerlo.
-
-En este capítulo cubrimos el encadenamiento de promesas.
 
 Se ve así:
 

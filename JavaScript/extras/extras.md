@@ -92,14 +92,6 @@ Acciones que son ejecutadas para que nuestro programa siga la logica que queremo
 
 - variable declaration
 
-# `Librerias para los Tests`
-
--En este tutorial estamos usando las siguientes librerías JavaScript para los tests:
-
-- Mocha: El framework central: provee funciones para test comunes como describe e it y la función principal que ejecuta los tests.
-- Chai: Una librería con muchas funciones de comprobación (assertions). Permite el uso de diferentes comprobaciones. De momento usaremos assert.equal.
-- Sinon: Una librería para espiar funciones. Simula funciones incorporadas al lenguaje y mucho más. La necesitaremos a menudo más adelante.
-
 # `Métodos en tipos primitivos`
 
 Aquí el dilema que enfrentó el creador de JavaScript:
@@ -119,7 +111,9 @@ Los primitivos especiales null y undefined son excepciones. No tienen “wrapper
 
 El intento de acceder a una propiedad de tal valor daría error:
 
+```
 alert(null.test); // error
+```
 
 # `Object.keys, values, entries`
 

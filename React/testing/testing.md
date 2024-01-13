@@ -189,6 +189,181 @@ test('compiling android goes as expected', () => {
 });
 ```
 
-# `React Testting Library`
+## `Assertion Count`
+
+`expect.assertions(number)` verifies that a certain number of assertions are called during a test. This is often useful when testing asynchronous code, in order to make sure that assertions in a callback actually got called.
+
+For example, let's say that we have a function doAsync that receives two callbacks callback1 and callback2, it will asynchronously call both of them in an unknown order. We can test this with:
+
+```
+test('doAsync calls both callbacks', () => {
+  expect.assertions(2);
+  function callback1(data) {
+    expect(data).toBeTruthy();
+  }
+  function callback2(data) {
+    expect(data).toBeTruthy();
+  }
+
+  doAsync(callback1, callback2);
+});
+```
+
+## `Testing Asynchronous Code`
+
+It's common in JavaScript for code to run asynchronously. When you have code that runs asynchronously, Jest needs to know when the code it is testing has completed, before it can move on to another test. Jest has several ways to handle this.
+
+### `Promises`
+
+```
+test('the data is peanut butter', () => {
+  return fetchData().then(data => {
+    expect(data).toBe('peanut butter');
+  });
+});
+```
+
+### `Async/Await`
+
+```
+test('the data is peanut butter', async () => {
+  const data = await fetchData();
+  expect(data).toBe('peanut butter');
+});
+
+test('the fetch fails with an error', async () => {
+  expect.assertions(1);
+  try {
+    await fetchData();
+  } catch (error) {
+    expect(error).toMatch('error');
+  }
+});
+```
+
+### `Callbacks`
+
+```
+// Don't do this!
+test('the data is peanut butter', () => {
+  function callback(error, data) {
+    if (error) {
+      throw error;
+    }
+    expect(data).toBe('peanut butter');
+  }
+
+  fetchData(callback);
+});
+```
+
+The problem is that the test will complete as soon as fetchData completes, before ever calling the callback.
+
+There is an alternate form of test that fixes this. Instead of putting the test in a function with an empty argument, use a single argument called done. Jest will wait until the done callback is called before finishing the test.
+
+```
+test('the data is peanut butter', done => {
+  function callback(error, data) {
+    if (error) {
+      done(error);
+      return;
+    }
+    try {
+      expect(data).toBe('peanut butter');
+      done();
+    } catch (error) {
+      done(error);
+    }
+  }
+
+  fetchData(callback);
+});
+```
+
+### `.resolves / .rejects`
+
+You can also use the .resolves matcher in your expect statement, and Jest will wait for that promise to resolve. If the promise is rejected, the test will automatically fail.
+
+```
+test('the data is peanut butter', () => {
+  return expect(fetchData()).resolves.toBe('peanut butter');
+});
+```
+
+If you expect a promise to be rejected, use the .rejects matcher. It works analogically to the .resolves matcher. If the promise is fulfilled, the test will automatically fail.
+
+```
+test('the fetch fails with an error', () => {
+  return expect(fetchData()).rejects.toMatch('error');
+});
+```
+
+## `Snapshot Testing`
+
+Snapshot tests are a very useful tool whenever you want to make sure your UI does not change unexpectedly.
+
+A typical snapshot test case renders a UI component, takes a snapshot, then compares it to a reference snapshot file stored alongside the test. The test will fail if the two snapshots do not match: either the change is unexpected, or the reference snapshot needs to be updated to the new version of the UI component.
+
+
+```
+import renderer from 'react-test-renderer';
+import Link from '../Link';
+
+it('renders correctly', () => {
+  const tree = renderer
+    .create(<Link page="http://www.facebook.com">Facebook</Link>)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});
+```
+
+The first time this test is run, Jest creates a snapshot file that looks like this:
+
+```
+exports[`renders correctly 1`] = `
+<a
+  className="normal"
+  href="http://www.facebook.com"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  Facebook
+</a>
+`;
+```
+
+
+# `React Testing Library`
+
+React Testing Library builds on top of DOM Testing Library by adding APIs for working with React components.
+
+## `Install`
+
+```
+npm install --save-dev @testing-library/react
+```
+
+### `Render`
+
+- The render function in React Testing Library is used to virtually render React components in the testing environment .
+- It takes any JSX as an argument to render it as output, providing access to the React component in the test .
+- After rendering the component, you can use the screen.debug() function to view the virtually rendered DOM, allowing you to inspect the HTML output of the component .
+- The render function is essential for preparing the component for testing and gaining access to its rendered output for further assertions and testing .
+
+### `Screen`
+
+- The screen object from React Testing Library provides methods for querying the rendered elements of the DOM in order to make assertions about their text content, attributes, and more .
+- It is a query interface that allows you to select DOM elements and make assertions about their presence, content, and attributes .
+- The benefit of using screen is that you no longer need to keep the render call destructure up-to-date as you add/remove the queries you need. You only need to type screen. and let your editor's autocomplete take care of the rest  .
+
+```
+import {render, screen} from '@testing-library/react' // (or /dom, /vue, ...)
+
+test('should show login form', () => {
+  render(<Login />)
+  const input = screen.getByLabelText('Username')
+  // Events and assertions...
+})
+```
 
 [TOP](#testing)

@@ -101,3 +101,5 @@ This is the most naïve garbage collection algorithm. This algorithm reduces the
 Hay otras optimizaciones y tipos de algoritmos de recolección de basura. Por mucho que quiera describirlos aquí, tengo que evitarlo porque diferentes motores implementan diferentes ajustes y técnicas. Y, lo que es aún más importante, las cosas cambian a medida que se desarrollan los motores, por lo que probablemente no vale la pena profundizar sin una necesidad real. Por supuesto, si tienes verdadero interés, a continuación hay algunos enlaces para ti.
 
 [Mas Información](https://es.javascript.info/garbage-collection)
+
+[TOP](#memory-management)

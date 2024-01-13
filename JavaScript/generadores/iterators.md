@@ -98,7 +98,7 @@ let arrayLike = { // tiene índices y longitud => array-like
 for (let item of arrayLike) {}
 ```
 
-Tanto los iterables como los array-like generalmente no son arrays, no tienen “push”, “pop”, etc. Eso es bastante inconveniente si tenemos un objeto de este tipo y queremos trabajar con él como con una matriz. P.ej. nos gustaría trabajar con range utilizando métodos de matriz. ¿Cómo lograr eso?
+Tanto los iterables como los array-like generalmente no son arrays, no tienen “push”, “pop”, etc. Eso es bastante inconveniente si tenemos un objeto de este tipo y queremos trabajar con él como con una matriz. 
 
 <h2 style='color: green'>Resumen</h2>
 

@@ -61,3 +61,5 @@ div {
 ## `Unidades de resolución`
 
 En el ejemplo anterior, el valor de min-resolution es 192dpi. La unidad dpi significa puntos por pulgada. Un contexto útil para esto es detectar pantallas de muy alta resolución, como pantallas Retina, en una consulta de medios y mostrar una imagen de mayor resolución.
+
+[TOP](#unidades-de-dimensionamiento)

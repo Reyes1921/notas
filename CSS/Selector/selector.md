@@ -146,3 +146,5 @@ li::marker {
 <h2 style="color: red">Nota: </h2>
 
 Un signo de dos puntos dobles (`::`) es lo que distingue a un pseudoelemento de una pseudoclase, pero debido a que esta distinción no estaba presente en las versiones anteriores de las especificaciones de CSS, los navegadores admiten dos puntos simples para los pseudoelementos originales, como `:before` y `:after` para ayudar con la compatibilidad con versiones anteriores de los navegadores más antiguos, como IE8.
+
+[TOP](#selector)

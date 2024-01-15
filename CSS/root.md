@@ -2,11 +2,11 @@
 
 # `CSS Basics`
 
-- [Selector](selector/selector.md)
+- [Selector](Selector/selector.md)
 
 - [The Cascade](theCascade/theCascade.md)
 
-- [Specificity](specificity/specificity.md)
+- [Specificity](Specificity/specificity.md)
 
 - [Inheritance](Inheritance/Inheritance.md)
 

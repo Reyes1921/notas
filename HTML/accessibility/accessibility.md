@@ -64,3 +64,5 @@ CAPTCHAs create problems for many people. There are other means of verifying tha
 - Not requiring CAPTCHAs for authorized users.
 
 [More info](https://www.smashingmagazine.com/2021/03/complete-guide-accessible-front-end-components/)
+
+[TOP](#accessibility)

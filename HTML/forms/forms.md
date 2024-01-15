@@ -88,3 +88,5 @@ There are two different types of client-side validation that you'll encounter on
 - Built-in form validation uses HTML form validation features, which we've discussed in many places throughout this module. This validation generally doesn't require much JavaScript. Built-in form validation has better performance than JavaScript, but it is not as customizable as JavaScript validation.
 
 - JavaScript validation is coded using JavaScript. This validation is completely customizable, but you need to create it all (or use a library).
+
+[TOP](#forms-and-validations)

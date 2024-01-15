@@ -2,7 +2,7 @@
 
 # `Hooks`
 
-`Todos los Hooks deberian comenzar con use`
+`Un Hook no es mas que una funcion que retorna algo.`
 
 # `useState`
 
@@ -223,6 +223,26 @@ The useReducer hook is particularly useful for managing complex state logic and 
 
 Building your own Hooks lets you extract component logic into reusable functions.
 
+React comes with several built-in Hooks like useState, useContext, and useEffect. Sometimes, you’ll wish that there was a Hook for some more specific purpose: for example, to fetch data, to keep track of whether the user is online, or to connect to a chat room. You might not find these Hooks in React, but you can create your own Hooks for your application’s needs.
 
+- `Custom Hooks let you share logic between components.`
+- `Custom Hooks must be named starting with use followed by a capital letter.`
+- `Custom Hooks only share stateful logic, not state itself.`
+- `You can pass reactive values from one Hook to another, and they stay up-to-date.`
+- `All Hooks re-run every time your component re-renders.`
+- `The code of your custom Hooks should be pure, like your component’s code.`
+- `Wrap event handlers received by custom Hooks into Effect Events.`
+- `Don’t create custom Hooks like useMount. Keep their purpose specific.`
+- `It’s up to you how and where to choose the boundaries of your code.`
+
+## `When to use custom Hooks`
+
+You don’t need to extract a custom Hook for every little duplicated bit of code. Some duplication is fine. For example, extracting a useFormInput Hook to wrap a single useState call like earlier is probably unnecessary.
+
+However, whenever you write an Effect, consider whether it would be clearer to also wrap it in a custom Hook. `You shouldn’t need Effects very often`, so if you’re writing one, it means that you need to “step outside React” to synchronize with some external system or to do something that React doesn’t have a built-in API for. Wrapping it into a custom Hook lets you precisely communicate your intent and how the data flows through it.
+
+
+
+[More Info](https://react.dev/learn/reusing-logic-with-custom-hooks)
 
 [TOP](#hooks)

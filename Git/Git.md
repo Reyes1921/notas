@@ -87,7 +87,7 @@ M lib/simplegit.rb
 
 - Update remote refs along with associated objects
 
-## `git push -u origin master`
+## `git push -u origin main`
 
 - Update remote refs along with associated objects and set upstream for the current branch
 
@@ -151,6 +151,8 @@ e = 5
 - También puedes pasar la opción -v, la cual muestra las URLs que Git ha asociado
   al nombre y que serán usadas al leer y escribir en ese remoto
 
+## `git remote add origin <repository>`
+
 ## `git remote add <repository>`
 
 ## `git config --get remote.origin.url`
@@ -193,6 +195,10 @@ To remove your handler, use the remove command on remote, followed by the handle
 
 - Force delete the specified branch
 
+## `git branch -M <branch>`
+
+- Rename the branch
+
 ## `git checkout <branch>`
 
 - Switch branches or restore working tree files
@@ -206,6 +212,10 @@ To remove your handler, use the remove command on remote, followed by the handle
 ## `git checkout -b <branch>`
 
 - Create and checkout a new branch
+
+## `git checkout -- .`
+
+- Restore the last commit
 
 ## `git merge <branch>`
 

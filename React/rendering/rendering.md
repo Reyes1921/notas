@@ -13,6 +13,16 @@ The virtual DOM (VDOM) is an important aspect of how React works. It is a lightw
 
 This process is known as reconciliation, and it is an important aspect of how React works. By using a declarative approach and a VDOM, React is able to optimize the rendering of components and improve the performance of web applications.
 
+# `Strict Mode`
+
+By wrapping a component tree with StrictMode, React will activate additional checks and warnings for its descendants. This doesn't affect the production build but provides insights during development.
+
+In Strict Mode, React does a few extra things during development:
+
+- It renders components twice to catch bugs caused by impure rendering.
+- It runs side-effects (like data fetching) twice to find mistakes in them caused by missing effect cleanup.
+- It checks if deprecated APIs are used, and logs a warning message to the console if so.
+
 # `Component Life Cycle`
 
 React components have a lifecycle consisting of three phases: `Mounting`, `Updating`, and `Unmounting` along with several “lifecycle methods” that you can override to run code at particular times in the process.

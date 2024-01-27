@@ -33,6 +33,43 @@ function Example() {
 
 ```
 
+`Con Objetos`
+
+```
+import { useState } from "react"
+
+export const CounterApp = () => {
+
+    const [state, setcounter] = useState({
+        counter1: 10,
+        counter2: 20,
+        counter3: 30
+    });
+
+    const { counter1, counter2, counter3 } = state;
+
+    const counterAdd = () => {
+        setcounter({
+            ...state,
+            counter1: counter1 + 1
+        });
+        console.log(counter1);
+    }
+
+    return (
+        <>
+            <h1>Counter: {counter1} </h1>
+            <h1>Counter: {counter2} </h1>
+            <h1>Counter: {counter3} </h1>
+            <hr />
+
+            <button className="btn" onClick={counterAdd}>+1</button>
+        </>
+    )
+}
+
+```
+
 # `useEffect`
 
 `useEffect` is a special hook that lets you run side effects in React. It is similar to componentDidMount and componentDidUpdate, but it only runs when the component (or some of its props) changes and during the initial mount.
@@ -81,6 +118,57 @@ const Toggler = ({ toggle, onToggle }) => {
   );
 };
 ```
+
+# `useRef`
+
+`useRef` is a hook in React that allows you to create a reference to a DOM element or a mutable value that persists across renders without causing re-renders when updated. It returns an object with a current property, which can be used to access or update the referenced value.
+
+When we initialize `useRef`, we set the initial value, and we can access the value by using ref.current. This can be particularly useful for accessing DOM elements directly, persisting values between renders, and storing mutable values without causing re-renders.
+
+```
+import React, { useRef } from 'react';
+
+const MyComponent = () => {
+  const inputRef = useRef(null);
+
+  const handleButtonClick = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <input ref={inputRef} type="text" />
+      <button onClick={handleButtonClick}>Focus Input</button>
+    </div>
+  );
+};
+
+```
+
+By using useRef, we can create a reference to the input element and then use it to focus on the input without causing re-renders.
+
+Overall, useRef is a valuable tool in React for accessing DOM elements and persisting values between renders without triggering unnecessary re-renders, providing more control and efficiency in managing component state and behavior .
+
+# `useLayoutEffect`
+
+`useLayoutEffect` can hurt performance. Prefer useEffect when possible.
+
+`useLayoutEffect` is a version of useEffect that fires before the browser repaints the screen.
+
+```
+import { useState, useRef, useLayoutEffect } from 'react';
+
+function Tooltip() {
+  const ref = useRef(null);
+  const [tooltipHeight, setTooltipHeight] = useState(0);
+
+  useLayoutEffect(() => {
+    const { height } = ref.current.getBoundingClientRect();
+    setTooltipHeight(height);
+  }, []);
+```
+
+Call useLayoutEffect to perform the layout measurements before the browser repaints the screen.
 
 # `useCallback`
 
@@ -168,6 +256,15 @@ The useMemo hook is particularly useful for optimizing performance by caching th
 
 # `useReducer`
 
+- Es una funcón común y corriente
+- Debe ser una funcion pura
+- Debe de retornar un nuevo estado
+- Usualmente solo recibe dos argmentos
+  - El valor inicial
+  - La acción a ejcutar
+
+<img src="./reducer.png"/>
+
 ```
 import React, { useReducer } from 'react';
 
@@ -214,6 +311,8 @@ function TodoList() {
 }
 
 ```
+
+`An alternative to useState`
 
 In this example, the useReducer hook is used to manage the state of a todo list. The reducer function handles state transitions based on dispatched actions, such as toggling the completion status of a todo item. The useReducer hook returns the current state (todos) and a dispatch function to trigger state transitions.
 

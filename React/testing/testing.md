@@ -189,6 +189,32 @@ test('compiling android goes as expected', () => {
 });
 ```
 
+### `More`
+
+- `toHaveBeenCalled()`
+
+Also under the alias: .toBeCalled()
+
+- `toHaveBeenCalledTimes(number)`
+
+Also under the alias: .toBeCalledTimes(number)
+
+Use .`toHaveBeenCalledTimes` to ensure that a mock function got called exact number of times.
+
+- `toHaveBeenCalledWith(arg1, arg2, ...)`
+
+Use .`toHaveBeenCalledWith` to ensure that a mock function was called with specific arguments. The arguments are checked with the same algorithm that .`toEqual` uses.
+
+- ``
+
+- ``
+
+- ``
+
+- ``
+
+- ``
+
 ## `Assertion Count`
 
 `expect.assertions(number)` verifies that a certain number of assertions are called during a test. This is often useful when testing asynchronous code, in order to make sure that assertions in a callback actually got called.
@@ -332,6 +358,42 @@ exports[`renders correctly 1`] = `
 `;
 ```
 
+## `Mock Functions`
+
+Mock functions allow you to test the links between code by erasing the actual implementation of a function, capturing calls to the function (and the parameters passed in those calls), capturing instances of constructor functions when instantiated with new, and allowing test-time configuration of return values.
+
+There are two ways to mock functions: Either by creating a mock function to use in test code, or writing a manual mock to override a module dependency.
+
+`jest.fn();`
+
+```
+    test('no debe de llamar onNewCategory si el input esta vacio', () => {
+
+        const onNewCategory = jest.fn();
+        render(<AddCategory onNewCategory={onNewCategory} />);
+
+        const form = screen.getByRole('form');
+        fireEvent.submit(form);
+
+        expect(onNewCategory).toHaveBeenCalledTimes(0);
+    })
+```
+
+### `Mock Return Values`
+
+Mock functions can also be used to inject test values into your code during a test:
+
+```
+const myMock = jest.fn();
+console.log(myMock());
+// > undefined
+
+myMock.mockReturnValueOnce(10).mockReturnValueOnce('x').mockReturnValue(true);
+
+console.log(myMock(), myMock(), myMock(), myMock());
+// > 10, 'x', true, true
+```
+
 
 # `React Testing Library`
 
@@ -343,14 +405,14 @@ React Testing Library builds on top of DOM Testing Library by adding APIs for wo
 npm install --save-dev @testing-library/react
 ```
 
-### `Render`
+## `Render`
 
 - The render function in React Testing Library is used to virtually render React components in the testing environment .
 - It takes any JSX as an argument to render it as output, providing access to the React component in the test .
 - After rendering the component, you can use the screen.debug() function to view the virtually rendered DOM, allowing you to inspect the HTML output of the component .
 - The render function is essential for preparing the component for testing and gaining access to its rendered output for further assertions and testing .
 
-### `Screen`
+## `Screen`
 
 - The screen object from React Testing Library provides methods for querying the rendered elements of the DOM in order to make assertions about their text content, attributes, and more .
 - It is a query interface that allows you to select DOM elements and make assertions about their presence, content, and attributes .
@@ -365,5 +427,60 @@ test('should show login form', () => {
   // Events and assertions...
 })
 ```
+
+## `Queries`
+
+`Difference from DOM Testing Library`
+
+The queries returned from render in React Testing Library are the same as DOM Testing Library except they have the first argument bound to the document, so instead of getByText(node, 'text') you do getByText('text')
+
+<table><thead><tr><th></th><th>No Match</th><th>1 Match</th><th>1+ Match</th><th>Await?</th></tr></thead><tbody><tr><td><strong>getBy</strong></td><td>throw</td><td>return</td><td>throw</td><td>No</td></tr><tr><td><strong>findBy</strong></td><td>throw</td><td>return</td><td>throw</td><td>Yes</td></tr><tr><td><strong>queryBy</strong></td><td>null</td><td>return</td><td>throw</td><td>No</td></tr><tr><td><strong>getAllBy</strong></td><td>throw</td><td>array</td><td>array</td><td>No</td></tr><tr><td><strong>findAllBy</strong></td><td>throw</td><td>array</td><td>array</td><td>Yes</td></tr><tr><td><strong>queryAllBy</strong></td><td>[]</td><td>array</td><td>array</td><td>No</td></tr></tbody></table>
+
+<ul class=""><li><strong>ByLabelText</strong> find by label or aria-label text content<ul class=""><li>getByLabelText</li><li>queryByLabelText</li><li>getAllByLabelText</li><li>queryAllByLabelText</li><li>findByLabelText</li><li>findAllByLabelText</li></ul></li><li><strong>ByPlaceholderText</strong> find by input placeholder value<ul class=""><li>getByPlaceholderText</li><li>queryByPlaceholderText</li><li>getAllByPlaceholderText</li><li>queryAllByPlaceholderText</li><li>findByPlaceholderText</li><li>findAllByPlaceholderText</li></ul></li><li><strong>ByText</strong> find by element text content<ul class=""><li>getByText</li><li>queryByText</li><li>getAllByText</li><li>queryAllByText</li><li>findByText</li><li>findAllByText</li></ul></li><li><strong>ByDisplayValue</strong> find by form element current value<ul class=""><li>getByDisplayValue</li><li>queryByDisplayValue</li><li>getAllByDisplayValue</li><li>queryAllByDisplayValue</li><li>findByDisplayValue</li><li>findAllByDisplayValue</li></ul></li><li><strong>ByAltText</strong> find by img alt attribute<ul class=""><li>getByAltText</li><li>queryByAltText</li><li>getAllByAltText</li><li>queryAllByAltText</li><li>findByAltText</li><li>findAllByAltText</li></ul></li><li><strong>ByTitle</strong> find by title attribute or svg title tag<ul class=""><li>getByTitle</li><li>queryByTitle</li><li>getAllByTitle</li><li>queryAllByTitle</li><li>findByTitle</li><li>findAllByTitle</li></ul></li><li><strong>ByRole</strong> find by aria role<ul class=""><li>getByRole</li><li>queryByRole</li><li>getAllByRole</li><li>queryAllByRole</li><li>findByRole</li><li>findAllByRole</li></ul></li><li><strong>ByTestId</strong> find by data-testid attribute<ul class=""><li>getByTestId</li><li>queryByTestId</li><li>getAllByTestId</li><li>queryAllByTestId</li><li>findByTestId</li><li>findAllByTestId</li></ul></li></ul>
+
+
+### `waitFor`
+
+When in need to wait for any period of time you can use waitFor, to wait for your expectations to pass. Returning a falsy condition is not sufficient to trigger a retry, the callback must throw an error in order to retry the condition.
+
+```
+     test('debe de retornar un arreglo de imagenes y isLoading en false', async() => { 
+        
+        const { result } =  renderHook( ()=> useFetchGifs('One Punch'));
+        
+        await waitFor(
+            ()=> expect(result.current.images.length).toBeGreaterThan(0),
+        );
+
+        const {images, isLoading} = result.current;
+
+         expect( images.length).toBeGreaterThan(0);
+         expect(isLoading).toBeFalsy();
+ 
+      })
+```
+
+### `renderHook`
+
+```
+function renderHook(callback: (props?: any) => any, options?: RenderHookOptions): RenderHookResult
+```
+
+Renders a test component that will call the provided callback, including any hooks it calls, every time it renders.
+
+The renderHook function returns an object that has the following properties:
+
+```
+result
+{
+  all: Array<any>
+  current: any,
+  error: Error
+}
+```
+
+### `act`
+
+This is a light wrapper around the react-dom/test-utils act function. All it does is forward all arguments to the act function if your version of react supports act
 
 [TOP](#testing)

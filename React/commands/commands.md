@@ -2,6 +2,11 @@
 
 # `Inicio`
 
+With NPM:
+```
+npm create vite@latest
+```
+
 `npm run dev` Correr la aplicacion en el cmd
 
 # `Importanciones`

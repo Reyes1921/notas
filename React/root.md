@@ -12,11 +12,11 @@
 
 - [Routers](routers/routers.md)
 
-- [State Management](state-management/state-management.md)
+- [State Management](state/root.md)
 
 - [Styling](styling/styling.md)
 
-- [API Calls](api/api.md)
+- [API Calls](api/root.md)
 
 - [Testing](testing/testing.md)
 

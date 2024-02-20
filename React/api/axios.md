@@ -30,7 +30,7 @@ Axios is a `promise-based` HTTP Client for `node.js` and the browser. It is `iso
 # `Installing`
 
 ```
-$ npm install axios
+npm install axios
 ```
 
 # `The Axios Instance`

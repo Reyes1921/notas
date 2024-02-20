@@ -1,5 +1,8 @@
 # `MENÚ`
 
+- [Resumen y chuleta](resumen.md)
+
+
 # `CSS Basics`
 
 - [Selector](Selector/selector.md)
@@ -13,6 +16,8 @@
 - [Color](color/color.md)
 
 - [Sizing Units](sizingUnits/sizingUnits.md)
+
+- [Concentration](concentration/concentration.md)
 
 # `Making layouts`
 

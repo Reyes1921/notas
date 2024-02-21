@@ -63,7 +63,7 @@ Install TypeScript as a project dependency by running the following command:
 npm install --save-dev typescript
 ```
 
-Create a tsconfig.json file in your project directory to specify the compiler options for building your project. For example:
+Create a `tsconfig.json` file in your project directory to specify the compiler options for building your project. For example:
 
 ```
 {

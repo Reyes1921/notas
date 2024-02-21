@@ -1,6 +1,10 @@
+[Volver al Menú](/readme.md)
+
 # `JavaScript`
 
-# `Primera Parte`
+---
+
+## `Primera Parte`
 
 - [Notas Generales](notas/notas.md)
 
@@ -14,7 +18,9 @@
 
 - [Type Casting](tipos/types.md)
 
-# `Segunda Parte`
+---
+
+## `Segunda Parte`
 
 - [Estructuras de datos (Data Structures)](estructuras/structures.md)
 
@@ -28,7 +34,9 @@
 
 - [Funciones (Functions)](funciones/functions.md)
 
-# `Tercera Parte`
+---
+
+## `Tercera Parte`
 
 - [Strict Mode](estricto/strict-mode.md)
 
@@ -40,7 +48,9 @@
 
 - [Classes](clases/clases.md)
 
-# `Cuarta Parte`
+---
+
+## `Cuarta Parte`
 
 - [Iterators and Generators](generadores/iterators.md)
 

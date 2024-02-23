@@ -202,7 +202,7 @@ const third = pair[2];
 
 # `Other Types`
 
-## `Any`
+## `Any (Ignora el tipado de TypeScript)`
 
 TypeScript has a special type, any, that you can use whenever you don’t want a particular value to cause typechecking errors.
 

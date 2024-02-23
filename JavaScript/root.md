@@ -2,8 +2,6 @@
 
 # `JavaScript`
 
----
-
 ## `Primera Parte`
 
 - [Notas Generales](notas/notas.md)
@@ -17,8 +15,6 @@
 - [Tipos de datos (Data Types)](datos/datatypes.md)
 
 - [Type Casting](tipos/types.md)
-
----
 
 ## `Segunda Parte`
 
@@ -34,8 +30,6 @@
 
 - [Funciones (Functions)](funciones/functions.md)
 
----
-
 ## `Tercera Parte`
 
 - [Strict Mode](estricto/strict-mode.md)
@@ -47,8 +41,6 @@
 - [Working with APIs](apis/apis.md)
 
 - [Classes](clases/clases.md)
-
----
 
 ## `Cuarta Parte`
 

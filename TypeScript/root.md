@@ -1,3 +1,5 @@
+[Volver al Menú](/readme.md)
+
 # `TypeScript`
 
 - [Intro](intro/intro.md)
@@ -13,3 +15,11 @@
 - [Type Guards / Narrowing](type-guards/type-guards.md)
 
 - [Functions](functions/functions.md)
+
+- [TypeScript Interfaces](interfaces/interfaces.md)
+
+- [Generics](generics/generics.md)
+
+- [Decorators](decorators/decorators.md)
+
+- [Utility Types](utility-types/utility-types.md)

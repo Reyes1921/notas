@@ -23,3 +23,7 @@
 - [Decorators](decorators/decorators.md)
 
 - [Utility Types](utility-types/utility-types.md)
+
+- [Advanced Types](advanced-types/advanced-types.md)
+
+- [Modules](modules/modules.md)

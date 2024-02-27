@@ -4,9 +4,11 @@
 
 API is the acronym for Application Programming Interface, which is a software intermediary that allows two applications to talk to each other.
 
+---
+
 # `HTTP Server`
 
-# `Http module`
+## `Http module`
 
 To make HTTP requests in Node.js, there is a built-in module HTTP in Node.js to transfer data over the HTTP. The HTTP module creates an HTTP server that listens to server ports and gives a response back to the client.
 
@@ -51,7 +53,7 @@ server.listen(port, hostname, () => {
 });
 ```
 
-# `Express.js`
+## `Express.js`
 
 Express is a node js web application framework that provides broad features for building web and mobile applications. It is used to build a single page, multipage, and hybrid web application.
 
@@ -59,7 +61,7 @@ Express is a node js web application framework that provides broad features for 
 $ npm install express
 ```
 
-## `Hello World`
+### `Hello World`
 
 ```
 const express = require('express')
@@ -75,7 +77,7 @@ app.listen(port, () => {
 })
 ```
 
-## `Express application generator`
+### `Express application generator`
 
 Use the application generator tool, express-generator, to quickly create an application skeleton.
 
@@ -83,7 +85,7 @@ Use the application generator tool, express-generator, to quickly create an appl
 $ npx express-generator
 ```
 
-## `Basic routing`
+### `Basic routing`
 
 Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
 
@@ -117,7 +119,7 @@ app.delete('/user', (req, res) => {
 })
 ```
 
-## `Serving static files in Express`
+### `Serving static files in Express`
 
 To serve static files such as images, CSS files, and JavaScript files, use the express.static built-in middleware function in Express.
 
@@ -140,5 +142,153 @@ http://localhost:3000/js/app.js
 http://localhost:3000/images/bg.png
 http://localhost:3000/hello.html
 ```
+
+## `NestJS`
+
+NestJS is a progressive Node.js framework for creating efficient and scalable server-side applications.
+
+## `Fastify`
+
+Fastify is a web framework highly focused on providing the best developer experience with the least overhead and a powerful plugin architecture, inspired by Hapi and Express.
+
+---
+
+# `Making API Calls`
+
+## `Making API calls with HTTP`
+
+You can make API calls using the `http` module in Node.js as well. Here are the two methods that you can use:
+
+- `http.get()` - Make http GET requests.
+
+```
+http.get('http://localhost:8000/', (res) => {
+  const { statusCode } = res;
+  const contentType = res.headers['content-type'];
+
+  let error;
+  // Any 2xx status code signals a successful response but
+  // here we're only checking for 200.
+  if (statusCode !== 200) {
+    error = new Error('Request Failed.\n' +
+                      `Status Code: ${statusCode}`);
+  } else if (!/^application\/json/.test(contentType)) {
+    error = new Error('Invalid content-type.\n' +
+                      `Expected application/json but received ${contentType}`);
+  }
+  if (error) {
+    console.error(error.message);
+    // Consume response data to free up memory
+    res.resume();
+    return;
+  }
+
+  res.setEncoding('utf8');
+  let rawData = '';
+  res.on('data', (chunk) => { rawData += chunk; });
+  res.on('end', () => {
+    try {
+      const parsedData = JSON.parse(rawData);
+      console.log(parsedData);
+    } catch (e) {
+      console.error(e.message);
+    }
+  });
+}).on('error', (e) => {
+  console.error(`Got error: ${e.message}`);
+});
+
+// Create a local server to receive data from
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({
+    data: 'Hello World!'
+  }));
+});
+
+server.listen(8000);
+```
+
+- `http.request()` - Similar to `http.get()` but enables sending other types of http requests (GET requests inclusive).
+
+```
+const options = new URL('http://abc:xyz@example.com');
+
+const req = http.request(options, (res) => {
+  // ...
+});
+```
+
+## `Axios`
+
+Axios is a promise-based HTTP Client for node.js and the browser. Used for making requests to web servers. On the server-side it uses the native node.js http module, while on the client (browser) it uses XMLHttpRequests.
+
+`axios(config)`
+
+```
+// Send a POST request
+axios({
+  method: 'post',
+  url: '/user/12345',
+  data: {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  }
+});
+```
+
+```
+// GET request for remote image in node.js
+axios({
+  method: 'get',
+  url: 'http://bit.ly/2mTM3nY',
+  responseType: 'stream'
+})
+  .then(function (response) {
+    response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
+  });
+```
+
+
+`axios(url[, config])`
+
+```
+// Send a GET request (default method)
+axios('/user/12345');
+```
+
+### `Request method aliases`
+
+For convenience aliases have been provided for all supported request methods.
+
+- axios.request(config)
+- axios.get(url[, config])
+- axios.delete(url[, config])
+- axios.head(url[, config])
+- axios.options(url[, config])
+- axios.post(url[, data[, config]])
+- axios.put(url[, data[, config]])
+- axios.patch(url[, data[, config]])
+- axios.postForm(url[, data[, config]])
+- axios.putForm(url[, data[, config]])
+- axios.patchForm(url[, data[, config]])
+
+## `unfetch`
+
+unfetch is a tiny 500b fetch “barely-polyfill”
+
+## `Got`
+
+Got is a lighter, human-friendly, and powerful HTTP request library explicitly designed to work with Node.js. It supports pagination, RFC compliant caching, makes an API request again if it fails, supports cookies out of the box, etc
+
+# `Authentication`
+
+## `JSON Web Token`
+
+`JWT`, or` JSON-Web-Token`, is an open standard for sharing security information between two parties — a client and a server. Each JWT contains encoded JSON objects, including a set of claims. JWTs are signed using a cryptographic algorithm to ensure that the claims cannot be altered after the token is issued.
+
+## `Passport js`
+
+Passport.js is authentication middleware for Node.js. It makes implementing authentication in express apps really easy and fast. It is extremely flexible and modular. It uses “strategies” to support authentication using a username and password, Facebook, Twitter, and a lot of other sites.
 
 [TOP](#apis)

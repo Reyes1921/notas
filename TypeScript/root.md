@@ -18,6 +18,8 @@
 
 - [TypeScript Interfaces](interfaces/interfaces.md)
 
+- [Class](class/class.md)
+
 - [Generics](generics/generics.md)
 
 - [Decorators](decorators/decorators.md)

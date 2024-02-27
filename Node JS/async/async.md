@@ -9,7 +9,7 @@ Asynchronous code means that things can happen independently of the main program
 - `Callbacks`
 - `setTimeout`
 - `setInterval`
-- `setImmediate`
+- `setImmediate` (Deprecated)
 
 The `setImmediate` function delays the execution of a function to be called after the current event loops finish all their execution. It’s very similar to calling `setTimeout` with 0 ms delay.
 

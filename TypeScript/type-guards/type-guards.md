@@ -1,6 +1,6 @@
 [Volver al Menú](../root.md)
 
-# `Type Guards`
+# `Type Guards / Narrowing (Embudo)`
 
 Type guards are a way to narrow down the type of a variable. This is useful when you want to do something different depending on the type of a variable.
 
@@ -95,4 +95,4 @@ function example(x: unknown) {
 }
 ```
 
-[TOP](#type-guards)
+[TOP](#type-guards--narrowing-embudo)

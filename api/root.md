@@ -1,3 +1,7 @@
 [Volver al Menú](/readme.md)
 
-# `APIs`
+# `APIs and Authentication`
+
+- [Apis](./api/api.md)
+
+- [Authentication](./auth/root.md)

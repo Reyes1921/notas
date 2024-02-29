@@ -10,6 +10,16 @@ Here is the list of common ways of authentication:
 
 [Token Based Authentication](./tbauth.md)
 
+[Session Based Authentication](./sba.md)
+
 [OAuth](./oauth.md)
 
 [JWT](./jwt.md)
+
+[SSO](./sso.md)
+
+[Cookie Based](./cookieBased.md)
+
+[SAML](./saml.md)
+
+[OpenId](./openId.md)

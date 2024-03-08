@@ -132,18 +132,6 @@ For historical reasons, `aria-*` and `data-*` attributes are written as in HTML 
 
 Converting all these attributes in existing markup can be tedious! We recommend using a converter to translate your existing HTML and SVG to JSX. Converters are very useful in practice, but it’s still worth understanding what is going on so that you can comfortably write JSX on your own.
 
-<h2 style="color:green">Resumen</h2>
-
-Now you know why JSX exists and how to use it in components:
-
-
-- React components group rendering logic together with markup because they are related.
-
-- JSX is similar to HTML, with a few differences. You can use a converter if you need to.
-
-- Error messages will often point you in the right direction to fixing your markup.
-
-
 # `JavaScript in JSX with Curly Braces`
 
 JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to open a window to JavaScript.
@@ -159,17 +147,6 @@ Notice the difference between className="avatar", which specifies an "avatar" CS
 ## `Using curly braces: A window into the JavaScript world`
 
 JSX is a special way of writing JavaScript. That means it’s possible to use JavaScript inside it—with curly braces { }. The example below first declares a name for the scientist, name, then embeds it with curly braces inside the `<h1>`:
-
-```
-export default function TodoList() {
-  const name = 'Gregorio Y. Zara';
-  return (
-    <h1>{name}'s To Do List</h1>
-  );
-}
-
-```
-Try changing the name’s value from 'Gregorio Y. Zara' to 'Hedy Lamarr'. See how the list title changes?
 
 Any JavaScript expression will work between curly braces, including function calls like formatDate():
 

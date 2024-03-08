@@ -254,6 +254,22 @@ In this example, the useMemo hook is used to memoize the calculation of visibleT
 
 The useMemo hook is particularly useful for optimizing performance by caching the result of expensive computations in functional components.
 
+# `useSelector`
+
+Allows you to extract data from the Redux store state for use in this component, using a selector function.
+
+The selector will be called with the entire Redux store state as its only argument. The selector may return any value as a result, including directly returning a value that was nested inside state, or deriving new values. The return value of the selector will be used as the return value of the useSelector() hook.
+
+```
+import React from 'react'
+import { useSelector } from 'react-redux'
+
+export const CounterComponent = () => {
+  const counter = useSelector((state) => state.counter)
+  return <div>{counter}</div>
+}
+```
+
 # `useReducer`
 
 - Es una funcón común y corriente
@@ -339,8 +355,6 @@ React comes with several built-in Hooks like useState, useContext, and useEffect
 You don’t need to extract a custom Hook for every little duplicated bit of code. Some duplication is fine. For example, extracting a useFormInput Hook to wrap a single useState call like earlier is probably unnecessary.
 
 However, whenever you write an Effect, consider whether it would be clearer to also wrap it in a custom Hook. `You shouldn’t need Effects very often`, so if you’re writing one, it means that you need to “step outside React” to synchronize with some external system or to do something that React doesn’t have a built-in API for. Wrapping it into a custom Hook lets you precisely communicate your intent and how the data flows through it.
-
-
 
 [More Info](https://react.dev/learn/reusing-logic-with-custom-hooks)
 

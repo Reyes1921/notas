@@ -117,7 +117,7 @@ El `Store` es el objeto que los reúne. El `store` tiene las siguientes responsa
 
 The word "thunk" is a programming term that means "a piece of code that does some delayed work". Rather than execute some logic now, we can write a function body or code that can be used to perform the work later.
 
-n the same way that Redux code normally uses action creators to generate action objects for dispatching instead of writing action objects by hand, we normally use thunk action creators to generate the thunk functions that are dispatched. A thunk action creator is a function that may have some arguments, and returns a new thunk function. The thunk typically closes over any arguments passed to the action creator, so they can be used in the logic:
+In the same way that Redux code normally uses action creators to generate action objects for dispatching instead of writing action objects by hand, we normally use thunk action creators to generate the thunk functions that are dispatched. A thunk action creator is a function that may have some arguments, and returns a new thunk function. The thunk typically closes over any arguments passed to the action creator, so they can be used in the logic:
 
 ```
 // fetchTodoById is the "thunk action creator"
@@ -246,7 +246,6 @@ export function Counter() {
   )
 }
 ```
-
 
 ## `Installing`
 

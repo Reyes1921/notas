@@ -1,11 +1,29 @@
 [Volver al Menú](../root.md)
 
+## `Basico`
+
+Instalaciones del curso de React de Fernando Herrera
+
+```
+npm init -y
+node index.js
+npm i nodemon -g //ver cambios automaticamente
+nodemon index.js
+npm i express //express
+npm i dotenv
+npm i express-validator
+```
+
+---
+
 ## `Abrir archivo`
+
 ```
 node file.js
 ```
 
-## `Para que no tengamos que levantar el servidor con cada cambio`
+## `Para que no tengamos que levantar el servidor con cada cambio y no tener que usar nodemon`
+
 ```
 node --watch file.js
 ```
@@ -32,6 +50,7 @@ npm install --save express
 ```
 
 ## `Llamar a express`
+
 ```
 const express = require('express');
 ```
@@ -57,3 +76,5 @@ app.listen(port,hostname, ()=>{
     console.log(`Server listening on port http://${hostname}:${port}/`);
 })
 ```
+
+[TOP](#basico)

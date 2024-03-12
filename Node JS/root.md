@@ -16,6 +16,8 @@
 
 - [Command Line Applications](commands/commands.md)
 
-- [APIs](apis/apis.md)  
+- [APIs](apis/apis.md)
 
-- [Comandos](commands/comandos.md)  
+- [Keep App Running](running/running.md)
+
+- [Comandos](commands/comandos.md)

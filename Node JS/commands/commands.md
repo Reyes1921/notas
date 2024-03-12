@@ -10,7 +10,7 @@ Node.js provides the env property under the core module i.e process which hosts 
 
 The following example covers how to accesses the NODE_ENV environment variable, which is set to development by default.
 
-`Note:` The process module does not require a require() method because it is automatically available on it. 
+`Note:` The process module does not require a require() method because it is automatically available on it.
 
 ```
 process.env.NODE_ENV // "development"
@@ -19,6 +19,10 @@ process.env.NODE_ENV // "development"
 ## `dotenv`
 
 dotenv is a zero-dependency module that loads environment variables from a .env file into process.env. Storing configuration in the environment separate from code is based on The Twelve-Factor App methodology.
+
+```
+require("dotenv").config();
+```
 
 ## `process.env`
 
@@ -31,9 +35,9 @@ In Node. js, process. env is a global variable that is injected during runtime. 
 `Exiting of Script Implicitly`
 
 - Using `process.exit()` - process.exit (code)
-- Using `process.kill()` - process.kill(pid[, signal]) 
-- Using `process.on()` - process.on() 
-- Using `process.abort` - process.abort() 
+- Using `process.kill()` - process.kill(pid[, signal])
+- Using `process.on()` - process.on()
+- Using `process.abort` - process.abort()
 
 `Using process.on()`
 
@@ -51,10 +55,10 @@ If your Node.js process is not terminated properly, you can use the exit() funct
 
 `Using process.kill()`
 
-Another suitable method to terminate the Node.js process is to use the process.kill() function. The process.kill is a built-in Node.js method that takes different parameters to work properly. Below is the syntax of the process.kill() method. 
+Another suitable method to terminate the Node.js process is to use the process.kill() function. The process.kill is a built-in Node.js method that takes different parameters to work properly. Below is the syntax of the process.kill() method.
 
 ```
-process.kill(pid[, signal]) 
+process.kill(pid[, signal])
 ```
 
 `Using process.abort`
@@ -62,13 +66,13 @@ process.kill(pid[, signal])
 The process.abort is the similar process like other methods to terminate the process successfully. But the significant difference between this method and others is that it will immediately terminate the node.js program and then create a core file. To explain the abort process, we will be using the same example as above.
 
 ```
-console.log('Code running'); 
-process.on('exit', function(code) { 
- return console.log(`exiting the code ${code}`); 
-}); 
-setTimeout((function() { 
-return process.abort(); 
-}), 5000); 
+console.log('Code running');
+process.on('exit', function(code) {
+ return console.log(`exiting the code ${code}`);
+});
+setTimeout((function() {
+return process.abort();
+}), 5000);
 ```
 
 # `Printing output`

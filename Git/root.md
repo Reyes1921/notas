@@ -6,6 +6,6 @@
 
 - [Git](git.md)
 
-- [GitHub](github.md).
+- [GitHub](github.md)
 
 - [Git Pull](pull.md)

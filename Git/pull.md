@@ -87,6 +87,8 @@ git merge upstream/master
 git push origin master
 ```
 
+Aquí, `[HTTPS]` es el URL que debes copiar del repositorio del propietario.
+
 `NOTA`: Luego de sincronizar tu rama maestra puedes eliminar el repositorio upstream, si lo desea. Pero lo necesitará para actualizar/sincronizar tu repositorio en el futuro, por lo que es una buena práctica conservarlo.
 
 # `Elimina ramas innecesarias`
@@ -96,8 +98,6 @@ Las ramas son creadas para propósitos especiales. Una vez que ese propósito se
 ```
 git branch -d [Nombre de la Rama]
 ```
-
-Aquí, `[HTTPS]` es el URL que debes copiar del repositorio del propietario.
 
 [INFO](https://www.freecodecamp.org/espanol/news/como-hacer-tu-primer-pull-request-en-github/)
 

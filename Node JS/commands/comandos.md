@@ -12,6 +12,10 @@ nodemon index.js
 npm i express //express
 npm i dotenv
 npm i express-validator
+
+npm i mongoose
+npm i bcryptjs
+npm i jsonwebtoken
 ```
 
 ---

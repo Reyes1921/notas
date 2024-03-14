@@ -2,7 +2,6 @@
 
 # `Typescript Types`
 
-
 TypeScript has several built-in types, including:
 
 - `number`
@@ -57,7 +56,6 @@ function noop() {
 }
 ```
 
-
 In JavaScript, a function that doesn’t return any value will implicitly return the value `undefined`. However, `void` and `undefined` are not the same thing in TypeScript.
 
 `void is not the same as undefined.`
@@ -85,7 +83,6 @@ function doSomething(x: string | null) {
 ---
 
 # `Object Types`
-
 
 ## `Interface`
 
@@ -127,7 +124,6 @@ class Car {
 ## `Enum`
 
 Enums is not a type-level extension of JavaScript. It allows a developer to define a set of named constants. Using enums can make it easier to document intent, or create a set of distinct cases. TypeScript provides both numeric and string-based enums.
-
 
 ### `Numeric enums`
 
@@ -330,7 +326,7 @@ let strLength: number = (someValue as string).length;
 console.log(strLength); // Outputs: 20
 ```
 
-n this example, someValue is initially of type any, and we use the as operator to assert that it is of type string before accessing its length property. It’s important to note that type assertions do not change the underlying runtime representation; they are a compile-time construct used for static type checking in TypeScript.
+In this example, someValue is initially of type any, and we use the as operator to assert that it is of type string before accessing its length property. It’s important to note that type assertions do not change the underlying runtime representation; they are a compile-time construct used for static type checking in TypeScript.
 
 ## `As Any`
 

@@ -58,8 +58,6 @@ The keyof operator takes an object type and produces a string or numeric literal
 ```
 type Point = { x: number; y: number };
 type P = keyof Point;
-    
-type P = keyof Point
 ```
 
 [TOP](#combining-types)

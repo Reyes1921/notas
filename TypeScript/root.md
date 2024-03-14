@@ -2,6 +2,8 @@
 
 # `TypeScript`
 
+## `Primera Parte`
+
 - [Intro](intro/intro.md)
 
 - [Typescript Types](types/types.md)
@@ -15,6 +17,8 @@
 - [Type Guards / Narrowing](type-guards/type-guards.md)
 
 - [Functions](functions/functions.md)
+
+## `Segunda Parte`
 
 - [TypeScript Interfaces](interfaces/interfaces.md)
 

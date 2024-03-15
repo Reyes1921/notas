@@ -1,5 +1,7 @@
 [Volver al Menú](root.md)
 
+[Volver a Internet](../internet/root.md)
+
 # `HTTPS`
 
 The Hypertext Transfer Protocol (HTTP) is the foundation of the World Wide Web, and is used to load webpages using hypertext links. HTTP is an application layer protocol designed to transfer information between networked devices and runs on top of other layers of the network protocol stack. A typical flow over HTTP involves a client machine making a request to a server, which then sends a response message.
@@ -9,7 +11,6 @@ The Hypertext Transfer Protocol (HTTP) is the foundation of the World Wide Web, 
 - Privacy means that no one can eavesdrop on your messages
 - Integrity means that the message is not manipulated on the way to its destination.
 - Identification means that I can check that this message is coming from Compugter.
-
 
 # `What is in an HTTP request?`
 
@@ -84,7 +85,6 @@ Successful HTTP responses to ‘GET’ requests generally have a body which cont
 
 Keep in mind that HTTP is a “stateless” protocol, which means that each command runs independent of any other command. In the original spec, HTTP requests each created and closed a TCP connection. In newer versions of the HTTP protocol (HTTP 1.1 and above), persistent connection allows for multiple HTTP requests to pass over a persistent TCP connection, improving resource consumption. In the context of DoS or DDoS attacks, HTTP requests in large quantities can be used to mount an attack on a target device, and are considered part of application layer attacks or layer 7 attacks.
 
-
 # `SSL Secure Socket Layer`
 
 SSL is a dinosaur by Internet standards. The first version was never released and version 2 launched with the browser Netscape 1.1 in 1995
@@ -97,10 +97,9 @@ To add to the confusion, SSL 3.0 was officially deprecated in 2015.
 
 TLS 1.3 was approved in march 2018 and your browser might already support it. Click here to check the current TLS version for your browser. But come back to finish the story.
 
-
 # `Certificate Authorities`
 
-A certificate authority (CA) is a third-party organization with 3 main objectives: 
+A certificate authority (CA) is a third-party organization with 3 main objectives:
 
 - Issuing certificates.
 - Confirming the identity of the certificate owner.
@@ -112,8 +111,6 @@ A root store is basically a database of trusted CAs
 
 Apple, Windows, and Mozilla run their own root stores that they pre-install in your computer or device.
 
-
 [Mas Informacion](https://howhttps.works/why-do-we-need-https/)
-
 
 [TOP](#https)

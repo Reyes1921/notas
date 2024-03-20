@@ -29,4 +29,14 @@ In cryptography, `scrypt` (pronounced "ess crypt") is a password-based key deriv
 
 `bcrypt` is a password hashing function, that has been proven reliable and secure since it’s release in 1999. It has been implemented into most commonly-used programming languages.
 
+`bcrypt` computes a hash of the given string using the Blowfish cipher, returning a string in the Modular Crypt Format usually expected in the shadow password file on many Unix systems.
+
+```
+bcrypt(string, cost)
+```
+
+The cost argument is optional and will default to 10 if unspecified.
+
+Since a `bcrypt` hash value includes a randomly selected salt, each call to this function will return a different value, even if the given string and cost are the same. Using this function directly with resource arguments will therefore cause spurious diffs. We recommend using this function only in provisioner blocks, or in data resources whose results are only used in provisioner blocks.
+
 [TOP](#hashing-algorithms)

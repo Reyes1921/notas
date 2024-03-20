@@ -22,6 +22,8 @@
 
 [DOM](/DOM/root.md)
 
+[Software design architecture](/Software%20design%20architecture/root.md)
+
 # `EXTRAS`
 
 [Aditional Articles](/Additional%20articles/root.md)

@@ -11,4 +11,6 @@ Learn about the security of your server and how to secure it. Here are some of t
 - `Use SSL/TLS for communication`: Use Secure Sockets Layer (SSL) or Transport Layer Security (TLS) to encrypt communication between your server and client devices. This will help to protect against man-in-the-middle attacks and other types of cyber threats.
 - `Use a intrusion detection system (IDS)`: An IDS monitors network traffic and alerts you to any suspicious activity, which can help you to identify and respond to potential threats in a timely manner.
 
-- ``Enable two-factor authentication`: Two-factor authentication adds an extra layer of security to your accounts by requiring a second form of authentication, such as a code sent to your phone, in addition to your password.
+- `Enable two-factor authentication`: Two-factor authentication adds an extra layer of security to your accounts by requiring a second form of authentication, such as a code sent to your phone, in addition to your password.
+
+[TOP](#server-security)

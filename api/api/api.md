@@ -58,10 +58,27 @@ For example, a text file containing HTML would be specified with the type text/h
 
 `Other types and commonly used subtypes:`
 
-`image` — `image/png`, `image/jpeg`, `image/gif`
-`audio` — `audio/wav`, `audio/mpeg`
-`video` — `video/mp4`, `video/ogg`
-`application` — `application/json`, `application/pdf`, `application/xml`, `application/octet-stream`
+`image`
+
+- `image/png`,
+- `image/jpeg`,
+- `image/gif`,
+
+`audio`
+
+- `audio/wav`,
+- `audio/mpeg`,
+
+`video`
+
+- `video/mp4`,
+- `video/ogg`
+
+`application`
+
+- `application/json`,
+- `application/pdf`, `application/xml`,
+- `application/octet-stream`
 
 For example, a client accessing a resource with id 23 in an articles resource on a server might send a GET request like this:
 

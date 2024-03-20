@@ -36,7 +36,7 @@ El concepto clave aquí es el origen (`origin`), triple combinación de dominio/
 
 Las solicitudes de origen cruzado `Cross-origin` requests (aquellas que son enviadas hacia otro dominio --incluso subdominio–, protocolo o puerto), requieren de unas cabeceras especiales desde el sitio remoto.
 
-Esta política es denominada `“CORS”`, por sus siglas en inglés `Cross-Origin` Resource Sharing.
+Esta política es denominada `“CORS”`, por sus siglas en inglés `Cross-Origin Resource Sharing`.
 
 ## `¿Por que CORS es necesario?, Una breve historia`
 
@@ -70,13 +70,13 @@ Una solicitud es segura si cumple dos condiciones:
 
 - Cabeceras seguras – Las únicas cabeceras permitidas son:
 
-- - Accept,
+  - Accept,
 
-- - Accept-Language,
+  - Accept-Language,
 
-- - Content-Language,
+  - Content-Language,
 
-- - Content-Type con el valor `application/x-www-form-urlencoded`, `multipart/form-data` o `text/plain`.
+  - Content-Type con el valor `application/x-www-form-urlencoded`, `multipart/form-data` o `text/plain`.
     Cualquier otra solicitud es considerada “insegura”. Por lo tanto, una solicitud con el método `PUT` o con una cabecera HTTP` API-Key` no cumple con las limitaciones.
 
 La diferencia esencial es que una solicitud segura puede ser realizada mediante un `<form>` o un `<script>`, sin la necesidad de utilizar un método especial.

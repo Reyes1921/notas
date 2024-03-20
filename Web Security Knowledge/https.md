@@ -87,8 +87,6 @@ Keep in mind that HTTP is a “stateless” protocol, which means that each comm
 
 # `SSL Secure Socket Layer`
 
-SSL is a dinosaur by Internet standards. The first version was never released and version 2 launched with the browser Netscape 1.1 in 1995
-
 A protocol created by Netscape. SSL is a dinosaur by Internet standards. The first version was never released and version 2 launched with the browser Netscape 1.1 in 1995. Later that year Netscape released version 3 because version 2 had some major security problems. Netscape gave control of SSL protocol to the IETF: Internet Engineering Task Force. Before 1999 ended, IETF released TLS version 1.0 (Which was really SSL 3.1).
 
 `SSL was renamed to TLS: Transport Layer Security. Creating confusion and chaos still to this day.`

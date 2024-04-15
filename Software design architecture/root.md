@@ -4,18 +4,18 @@
 
 - [Clean Code Principles](./clean-code.md)
 
-- [Programming Paradigms](./paradigms.md.md)
+- [Programming Paradigms](./paradigms.md)
 
-- [Object Oriented Programming](./object-oriented.mde.md)
+- [Object Oriented Programming](./object-oriented.md)
 
-- [Software Design Principles](./software-design-principles.md.md)
+- [Software Design Principles](./software-design-principles.md)
 
-- [Design Patterns](./design-patterns.md.md)
+- [Design Patterns](./design-patterns.md)
 
-- [Architectural Principles](./architectural-principles.md.md)
+- [Architectural Principles](./architectural-principles.md)
 
-- [Architectural Styles](./architectural-styles.md.md)
+- [Architectural Styles](./architectural-styles.md)
 
-- [Architectural Patterns](./architectural-patterns.md.md)
+- [Architectural Patterns](./architectural-patterns.md)
 
-- [Enterprise Patterns](./enterprise-patterns.md.md)
+- [Enterprise Patterns](./enterprise-patterns.md)

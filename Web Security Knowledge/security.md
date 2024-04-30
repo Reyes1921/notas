@@ -2,7 +2,7 @@
 
 # `Content Security Policy`
 
-Content Security Policy (`CSP`) is a security standard designed to help prevent certain types of attacks , such as Cross-Site Scripting (XSS), clickjacking , and code injection. It is implemented through the use of a HTTP response header named "Content-Security-Policy" in modern web browsers. The `CSP` header can specify which sources of content (such as scripts, images, stylesheets, and plugins) are allowed to be loaded and executed by a web page. `CSP` is not intended to be the first line of defense against content injection vulnerabilities but rather it is best used as defense-in-depth . `CSP` can be used to supplement other security mechanisms and add an additional layer of protection against attacks.
+Content Security Policy (`CSP`) is a security standard designed to help prevent certain types of attacks , such as Cross-Site Scripting (XSS) is an attack in which an attacker injects malicious executable scripts into the code of a trusted application or website, clickjacking , and code injection. It is implemented through the use of a HTTP response header named "Content-Security-Policy" in modern web browsers. The `CSP` header can specify which sources of content (such as scripts, images, stylesheets, and plugins) are allowed to be loaded and executed by a web page. `CSP` is not intended to be the first line of defense against content injection vulnerabilities but rather it is best used as defense-in-depth . `CSP` can be used to supplement other security mechanisms and add an additional layer of protection against attacks.
 
 # `Using CSP`
 
@@ -17,7 +17,6 @@ Content-Security-Policy: policy
 ```
 
 The policy is a string containing the policy directives describing your Content Security Policy.
-
 
 # `Examples: Common use cases`
 
@@ -49,11 +48,12 @@ Content-Security-Policy: default-src 'self'; img-src *; media-src example.org ex
 
 Here, by default, content is only permitted from the document's origin, with the following exceptions:
 
-- Images may load from anywhere (note the "*" wildcard).
+- Images may load from anywhere (note the "\*" wildcard).
 - Media is only allowed from example.org and example.net (and not from subdomains of those sites).
 - Executable script is only allowed from userscripts.example.com.
 
 ### `Example 4`
+
 A website administrator for an online banking site wants to ensure that all its content is loaded using TLS, in order to prevent attackers from eavesdropping on requests.
 
 ```

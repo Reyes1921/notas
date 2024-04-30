@@ -18,13 +18,11 @@ A domain name has a simple structure made of several parts (it might be one part
 
 TLDs tell users the general purpose of the service behind the domain name. The most generic TLDs (.com, .org, .net) don't require web services to meet any particular criteria, but some TLDs enforce stricter policies so it is clearer what their purpose is. For example:
 
-
 - Local TLDs such as .us, .fr, or .se can require the service to be provided in a given language or hosted in a certain country — they are supposed to indicate a resource in a particular language or country.
 
 - TLDs containing .gov are only allowed to be used by government departments.
 
 - The .edu TLD is only for use by educational and academic institutions.
-
 
 ## `Label (or component)`
 
@@ -41,3 +39,5 @@ You cannot "buy a domain name". This is so that unused domain names eventually b
 Instead, you pay for the right to use a domain name for one or more years. You can renew your right, and your renewal has priority over other people's applications. But you never own the domain name.
 
 Companies called registrars use domain name registries to keep track of technical and administrative information connecting you to your domain name.
+
+[TOP](#domain-name)

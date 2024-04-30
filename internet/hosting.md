@@ -47,3 +47,5 @@ Además, en caso de un problema físico con cualquier máquina, el sitio web per
 ## `Dedicated Server (Servidor dedicado)`
 
 Dedicated server hosting essentially means that your website has its own server all to itself. It offers immense power and flexibility, but usually comes at a premium. As such, it’s important to do your research before opting to purchase this type of plan.
+
+[TOP](#what-is-hosting)

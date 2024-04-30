@@ -20,21 +20,18 @@ ping google.com
 
 Single Page Applications (SPAs) and Progressive Web Applications (PWAs) are both modern web application architectures that offer enhanced user experiences. However, there are distinct differences between the two.
 
-
 ## `SPAs:`
-
 
 - `Definition`: SPAs are web applications that load a single HTML page and dynamically update that page as the user interacts with the app.
 
 - `Development`: SPAs are typically developed using frameworks like Angular or libraries like React.
-Offline Capability: SPAs do not have inherent offline capabilities and rely on the server for content updates.
+  Offline Capability: SPAs do not have inherent offline capabilities and rely on the server for content updates.
 
 - `Cost and Development Speed`: SPA development is usually faster and more cost-effective than PWA development due to the availability of ready-made libraries and frameworks.
 
 - `Security`: SPAs do not have specific security requirements beyond standard web security practices.
 
 ## `PWAs:`
-
 
 - `Definition`: PWAs are web applications that leverage modern web capabilities to deliver an app-like experience to users. They can be installed on a user's device and offer offline functionality.
 
@@ -45,7 +42,7 @@ Offline Capability: SPAs do not have inherent offline capabilities and rely on t
 - `Battery Consumption`: PWAs may consume more battery compared to SPAs.
 
 - `Accessibility`: PWAs allow users to add a shortcut to the application, making it easy for them to use it again.
-Cost and Development Speed: PWA development may be more time-consuming and costly compared to SPA development due to the need for specific offline and installation capabilities .
+  Cost and Development Speed: PWA development may be more time-consuming and costly compared to SPA development due to the need for specific offline and installation capabilities .
 
 # `Kernel`:
 
@@ -189,3 +186,5 @@ Es la capa que se encarga de la presentacion de los datos, es decir, la capa que
 ## `Paquetes -Internet Layer`:
 
 Tramas -Network Access Layer:
+
+[TOP](#ver-ip-de-una-pagina-web)

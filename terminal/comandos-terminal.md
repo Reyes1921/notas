@@ -326,3 +326,5 @@ El comando top también puede ayudarte a identificar y terminar un proceso que p
 `jed` tiene una interfaz de menús desplegables que permite a los usuarios realizar acciones sin necesidad de introducir combinaciones o comandos de teclado. Al igual que vi, dispone de modos para cargar módulos o plugins para escribir textos específicos.
 
 `htop` El comando htop es un programa interactivo que monitoriza los recursos del sistema y los procesos del servidor en tiempo real. Está disponible en la mayoría de las distribuciones de Linux y puedes instalarlo con el gestor de paquetes predeterminado.
+
+[TOP](#comandos)

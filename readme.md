@@ -24,6 +24,8 @@
 
 [Software design architecture](/Software%20design%20architecture/root.md)
 
+[Data Structures & Algorithms](/Data%20Structures%20&%20Algorithms/root.md)
+
 # `EXTRAS`
 
 [Aditional Articles](/Additional%20articles/root.md)

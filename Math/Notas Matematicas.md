@@ -88,7 +88,7 @@ El logaritmo natural suele denotarse por `ln(x)` o como `log base e (x)`, y en a
 
 # `Funciones`
 
-Una funcion enre dos conjuntos de A y B es una asociacion de f que a casa elemento de A le asigna elemento de B.
+Una funcion entre dos conjuntos de A y B es una asociacion de f que a casa elemento de A le asigna elemento de B.
 
 # `Derivada`
 
@@ -170,3 +170,5 @@ Es el dato que esta en el medio de los datos ordenados.
 - La entidad de Euler (La ecuacion mas bella del mundo)
   `e**i*pi` + 1 = 0
 - Nadie sabe si hay numeros perfectos impares.
+
+[TOP](#math)

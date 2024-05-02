@@ -15,3 +15,11 @@
 - [Tree Data Structures](./tree-data-structures.md)
 
 ## `Segunda Parte`
+
+- [Graph Data Structure](./graph-data-structure.md)
+
+- [Advanced Data Structures](./advanced-data-structures.md)
+
+- [Indexing](./indexing.md)
+
+- [Problem Solving Techniques](./problem-solving-techniques.md)

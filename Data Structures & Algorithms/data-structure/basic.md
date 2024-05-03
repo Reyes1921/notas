@@ -136,4 +136,10 @@ Hash Table is a data structure which stores data in an associative manner. In a 
 
 Thus, it becomes a data structure in which insertion and search operations are very fast irrespective of the size of the data. Hash Table uses an array as a storage medium and uses hash technique to generate an index where an element is to be inserted or is to be located from.
 
+# `Heap`
+
+Is A Type Of Binary Tree Where Each Parent Node Is Either Less Than Or Equal To Its Child Node (Min Heap) Or Greater Than Or Equal To Its Child Node (Max Heap). It Is Used For Tasks Such As Sorting Methods, Priority Queues, Or Scheduling Programs.
+
+<img src="./MinHeapAndMaxHeap1.png">
+
 [TOP](#basic-data-structures)

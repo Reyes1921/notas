@@ -26,6 +26,8 @@
 
 [Data Structures & Algorithms](/Data%20Structures%20&%20Algorithms/root.md)
 
+[Software Architect ](/Software%20Architect/root.md)
+
 # `EXTRAS`
 
 [Aditional Articles](/Additional%20articles/root.md)

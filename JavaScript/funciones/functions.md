@@ -22,6 +22,7 @@ sayHi(); // Hola         // esto también funciona (por qué no lo haría)
 ## `Funciones anónimas`
 
 Las funciones anónimas son funciones que no tienen nombre.
+
 ## `Declaración de Función `
 
 Una Declaración de Función sólo es visible dentro del bloque de código en el que reside.
@@ -486,7 +487,7 @@ Como recordamos, las funciones de flecha no tienen su propio this. Ahora sabemos
 
 # `Scope and function stack`
 
-## `Scope`
+# `Scope`
 
 A space or environment in which a particular variable or function can be accessed or used. Accessibility of this variable or function depends on where it is defined.
 
@@ -516,7 +517,7 @@ Cuando una función realiza una llamada anidada, sucede lo siguiente:
 
 [Ejemplo](https://es.javascript.info/recursion#el-contexto-de-ejecucion-y-pila)
 
-### `Recursion`
+# `Recursion`
 
 La recursión es un patrón de programación que es útil en situaciones en las que una tarea puede dividirse naturalmente en varias tareas del mismo tipo, pero más simples. O cuando una tarea se puede simplificar en una acción fácil más una variante más simple de la misma tarea. O, como veremos pronto, tratar con ciertas estructuras de datos.
 
@@ -609,13 +610,13 @@ pow(2, 1) = 2
 
 - Por ejemplo, la lista enlazada se puede definir como una estructura de datos que consiste en un objeto que hace referencia a una lista (o nulo).
 
-### `Lexical scoping (Ámbito o Entorno léxico)`
+# `Lexical scoping (Ámbito o Entorno léxico)`
 
 The lexical environment for a function f simply refers to the environment enclosing that function's definition in the source code.
 
 El ámbito léxico se refiere al alcance de una variable en el código fuente, y es determinado por el contexto en el que se declara la variable. Este tipo de alcance es establecido en tiempo de compilación y permanece constante durante la ejecución del programa. Esto significa que una variable definida dentro de una función solo será accesible dentro de esa función, y no en otras funciones o bloques de código fuera de ella. Esto asegura que las variables tengan un comportamiento predecible y evita posibles conflictos entre nombres de variables en diferentes partes del programa.
 
-#### `Paso 1. Variables`
+## `Paso 1. Variables`
 
 En JavaScript, todas las funciones en ejecución, el bloque de código {...} y el script en su conjunto tienen un objeto interno (oculto) asociado, conocido como Entorno léxico.
 
@@ -632,7 +633,7 @@ El “entorno léxico” es un objeto de especificación: solo existe “teóric
 
 Los motores de JavaScript también pueden optimizarlo, descartar variables que no se utilizan para ahorrar memoria y realizar otros trucos internos, siempre que el comportamiento visible permanezca como se describe.
 
-### `Paso 2. Declaración de funciones`
+## `Paso 2. Declaración de funciones`
 
 Una función también es un valor, como una variable.
 
@@ -642,7 +643,7 @@ Cuando se crea un entorno léxico, una declaración de función se convierte inm
 
 Es por eso que podemos usar una función, declarada como declaración de función, incluso antes de la declaración misma.
 
-### `Paso 3. Entorno léxico interno y externo`
+## `Paso 3. Entorno léxico interno y externo`
 
 Cuando se ejecuta una función, al comienzo de la llamada se crea automáticamente un nuevo entorno léxico para almacenar variables y parámetros locales de la llamada.
 
@@ -652,11 +653,11 @@ Cuando el código quiere acceder a una variable: primero se busca el entorno lé
 
 Si no se encuentra una variable en ninguna parte, en el modo estricto se trata de un error (sin use strict, una asignación a una variable no existente crea una nueva variable global, por compatibilidad con el código antiguo).
 
-### `Paso 4. Devolviendo una función`
+## `Paso 4. Devolviendo una función`
 
 Todas las funciones recuerdan el entorno léxico en el que fueron realizadas. Técnicamente, no hay magia aquí: todas las funciones tienen la propiedad oculta llamada `[[Environment]`, que mantiene la referencia al entorno léxico donde se creó la función.
 
-## `Closure (clausura)`
+# `Closure (clausura)`
 
 Existe un término general de programación “closure” que los desarrolladores generalmente deben conocer.
 

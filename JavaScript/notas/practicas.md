@@ -102,6 +102,33 @@ function factorial(n) {
 alert( factorial(5) ); //120
 ```
 
+## `Fibonacci (usando recursividad) `
+
+```
+const fibonacci = (n) =>{
+  if (n === 0) return 0
+  if (n === 1) return 1
+  return fibonacci(n-1) + fibonacci(n-2)
+}
+```
+
+## `Fibonacci (sin recursividad) `
+
+```
+const fibonacci = (n) =>{
+  let x = 1, y = 0, aux
+
+  while(n >= 0){
+    aux = x
+    x = x + y
+    y = aux
+    n--
+  }
+
+  return y
+}
+```
+
 ## - `Ver si un objeto tiene una propiedad y de paso es thrusty`
 
 ```
@@ -160,6 +187,48 @@ array.forEach(function(numero){
 let obj = { a: 1, b: 2, c: 3 };
 
 let objCopy = { ...obj };
+```
+
+## - `Caulcular timepos si son menor a 7 horas sobra si no falta`
+
+```
+function calculateTime(deliveries) {
+  const signo = {true:'-', false:''}
+  let time = 7*3600
+
+  for(const delivery of deliveries){
+    const [hours,minutes,seconds] = delivery.split(':')
+    time += - hours*3600 - minutes*60 - seconds
+  }
+  const bool = time > 0
+  time = Math.abs(time)
+
+  const seconds = time%60
+  const minutes = Math.trunc(time/60)%60
+  const hours = (Math.trunc(time/60)-minutes)/60
+
+
+  const formated_time = `${hours}`.padStart(2,'0') + ':'
+                        +`${minutes}`.padStart(2,'0')+ ':'
+                        +`${seconds}`.padStart(2,'0')
+
+  return  signo[bool] + formated_time
+}
+```
+
+- ## `Hora en formato hh:mm:ss cuando se tienen los segundos`
+
+```
+const telLTime = (segundos) =>{
+  let seconds = segundos % 60,
+      minutes = Math.trunc(time/60)%60
+      hours = (Math.trunc(time/60)-minutes)/60
+
+
+      // minutes = Math.floor((segundos % 3600) / 60)
+      // hours = Math.floor(segundos / 3600)
+  return `${hours}`.padStart(2,'0') + ':' + `${minutes}`.padStart(2,'0') + ':' + `${seconds}`.padStart(2,'0')
+}
 ```
 
 # - `Pendientes`

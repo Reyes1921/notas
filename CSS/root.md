@@ -4,7 +4,6 @@
 
 - [Resumen y chuleta](resumen.md)
 
-
 # `CSS Basics`
 
 - [Selector](Selector/selector.md)
@@ -14,6 +13,8 @@
 - [Specificity](Specificity/specificity.md)
 
 - [Inheritance](Inheritance/Inheritance.md)
+
+- [Functions](functions/functions.md)
 
 - [Color](color/color.md)
 

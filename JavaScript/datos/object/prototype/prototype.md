@@ -77,6 +77,7 @@ El bucle `for..in` también itera sobre las propiedades heredadas.
 Si no queremos eso, y quisiéramos excluir las propiedades heredadas, hay un método incorporado `obj.hasOwnProperty(key)` (“Own” significa “Propia”): devuelve `true` si `obj` tiene la propiedad interna (no heredada) llamada `key`.
 
 Entonces podemos filtrar las propiedades heredadas (o hacer algo más con ellas):
+
 ```
 let animal = {
   eats: true
@@ -110,8 +111,7 @@ JavaScript tiene herencia prototípica desde sus comienzos. Era una de las carac
 
 Pero en los viejos tiempos no había acceso directo a ella. Lo único que funcionaba de manera confiable era una propiedad "`prototype`" de la función constructora, la que describimos en este capítulo. Por ello hay muchos scripts que todavía lo usan.
 
-
-[mas informacion](https://es.javascript.info/function-prototype)
+[mas información](https://es.javascript.info/function-prototype)
 
 <h2 style="color: green">Resumen</h2>
 
@@ -124,12 +124,14 @@ Todo es bastante simple, solo algunas notas para aclarar las cosas:
 - La propiedad "prototype" solo tiene este efecto especial cuando se establece en una función de constructor y se invoca con new.
 
 En los objetos normales, el prototype no es nada especial:
+
 ```
 let user = {
   name: "John",
   prototype: "Bla-bla" // sin magia en absoluto
 };
 ```
+
 Por defecto, todas las funciones tienen F.prototype = {constructor: F}, por lo que podemos obtener el constructor de un objeto accediendo a su propiedad "constructor".
 
 # `Prototipos nativos`
@@ -163,6 +165,7 @@ Los valores especiales `null` y `undefined` se distinguen. No tienen objetos con
 ## `Cambiando prototipos nativos`
 
 Los prototipos nativos pueden ser modificados. Por ejemplo, si agregamos un método a String.prototype, estará disponible para todas las cadenas:
+
 ```
 String.prototype.show = function() {
   alert(this);
@@ -170,13 +173,14 @@ String.prototype.show = function() {
 
 "BOOM!".show(); // BOOM!
 ```
+
 Durante el proceso de desarrollo, podemos tener ideas para nuevos métodos integrados que nos gustaría tener, y podemos sentir la tentación de agregarlos a los prototipos nativos. Pero eso es generalmente una mala idea.
 
 <h2 style='color: green'>Resumen</h2>
 
 - Todos los objetos integrados siguen el mismo patrón:
-    - Los métodos se almacenan en el prototipo (`Array.prototype`, `Object.prototype`, `Date.prototype`, etc.)
-    - El objeto en sí solo almacena los datos (elementos de arreglo, propiedades de objeto, la fecha)
+  - Los métodos se almacenan en el prototipo (`Array.prototype`, `Object.prototype`, `Date.prototype`, etc.)
+  - El objeto en sí solo almacena los datos (elementos de arreglo, propiedades de objeto, la fecha)
 - Los primitivos también almacenan métodos en prototipos de objetos contenedores: `Number.prototype`, `String.prototype` y `Boolean.prototype`. Solo undefined y null no tienen objetos contenedores.
 - Los prototipos integrados se pueden modificar o completar con nuevos métodos. Pero no se recomienda cambiarlos. El único caso permitido es probablemente cuando agregamos un nuevo estándar que aún no es soportado por el motor de JavaScript.
 
@@ -201,18 +205,19 @@ Aunque hay un método especial para esto también:
 
 - Para crear un objeto con un prototipo dado, use:
 
-    - sintaxis literal: `{ __proto__: ... }`, permite especificar multiples propiedades
-    - o `Object.create(proto, [descriptors])`, permite especificar descriptores de propiedad.
+  - sintaxis literal: `{ __proto__: ... }`, permite especificar multiples propiedades
+  - o `Object.create(proto, [descriptors])`, permite especificar descriptores de propiedad.
 
-    El `Object.create` brinda una forma fácil de hacer la copia superficial de un objeto con todos sus descriptores:
-    ```
-    let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj));
-    ```
+  El `Object.create` brinda una forma fácil de hacer la copia superficial de un objeto con todos sus descriptores:
+
+  ```
+  let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj));
+  ```
 
 - Los métodos modernos para obtener y establecer el prototipo son:
 
-    - `Object.getPrototypeOf(obj)` – devuelve el `[[Prototype]]` de obj (igual que el getter de `__proto__`).
-    - `Object.setPrototypeOf(obj, proto)` – establece el `[[Prototype]]` de obj en proto (igual que el setter de `__proto__`).
+  - `Object.getPrototypeOf(obj)` – devuelve el `[[Prototype]]` de obj (igual que el getter de `__proto__`).
+  - `Object.setPrototypeOf(obj, proto)` – establece el `[[Prototype]]` de obj en proto (igual que el setter de `__proto__`).
 
 - No está recomendado obtener y establecer el prototipo usando los getter/setter nativos de `__proto__`. Ahora están en el Anexo B de la especificación.
 

@@ -16,7 +16,6 @@ También podemos acceder a las cookies desde el navegador usando la propiedad do
 
 Hay muchas cosas intrincadas acerca de las cookies y sus opciones. En este artículo las vamos a ver en detalle.
 
-
 ## `Leyendo a document.cookie`
 
 El valor de document.cookie consiste de pares name=value delimitados por ;. Cada uno es una cookie separada.
@@ -233,6 +232,7 @@ function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 ```
+
 Aquí new RegExp se genera dinámicamente para coincidir ; `name=<value>`.
 
 Nota que el valor de una cookie está codificado, entonces getCookie usa una función integrada decodeURIComponent para decodificarla.
@@ -304,7 +304,6 @@ Naturalmente, a algunos no les gusta ser seguidos, así que los navegadores perm
 
 Además, algunos navegadores modernos emplean políticas especiales para tales cookies:
 
-
 - Safari no permite cookies de terceros en absoluto.
 
 - Firefox viene con una “lista negra” de dominios de terceros y bloquea las cookies de tales orígenes.
@@ -329,16 +328,15 @@ Pero si vamos a configurar una cookie con una sesión de autenticación o un id 
 
 Los sitios web generalmente tienen dos variantes para cumplir con el GDPR. Debes de haberlas visto en la web:
 
--   Si un sitio web quiere establecer cookies de seguimiento solo para usuarios autenticados.
+- Si un sitio web quiere establecer cookies de seguimiento solo para usuarios autenticados.
 
-    Para hacerlo, el form de registro debe tener un checkbox como: “aceptar la política de privacidad” (que describe cómo las cookies son usadas), el usuario debe marcarlo, entonces el sitio web es libre para establecer cookies de autenticación.
+  Para hacerlo, el form de registro debe tener un checkbox como: “aceptar la política de privacidad” (que describe cómo las cookies son usadas), el usuario debe marcarlo, entonces el sitio web es libre para establecer cookies de autenticación.
 
--   Si un sitio web quiere establecer cookies de seguimiento a todo visitante.
+- Si un sitio web quiere establecer cookies de seguimiento a todo visitante.
 
-    Para hacerlo legalmente, el sitio web muestra un mensaje del tipo “pantalla de bienvenida (splash screen)” a los recién llegados que les pide aceptar las cookies. Entonces el sitio web puede configurarlas y les deja ver el contenido. Esto puede ser molesto para el visitante. A nadie le gusta que aparezca una pantalla modal con la obligación de cliquear en ella en lugar del contenido. Pero el GDPR requiere el acuerdo explícito.
+  Para hacerlo legalmente, el sitio web muestra un mensaje del tipo “pantalla de bienvenida (splash screen)” a los recién llegados que les pide aceptar las cookies. Entonces el sitio web puede configurarlas y les deja ver el contenido. Esto puede ser molesto para el visitante. A nadie le gusta que aparezca una pantalla modal con la obligación de cliquear en ella en lugar del contenido. Pero el GDPR requiere el acuerdo explícito.
 
 El GDPR no trata solo de cookies, también es acerca de otros problemas relacionados a la privacidad, pero eso va más allá de nuestro objetivo.
-
 
 # `LocalStorage, sessionStorage`
 
@@ -360,7 +358,6 @@ Ambos objetos de almacenaje proveen los mismos métodos y propiedades:
 - `length` – el número de ítems almacenados.
 
 Como puedes ver, es como una colección Map (setItem/getItem/removeItem), pero también permite el acceso a través de index con key(index).
-
 
 ## `Demo de localStorage`
 
@@ -448,6 +445,7 @@ Esta última opción funciona, ya que Object.keys solo devuelve las claves que p
 Hay que tener en cuenta que tanto la clave como el valor deben ser strings.
 
 Si fueran de cualquier otro tipo, como un número o un objeto, se convertirían a cadena de texto automáticamente:
+
 ```
 localStorage.user = {name: "John"};
 alert(localStorage.user); // [object Object]
@@ -470,8 +468,8 @@ El objeto `sessionStorage` se utiliza mucho menos que `localStorage`.
 Las propiedades y métodos son los mismos, pero es mucho más limitado:
 
 - `sessionStorage` solo existe dentro de la pestaña actual del navegador.
-    - Otra pestaña con la misma página tendrá un almacenaje distinto.
-    - Pero se comparte entre iframes en la pestaña (asumiendo que tengan el mismo orígen).
+  - Otra pestaña con la misma página tendrá un almacenaje distinto.
+  - Pero se comparte entre iframes en la pestaña (asumiendo que tengan el mismo orígen).
 - Los datos sobreviven un refresco de página, pero no cerrar/abrir la pestaña.
 
 Ejecuta éste código…
@@ -550,7 +548,7 @@ Los objetos de almacenaje web `localStorage` y `sessionStorage` permiten guardar
 
 # `IndexedDB`
 
-``IndexedDB`` es una base de datos construida dentro del navegador, mucho más potente que `localStorage`.
+`IndexedDB` es una base de datos construida dentro del navegador, mucho más potente que `localStorage`.
 
 - Almacena casi todo tipo de valores por claves, tipos de clave múltiple.
 - Soporta transacciones para confiabilidad.
@@ -563,6 +561,6 @@ La interfaz nativa de `IndexedDB`, descrita en la https://www.w3.org/TR/IndexedD
 
 También podemos usar `async/await` con la ayuda de un contenedor basado en promesas como idb https://github.com/jakearchibald/idb. Aunque esto es muy conveniente, hay que tener en cuenta que el contenedor no es perfecto y no puede reemplazar a los eventos en todos los casos. Así que comenzaremos con eventos y, cuando hayamos avanzado en el entendimiento de IndexedDb, usaremos el contenedor.
 
-[Mas informacion](https://es.javascript.info/indexeddb)
+[Mas información](https://es.javascript.info/indexeddb)
 
 [TOP](#storing-data-in-the-browser)

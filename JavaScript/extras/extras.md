@@ -65,7 +65,6 @@ while (let i = 0) { // ❌ SyntaxError
 }
 ```
 
-
 ## `Sentencias(Statement) / Oraciones`
 
 Acciones que son ejecutadas para que nuestro programa siga la logica que queremos.
@@ -352,7 +351,7 @@ Las propiedades de objeto, aparte de un value, tienen tres atributos especiales 
 - `configurable` – si es true, la propiedad puede ser borrada y estos atributos pueden ser modificados, de otra forma no.
   No los vimos hasta ahora porque generalmente no se muestran. Cuando creamos una propiedad “de la forma usual”, todos ellos son true. Pero podemos cambiarlos en cualquier momento.
 
-Mas informacion [aqui](https://es.javascript.info/property-descriptors)
+Mas información [aqui](https://es.javascript.info/property-descriptors)
 
 # `"Getters" y "setters" de propiedad`
 
@@ -362,7 +361,7 @@ El primer tipo son las propiedades de datos. Ya sabemos cómo trabajar con ellas
 
 El segundo tipo de propiedades es algo nuevo. Son las propiedades de acceso o accessors. Son, en esencia, funciones que se ejecutan para obtener (“get”) y asignar (“set”) un valor, pero que para un código externo se ven como propiedades normales.
 
-Mas informacion [aqui](https://es.javascript.info/property-accessors)
+Mas información [aqui](https://es.javascript.info/property-accessors)
 
 # `Currificación`
 

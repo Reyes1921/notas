@@ -56,6 +56,7 @@ Toma en cuenta que dentro de onclick usamos comillas simples, porque el atributo
 Un atributo HTML no es un lugar conveniente para escribir un motón de código, así que mejor creamos una función JavaScript y la llamamos allí.
 
 Aquí un click ejecuta la función countRabbits():
+
 ```
 <script>
   function countRabbits() {
@@ -75,6 +76,7 @@ Como ya sabemos, los nombres de los atributos HTML no distinguen entre mayúscul
 Podemos asignar un handler usando una propiedad del DOM `on<event>`.
 
 Por ejemplo, elem.onclick:
+
 ```
 <input id="elem" type="button" value="Haz click en mí">
 <script>
@@ -91,11 +93,13 @@ Esta forma en realidad es la misma que ya habíamos visto antes.
 Estás dos piezas de código funcionan igual:
 
 Solo HTML:
+
 ```
 <input type="button" onclick="alert('¡Click!')" value="Botón">
 ```
 
 HTML + JS:
+
 ```
 <input type="button" id="button" value="Botón">
 <script>
@@ -104,11 +108,13 @@ HTML + JS:
   };
 </script>
 ```
+
 En el primer ejemplo el atributo HTML es usado para inicializar el button.onclick. Mientras que en el segundo ejemplo se usa el script, esa es toda la diferencia.
 
 Como solo hay una propiedad onclick, no podemos asignar más de un handler.
 
 En el siguiente ejemplo se agrega un handler con JavaScript que sobrescribe el handler existente:
+
 ```
 <input type="button" id="elem" onclick="alert('Antes')" value="¡Haz click en mí!">
 <script>
@@ -141,6 +147,7 @@ elem.onclick = sayThanks;
 ```
 
 Pero ten cuidado: la función debe ser asignada como sayThanks, no sayThanks().
+
 ```
 // correcto
 button.onclick = sayThanks;
@@ -158,6 +165,7 @@ Si agregamos paréntesis, sayThanks() se convierte en una llamada de función. E
 `No uses setAttribute para handlers.`
 
 Tal llamada no funcionará:
+
 ```
 // un click sobre <body> generará errores,
 // debido a que los atributos siempre son strings, la función se convierte en un string
@@ -189,23 +197,24 @@ La sintaxis para agregar un handler:
 `element.addEventListener(event, handler, [options]);`
 
 - `event`
-Nombre del evento, por ejemplo: "click".
+  Nombre del evento, por ejemplo: "click".
 
 - `handler`
-La función handler.
+  La función handler.
 
 - `options`
-Un objeto adicional, opcional, con las propiedades:
+  Un objeto adicional, opcional, con las propiedades:
 
-    - `once`: si es true entonces el listener se remueve automáticamente después de activarlo.
-    - `capture`: la fase en la que se controla el evento, que será cubierta en el capítulo Propagación y captura. Por razones históricas, options también puede ser false/true, lo que es igual a {capture: false/true}.
-    - `passive`: si es true entonces el handler no llamará a preventDefault(), esto lo explicaremos más adelante en Acciones predeterminadas del navegador.
+      - `once`: si es true entonces el listener se remueve automáticamente después de activarlo.
+      - `capture`: la fase en la que se controla el evento, que será cubierta en el capítulo Propagación y captura. Por razones históricas, options también puede ser false/true, lo que es igual a {capture: false/true}.
+      - `passive`: si es true entonces el handler no llamará a preventDefault(), esto lo explicaremos más adelante en Acciones predeterminadas del navegador.
 
 Para remover el handler, usa removeEventListener:
 
 - element.removeEventListener(event, handler, `[options]`);
 
 Múltiples llamadas a addEventListenerpermiten agregar múltiples handlers:
+
 ```
 <input id="elem" type="button" value="Haz click en mí"/>
 
@@ -229,18 +238,21 @@ Múltiples llamadas a addEventListenerpermiten agregar múltiples handlers:
 Hay eventos que no pueden ser asignados por medio de una propiedad del DOM. Solamente con addEventListener.
 
 Por ejemplo, el evento DOMContentLoaded, que se activa cuando el documento está cargado y el DOM está construido.
+
 ```
 // nunca se ejecutará
 document.onDOMContentLoaded = function() {
   alert("DOM construido");
 };
 ```
+
 ```
 // Así sí funciona
 document.addEventListener("DOMContentLoaded", function() {
   alert("DOM construido");
 });
 ```
+
 Por lo que addEventListener es más universal. Aún así, tales eventos son una excepción más que la regla.
 
 ## `Objeto del evento`
@@ -360,7 +372,6 @@ Así si hacemos clic en `<p>`, entonces veremos 3 alertas: p → div → form.
 
 Este proceso se conoce como “propagación” porque los eventos “se propagan” desde el elemento más al interior, a través de los padres, como una burbuja en el agua.
 
-
 `Casi todos los elementos se propagan.`
 
 La palabra clave en esta frase es “casi”.
@@ -420,7 +431,6 @@ A veces event.stopPropagation() crea trampas ocultas que luego se convierten en 
 
 Por ejemplo:
 
-
 - Creamos un menú anidado. Cada submenú maneja los clics en sus elementos y ejecuta stopPropagation para que el menu de arriba no se desencadene.
 
 - Luego decidimos atrapar los clic en toda la ventana, para seguir el rastro del comportamiento del usuario (donde hacen clic). Algunos sistemas de análisis hacen eso. Usualmente el código usa document.addEventListener('click'…) para atrapar todos los clics.
@@ -466,6 +476,7 @@ Hay dos posibles valores para la opción capture:
 Es de notar que mientras formalmente hay 3 fases, la 2da fase (“la fase de objetivo”: el evento alcanzó el elemento) no es manejada de forma separada; los manejadores en ambas fases, la de captura y propagación, se disparan en esa fase.
 
 Veamos ambas fases, captura y propagación, en acción:
+
 ```
 <style>
   body * {
@@ -553,6 +564,7 @@ Aquí está:
 <img src="pa-kua.png">
 
 El HTML es este:
+
 ```
 <table>
   <tr>
@@ -568,6 +580,7 @@ El HTML es este:
 </table>
 
 ```
+
 La tabla tiene 9 celdas, pero puede haber 99 o 999, eso no importa.
 
 Nuestra tarea es destacar una celda `<td>` al hacer clic en ella.
@@ -577,6 +590,7 @@ En lugar de asignar un manejador onclick a cada` <td>` (puede haber muchos), con
 Este usará event.target para obtener el elemento del clic y destacarlo.
 
 El código:
+
 ```
 let selectedTd;
 
@@ -604,12 +618,14 @@ Pero hay un inconveniente.
 El clic puede ocurrir no sobre `<td>`, sino dentro de él.
 
 En nuestro caso, si miramos dentro del HTML, podemos ver tags anidados dentro de `<td>`, como `<strong>`:
+
 ```
 <td>
   <strong>Northwest</strong>
   ...
 </td>
 ```
+
 Naturalmente, si el clic ocurre en `<strong>`, este se vuelve el valor de event.target
 
 En el manejador table.onclick debemos tomar tal event.target e indagar si el clic fue dentro de `<td>` o no.
@@ -637,7 +653,7 @@ Explicación:
 - En caso de tablas anidadas, event.target podría ser un `<td>`, pero fuera de la tabla actual. Entonces verificamos que sea realmente un `<td>` de nuestra tabla.
 
 - Y, si es así, destacarla.
-Como resultado, tenemos un código de realzado rápido y eficiente al que no le afecta la cantidad total de `<td>` en la tabla.
+  Como resultado, tenemos un código de realzado rápido y eficiente al que no le afecta la cantidad total de `<td>` en la tabla.
 
 ## `Ejemplo de delegación: acciones en markup`
 
@@ -649,7 +665,6 @@ La primera idea podría ser asignar un controlador separado para cada botón. Pe
 
 `<button data-action="save">Click to Save</button>`
 
-
 ## `El patrón “comportamiento”`
 
 También podemos usar delegación de eventos para agregar “comportamiento” a los elementos de forma declarativa, con atributos y clases especiales.
@@ -660,10 +675,12 @@ El patrón tiene dos partes:
 - Un manejador rastrea eventos del documento completo, y si un evento ocurre en un elemento con el atributo ejecuta la acción.
 
 ### `Comportamiento: Contador`
+
 Por ejemplo, aquí el atributo data-counter agrega un comportamiento: “incrementar el valor con un clic” a los botones:
 
 Counter: `<input type="button" value="1" data-counter>`
 One more counter: `<input type="button" value="2" data-counter>`
+
 ```
 <script>
   document.addEventListener('click', function(event) {
@@ -686,6 +703,7 @@ En proyectos reales es normal que haya muchos manejadores en document, asignados
 
 Comportamiento: Conmutador (toggle)
 Un ejemplo más de comportamiento. Un clic en un elemento con el atributo data-toggle-id mostrará/ocultará el elemento con el id recibido:
+
 ```
 <button data-toggle-id="subscribe-mail">
   Show the subscription form
@@ -729,9 +747,9 @@ El algoritmo:
 
 Beneficios:
 
- - Simplifica la inicialización y ahorra memoria: no hay necesidad de agregar muchos controladores.
- - Menos código: cuando agregamos o quitamos elementos, no hay necesidad de agregar y quitar controladores.
- - Modificaciones del DOM: podemos agregar y quitar elementos en masa con innerHTML y similares.
+- Simplifica la inicialización y ahorra memoria: no hay necesidad de agregar muchos controladores.
+- Menos código: cuando agregamos o quitamos elementos, no hay necesidad de agregar y quitar controladores.
+- Modificaciones del DOM: podemos agregar y quitar elementos en masa con innerHTML y similares.
 
 La delegación tiene sus limitaciones por supuesto:
 
@@ -758,6 +776,7 @@ La forma principal es utilizar el objeto event. Hay un método `event.preventDef
 Si el controlador se asigna usando `on<event>` (no por addEventListener), entonces devolver false también funciona igual.
 
 En este HTML, un clic en un enlace no conduce a la navegación. El navegador no hace nada:
+
 ```
 <a href="/" onclick="return false">Haz clic aquí</a>
 o
@@ -788,7 +807,6 @@ Para algunos navegadores (Firefox, Chrome), passive es true por defecto para los
 
 ## `event.defaultPrevented`
 
-
 La propiedad event.defaultPrevented es true si se impidió la acción predeterminada y false en caso contrario.
 
 Hay un caso de uso interesante para ello.
@@ -801,7 +819,7 @@ Veamos un ejemplo práctico.
 
 Por defecto, el navegador en el evento contextmenu (clic derecho del ratón) muestra un menú contextual con opciones estándar. Podemos prevenirlo y mostrar el nuestro, así:
 
-[Mas informacion](event.defaultPrevented)
+[Mas información](event.defaultPrevented)
 
 <h2 style="color: green">Resumen</h2>
 Hay muchas acciones predeterminadas del navegador:
@@ -853,8 +871,7 @@ Argumentos:
 
 - options – el objeto con 2 propiedades opcionales:
 
-    -`bubbles`: true/false – si es true, entonces el evento se propaga.
-    -`cancelable`: true/false – si es true, entonces la “acción predeterminada” puede ser prevenida. Más adelante veremos qué significa para los eventos personalizados.
+  -`bubbles`: true/false – si es true, entonces el evento se propaga. -`cancelable`: true/false – si es true, entonces la “acción predeterminada” puede ser prevenida. Más adelante veremos qué significa para los eventos personalizados.
 
 Por defecto, los dos son false: {bubbles: false, cancelable: false}.
 
@@ -886,6 +903,7 @@ La propiedad event.isTrusted es true para eventos que provienen de acciones de u
 Podemos crear un evento bubbling con el nombre "hello" y capturarlo en document.
 
 Todo lo que necesitamos es establecer bubbles en true:
+
 ```
 <h1 id="elem">Hola desde el script!</h1>
 
@@ -903,6 +921,7 @@ Todo lo que necesitamos es establecer bubbles en true:
 
 </script>
 ```
+
 Notas:
 
 - Debemos usar addEventListener para nuestros eventos personalizados, porque `on<event>` solo existe para eventos incorporados, document.onhello no funciona.
@@ -926,6 +945,7 @@ Deberíamos usarlos en lugar de new Event si queremos crear tales eventos. Por e
 El constructor correcto permite especificar propiedades estándar para ese tipo de evento.
 
 Como clientX/clientY para un evento de mouse:
+
 ```
 let event = new MouseEvent("click", {
   bubbles: true,
@@ -936,9 +956,11 @@ let event = new MouseEvent("click", {
 
 alert(event.clientX); // 100
 ```
+
 Tenga en cuenta: el constructor genérico Event no lo permite.
 
 Intentemos:
+
 ```
 let event = new Event("click", {
   bubbles: true, // solo bubbles y cancelable
@@ -961,6 +983,7 @@ Para nuestros tipos de eventos completamente nuevos, como "hello", deberíamos u
 En el segundo argumento (objeto) podemos agregar una propiedad adicional detail para cualquier información personalizada que queramos pasar con el evento.
 
 Por ejemplo:
+
 ```
 <h1 id="elem">Hola para John!</h1>
 

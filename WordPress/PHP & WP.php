@@ -174,7 +174,7 @@ wp_kses( string $string, array[]|string $allowed_html, string[] $allowed_protoco
 //Sanitazes content for allowed HTML tags for post content  
 wp_kses_post( string $data);
 
-//cuando queremos mostrar una informacion
+//cuando queremos mostrar una información
 esc_html();
     //Ej
     <h4><?php echo esc_html( $title ); ?></h4>

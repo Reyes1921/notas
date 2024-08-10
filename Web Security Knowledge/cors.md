@@ -52,7 +52,7 @@ Así mismo en ese momento, JavaScript no tenía ningún método especial para re
 
 Pero los desarrolladores web demandaron más poder. Una variedad de trucos fueron inventados para poder pasar por alto las limitaciones, y realizar solicitudes a otros sitios.
 
-[Mas informacion](https://es.javascript.info/fetch-crossorigin#por-que-cors-es-necesario-una-breve-historia)
+[Mas información](https://es.javascript.info/fetch-crossorigin#por-que-cors-es-necesario-una-breve-historia)
 
 ## `Solicitudes seguras`
 
@@ -162,7 +162,7 @@ Con tal cabecera, Access-Control-Expose-Headers, el script tendrá permitido acc
 
 ## `Solicitudes “inseguras”`
 
-[Mas informacion](https://es.javascript.info/fetch-crossorigin#solicitudes-inseguras)
+[Mas información](https://es.javascript.info/fetch-crossorigin#solicitudes-inseguras)
 
 ## `Credenciales`
 

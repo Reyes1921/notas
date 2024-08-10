@@ -201,7 +201,7 @@ A single rigth shift operation is equivalent to multipliying the first operand b
 
 This operator shifts the first operand the specified number of bits to the right. Excess bits shifted off to the right are discarded. Zero bits are shifted in from the left. The sign bit becomes 0, so the result is always non-negative. Unlike the other bitwise operators, zero-fill right shift returns an unsigned 32-bit integer.
 
-[Mas informacion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift)
+[Mas información](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift)
 
 # `Logical Operators`
 
@@ -261,7 +261,7 @@ alert(!0); // true
 
 El operador “nullish coalescing” (fusión de null) se escribe con un doble signo de cierre de interrogación `??`.
 
-Ejemplo: 
+Ejemplo:
 
 ```
 let firstName = null;
@@ -295,12 +295,15 @@ result = (a !== null && a !== undefined) ? a : b;
 Por motivos de seguridad, JavaScript prohíbe el uso de ?? junto con los operadores && y ||, salvo que la precedencia sea explícitamente especificada con paréntesis.
 
 El siguiente código desencadena un error de sintaxis:
+
 ```
 let x = 1 && 2 ?? 3; // Syntax error
 ```
+
 La limitación es debatible. Fue agregada a la especificación del lenguaje con propósito de evitar equivocaciones cuando la gente comenzara a reemplazar || por ??.
 
 Usa paréntesis explícitos para solucionarlo:
+
 ```
 let x = (1 && 2) ?? 3; // Funciona
 

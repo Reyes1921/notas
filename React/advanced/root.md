@@ -31,6 +31,43 @@ function Loading() {
 
 ```
 
+# `Portals`
+
+Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+
+createPortal lets you render some children into a different part of the DOM.
+
+```
+<div>
+  <SomeComponent />
+  {createPortal(children, domNode, key?)}
+</div>
+```
+
+To create a portal, call createPortal, passing some JSX, and the DOM node where it should be rendered:
+
+```
+import { createPortal } from 'react-dom';
+
+// ...
+
+<div>
+  <p>This child is placed in the parent div.</p>
+  {createPortal(
+    <p>This child is placed in the document body.</p>,
+    document.body
+  )}
+</div>
+```
+
+[Mas Información](https://react.dev/reference/react-dom/createPortal)
+
+# `Server APIs`
+
+The react-dom/server APIs let you render React components to HTML on the server. These APIs are only used on the server at the top level of your app to generate the initial HTML. A framework may call them for you. Most of your components don’t need to import or use them.
+
+<p style="color: red"> These APIs will be removed in a future major version of React.</p>
+
 # `Error Boundaries`
 
 In the past, JavaScript errors inside components used to corrupt React’s internal state and cause it to emit cryptic errors on next renders. These errors were always caused by an earlier error in the application code, but React did not provide a way to handle them gracefully in components, and could not recover from them.

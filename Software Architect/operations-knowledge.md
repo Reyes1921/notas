@@ -28,6 +28,8 @@ A Service Mesh is a dedicated infrastructure layer for handling service-to-servi
 
 CI/CD is a method to frequently deliver apps to customers by introducing automation into the stages of app development. The main concepts attributed to CI/CD are `continuous integration, continuous delivery`, and continuous deployment. CI/CD is a solution to the problems integrating new code can cause for development and operations teams (AKA “integration hell”).
 
+[Mas Información](https://about.gitlab.com/topics/ci-cd/)
+
 # `Containers`
 
 Containers are a construct in which cgroups, namespaces, and chroot are used to fully encapsulate and isolate a process. This encapsulated process, called a container image, shares the kernel of the host with other containers, allowing containers to be significantly smaller and faster than virtual machines.

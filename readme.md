@@ -1,5 +1,7 @@
 # `Notes`
 
+# `LO IMPORTANTE NO ES SABER, SINO SABER QUIEN SABE`
+
 [JavaScript](/JavaScript/root.md)
 
 [TypeScript](/TypeScript/root.md)
@@ -45,3 +47,5 @@
 [Math](/Math/Notas%20Matematicas.md)
 
 [Web Security Knowledge](/Web%20Security%20Knowledge/root.md)
+
+[Visual Studio Code](/vsc//root.md)

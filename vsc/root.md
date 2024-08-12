@@ -9,13 +9,13 @@
 # `Terminal`
 
 - `Ctrl + Shift + backslash` Abre nueva terminal
-- `Ctrl + backslash` Abre terminal actual
+- `Ctrl + backslash` Abre/cierra terminal actual
 - `code .` En terminal abre el archivo en vsc
 
 # `Comentarios`
 
 - `Ctrl + /` Comenta
-- `Shift + alt + a` Comenta bloque
+- `Shift + alt + a` Comenta seleccionar
 
 # `Buscar`
 
@@ -33,17 +33,16 @@
 
 - `Shift + Alt + ↑ / ↓` Duplicar
 - `Mantener Alt + Doble click` Multi copiar
-- `Ctrl + Alt+ ↑ / ↓ + C` Copiar
+- `Ctrl + Alt + ↑ / ↓ + C` Copiar
 - `Ctrl + Shift + Z` Rehacer
 
 # `Tabulation`
 
-- `Ctrl + TAB` Cambiar de tab
 - `Shift + tab` Opuesto a tabulation
 
 # `Cursores`
 
-- `Ctrl + Alt+ ↑ / ↓` Multiples cursores
+- `Ctrl + Alt + ↑ / ↓` Multiples cursores
 - `Ctrl + Shift + K` Borrar multiples cursores
 
 # `Mayúsculas/Minúsculas`
@@ -59,6 +58,7 @@
 
 # `Pestañas`
 
+- `Ctrl + TAB` Cambiar de tab
 - `Ctrl + W Cerrar` Tabular
 - `Ctrl + K Ctrl + W` Cerrar todas
 - `Ctrl + Shift + T` Reabrir anterior

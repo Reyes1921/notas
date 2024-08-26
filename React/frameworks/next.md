@@ -20,3 +20,5 @@ npx create-next-app@latest
   }
 }
 ```
+
+`PRC` comando para crear pages.tsx

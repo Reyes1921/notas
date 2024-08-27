@@ -20,13 +20,13 @@ const http = require('http');
 
 ```
 const http = require('http');
- 
+
 // Create a server
 http.createServer((request, response) => {
- 
+
     // Sends a chunk of the response body
     response.write('Hello World!');
- 
+
     // Signals the server that all of
     // the response headers and body
     // have been sent
@@ -249,7 +249,6 @@ axios({
   });
 ```
 
-
 `axios(url[, config])`
 
 ```
@@ -272,6 +271,10 @@ For convenience aliases have been provided for all supported request methods.
 - axios.postForm(url[, data[, config]])
 - axios.putForm(url[, data[, config]])
 - axios.patchForm(url[, data[, config]])
+
+# `Fetch`
+
+[Fetch](../../JavaScript/apis/apis.md)
 
 ## `unfetch`
 

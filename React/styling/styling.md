@@ -16,4 +16,5 @@ While “CSS in JS” is the most predominant way of styling modern frontend app
 
 # `Component / Libraries`
 
+- [Shadcn UI](shadcn.md)
 - [Material UI](material.md)

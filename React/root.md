@@ -28,6 +28,8 @@
 
 - [Frameworks](frameworks/root.md)
 
-- [Forms](forms/forms.md)
+- [Forms](forms/root.md)
+
+- [Types & Validation](types/root.md)
 
 - [Advanced Topics](advanced/root.md)

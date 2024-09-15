@@ -256,6 +256,44 @@ var romanToInt = function(s) {
 };
 ```
 
+## `Two Pointers`
+
+[Link](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/)
+
+```bash
+var twoSum = function(nums, target) {
+    let l = 0;
+  for (let r = nums.length - 1; l < r; r--) {
+    while (l < r) {
+      if ((nums[l] + nums[r]) === target) {
+        return [l, r];
+      }
+      l++;
+    }
+    l = 0;
+  }
+};
+
+twoSum([-1,-2,-3,-4,-5], -8)
+twoSum([3,2,4], 6)
+twoSum([2, 7, 11, 15], 9)
+```
+
+## `Fast and Slow Pointers`
+
+[Link](https://leetcode.com/problems/middle-of-the-linked-list/)
+
+```bash
+var middleNode = function(head) {
+    let fastPointer = head, slowPointer = head;
+    while(fastPointer !== null && fastPointer.next !== null){
+        fastPointer = fastPointer.next.next;
+        slowPointer = slowPointer.next;
+    }
+    return slowPointer;
+};
+```
+
 # `Pendientes`
 
 - reverseInParentheses

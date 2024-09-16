@@ -258,7 +258,7 @@ var romanToInt = function(s) {
 
 ## `Two Pointers`
 
-[Link](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/)
+[Problem](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/)
 
 ```bash
 var twoSum = function(nums, target) {
@@ -281,7 +281,7 @@ twoSum([2, 7, 11, 15], 9)
 
 ## `Fast and Slow Pointers`
 
-[Link](https://leetcode.com/problems/middle-of-the-linked-list/)
+[Problem](https://leetcode.com/problems/middle-of-the-linked-list/)
 
 ```bash
 var middleNode = function(head) {
@@ -291,6 +291,27 @@ var middleNode = function(head) {
         slowPointer = slowPointer.next;
     }
     return slowPointer;
+};
+```
+
+## `Sliding Window`
+
+[Problem](https://leetcode.com/problems/maximum-average-subarray-i/)
+
+```bash
+var findMaxAverage = function(nums, k) {
+  let temp = 0;
+  for (let i = 0; i < k; i++) {
+    temp += nums[i];
+  }
+
+  let result = temp;
+
+  for (let i = k; i < nums.length; i++) {
+    temp = temp - nums[i - k] + nums[i];
+    result = Math.max(result, temp);
+  }
+  return result / k;
 };
 ```
 

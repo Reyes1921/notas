@@ -315,6 +315,51 @@ var findMaxAverage = function(nums, k) {
 };
 ```
 
+## `LinkedList In-place Reversal`
+
+[Problem](https://leetcode.com/problems/swap-nodes-in-pairs/description/)
+
+```bash
+var swapPairs = function(head) {
+    let curr = head, dummy = new ListNode(0, head), prev = dummy;
+
+    while(curr !== null && curr.next !== null){
+        let longNext = curr.next.next;
+        let next = curr.next;
+
+        next.next = curr;
+        curr.next = longNext;
+        prev.next = next;
+
+        prev = curr;
+        curr = longNext;
+    }
+
+    return dummy.next;
+};
+```
+
+## `Monotonic Stack`
+
+[Problem](https://leetcode.com/problems/daily-temperatures/)
+
+```bash
+var dailyTemperatures = function(temperatures) {
+    const stack = [];
+    const result = new Array(temperatures.length).fill(0);
+
+    for (let i = 0; i < temperatures.length; i++) {
+        while (stack.length > 0 && temperatures[i] > temperatures[stack[stack.length - 1]]) {
+            const idx = stack.pop();
+            result[idx] = i - idx;
+        }
+        stack.push(i);
+    }
+
+    return result;
+};
+```
+
 # `Pendientes`
 
 - reverseInParentheses

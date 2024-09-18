@@ -19,12 +19,14 @@ The process of calculating algorithmic complexity, often referred to as Big O no
 Common runtimes are used to quantify the performance of an algorithm as the size of the input data increases. They are usually expressed in Big O.
 
 - `O(1)`: Constant time complexity, the algorithm will always execute in the same time regardless of the size of the input data set.
+- `O(log N)`: Logarithmic time complexity, the running time increases logarithmically with the size of the input data set.
 - `O(N)`: Linear time complexity, the running time increases linearly with the size of the input data.
-- `O(log N)`:` Logarithmic time complexity, the running time increases logarithmically with the size of the input data set.
 - `O(N log N)`: Quasilinear time complexity, slightly worse than linear but better than polynomial.
 - `O(N^2)`: Quadratic time complexity, the running time increases quadratically with the size of the input data.
 - `O(N^3)`: Cubic time complexity, the running time increases cubically with the size of the input.
 - `O(2^N)`, `O(N!)`: Exponential and factorial time complexities respectively, the running time grows very quickly with the size of the input.
+
+<img src="time-complex.png">
 
 ## `Constant`
 
@@ -38,9 +40,13 @@ Logarithmic time complexity `(O(log n))` often indicates that the algorithm halv
 
 Linear time complexity, denoted as` O(n)`, is one of the best possible algorithmic performance situations. An algorithm is said to have a linear time complexity when the running time increases at most linearly with the size of the input data. This means that if you double the size of the input, the running time will at most double as well. In an ideal situation, every single element in the data set should be viewed exactly once. Sorting algorithms such as counting sort and bucket sort have linear time complexity under certain conditions.
 
+## `Quasilinear or Linearithmic`
+
+Represented as `O(n*log(n))`, this is less efficient than linear runtime but still, it is considered to be fairly good and is majorly found in the divide and conquer algorithms, a very simple explanation for this is that the algorithm performs `‘N’` number of operations and each operation runs in `O(log(n))` (logarithmic) time. The famous Merge Sort algorithm runs in 'O(n\*log(n))' time
+
 ## `Polynomial`
 
-Polynomial time complexity, denoted as O(n^k), is a class of time complexity that represents the amount of time an algorithm takes to run as being proportional to the size of the input data raised to a constant power ‘k’. Polynomial time complexity includes runtimes like O(n), O(n^2), O(n^3), etc. The value ‘n’ is a representation of the size of the input, while ‘k’ represents a constant. Algorithms running in polynomial time are considered to be reasonably efficient for small and medium-sized inputs, but can become impractical for large input sizes due to the rapid growth rate of function.
+Polynomial time complexity, denoted as `O(n^k)`, is a class of time complexity that represents the amount of time an algorithm takes to run as being proportional to the size of the input data raised to a constant power ‘k’. Polynomial time complexity includes runtimes like O(n), O(n^2), O(n^3), etc. The value ‘n’ is a representation of the size of the input, while ‘k’ represents a constant. Algorithms running in polynomial time are considered to be reasonably efficient for small and medium-sized inputs, but can become impractical for large input sizes due to the rapid growth rate of function.
 
 ## `Exponential`
 

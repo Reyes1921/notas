@@ -360,6 +360,65 @@ var dailyTemperatures = function(temperatures) {
 };
 ```
 
+## `Overlapping Intervals`
+
+[Problem](https://leetcode.com/problems/merge-intervals/description/)
+
+```bash
+var merge = function(intervals) {
+
+    intervals.sort((a, b) => a[0] - b[0]);
+    const merged = [];
+    let prev = intervals[0];
+
+    for (let i = 1; i < intervals.length; i++) {
+        let interval = intervals[i];
+        if (interval[0] <= prev[1]) {
+            prev[1] = Math.max(prev[1], interval[1]);
+        } else {
+            merged.push(prev);
+            prev = interval;
+        }
+    }
+
+    merged.push(prev);
+    return merged;
+};
+```
+
+## `Modified Binary Search`
+
+[Problem](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
+
+```bash
+var search = function(nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+
+        if (nums[mid] === target) {
+            return mid;
+        } else if (nums[mid] >= nums[left]) {
+            if (nums[left] <= target && target <= nums[mid]) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        } else {
+            if (nums[mid] <= target && target <= nums[right]) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+    }
+
+    return -1;
+};
+```
+
 # `Pendientes`
 
 - reverseInParentheses

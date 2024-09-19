@@ -23,6 +23,22 @@ function(param){ //typeof param == string
 }
 ```
 
+```bash
+const palindrome = (str) => {
+  let left = 0;
+  let right = str.length - 1;
+
+  while (left < right) {
+    if (str[left] != str[right]) {
+          return false;
+    }
+      left++;
+      right--;
+  }
+  return true;
+}
+```
+
 ## `Los strings son inmutables`
 
 Los strings no pueden ser modificados en JavaScript. Es imposible modificar un carácter.
@@ -416,6 +432,31 @@ var search = function(nums, target) {
     }
 
     return -1;
+};
+```
+
+# `PreOrder Tree`
+
+[Problem](https://leetcode.com/problems/binary-tree-paths/)
+
+```bash
+var binaryTreePaths = function(root) {
+  let result = [];
+
+  const preOrderTraversal = (root, temp) => {
+    if(!root) return;
+    temp += `${root.val}`;
+
+    if(!root.left && !root.rigth) result.push(temp);
+
+    preOrderTraversal(root.left, temp+'->');
+    preOrderTraversal(root.rigth, temp+'->');
+
+    return;
+  }
+
+  preOrderTraversal(root, '')
+  return result;
 };
 ```
 

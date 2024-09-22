@@ -435,7 +435,7 @@ var search = function(nums, target) {
 };
 ```
 
-# `PreOrder Tree`
+## `Binary Tree Traversal - Depth-First Search (DFS) - Recursion`
 
 [Problem](https://leetcode.com/problems/binary-tree-paths/)
 
@@ -457,6 +457,34 @@ var binaryTreePaths = function(root) {
 
   preOrderTraversal(root, '')
   return result;
+};
+```
+
+## `Binary Tree Traversal - Breadth-First Search (BFS) - Queue`
+
+[Problem](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
+
+```bash
+var levelOrder = function(root) {
+    if(!root) return [];
+
+    let result = [];
+    let queue = [root];
+
+    while(queue.length !== 0){
+        let queueLength = queue.length;
+        let currentLevel = [];
+
+        for(let i=0; i<queueLength; i++){
+            let currentNode = queue.shift();
+            currentLevel.push(currentNode.val);
+
+            if(currentNode.left) queue.push(currentNode.left);
+            if(currentNode.right) queue.push(currentNode.right);
+        }
+        result.push(currentLevel);
+    }
+    return result;
 };
 ```
 

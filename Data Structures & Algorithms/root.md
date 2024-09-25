@@ -23,3 +23,5 @@
 - [Indexing](./indexing.md)
 
 - [Problem Solving Techniques](./problem-solving-techniques.md)
+
+<img src='algo.png'>

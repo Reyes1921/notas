@@ -435,6 +435,50 @@ var search = function(nums, target) {
 };
 ```
 
+## `Invert Binary Tree`
+
+[Problem](https://leetcode.com/problems/invert-binary-tree/description/?envType=problem-list-v2&envId=breadth-first-search)
+
+```bash
+var invertTree = function(root) {
+    if (root === null) {
+        return null;
+    }
+
+    const temp = root.left;
+    root.left = root.right;
+    root.right = temp;
+
+    invertTree(root.left);
+    invertTree(root.right);
+
+    return root;
+};
+```
+
+## `Binary Tree Traversal - Depth-First Search (DFS) - Recursion - In-Order Traversal`
+
+[Problem](https://leetcode.com/problems/binary-tree-inorder-traversal/description/?envType=problem-list-v2&envId=depth-first-search)
+
+```bash
+var inorderTraversal = function(root) {
+    let result = [];
+
+    const depthFirstSearch = (root) =>{
+        if(!root) return;
+
+        depthFirstSearch(root.left);
+        result.push(root.val);
+        depthFirstSearch(root.right);
+
+        return;
+    }
+
+    depthFirstSearch(root);
+    return result;
+};
+```
+
 ## `Binary Tree Traversal - Depth-First Search (DFS) - Recursion`
 
 [Problem](https://leetcode.com/problems/binary-tree-paths/)
@@ -447,15 +491,15 @@ var binaryTreePaths = function(root) {
     if(!root) return;
     temp += `${root.val}`;
 
-    if(!root.left && !root.rigth) result.push(temp);
+    if(!root.left && !root.right) result.push(temp);
 
     preOrderTraversal(root.left, temp+'->');
-    preOrderTraversal(root.rigth, temp+'->');
+    preOrderTraversal(root.right, temp+'->');
 
     return;
   }
 
-  preOrderTraversal(root, '')
+  preOrderTraversal(root, '');
   return result;
 };
 ```
@@ -486,6 +530,36 @@ var levelOrder = function(root) {
     }
     return result;
 };
+```
+
+## `Matrix Traversal - Row-wise Traversal`
+
+```bash
+//m = rows, n = columns
+for (let i = 0; i < m; i++)
+  for (let j = 0; j < n; j++) {
+    console.log(arr[i][j]);
+  }
+}
+```
+
+## `Matrix Traversal - Column-wise Traversal`
+
+```bash
+//m = rows, n = columns
+ for (let i = 0; i < n; i++)
+  for (let j = 0; j < m; j++) {
+    console.log(matrix[j][i]);
+  }
+}
+```
+
+## `Matrix Traversal- Breadth-First Traversal`
+
+In Breadth-first traversal or Level-order traversal, we start by visiting all the neighboring nodes of our root node, after which we repeat the same process for the visited neighboring nodes until we have visited all the nodes.
+
+```bash
+
 ```
 
 # `Pendientes`

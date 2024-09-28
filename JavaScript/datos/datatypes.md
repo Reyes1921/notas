@@ -316,7 +316,7 @@ const str = String.raw`${varOne}\t\n${varTwo}` // => "Hey\t\nthere"
 En JavaScript moderno, hay dos tipos de números:
 
 - Los números regulares en JavaScript son almacenados con el formato de 64-bit IEEE-754, conocido como “números de doble precisión de coma flotante”.
-Estos números son los que estaremos usando la mayor parte del tiempo, y hablaremos de ellos en este capítulo.
+  Estos números son los que estaremos usando la mayor parte del tiempo, y hablaremos de ellos en este capítulo.
 
 - Los números `BigInt` representan enteros de longitud arbitraria. A veces son necesarios porque un número regular no puede exceder 253 ni ser menor a -253 manteniendo la precisión, algo que mencionamos antes en el capítulo Tipos de datos. Como los bigints son usados en algunas áreas especiales, les dedicamos un capítulo especial BigInt.
 
@@ -342,6 +342,7 @@ Ahora escribamos algo muy pequeño. Digamos 1 microsegundo (un millonésimo de s
 ```
 let mсs = 0.000001;
 ```
+
 Igual que antes, el uso de "e" puede ayudar. Si queremos evitar la escritura de ceros explícitamente, podríamos expresar lo mismo como:
 
 ```
@@ -368,6 +369,7 @@ En otras palabras, un número negativo detrás de "e" significa una división po
 Los números Hexadecimales son ampliamente usados en JavaScript para representar colores, codificar caracteres y muchas otras cosas. Es natural que exista una forma breve de escribirlos: 0x y luego el número.
 
 Por ejemplo:
+
 ```
 alert( 0xff ); // 255
 alert( 0xFF ); // 255 (lo mismo en mayúsculas o minúsculas )
@@ -415,13 +417,13 @@ También podríamos escribir `(123456).toString(36)`.
 ## `Redondeo`
 
 - `Math.floor`
-Redondea hacia abajo: 3.1 se convierte en 3, y -1.1 se hace -2.
+  Redondea hacia abajo: 3.1 se convierte en 3, y -1.1 se hace -2.
 - `Math.ceil`
-Redondea hacia arriba: 3.1 torna en 4, y -1.1 torna en -1.
+  Redondea hacia arriba: 3.1 torna en 4, y -1.1 torna en -1.
 - `Math.round`
-Redondea hacia el entero más cercano: 3.1 redondea a 3, 3.6 redondea a 4, el caso medio 3.5 redondea a 4 también.
+  Redondea hacia el entero más cercano: 3.1 redondea a 3, 3.6 redondea a 4, el caso medio 3.5 redondea a 4 también.
 - `Math.trunc` (no soportado en Internet Explorer)
-Remueve lo que haya tras el punto decimal sin redondear: 3.1 torna en 3, -1.1 torna en -1.
+  Remueve lo que haya tras el punto decimal sin redondear: 3.1 torna en 3, -1.1 torna en -1.
 
 Estas funciones cubren todas las posibles formas de lidiar con la parte decimal de un número. Pero ¿si quisiéramos redondear al enésimo n-th dígito tras el decimal?
 
@@ -448,9 +450,11 @@ Un número es almacenado en memoria en su forma binaria, una secuencia de bits, 
 Simplemente no hay manera de guardar exactamente 0.1 o exactamente 0.2 usando el sistema binario, así como no hay manera de guardar un tercio en fracción decimal.
 
 Podemos verlo en acción:
+
 ```
 alert( 0.1.toFixed(20) ); // 0.10000000000000000555
 ```
+
 Y cuando sumamos dos números, se apilan sus “pérdidas de precisión”. Y es por ello que 0.1 + 0.2 no es exactamente 0.3.
 
 <h2 style="color:red">Algo peculiar</h2>
@@ -461,6 +465,7 @@ Prueba ejecutando esto:
 // ¡Hola! ¡Soy un número que se autoincrementa!
 alert( 9999999999999999 ); // muestra 10000000000000000
 ```
+
 Esto sufre del mismo problema: Una pérdida de precisión. Hay 64 bits para el número, 52 de ellos pueden ser usados para almacenar dígitos, pero no es suficiente. Entonces los dígitos menos significativos desaparecen.
 
 JavaScript no dispara error en tales eventos. Hace lo mejor que puede para ajustar el número al formato deseado, pero desafortunadamente este formato no es suficientemente grande.
@@ -503,9 +508,11 @@ alert( isFinite(Infinity) ); // false, porque es un valor especial: Infinity
 ## `parseInt y parseFloat`
 
 La conversión numérica usando un más + o `Number()` es estricta. Si un valor no es exactamente un número, falla:
+
 ```
 alert( +"100px" ); // NaN
 ```
+
 Siendo la única excepción los espacios al principio y al final del string, pues son ignorados.
 
 Pero en la vida real a menudo tenemos valores en unidades como "`100px`" o "`12pt`" en CSS. También el símbolo de moneda que en varios países va después del monto, tenemos "19€" y queremos extraerle la parte numérica.
@@ -525,13 +532,15 @@ parseInt('5e-7');    // => 5
 ```
 
 Hay situaciones en que parseInt/parseFloat devolverán NaN. Ocurre cuando no puedo encontrar dígitos:
+
 ```
-alert( parseInt('a123') ); // NaN, 
+alert( parseInt('a123') ); // NaN,
 ```
 
 <h2 style="color:red">El segundo argumento de parseInt(str, radix)</h2>
 
 La función `parseInt`() tiene un segundo parámetro opcional. Este especifica la base de sistema numérico, entonces parseInt puede también analizar cadenas de números hexa, binarios y otros:
+
 ```
 alert( parseInt('0xff', 16) ); // 255
 alert( parseInt('ff', 16) ); // 255, sin 0x también funciona
@@ -542,8 +551,8 @@ alert( parseInt('2n9c', 36) ); // 123456
 Floats smaller than 10-6 `(e.g. 0.0000005 which is same as 5\*10-7)` conversed to a string are written in the exponential notation (e.g. 5e-7 is the exponential notation of 0.0000005).
 That's why using such small floats with `parseInt()` leads to unexpected results: only the significat part (e.g. 5 of 5e-7) of the exponential notiation is parsed.
 
-
 ## `Otras funciones matemáticas`
+
 JavaScript tiene un objeto incorporado `Math` que contiene una pequeña biblioteca de funciones matemáticas y constantes.
 
 Unos ejemplos:
@@ -553,16 +562,17 @@ Unos ejemplos:
 - `Math.round()` /mas cerca
 - `Math.trunc()` /ninguno
 - `Math.random()` /aleatorio
-- `Math.max()` /maximo const arr = [1, 2, 3]; const max = Math.max(...arr);
-- `Math.min()` /minimo
+- `Math.max()` /máximo const arr = [1, 2, 3]; const max = Math.max(...arr);
+- `Math.min()` /mínimo
 - `Math.pow()` /potencia
 - `Math.abs()` /retorna el valor absoluto de un número
+- `Math.sqrt()` /retorna la raíz de un número
 
 # `Symbol`
 
 Según la especificación, solo dos de los tipos primitivos pueden servir como clave de propiedad de objetos: `string`, o `symbol`.
 
-Un symbol es un “valor primitivo único” con una descripción opcional, se usa para crear valores unicos e irrepetibles.
+Un symbol es un “valor primitivo único” con una descripción opcional, se usa para crear valores únicos e irrepetibles.
 
 Se crean de la siguiente manera:
 

@@ -37,15 +37,21 @@ Cyclomatic complexity is a measure of the structural complexity of a program, wh
 
 Passing nulls or Booleans can lead to unexpected behavior and difficult-to-debug errors in a program. Here are some ways to avoid passing nulls or Booleans in system architecture.
 
+- Use Optionals or Maybe types instead of nulls to indicate the absence of a value. This makes it clear when a value is missing and prevents null reference exceptions.
+- Use a default value for function arguments instead of allowing them to be null or Boolean. This eliminates the need to check for null or Boolean values and reduces the potential for errors.
+- Use the Null Object pattern to replace null values with a special object that has a defined behavior. This eliminates the need to check for null values and makes the code more readable.
+- Use the Ternary operator (?:) instead of if-else statements when working with Booleans. This can make the code more concise and easier to read.
+- Use the assert function to check the validity of function arguments and throw an exception if they are invalid.
+
 ## `Keep Framework Code Distant`
 
 Keeping framework code distant refers to separating the application’s code from the framework’s code. By doing so, it makes it easier to maintain, test, and upgrade the application’s codebase and the framework independently.
 
 ## `Use Correct Constructs`
 
-In the context of clean code principles, “using correct constructs” refers to using appropriate programming constructs, such as loops, conditionals, and functions, in a way that makes the code easy to understand, maintain, and modify.
+In the context of clean code principles, “`using correct constructs`” refers to using appropriate programming constructs, such as loops, conditionals, and functions, in a way that makes the code easy to understand, maintain, and modify.
 
-When using correct constructs, the code should be organized in a logical and intuitive way, making use of appropriate control flow statements and data structures to accomplish the task at hand. This also means that the code should avoid using unnecessary or overly complex constructs that make the code harder to understand or reason about.
+When `using correct constructs`, the code should be organized in a logical and intuitive way, making use of appropriate control flow statements and data structures to accomplish the task at hand. This also means that the code should avoid using unnecessary or overly complex constructs that make the code harder to understand or reason about.
 
 ## `Keep Tests Independent`
 
@@ -53,11 +59,11 @@ Keeping tests independent helps ensures that the tests are reliable, repeatable,
 
 ## `Code by Actor`
 
-”Code by Actor” is a software development technique that encourages developers to organize their code around the actors or entities that interact with it. Actors can be users, systems, or processes that perform a specific role or function within the application. This approach helps to create a clear separation of concerns, making the code more modular, reusable, and easier to understand.
+"`Code by Actor`" is a software development technique that encourages developers to organize their code around the actors or entities that interact with it. Actors can be users, systems, or processes that perform a specific role or function within the application. This approach helps to create a clear separation of concerns, making the code more modular, reusable, and easier to understand.
 
 ## `Command Query Separation`
 
-Command-Query Separation (CQS) is a software design principle that separates the responsibilities of a method or function into two categories: commands and queries. Commands are methods that change the state of the system, while queries are methods that return information but do not change the state of the system.
+`Command-Query Separation (CQS)` is a software design principle that separates the responsibilities of a method or function into two categories: commands and queries. Commands are methods that change the state of the system, while queries are methods that return information but do not change the state of the system.
 
 ## `Avoid Hasty Abstractions`
 

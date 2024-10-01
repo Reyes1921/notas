@@ -44,8 +44,6 @@
 
 - [Resumen y chuleta](resumen.md)
 - [Selector](Selector/selector.md)
-- [Specificity](Specificity/specificity.md) (Por arriba)
 - [Functions](functions/functions.md) (Por arriba)
-- [Box Model](boxModel/boxModel.md)
 - [CSS Grid](grid/grid.md)
 - [Flexbox](flexbox/flexbox.md)

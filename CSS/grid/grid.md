@@ -31,6 +31,7 @@ The children (i.e. direct descendants) of the grid container. Here the item elem
 ```
 
 ## `Grid Line`
+
 The dividing lines that make up the structure of the grid. They can be either vertical (“column grid lines”) or horizontal (“row grid lines”) and reside on either side of a row or column. Here the yellow line is an example of a column grid line.
 
 ## `Grid Cell`
@@ -38,12 +39,18 @@ The dividing lines that make up the structure of the grid. They can be either ve
 The space between two adjacent row and two adjacent column grid lines. It’s a single “unit” of the grid. Here’s the grid cell between row grid lines 1 and 2, and column grid lines 2 and 3.
 
 ## `Grid Track`
-The space between two adjacent grid lines. You can think of them as the columns or rows of the grid. Here’s the grid track between the second and third-row grid lines.
 
+The space between two adjacent grid lines. You can think of them as the columns or rows of the grid. Here’s the grid track between the second and third-row grid lines.
 
 ## `Grid Area`
 
 The total space surrounded by four grid lines. A grid area may be composed of any number of grid cells. Here’s the grid area between row grid lines 1 and 3, and column grid lines 1 and 3.
+
+`grid-row-start`, `grid-column-start`, `grid-row-end`, seguido de `grid-column-end`.
+
+```
+grid-area: 1 / 1 / 3 / 6;
+```
 
 # `CSS Grid properties`
 
@@ -71,14 +78,14 @@ Defines the columns and rows of the grid with a space-separated list of values. 
 ```
 .container {
   grid-template-columns: ...  ...;
-  /* e.g. 
+  /* e.g.
       1fr 1fr
       minmax(10px, 1fr) 3fr
       repeat(5, 1fr)
       50px auto 100px 1fr
   */
   grid-template-rows: ... ...;
-  /* e.g. 
+  /* e.g.
       min-content 1fr min-content
       100px 1fr max-content
   */
@@ -100,7 +107,7 @@ Specifies the size of the grid lines. You can think of it like setting the width
 ```
 .container {
   grid-template-columns: 100px 50px 100px;
-  grid-template-rows: 80px auto 80px; 
+  grid-template-rows: 80px auto 80px;
   column-gap: 10px;
   row-gap: 15px;
 }
@@ -113,7 +120,7 @@ A shorthand for row-gap and column-gap
 ```
 .container {
   grid-template-columns: 100px 50px 100px;
-  grid-template-rows: 80px auto 80px; 
+  grid-template-rows: 80px auto 80px;
   gap: 15px 10px;
 }
 ```
@@ -155,7 +162,7 @@ Sometimes the total size of your grid might be less than the size of its grid co
 
 ```
 .container {
-  justify-content: start | end | center | stretch | space-around | space-between | space-evenly;    
+  justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
 }
 ```
 
@@ -171,7 +178,6 @@ place-content sets both the align-content and justify-content properties in a si
 
 Specifies the size of any auto-generated grid tracks (aka implicit grid tracks). Implicit tracks get created when there are more grid items than cells in the grid or when a grid item is placed outside of the explicit grid. (see The Difference Between Explicit and Implicit Grids)
 
-
 ## `grid-auto-flow`
 
 If you have grid items that you don’t explicitly place on the grid, the auto-placement algorithm kicks in to automatically place the items. This property controls how the auto-placement algorithm works.
@@ -181,7 +187,6 @@ If you have grid items that you don’t explicitly place on the grid, the auto-p
   grid-auto-flow: row | column | row dense | column dense;
 }
 ```
-
 
 # `Properties for the Children (Grid Items)`
 
@@ -224,7 +229,7 @@ Shorthand for grid-column-start + grid-column-end, and grid-row-start + grid-row
 
 ## `grid-area`
 
-Gives an item a name so that it can be referenced by a template created with the grid-template-areas property. Alternatively, this property can be used as an even shorter shorthand for grid-row-start + grid-column-start + grid-row-end + grid-column-end.
+Gives an item a name so that it can be referenced by a template created with the grid-template-areas property. Alternatively, this property can be used as an even shorter shorthand `for grid-row-start + grid-column-start + grid-row-end + grid-column-end.`
 
 ```
 .item {
@@ -256,7 +261,6 @@ Aligns a grid item inside a cell along the block (column) axis (as opposed to ju
 
 place-self sets both the align-self and justify-self properties in a single declaration.
 
-
 # `Special Units & Functions`
 
 ## `fr units`
@@ -272,6 +276,7 @@ Las vías se pueden definir usando cualquier unidad de medida. Grid también int
   <div>Five</div>
 </div>
 ```
+
 ```
 .wrapper {
   display: grid;

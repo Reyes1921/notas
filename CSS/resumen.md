@@ -2,7 +2,25 @@
 
 # `Resumen`
 
---- 
+# `Specificity `
+
+Este módulo analiza en profundidad la especificidad, una parte clave de la cascada.
+
+- !important overrides all other styles regardless of the specificity of the selector where it is used - 10000
+- Inline Styles - 1000
+- ID selectors - 100
+- Classes, Attributes and Pseudo-classes - 10
+- Elements and Pseudo-elements - 1
+
+---
+
+# `Box Sizing`
+
+- `content-box` gives you the default CSS box-sizing behavior. If you set an element's width to 100 pixels, then the element's content box will be 100 pixels wide, and the width of any border or padding will be added to the final rendered width, making the element wider than 100px.
+
+- `border-box `tells the browser to account for any border and padding in the values you specify for an element's width and height. If you set an element's width to 100 pixels, that 100 pixels will include any border or padding you added, and the content box will shrink to absorb that extra width. This typically makes it much easier to size elements. box-sizing: border-box is the default styling that browsers use for the `<table>`, `<select>`, and `<button>` elements, and for `<input>` elements whose type is radio, checkbox, reset, button, submit, color, or search.
+
+---
 
 # `%`
 
@@ -30,7 +48,7 @@ Tiene como referencia de medida el font-size del elemento root, la etiqueta `<ht
 
 ## `width`
 
-Usar `ch`  de ser posible con las fuentes.
+Usar `ch` de ser posible con las fuentes.
 
 ## `min-Width`
 
@@ -54,14 +72,6 @@ Tamaño maximo antes del overflow.
 
 ---
 
-# `Box Sizing`
-
-- `content-box` gives you the default CSS box-sizing behavior. If you set an element's width to 100 pixels, then the element's content box will be 100 pixels wide, and the width of any border or padding will be added to the final rendered width, making the element wider than 100px.
-
-- `border-box `tells the browser to account for any border and padding in the values you specify for an element's width and height. If you set an element's width to 100 pixels, that 100 pixels will include any border or padding you added, and the content box will shrink to absorb that extra width. This typically makes it much easier to size elements. box-sizing: border-box is the default styling that browsers use for the `<table>`, `<select>`, and `<button>` elements, and for `<input>` elements whose type is radio, checkbox, reset, button, submit, color, or search.
-
----
-
 # `px`
 
 Solo para shadows, borders etc.
@@ -69,8 +79,6 @@ Solo para shadows, borders etc.
 ---
 
 # `fonts`
-
-
 
 ---
 

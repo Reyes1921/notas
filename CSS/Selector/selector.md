@@ -147,4 +147,53 @@ li::marker {
 
 Un signo de dos puntos dobles (`::`) es lo que distingue a un pseudoelemento de una pseudoclase, pero debido a que esta distinción no estaba presente en las versiones anteriores de las especificaciones de CSS, los navegadores admiten dos puntos simples para los pseudoelementos originales, como `:before` y `:after` para ayudar con la compatibilidad con versiones anteriores de los navegadores más antiguos, como IE8.
 
+# `Extras`
+
+## `nth-child`
+
+```bash
+div p:nth-child(0) //get childs
+ul li:nth-child(2n+3)
+```
+
+## `last-child - first-child`
+
+The `:first-child` pseudo class means "if this element is the first child of its parent".
+`:last-child` means "if this element is the last child of its parent".
+
+```bash
+div#test p:first-child {text-decoration: underline;}
+div#test p:last-child {color: red;}
+```
+
+## `not`
+
+```bash
+div p:not(.foo) //omit class
+form >:not([disabled]) /omit attribute
+```
+
+## `>`
+
+```bash
+div > \* //get only direct children
+```
+
+## `~`
+
+Selector hermano de arriba para abajo.
+
+```bash
+p ~ span
+h1 ~ h2 // Hermano
+```
+
+## `+`
+
+Adyacente.
+
+```bash
+h1 + h2 //adyacente
+```
+
 [TOP](#selector)

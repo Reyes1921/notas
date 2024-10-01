@@ -66,6 +66,30 @@ Los contenedores son tecnología que se usa para agrupar una aplicación con tod
 
 Al usar contenedores, los usuarios evitan que se produzcan bloqueos debido a entornos incompatibles y obtienen un rendimiento uniforme en todos los equipos. Los desarrolladores pueden entonces enfocarse en la propia aplicación y no en la corrección de errores o en reescribirla para diferentes entornos de servidores. Y, sin sistema operativo, los contenedores ofrecen una manera eficiente de que los desarrolladores puedan desplegarlos en clúster, donde los contenedores individuales contienen componentes únicos de aplicaciones complejas. Al dividir los componentes en contenedores separados, los desarrolladores también pueden actualizar componentes individuales en lugar de reprocesar toda la aplicación.
 
+Los contenedores son entornos aislados que empacan aplicaciones y todas sus dependencias en una única unidad. Esto significa que puedes ejecutar la misma aplicación de manera consistente en cualquier lugar, independientemente de la infraestructura subyacente. Imagina un contenedor como una caja que contiene una aplicación, sus bibliotecas y configuraciones necesarias. Algunos ejemplos populares de contenedores son:
+
+- `Docker`: Un pionero en la tecnología de contenedores, Docker permite empaquetar aplicaciones en contenedores y ejecutarlos de manera eficiente en diferentes sistemas operativos.
+- `Podman`: Similar a Docker, Podman proporciona una alternativa de código abierto para la gestión de contenedores.
+
+`Características de los Contenedores`
+
+- `Portabilidad`: Los contenedores son independientes de la infraestructura subyacente, lo que facilita su despliegue en entornos locales o en la nube.
+- `Aislamiento`: Cada contenedor se ejecuta en un entorno aislado, lo que evita conflictos entre aplicaciones y garantiza la seguridad.
+- `Eficiencia`: Los contenedores comparten recursos del sistema y son más ligeros que las máquinas virtuales, lo que los hace rápidos y eficientes.
+
+## `Orquestación`
+
+La orquestación es la gestión automatizada de contenedores en clústeres. Aquí es donde Kubernetes brilla. Kubernetes es un sistema de código abierto que automatiza tareas como la implementación, el escalado y la administración de aplicaciones en contenedores. Algunos ejemplos de orquestación incluyen:
+
+- `Kubernetes`: La orquestación de contenedores más popular y ampliamente adoptada, desarrollada por Google.
+- `Docker Swarm`: Una opción más simple que viene integrada con Docker para orquestar aplicaciones en contenedores.
+
+`Características de la Orquestación`
+
+- `Autoescalado`: Kubernetes ajusta automáticamente el número de réplicas de una aplicación en función de la carga.
+- `Balanceo de Carga`: Distribuye el tráfico de manera equitativa entre las réplicas de una aplicación.
+- `Actualizaciones Sin Downtime`: Permite actualizar aplicaciones sin afectar su disponibilidad.
+
 # `Cloud Design Patterns`
 
 These design patterns are useful for building reliable, scalable, secure applications in the cloud.

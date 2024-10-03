@@ -1,6 +1,5 @@
 [Volver al Menú](../root.md)
 
-
 # `Entorno del navegador, especificaciones`
 
 El lenguaje JavaScript fue creado inicialmente para los navegadores web. Desde entonces, ha evolucionado en un lenguaje con muchos usos y plataformas.
@@ -19,7 +18,8 @@ Primero, es un objeto global para el código JavaScript, como se describe en el 
 
 Segundo, representa la “ventana del navegador” y proporciona métodos para controlarla.
 Por ejemplo, podemos usarlo como objeto global:
-```
+
+```bash
 function sayHi() {
   alert("Hola");
 }
@@ -35,6 +35,7 @@ Document Object Model, o DOM, representa todo el contenido de la página como ob
 El objeto document es el punto de entrada a la página. Con él podemos cambiar o crear cualquier cosa en la página.
 
 Por ejemplo:
+
 ```
 // cambiar el color de fondo a rojo
 document.body.style.background = "red";
@@ -52,7 +53,7 @@ Por ejemplo:
 - El objeto navigator proporciona información sobre el navegador y el sistema operativo. Hay muchas propiedades, pero las dos más conocidas son: navigator.userAgent: acerca del navegador actual, y navigator.platform: acerca de la plataforma (ayuda a distinguir Windows/Linux/Mac, etc.).
 
 - El objeto location nos permite leer la URL actual y puede redirigir el navegador a una nueva.
-Aquí vemos cómo podemos usar el objeto location:
+  Aquí vemos cómo podemos usar el objeto location:
 
 ```
 alert(location.href); // muestra la URL actual
@@ -96,13 +97,14 @@ Todos estos objetos son accesibles empleando JavaScript, y podemos usarlos para 
 Por ejemplo, document.body es el objeto que representa la etiqueta <body>.
 
 Ejecutar el siguiente código hará que el <body> sea de color rojo durante 3 segundos:
+
 ```
 document.body.style.background = 'red'; // establece un color de fondo rojo
 
 setTimeout(() => document.body.style.background = '', 3000); // volver atrás
 ```
 
- ## `Autocorrección`
+## `Autocorrección`
 
 Si el navegador encuentra HTML mal escrito, lo corrige automáticamente al construir el DOM.
 
@@ -115,6 +117,7 @@ Como ejemplo de esto, si el archivo HTML es la palabra "Hello", el navegador lo 
 Existen otros tipos de nodos además de elementos y nodos de texto.
 
 Por ejemplo, los comentarios:
+
 ```
 <!DOCTYPE HTML>
 <html>
@@ -179,6 +182,7 @@ Existen dos términos que vamos a utilizar de ahora en adelante:
 La colección `childNodes` enumera todos los nodos hijos, incluidos los nodos de texto.
 
 El ejemplo inferior muestra todos los hijos de document.body:
+
 ```
 <html>
 <body>
@@ -221,7 +225,6 @@ Los enlaces son similares a los de arriba, solo que tienen dentro la palabra Ele
 - `previousElementSibling`, `nextElementSibling` – elementos vecinos.
 - `parentElement` – elemento padre.
 
-
 <h2 style='color: green'>Resumen</h2>
 
 Dado un nodo del DOM, podemos ir a sus inmediatos vecinos utilizando las propiedades de navegación.
@@ -247,6 +250,7 @@ Si un elemento tiene el atributo id, podemos obtener el elemento usando el méto
 Sin duda el método más versátil, elem.querySelectorAll(css) devuelve todos los elementos dentro de elem que coinciden con el selector CSS dado.
 
 Aquí buscamos todos los elementos `<li>` que son los últimos hijos:
+
 ```
 <ul>
   <li>La</li>
@@ -282,6 +286,7 @@ El `elem.matches(css)` no busca nada, sólo comprueba si el elem coincide con el
 Este método es útil cuando estamos iterando sobre elementos (como en un array) y tratando de filtrar los que nos interesan.
 
 Por ejemplo:
+
 ```
 <a href="http://example.com/file.zip">...</a>
 <a href="http://ya.ru">...</a>
@@ -305,7 +310,8 @@ El método elem.closest(css) busca el ancestro más cercano que coincide con el 
 En otras palabras, el método closest sube del elemento y comprueba cada uno de los padres. Si coincide con el selector, entonces la búsqueda se detiene y devuelve dicho ancestro.
 
 Por ejemplo:
-```
+
+```bash
 <h1>Contenido</h1>
 
 <div class="contents">
@@ -333,13 +339,13 @@ Hoy en día, son en su mayoría historia, ya que `querySelector` es más poderos
 
 Aquí los cubrimos principalmente por completar el temario, aunque todavía se pueden encontrar en scripts antiguos.
 
-- `elem.getElementsByTagName(tag)` busca elementos con la etiqueta dada y devuelve una colección con ellos. El parámetro tag también puede ser un asterisco "*" para “cualquier etiqueta”.
+- `elem.getElementsByTagName(tag)` busca elementos con la etiqueta dada y devuelve una colección con ellos. El parámetro tag también puede ser un asterisco "\*" para “cualquier etiqueta”.
 - `elem.getElementsByClassName(className)` devuelve elementos con la clase dada.
 - `document.getElementsByName(name)` devuelve elementos con el atributo name dado, en todo el documento. Muy raramente usado.
 
 ## `Colecciones vivas`
 
-Todos los métodos "getElementsBy*" devuelven una colección viva (live collection). Tales colecciones siempre reflejan el estado actual del documento y se “auto-actualizan” cuando cambia.
+Todos los métodos "getElementsBy\*" devuelven una colección viva (live collection). Tales colecciones siempre reflejan el estado actual del documento y se “auto-actualizan” cuando cambia.
 
 En el siguiente ejemplo, hay dos scripts.
 
@@ -349,7 +355,8 @@ En el siguiente ejemplo, hay dos scripts.
 Por el contrario, querySelectorAll devuelve una colección estática. Es como un array de elementos fijos.
 
 Si lo utilizamos en lugar de getElementsByTagName, entonces ambos scripts dan como resultado 1:
-```
+
+```bash
 <div>Primer div</div>
 
 <script>
@@ -419,7 +426,7 @@ Hay 6 métodos principales para buscar nodos en el DOM:
 </tbody>
 </table>
 
-Los más utilizados son `querySelector` y `querySelectorAll`, pero `getElementBy`* puede ser de ayuda esporádicamente o encontrarse en scripts antiguos.
+Los más utilizados son `querySelector` y `querySelectorAll`, pero `getElementBy`\* puede ser de ayuda esporádicamente o encontrarse en scripts antiguos.
 
 Aparte de eso:
 
@@ -429,7 +436,6 @@ Aparte de eso:
 Y mencionemos un método más para comprobar la relación hijo-padre, ya que a veces es útil:
 
 - elemA.`contains`(elemB) devuelve true si elemB está dentro de elemA (un descendiente de elemA) o cuando elemA==elemB.
-
 
 # `Propiedades del nodo: tipo, etiqueta y contenido`
 
@@ -461,9 +467,9 @@ Las clases son:
 
 - `CharacterData` – una clase “abstract” heredada por:
 
-    `Text` – la clase correspondiente a texto dentro de los elementos, por ejemplo Hello en `<p>Hello</p>`.
+  `Text` – la clase correspondiente a texto dentro de los elementos, por ejemplo Hello en `<p>Hello</p>`.
 
-    `Comment` – la clase para los “comentarios”. No se muestran, pero cada comentario se vuelve un miembro del DOM.
+  `Comment` – la clase para los “comentarios”. No se muestran, pero cada comentario se vuelve un miembro del DOM.
 
 - `Element` – es una clase base para elementos DOM.
 
@@ -498,18 +504,20 @@ Tiene un valor numérico:
 Dado un nodo DOM, podemos leer su nombre de etiqueta en las propiedades de `nodeName` o `tagName`:
 
 Por ejemplo:
+
 ```
 alert( document.body.nodeName ); // BODY
 alert( document.body.tagName ); // BODY
 ```
+
 ¿Hay alguna diferencia entre `tagName` y `nodeName`?
 
 Claro, la diferencia se refleja en sus nombres, pero de hecho es un poco sutil.
 
 - La propiedad `tagName` existe solo para los nodos Element.
 - El `nodeName` se define para cualquier Node:
-    -para los elementos, significa lo mismo que `tagName`.
-    -para otros tipos de nodo (texto, comentario, etc.) tiene una cadena con el tipo de nodo.
+  -para los elementos, significa lo mismo que `tagName`.
+  -para otros tipos de nodo (texto, comentario, etc.) tiene una cadena con el tipo de nodo.
 
 En otras palabras, `tagName` solo es compatible con los nodos de elementos (ya que se origina en la clase Element), mientras que nodeName puede decir algo sobre otros tipos de nodos.
 
@@ -543,6 +551,7 @@ La propiedad outerHTML contiene el HTML completo del elemento. Eso es como inner
   alert(elem.outerHTML); // <div id="elem">Hola <b>Mundo</b></div>
 </script>
 ```
+
 <h2 style="color: red">Cuidado: a diferencia de innerHTML, escribir en outerHTML no cambia el elemento. En cambio, lo reemplaza en el DOM.</h2>
 
 Sí, suena extraño, y es extraño, por eso hacemos una nota aparte al respecto aquí. Echa un vistazo.
@@ -584,14 +593,17 @@ Un ejemplo de lectura del contenido de un nodo de texto y un comentario:
   </script>
 </body>
 ```
+
 Para los nodos de texto podemos imaginar una razón para leerlos o modificarlos, pero ¿por qué comentarios?
 
 A veces, los desarrolladores incorporan información o instrucciones de plantilla en HTML, así:
+
 ```
 <!-- if isAdmin -->
   <div>¡Bienvenido, administrador!</div>
 <!-- /if -->
 ```
+
 …Entonces JavaScript puede leerlo desde la propiedad data y procesar las instrucciones integradas.
 
 ## `textContent: texto puro`
@@ -599,6 +611,7 @@ A veces, los desarrolladores incorporan información o instrucciones de plantill
 El textContent proporciona acceso al texto dentro del elemento: solo texto, menos todas las `<tags>`.
 
 Por ejemplo:
+
 ```
 <div id="news">
   <h1>¡Titular!</h1>
@@ -627,6 +640,7 @@ Digamos que tenemos un string arbitrario, por ejemplo, ingresado por un usuario,
 El atributo “hidden” y la propiedad DOM especifican si el elemento es visible o no.
 
 Podemos usarlo en HTML o asignarlo usando JavaScript, así:
+
 ```
 <div>Ambos divs a continuación están ocultos</div>
 
@@ -657,29 +671,27 @@ Cada nodo DOM pertenece a una determinada clase. Las clases forman una jerarquí
 Las propiedades principales del nodo DOM son:
 
 `nodeType`
-  Podemos usarla para ver si un nodo es un texto o un elemento. Tiene un valor numérico: 1 para elementos, 3 para nodos de texto y algunos otros para otros tipos de nodos. Solo lectura.
-  
+Podemos usarla para ver si un nodo es un texto o un elemento. Tiene un valor numérico: 1 para elementos, 3 para nodos de texto y algunos otros para otros tipos de nodos. Solo lectura.
+
 `nodeName/tagName`
-  Para los elementos, nombre de la etiqueta (en mayúsculas a menos que esté en modo XML). Para los nodos que no son elementos, nodeName describe lo que es. Solo lectura.
-  
+Para los elementos, nombre de la etiqueta (en mayúsculas a menos que esté en modo XML). Para los nodos que no son elementos, nodeName describe lo que es. Solo lectura.
+
 `innerHTML`
-  El contenido HTML del elemento. Puede modificarse.
-  
+El contenido HTML del elemento. Puede modificarse.
+
 `outerHTML`
-  El HTML completo del elemento. Una operación de escritura en elem.outerHTML no toca a elem en sí. En su lugar, se reemplaza con el nuevo HTML en el contexto externo.
-  
+El HTML completo del elemento. Una operación de escritura en elem.outerHTML no toca a elem en sí. En su lugar, se reemplaza con el nuevo HTML en el contexto externo.
+
 `nodeValue/data`
-  El contenido de un nodo que no es un elemento (text, comment). Estos dos son casi iguales, usualmente usamos data. Puede modificarse.
-  
+El contenido de un nodo que no es un elemento (text, comment). Estos dos son casi iguales, usualmente usamos data. Puede modificarse.
+
 `textContent`
-  El texto dentro del elemento: HTML menos todas las `<tags>`. Escribir en él coloca el texto dentro del elemento, con todos los caracteres especiales y etiquetas tratados exactamente como texto. Puede insertar de forma segura texto generado por el usuario y protegerse de inserciones HTML no deseadas.
-  
+El texto dentro del elemento: HTML menos todas las `<tags>`. Escribir en él coloca el texto dentro del elemento, con todos los caracteres especiales y etiquetas tratados exactamente como texto. Puede insertar de forma segura texto generado por el usuario y protegerse de inserciones HTML no deseadas.
+
 `hidden`
-  Cuando se establece en `true`, hace lo mismo que CSS `display:none`.
-  
+Cuando se establece en `true`, hace lo mismo que CSS `display:none`.
 
 Los nodos DOM también tienen otras propiedades dependiendo de su clase. Por ejemplo, los elementos `<input>` (HTMLInputElement) admiten value, type, mientras que los elementos `<a>` (HTMLAnchorElement) admiten href, etc. La mayoría de los atributos HTML estándar tienen una propiedad DOM correspondiente.
-
 
 # `Atributos y propiedades`
 
@@ -707,6 +719,7 @@ alert(document.body.myData.title); // Emperador
 ```
 
 También podemos agregar un método:
+
 ```
 document.body.sayTagName = function() {
   alert(this.tagName);
@@ -716,6 +729,7 @@ document.body.sayTagName(); // BODY (el valor de 'this' en el método es documen
 ```
 
 También podemos modificar prototipos incorporados como Element.prototype y agregar nuevos métodos a todos los elementos:
+
 ```
 Element.prototype.sayHi = function() {
   alert(`Hola, yo soy ${this.tagName}`);
@@ -724,6 +738,7 @@ Element.prototype.sayHi = function() {
 document.documentElement.sayHi(); // Hola, yo soy HTML
 document.body.sayHi(); // Hola, yo soy BODY
 ```
+
 Por lo tanto, las propiedades y métodos DOM se comportan igual que los objetos JavaScript normales:
 
 - Pueden tener cualquier valor.
@@ -736,6 +751,7 @@ En HTML, las etiquetas pueden tener atributos. Cuando el navegador analiza el HT
 Entonces, cuando un elemento tiene id u otro atributo estándar, se crea la propiedad correspondiente. Pero eso no sucede si el atributo no es estándar.
 
 Por ejemplo:
+
 ```
 <body id="test" something="non-standard">
   <script>
@@ -749,6 +765,7 @@ Por ejemplo:
 Tenga en cuenta que un atributo estándar para un elemento puede ser desconocido para otro. Por ejemplo, "type" es estándar para `<input>` (HTMLInputElement), pero no para `<body>` (HTMLBodyElement). Los atributos estándar se describen en la especificación para la clase del elemento correspondiente.
 
 Aquí podemos ver esto:
+
 ```
 <body id="body" type="...">
   <input id="input" type="text">
@@ -787,6 +804,7 @@ Las propiedades DOM no siempre son strings. Por ejemplo, la propiedad input.chec
 ```
 
 Hay otros ejemplos. El atributo style es un string, pero la propiedad style es un objeto:
+
 ```
 <div id="div" style="color:red;font-size:120%">Hola</div>
 
@@ -832,6 +850,7 @@ Como esto:
 También se pueden usar para diseñar un elemento.
 
 Por ejemplo, aquí para el estado del pedido se usa el atributo order-state:
+
 ```
 <style>
   /* los estilos se basan en el atributo personalizado "order-state" */
@@ -864,6 +883,7 @@ Por ejemplo, aquí para el estado del pedido se usa el atributo order-state:
 ¿Por qué sería preferible usar un atributo a tener clases como .order-state-new, .order-state-pending, .order-state-canceled?
 
 Porque un atributo es más conveniente de administrar. El estado se puede cambiar tan fácil como:
+
 ```
 // un poco más simple que eliminar/agregar clases
 div.setAttribute('order-state', 'canceled');
@@ -871,13 +891,14 @@ div.setAttribute('order-state', 'canceled');
 
 Pero puede haber un posible problema con los atributos personalizados. ¿Qué sucede si usamos un atributo no estándar para nuestros propósitos y luego el estándar lo introduce y hace que haga algo? El lenguaje HTML está vivo, crece y cada vez hay más atributos que aparecen para satisfacer las necesidades de los desarrolladores. Puede haber efectos inesperados en tal caso.
 
-Para evitar conflictos, existen atributos data-*.
+Para evitar conflictos, existen atributos data-\*.
 
 `Todos los atributos que comienzan con “data-” están reservados para el uso de los programadores. Están disponibles en la propiedad dataset.`
 
 Por ejemplo, si un elem tiene un atributo llamado "data-about", está disponible como elem.dataset.about.
 
 Como esto:
+
 ```
 <body data-about="Elefante">
 <script>
@@ -888,6 +909,7 @@ Como esto:
 Los atributos de varias palabras como data-order-state se convierten en camel-case: dataset.orderState
 
 Aquí hay un ejemplo reescrito de “estado del pedido”:
+
 ```
 <style>
   .order[data-order-state="nuevo"] {
@@ -915,9 +937,10 @@ Aquí hay un ejemplo reescrito de “estado del pedido”:
   order.dataset.orderState = "pendiente"; // (*)
 </script>
 ```
-El uso de los atributos data- * es una forma válida y segura de pasar datos personalizados.
 
-Tenga en cuenta que no solo podemos leer, sino también modificar los atributos de datos. Luego, CSS actualiza la vista en consecuencia: en el ejemplo anterior, la última línea (*) cambia el color a azul.
+El uso de los atributos data- \* es una forma válida y segura de pasar datos personalizados.
+
+Tenga en cuenta que no solo podemos leer, sino también modificar los atributos de datos. Luego, CSS actualiza la vista en consecuencia: en el ejemplo anterior, la última línea (\*) cambia el color a azul.
 
 <h2 style="color: green">Resumen</h2>
 
@@ -977,6 +1000,7 @@ Crea un nuevo nodo elemento con la etiqueta HTML dada:
 ### `Creando el mensaje`
 
 Crear el div de mensaje toma 3 pasos:
+
 ```
 // 1. Crear elemento <div>
 let div = document.createElement('div');
@@ -989,6 +1013,7 @@ div.innerHTML = "<strong>¡Hola!</strong> Usted ha leído un importante mensaje.
 ```
 
 ## `Métodos de inserción`
+
 Para hacer que el div aparezca, necesitamos insertarlo en algún lado dentro de document. Por ejemplo, en el elemento `<body>`, referenciado por document.body.
 
 Hay un método especial append para ello: document.body.append(div).
@@ -1015,6 +1040,7 @@ El primer parámetro es un palabra código que especifica dónde insertar relati
 El segundo parámetro es un string HTML, que es insertado “como HTML”.
 
 Por ejemplo:
+
 ```
 <div id="div"></div>
 <script>
@@ -1032,6 +1058,7 @@ Por ejemplo:
 Para quitar un nodo, tenemos el método node.remove().
 
 Hagamos que nuestro mensaje desaparezca después de un segundo:
+
 ```
 <style>
 .alert {
@@ -1064,6 +1091,7 @@ A veces, cuando tenemos un elemento grande, esto es más simple y rápido.
 La llamada elem.cloneNode(true) crea una clonación “profunda” del elemento, con todos los atributos y subelementos. Si llamamos elem.cloneNode(false), la clonación se hace sin sus elementos hijos.
 
 Un ejemplo de copia del mensaje:
+
 ```
 <style>
 .alert {
@@ -1116,6 +1144,7 @@ ul.append(getListContent()); // (*)
 ```
 
 Es raro que DocumentFragment se use explícitamente. ¿Por qué añadir un tipo especial de nodo si en su lugar podemos devolver un array de nodos? El ejemplo reescrito:
+
 ```
 <ul id="ul"></ul>
 
@@ -1158,9 +1187,10 @@ Quita node de parentElem (asumiendo que node es su hijo).
 
 ## `Una palabra acerca de “document.write”`
 
-  Hay uno más, un método muy antiguo para agregar algo a una página web: document.write.
+Hay uno más, un método muy antiguo para agregar algo a una página web: document.write.
 
 La sintaxis:
+
 ```
 <p>En algún lugar de la página...</p>
 <script>
@@ -1168,6 +1198,7 @@ La sintaxis:
 </script>
 <p>Fin</p>
 ```
+
 El llamado a document.write(html) escribe el html en la página “aquí y ahora”. El string html puede ser generado dinámicamente, así que es muy flexible. Podemos usar JavaScript para crear una página completa al vuelo y escribirla.
 
 El método viene de tiempos en que no había DOM ni estándares… Realmente viejos tiempos. Todavía vive, porque hay scripts que lo usan.
@@ -1182,42 +1213,42 @@ Si la llamamos después, el contenido existente del documento es borrado.
 
 Métodos para crear nuevos nodos:
 
-  - document.`createElement`(tag) – crea un elemento con la etiqueta HTML dada
-  - document.`createTextNode`(value) – crea un nodo de texto (raramente usado)
-  - elem.`cloneNode`(deep) – clona el elemento. Si deep==true, lo clona con todos sus descendientes.
+- document.`createElement`(tag) – crea un elemento con la etiqueta HTML dada
+- document.`createTextNode`(value) – crea un nodo de texto (raramente usado)
+- elem.`cloneNode`(deep) – clona el elemento. Si deep==true, lo clona con todos sus descendientes.
 
 Inserción y eliminación:
 
-  - node.`append`(...nodes or strings) – inserta en node, al final
-  - node.`prepend`(...nodes or strings) – inserta en node, al principio
-  - node.`before`(...nodes or strings) –- inserta inmediatamente antes de node
-  - node.`after`(...nodes or strings) –- inserta inmediatamente después de node
-  - node.`replaceWith`(...nodes or strings) –- reemplaza node
-  - node.`remove`() –- quita el node.
+- node.`append`(...nodes or strings) – inserta en node, al final
+- node.`prepend`(...nodes or strings) – inserta en node, al principio
+- node.`before`(...nodes or strings) –- inserta inmediatamente antes de node
+- node.`after`(...nodes or strings) –- inserta inmediatamente después de node
+- node.`replaceWith`(...nodes or strings) –- reemplaza node
+- node.`remove`() –- quita el node.
 
-    Los strings de texto son insertados “como texto”.
+  Los strings de texto son insertados “como texto”.
 
 También hay métodos “de vieja escuela”:
 
-  - parent.`appendChild`(node)
-  - parent.`insertBefore`(node, nextSibling)
-  - parent.`removeChild`(node)
-  - parent.`replaceChild`(newElem, node)
+- parent.`appendChild`(node)
+- parent.`insertBefore`(node, nextSibling)
+- parent.`removeChild`(node)
+- parent.`replaceChild`(newElem, node)
 
-  Todos estos métodos devuelven node.
+Todos estos métodos devuelven node.
 
 Dado cierto HTML en html, elem.insertAdjacentHTML(where, html) lo inserta dependiendo del valor where:
 
-  - "`beforebegin`" – inserta html inmediatamente antes de elem
-  - "`afterbegin`" – inserta html en elem, al principio
-  - "`beforeend`" – inserta html en elem, al final
-  - "`afterend`" – inserta html inmediatamente después deelem
+- "`beforebegin`" – inserta html inmediatamente antes de elem
+- "`afterbegin`" – inserta html en elem, al principio
+- "`beforeend`" – inserta html en elem, al final
+- "`afterend`" – inserta html inmediatamente después deelem
 
-    También hay métodos similares, elem.insertAdjacentText y elem.insertAdjacentElement, que insertan strings de texto y elementos, pero son raramente usados.
+  También hay métodos similares, elem.insertAdjacentText y elem.insertAdjacentElement, que insertan strings de texto y elementos, pero son raramente usados.
 
 Para agregar HTML a la página antes de que haya terminado de cargar:
 
-  - document.`write`(html)
+- document.`write`(html)
 
 Después de que la página fue cargada tal llamada borra el documento. Puede verse principalmente en scripts viejos.
 
@@ -1249,6 +1280,7 @@ Hay otra propiedad para eso: elem.classList.
 El elem.classList es un objeto especial con métodos para agregar, eliminar y alternar (add/remove/toggle) una sola clase.
 
 Por ejemplo:
+
 ```
 <body class="main page">
   <script>
@@ -1265,8 +1297,8 @@ Entonces podemos trabajar con ambos: todas las clases como una cadena usando cla
 Métodos de classList:
 
 - elem.classList.add/remove("class") – agrega o remueve la clase.
-- elem.classList.toggle("class") – agrega la clase si no existe, si no la remueve.- 
-- elem.classList.contains("class") – verifica si tiene la clase dada, devuelve true/false.- 
+- elem.classList.toggle("class") – agrega la clase si no existe, si no la remueve.-
+- elem.classList.contains("class") – verifica si tiene la clase dada, devuelve true/false.-
 
 Además, classList es iterable, entonces podemos listar todas las clases con for..of.
 
@@ -1287,6 +1319,7 @@ border-left-width => elem.style.borderLeftWidth
 Propiedades con prefijos del navegador como -moz-border-radius, -webkit-border-radius también siguen la misma regla: un guion significa mayúscula.
 
 Por ejemplo:
+
 ```
 button.style.MozBorderRadius = '5px';
 button.style.WebkitBorderRadius = '5px';
@@ -1299,6 +1332,7 @@ A veces queremos asignar una propiedad de estilo y luego removerla.
 Por ejemplo, para ocultar un elemento, podemos establecer elem.style.display = "none".
 
 Luego, más tarde, es posible que queramos remover style.display como si no estuviera establecido. En lugar de delete elem.style.display deberíamos asignarle una cadena vacía: elem.style.display = "".
+
 ```
 // si ejecutamos este código, el <body> parpadeará
 document.body.style.display = "none"; // ocultar
@@ -1309,17 +1343,19 @@ setTimeout(() => document.body.style.display = "", 1000); // volverá a lo norma
 Si establecemos style.display como una cadena vacía, entonces el navegador aplica clases y estilos CSS incorporados normalmente por el navegador, como si no existiera tal style.display.
 
 También hay un método especial para eso, elem.style.removeProperty('style property'). Así, podemos quitar una propiedad:
+
 ```
 document.body.style.background = 'red'; //establece background a rojo
 
-setTimeout(() => document.body.style.removeProperty('background'), 1000); 
+setTimeout(() => document.body.style.removeProperty('background'), 1000);
 ```
 
 ### `Reescribir todo usando style.cssText`
 
-Normalmente, podemos usar style.* para asignar propiedades de estilo individuales. No podemos establecer todo el estilo como div.style="color: red; width: 100px", porque div.style es un objeto y es solo de lectura.
+Normalmente, podemos usar style.\* para asignar propiedades de estilo individuales. No podemos establecer todo el estilo como div.style="color: red; width: 100px", porque div.style es un objeto y es solo de lectura.
 
 Para establecer todo el estilo como una cadena, hay una propiedad especial: style.cssText:
+
 ```
 <div id="div">Button</div>
 
@@ -1334,6 +1370,7 @@ Para establecer todo el estilo como una cadena, hay una propiedad especial: styl
   alert(div.style.cssText);
 </script>
 ```
+
 Esta propiedad es rara vez usada, porque tal asignación remueve todo los estilos: no agrega estilos sino que los reemplaza en su totalidad. Ocasionalmente podría eliminar algo necesario. Pero podemos usarlo de manera segura para nuevos elementos, cuando sabemos que no vamos a eliminar un estilo existente.
 
 Lo mismo se puede lograr estableciendo un atributo: div.setAttribute('style', 'color: red...').
@@ -1360,6 +1397,7 @@ Por ejemplo, nosotros no debemos establecer elem.style.top a 10, sino más bien 
   </script>
 </body>
 ```
+
 Tenga en cuenta: el navegador “desempaqueta” la propiedad style.margin en las últimas lineas e infiere style.marginLeft y style.marginTop de eso.
 
 ## `Estilos calculados: getComputedStyle`
@@ -1373,6 +1411,7 @@ La propiedad style solo opera en el valor del atributo "style", sin ninguna casc
 Entonces no podemos leer ninguna clase CSS usando elem.style.
 
 Por ejemplo, aquí style no ve el margen:
+
 ```
 <head>
   <style> body { color: red; margin: 5px } </style>
@@ -1404,6 +1443,7 @@ Un pseudo-elemento es requerido, por ejemplo ::before. Una cadena vacía o sin a
 El resultado es un objeto con estilos, como elem.style, pero ahora con respecto a todas las clases CSS.
 
 Por ejemplo:
+
 ```
 <head>
   <style> body { color: red; margin: 5px } </style>
@@ -1509,7 +1549,7 @@ Pero en ese elemento, para toda la página, estas propiedades no funcionan segú
 
 ## `Obtener el desplazamiento actual`
 
-  Los elementos DOM tienen su estado de desplazamiento actual en sus propiedades elem.scrollLeft/scrollTop.
+Los elementos DOM tienen su estado de desplazamiento actual en sus propiedades elem.scrollLeft/scrollTop.
 
 El desplazamiento de documentos, document.documentElement.scrollLeft / Top funciona en la mayoría de los navegadores, excepto los más antiguos basados en WebKit, como Safari (bug 5991), donde deberíamos usar document.body en lugar de document.documentElement.
 
@@ -1546,9 +1586,9 @@ Geometría:
 - Ancho/alto de todo el documento, con la parte desplazada:
 
 let scrollHeight = Math.max(
-  document.body.scrollHeight, document.documentElement.scrollHeight,
-  document.body.offsetHeight, document.documentElement.offsetHeight,
-  document.body.clientHeight, document.documentElement.clientHeight
+document.body.scrollHeight, document.documentElement.scrollHeight,
+document.body.offsetHeight, document.documentElement.offsetHeight,
+document.body.clientHeight, document.documentElement.clientHeight
 );
 
 Desplazamiento:
@@ -1580,6 +1620,5 @@ Cuando la página se desplaza hasta el comienzo, de modo que la esquina superior
 ## `Coordenadas de elemento: getBoundingClientRect`
 
 [Mas Informacion](https://es.javascript.info/coordinates)
-
 
 [TOP](#entorno-del-navegador-especificaciones)

@@ -1,7 +1,7 @@
 <?PHP
 
-//ULTIMA VERSION PHP 8.1.7 JUN 09 2022
-//ULTIMA VERSION WORDPRESS 6.0.1 JULIO 12 2022
+//ULTIMA VERSION PHP 8.3 23 Nov 2023
+//ULTIMA VERSION WORDPRESS 6.6.2 September 10, 2024
 
 //---------------------WORDPRESS-----------------------------------------------------
 
@@ -43,13 +43,13 @@ do_action( 'after_setup_theme' )
 //Adds a callback function to an action hook.
 add_action( string $hook_name, callable $callback, int $priority = 10, int $accepted_args = 1 );
 
-//Calls the callback functions that have been added to an action hook.
+//Calls the callback functions that have been added to an action hook. (To create a custom hook)
 do_action( string $hook_name, mixed $arg );
 
 //Adds a callback function to a filter hook.
 add_filter( string $hook_name, callable $callback, int $priority = 10, int $accepted_args = 1 );
 
-//Calls the callback functions that have been added to a filter hook.
+//Calls the callback functions that have been added to a filter hook. (To create a custom hook)
 apply_filters();
 
 //HTML dentro de PHP
@@ -405,3 +405,55 @@ $order->get_status();
  
 // Get Thank You Page URL
 $order->get_checkout_order_received_url();
+
+
+
+
+ADD CUSTOM JS file
+
+function enqueue_custom_js() {
+    wp_enqueue_script('custom-js', trailingslashit( get_stylesheet_directory_uri() )  . '/js.js', array('jquery'), '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_custom_js');
+
+
+Header Requirements
+
+Activation / Deactivation Hooks
+    register_activation_hook
+    register_deactivation_hook
+    register_uninstall_hook
+
+    BUENAS PRACTICAS
+
+Prefix Everything
+
+Check for Existing Implementations
+
+Variables: isset() (includes arrays, objects, etc.)
+Functions: function_exists()
+Classes: class_exists()
+Constants: defined()
+
+Conditional Loading
+if ( is_admin() ) {
+    // we are in admin mode
+    require_once __DIR__ . '/admin/plugin-name-admin.php';
+}
+
+Avoiding Direct File Access
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
+Architecture Patterns
+
+
+
+directories https://developer.wordpress.org/plugins/plugin-basics/determining-plugin-and-content-directories/
+
+
+
+file_exists
+
+file_get_contents

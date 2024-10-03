@@ -137,19 +137,6 @@ For many businesses, getting the technical aspects of SEO right, understanding t
 
 - `App Store Search Engines` – If you have an app – either as the core product offering for your company, or as a means for enabling mobile users to be able to interact with your business – having your app show up in searches on various app stores can be extremely valuable. Justin Briggs and Stephanie Beadell have written multiple outstanding posts on the topic.
 
-# `SEO Basics: Recap & next Steps`
-
-Alright, so the SEO basics are:
-
-- Understanding the importance of SEO
-- Keyword research and targeting
-- On-page optimization
-- Information architecture
-- SEO content and link building
-- Technical SEO
-- Tracking and measuring SEO results
-- SEO miscellaneous (mobile, international, local)
-
 [MORE INFO](https://www.wordstream.com/blog/ws/2015/04/30/seo-basics)
 
 [TOP](#seo-search-engine-optimization)

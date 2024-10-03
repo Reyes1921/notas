@@ -31,3 +31,7 @@
 # `PostgreSQL   `
 
 - [PostgreSQL](postgre/postgre.md)
+
+# `Resumen`
+
+<img src="sql/sql.jpg">

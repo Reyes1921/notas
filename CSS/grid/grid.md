@@ -4,6 +4,8 @@
 
 # `Important CSS Grid terminology`
 
+<img src="1725980716202.jpg">
+
 ## `Grid Container`
 
 The element on which display: grid is applied. It’s the direct parent of all the grid items. In this example container is the grid container.

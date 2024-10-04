@@ -24,6 +24,8 @@
 
 [DOM](/DOM/root.md)
 
+[PHP](/php/root.md)
+
 [Software design architecture](/Software%20design%20architecture/root.md)
 
 [Data Structures & Algorithms](/Data%20Structures%20&%20Algorithms/root.md)

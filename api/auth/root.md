@@ -23,3 +23,5 @@ Here is the list of common ways of authentication:
 [SAML](./saml.md)
 
 [OpenId](./openId.md)
+
+<img src="images/auth.gif">

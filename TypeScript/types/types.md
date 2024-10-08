@@ -27,21 +27,21 @@ TypeScript has several built-in types, including:
 
 ## `boolean`
 
-```
+```bash
 let isTrue: boolean = true;
 let isFalse: boolean = false;
 ```
 
 ## `number`
 
-```
+```bash
 let intValue: number = 42;
 let floatValue: number = 3.14;
 ```
 
 ## `string`
 
-```
+```bash
 let name: string = 'John Doe';
 ```
 
@@ -49,7 +49,7 @@ let name: string = 'John Doe';
 
 `void` represents the return value of functions which don’t return a value. It’s the inferred type any time a function doesn’t have any return statements, or doesn’t return any explicit value from those return statements:
 
-```
+```bash
 // The inferred return type is void
 function noop() {
   return;
@@ -70,7 +70,7 @@ With `strictNullChecks` off, values that might be `null` or undefined can still 
 
 With `strictNullChecks` on, when a value is `null` or undefined, you will need to test for those values before using methods or properties on that value. Just like checking for undefined before using an optional property, we can use narrowing to check for values that might be `null`:
 
-```
+```bash
 function doSomething(x: string | null) {
   if (x === null) {
     // do nothing
@@ -88,7 +88,7 @@ function doSomething(x: string | null) {
 
 TypeScript allows you to specifically type an object using an interface that can be reused by multiple objects.
 
-```
+```bash
 interface Person {
   name: string;
   age: number;
@@ -103,7 +103,7 @@ function greet(person: Person) {
 
 In TypeScript, a class is a blueprint for creating objects with specific properties and methods. Classes are a fundamental concept in object-oriented programming. Here is an example of a simple class in TypeScript:
 
-```
+```bash
 class Car {
   make: string;
   model: string;
@@ -127,7 +127,7 @@ Enums is not a type-level extension of JavaScript. It allows a developer to defi
 
 ### `Numeric enums`
 
-```
+```bash
 enum Direction {
   Up = 1,
   Down,
@@ -144,7 +144,7 @@ If we left off the initializer for Up, it would have the value 0 and the rest of
 
 String enums are a similar concept, but have some subtle runtime differences as documented below. In a string enum, each member has to be constant-initialized with a string literal, or with another string enum member.
 
-```
+```bash
 enum Direction {
   Up = "UP",
   Down = "DOWN",
@@ -157,7 +157,7 @@ enum Direction {
 
 Technically enums can be mixed with string and numeric members, but it’s not clear why you would ever want to do so:
 
-```
+```bash
 enum BooleanLikeHeterogeneousEnum {
   No = 0,
   Yes = "YES",
@@ -168,7 +168,7 @@ enum BooleanLikeHeterogeneousEnum {
 
 To specify the type of an array like `[1, 2, 3]`, you can use the syntax number[]; this syntax works for any type (e.g.`string[]` is an array of strings, and so on). You may also see this written as `Array<number>`, which means the same thing.
 
-```
+```bash
 const numbers: number[] = [1, 2, 3];
 
 let animalesAarray: string[] = ['perro', 'gato','pato', 'vaca'];
@@ -182,7 +182,7 @@ let datosMixtos: mixto[] = [1,2,3,4,'Hola','Chao',false];
 
 A tuple type is another sort of Array type that knows exactly how many elements it contains, and exactly which types it contains at specific positions.
 
-```
+```bash
 type StringNumberPair = [string, number];
 
 const pair: StringNumberPair = ['hello', 42];
@@ -204,7 +204,7 @@ TypeScript has a special type, any, that you can use whenever you don’t want a
 
 When a value is of type any, you can access any properties of it (which will in turn be of type any), call it like a function, assign it to (or from) a value of any type, or pretty much anything else that’s syntactically legal:
 
-```
+```bash
 let obj: any = { x: 0 };
 // None of the following lines of code will throw compiler errors.
 // Using `any` disables all further type checking, and it is assumed
@@ -222,7 +222,7 @@ To define an `object` type, we simply list its properties and their types.
 
 For example, here’s a function that takes a point-like object:
 
-```
+```bash
 // The parameter's type annotation is an object type
 function printCoord(pt: { x: number; y: number }) {
   console.log("The coordinate's x value is " + pt.x);
@@ -236,7 +236,7 @@ printCoord({ x: 3, y: 7 });
 
 `unknown` is the type-safe counterpart of any. Anything is assignable to `unknown`, but `unknown` isn’t assignable to anything but itself and any without a type assertion or a control flow based narrowing. Likewise, no operations are permitted on an unknown without first asserting or narrowing to a more specific type.
 
-```
+```bash
 function f1(a: any) {
   a.b(); // OK
 }
@@ -249,7 +249,7 @@ function f2(a: unknown) {
 
 Here's an example of how unknown works:
 
-```
+```bash
 let myVar: unknown = 0;
 myVar = '1';
 myVar = false;
@@ -263,7 +263,7 @@ The `never` type represents the type of values that never occur. For instance, `
 
 The never type is a subtype of, and assignable to, every type; however, no type is a subtype of, or assignable to, `never` (except `never` itself). Even any isn’t assignable to `never`.
 
-```
+```bash
 // Function returning never must not have a reachable end point
 function error(message: string): never {
   throw new Error(message);
@@ -289,7 +289,7 @@ Type assertions in TypeScript are a way to tell the compiler to treat a value as
 - The “angle-bracket” syntax: `<T>value`
 - The “as” syntax: value as T
 
-```
+```bash
 let num = 42;
 
 // using angle-bracket syntax
@@ -303,7 +303,7 @@ let str2 = num as string;
 
 `as const` is a type assertion in TypeScript that allows you to assert that an expression has a specific type, and that its value should be treated as a read-only value.
 
-```
+```bash
 const colors = ['red', 'green', 'blue'] as const;
 
 // colors is now of type readonly ['red', 'green', 'blue']
@@ -319,7 +319,7 @@ Using as const allows TypeScript to infer more accurate types for constants, whi
 
 In TypeScript, the as keyword is used for type assertions, allowing you to explicitly inform the compiler about the type of a value when it cannot be inferred automatically. Type assertions are a way to override the default static type-checking behavior and tell the compiler that you know more about the type of a particular expression than it does.
 
-```
+```bash
 let someValue: any = "Hello, TypeScript!";
 let strLength: number = (someValue as string).length;
 
@@ -332,7 +332,7 @@ In this example, someValue is initially of type any, and we use the as operator 
 
 `any` is a special type in TypeScript that represents a value of any type. When a value is declared with the any type, the compiler will not perform any type checks or type inference on that value.
 
-```
+```bash
 let anyValue: any = 42;
 
 // we can assign any value to anyValue, regardless of its type
@@ -344,7 +344,7 @@ anyValue = true;
 
 The non-null assertion operator (!) is a type assertion in TypeScript that allows you to tell the compiler that a value will never be null or undefined.
 
-```
+```bash
 let name: string | null = null;
 
 // we use the non-null assertion operator to tell the compiler that name will never be null
@@ -357,7 +357,7 @@ The non-null assertion operator is used to assert that a value is not null or un
 
 TypeScript developers are often faced with a dilemma: we want to ensure that some expression matches some type, but also want to keep the most specific type of that expression for inference purposes.
 
-```
+```bash
 // Each property can be a string or an RGB tuple.
 const palette = {
   red: [255, 0, 0],
@@ -375,7 +375,7 @@ const greenNormalized = palette.green.toUpperCase();
 
 `Notice` that we’ve written bleu, whereas we probably should have written blue. We could try to catch that bleu typo by using a type annotation on palette, but we’d lose the information about each property.
 
-```
+```bash
 type Colors = 'red' | 'green' | 'blue';
 type RGB = [red: number, green: number, blue: number];
 
@@ -391,7 +391,7 @@ const redComponent = palette.red.at(0);
 
 The `satisfies` operator lets us validate that the type of an expression matches some type, without changing the resulting type of that expression. As an example, we could use `satisfies` to validate that all the properties of palette are compatible with `string | number[]`:
 
-```
+```bash
 type Colors = 'red' | 'green' | 'blue';
 type RGB = [red: number, green: number, blue: number];
 

@@ -1,8 +1,6 @@
 [Volver al Menú](../root.md)
 
-
 # `TypeScript`
-
 
 TypeScript is a statically-typed programming language that is a superset of JavaScript. It was developed and is maintained by Microsoft. TypeScript was created to address the challenges of building large-scale JavaScript applications and adds optional type annotations, classes, interfaces, and other features to the language.
 
@@ -43,7 +41,6 @@ TypeScript and JavaScript have full interoperability, meaning you can use TypeSc
 
 You can use JavaScript libraries in TypeScript projects by either including the JavaScript files directly or using type definitions for the library. Type definitions provide type information for JavaScript libraries, making it easier to use them in TypeScript.
 
-
 ## `Runtime Behavior`
 
 TypeScript is also a programming language that preserves the runtime behavior of JavaScript. For example, dividing by zero in JavaScript produces Infinity instead of throwing a runtime exception. As a principle, TypeScript never changes the runtime behavior of JavaScript code.
@@ -56,22 +53,21 @@ Keeping the same runtime behavior as JavaScript is a foundational promise of Typ
 
 # `Install and Configure`
 
-
 Initialize npm in your project directory by running the following command:
 
-```
+```bash
 npm init
 ```
 
 Install TypeScript as a project dependency by running the following command:
 
-```
+```bash
 npm install --save-dev typescript
 ```
 
 Create a `tsconfig.json` file in your project directory to specify the compiler options for building your project. For example:
 
-```
+```bash
 {
   "compilerOptions": {
     "target": "es5",
@@ -86,13 +82,13 @@ Create a `tsconfig.json` file in your project directory to specify the compiler 
 
 Compile your TypeScript code using the following command:
 
-```
+```bash
 tsc
 ```
 
 Note: You can also compile individual TypeScript files by specifying the file name after the tsc command.For example:
 
-```
+```bash
 tsc index.ts
 ```
 
@@ -113,13 +109,13 @@ tsconfig.json is a configuration file in TypeScript that specifies the compiler 
 - By invoking tsc with no input files, in which case the compiler searches for the tsconfig.json file starting in the current directory and continuing up the parent directory chain.
 
 - By invoking tsc with no input files and a --project (or just -p) command line option that specifies the path of a directory containing a tsconfig.json file, or a path to a valid .json file containing the configurations.
-When input files are specified on the command line, tsconfig.json files are ignored.
+  When input files are specified on the command line, tsconfig.json files are ignored.
 
 ## `Compiler Options`
 
 TypeScript compiler accepts a number of command line options that allow you to customize the compilation process. These options can be passed to the compiler using the -- prefix, for example:
 
-```
+```bash
 tsc --target ES5 --module commonjs
 ```
 
@@ -132,7 +128,7 @@ To run TypeScript code, you’ll need to have a TypeScript compiler installed. H
 - Write TypeScript code in a .ts file (e.g. app.ts)
 - Compile the TypeScript code into JavaScript using the TypeScript compiler:
 
-```
+```bash
 tsc app.ts
 ```
 
@@ -142,12 +138,11 @@ tsc app.ts
 
 You can use the `tsc` command to compile your TypeScript code by running the following command in your terminal or command prompt:
 
-```
+```bash
 tsc
 ```
 
 This command will compile all TypeScript files in your project that are specified in your `tsc`onfig.json file. If you want to compile a specific TypeScript file, you can specify the file name after the `tsc` command, like this:
-
 
 ## `ts-node`
 

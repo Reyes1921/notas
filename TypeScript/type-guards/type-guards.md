@@ -17,7 +17,7 @@ Type guards are a way to narrow down the type of a variable. This is useful when
 
 The `typeof` operator is used to check the type of a variable. It returns a string value representing the type of the variable.
 
-```
+```bash
 let value: string | number = 'hello';
 
 if (typeof value === 'string') {
@@ -31,7 +31,7 @@ if (typeof value === 'string') {
 
 The `instanceof` operator is a way to narrow down the type of a variable. It is used to check if an object is an instance of a class.
 
-```
+```bash
 class Bird {
   fly() {
     console.log('flying...');
@@ -55,7 +55,7 @@ if (pet instanceof Bird) {
 
 TypeScript also uses switch statements and equality checks like `===`, `!==`, `==`, and `!=` to narrow types.
 
-```
+```bash
 function example(x: string | number, y: string | boolean) {
   if (x === y) {
     // We can now call any 'string' method on 'x' or 'y'.
@@ -80,7 +80,7 @@ In JavaScript, we can use any expression in conditionals, `&&`s, `||`s, if state
 
 Type predicates are functions that return a boolean value. They are used to narrow the type of a variable. Type predicates are used in type guards.
 
-```
+```bash
 function isString(value: unknown): value is string {
   return typeof value === 'string';
 }

@@ -6,7 +6,7 @@ Classes in TypeScript are a blueprint for creating objects (instances of a class
 
 A class in TypeScript is defined using the class keyword, followed by the name of the class. The class definition can include fields (also known as properties or attributes), methods (functions), and a constructor.
 
-```
+```bash
 class Animal {
   name: string;
   constructor(name: string) {
@@ -40,7 +40,7 @@ In this example, the constructor has two parameters: name and age. name has a pr
 
 In TypeScript, you can achieve constructor overloading by using multiple constructor definitions with different parameter lists in a single class. Given below is the example where we have multiple definitions for the constructor:
 
-```
+```bash
 class Point {
   // Overloads
   constructor(x: number, y: string);
@@ -67,7 +67,7 @@ Access modifiers in TypeScript allow you to define the level of visibility and a
 
 Abstract classes in TypeScript are classes that cannot be instantiated on their own and must be subclassed by other classes. Abstract classes provide a blueprint for other classes and can have abstract methods, which are methods without a body and must be overridden by the subclass. These classes are useful for defining a common interface or basic functionality that other classes can inherit and build upon.
 
-```
+```bash
 abstract class Animal {
   abstract makeSound(): void;
 
@@ -91,7 +91,7 @@ Inheritance refers to a mechanism where a subclass inherits properties and metho
 
 Polymorphism refers to the ability of an object to take on many forms. This allows objects of different classes to be treated as objects of a common class, as long as they share a common interface or inheritance hierarchy. In TypeScript, polymorphism is achieved through method overriding and method overloading.
 
-```
+```bash
 class Animal {
   makeSound(): void {
     console.log('Making animal sound');
@@ -125,7 +125,7 @@ In TypeScript, method overriding is a mechanism where a subclass provides a new 
 
 To override a method in TypeScript the signature of the method in the subclass must match exactly with the signature of the method in the parent class.
 
-```
+```bash
 class Animal {
   makeSound(): void {
     console.log('Making animal sound');
@@ -146,4 +146,4 @@ animal.makeSound(); // Output: Bark
 
 In this example, the `Dog` class overrides the makeSound method defined in the `Animal` class and provides its own implementation. When the `makeSound` method is called on an instance of the `Dog` class, it will use the implementation in the `Dog` class rather than the implementation in the `Animal` class.
 
-[TOP](#class)
+[TOP](#classes)

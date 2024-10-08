@@ -8,7 +8,7 @@ TypeScript provides several utility types that can be used to manipulate and tra
 
 The Partial type in TypeScript allows you to make all properties of a type optional. This is useful when you need to create an object with only a subset of the properties of an existing type.
 
-```
+```bash
 interface User {
   name: string;
   age: number;
@@ -31,11 +31,27 @@ console.log(newUser);
 // Output: { name: 'Jane Doe', age: 30, email: 'john.doe@example.com' }
 ```
 
+# `Required`
+
+Constructs a type consisting of all properties of Type set to required. The opposite of Partial.
+
+```bash
+interface Props {
+  a?: number;
+  b?: string;
+}
+
+const obj: Props = { a: 5 };
+
+const obj2: Required<Props> = { a: 5 };
+Property 'b' is missing in type '{ a: number; }' but required in type 'Required<Props>'.
+```
+
 # `Pick`
 
 Pick constructs a type by picking the set of properties Keys (string literal or union of string literals) from Type.
 
-```
+```bash
 interface Todo {
   title: string;
   description: string;
@@ -54,7 +70,7 @@ const todo: TodoPreview = {
 
 Omit constructs a type by picking all properties from Type and then removing Keys (string literal or union of string literals).
 
-```
+```bash
 interface Todo {
   title: string;
   description: string;
@@ -82,7 +98,7 @@ const todoInfo: TodoInfo = {
 
 Readonly constructs a type with all properties of Type set to readonly, meaning the properties of the constructed type cannot be reassigned.
 
-```
+```bash
 interface Todo {
   title: string;
 }
@@ -99,7 +115,7 @@ todo.title = 'Hello';
 
 Record constructs an object type whose property keys are Keys and whose property values are Type. This utility can be used to map the properties of a type to another type.
 
-```
+```bash
 interface CatInfo {
   age: number;
   breed: string;
@@ -118,7 +134,7 @@ const cats: Record<CatName, CatInfo> = {
 
 Exclude constructs a type by excluding from UnionType all union members that are assignable to ExcludedMembers.
 
-```
+```bash
 type T0 = Exclude<'a' | 'b' | 'c', 'a'>; // "b" | "c"
 type T1 = Exclude<'a' | 'b' | 'c', 'a' | 'b'>; // "c"
 type T2 = Exclude<string | number | (() => void), Function>; // string | number
@@ -128,7 +144,7 @@ type T2 = Exclude<string | number | (() => void), Function>; // string | number
 
 Extract constructs a type by extracting from Type all union members that are assignable to Union.
 
-```
+```bash
 type T0 = Extract<'a' | 'b' | 'c', 'a' | 'f'>;
 //    ^ = type T0 = "a"
 ```
@@ -137,7 +153,7 @@ type T0 = Extract<'a' | 'b' | 'c', 'a' | 'f'>;
 
 Non-Nullable constructs a type by excluding null and undefined from Type.
 
-```
+```bash
 type T0 = NonNullable<string | number | undefined>;
 // type T0 = string | number
 
@@ -149,7 +165,7 @@ type T1 = NonNullable<string[] | null | undefined>;
 
 Parameters constructs a tuple type from the types used in the parameters of a function type Type.
 
-```
+```bash
 type T0 = Parameters<() => string>;
 // type T0 = []
 
@@ -183,7 +199,7 @@ type T7 = Parameters<Function>;
 
 Return type constructs a type consisting of the return type of function Type.
 
-```
+```bash
 type T0 = ReturnType<() => string>;
 // type T0 = string
 
@@ -219,7 +235,7 @@ type T8 = ReturnType<Function>;
 
 This type constructs a type consisting of the instance type of a constructor function in Type.
 
-```
+```bash
 class C {
   x = 0;
   y = 0;
@@ -245,7 +261,7 @@ type T4 = InstanceType<Function>;
 
 This type is meant to model operations like await in async functions, or the `.then()` method on Promises - specifically, the way that they recursively unwrap Promises.
 
-```
+```bash
 type A = Awaited<Promise<string>>;
 // type A = string
 

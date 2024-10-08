@@ -48,6 +48,8 @@
 
 [Math](/Math/Notas%20Matematicas.md)
 
+[WordPress](/WordPress/root.md)
+
 [Web Security Knowledge](/Web%20Security%20Knowledge/root.md)
 
 [Visual Studio Code](/vsc//root.md)

@@ -4,7 +4,7 @@
 
 Interfaces in TypeScript provide a way to define a contract for a type, which includes a set of properties, methods, and events. It’s used to enforce a structure for an object, class, or function argument. Interfaces are not transpiled to JavaScript and are only used by TypeScript at compile-time for type-checking purposes.
 
-```
+```bash
 interface User {
   name: string;
   age: number;
@@ -23,7 +23,8 @@ In this example, the `User` interface defines the structure of the `user` object
 Type aliases and interfaces are very similar, and in many cases you can choose between them freely. Almost all features of an interface are available in type, the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.
 
 Extending a type via intersections
-```
+
+```bash
 type Person = {
   name: string;
   age: number;
@@ -36,7 +37,8 @@ const person: Person = {
 ```
 
 A type cannot be changed after being created
-```
+
+```bash
 type Window = {
   title: string;
 }
@@ -48,9 +50,9 @@ type Window = {
  // Error: Duplicate identifier 'Window'.
 ```
 
-
 Extending an interface
-```
+
+```bash
 interface Person {
   name: string;
   age: number;
@@ -64,7 +66,7 @@ const person: Person = {
 
 Adding new fields to an existing interface
 
-```
+```bash
 interface Window {
   title: string;
 }
@@ -81,7 +83,7 @@ window.ts.transpileModule(src, {});
 
 In TypeScript, you can extend an interface by creating a new interface that inherits from the original interface using the `“extends”` keyword. The new interface can include additional properties, methods, or redefine the members of the original interface.
 
-```
+```bash
 interface Shape {
   width: number;
   height: number;
@@ -104,7 +106,7 @@ In this example, the `Square` interface extends the `Shape` interface and adds a
 
 An interface in TypeScript is a blueprint for creating objects with specific structure. An interface defines a set of properties, methods, and events that a class or object must implement. The interface is a contract between objects and classes and can be used to enforce a specific structure for objects in your code.
 
-```
+```bash
 interface Person {
   firstName: string;
   lastName: string;
@@ -120,13 +122,13 @@ In this example, the Person interface defines four properties: `firstName`, `las
 
 In TypeScript, a hybrid type is a type that combines multiple types into a single type. The resulting type is considered a union of those types. This allows you to specify that a value can have multiple types, rather than just one.
 
-```
+```bash
 type StringOrNumber = string | number;
 ```
 
 You can also use hybrid types to create more complex types that can represent a combination of several different types of values. For example:
 
-```
+```bash
 type Education = {
   degree: string;
   school: string;
@@ -140,6 +142,5 @@ type User = {
   education: Education;
 };
 ```
-
 
 [TOP](#typescript-interfaces)

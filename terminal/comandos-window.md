@@ -32,15 +32,14 @@
 
 `taskschd.msc` abrir programador de tareas y ver Task Scheduler Library > Microsoft > Windows and check if Command Prompt is there.
 
-`chkdsk + (letter)` CHKDSK (Check Disk) is the first Windows diagnostic tool you should try if your PC starts acting strangely. 
+`chkdsk + (letter)` CHKDSK (Check Disk) is the first Windows diagnostic tool you should try if your PC starts acting strangely.
 
 https://www.makeuseof.com/difference-between-chkdsk-sfc-and-dism-in-windows-10/ MORE INFO
 
-`devoce manager - administrador de dispositivos`
+`devmgmt.msc - administrador de dispositivos`
 
 `msconfig` Configuracion del sistemas
 
 `netstat -ano | findstr :3000` Run the netstat command
 
 `tasklist | findstr 1234` Identify the process using the port.
-

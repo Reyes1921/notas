@@ -39,11 +39,3 @@
 # `Responsive design and Media Queries`
 
 - [Responsive Web Design](responsive/responsive.md)
-
-# `REVISAR SIEMPRE`
-
-- [Resumen y chuleta](resumen.md)
-- [Selector](Selector/selector.md)
-- [Functions](functions/functions.md) (Por arriba)
-- [CSS Grid](grid/grid.md)
-- [Flexbox](flexbox/flexbox.md)

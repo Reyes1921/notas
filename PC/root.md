@@ -2,6 +2,16 @@
 
 # `PC`
 
+- [BIOS](bios.md)
+
+- [Drivers](drivers.md)
+
+- [Comandos Windows](comandos-window.md)
+
+- [Notas Generales](notas.md)
+
+---
+
 - [Basics](basics.md)
 
 - [Multitasking](Multitasking.md)

@@ -1,4 +1,4 @@
-[Atras](root.md)
+[Atrás](root.md)
 
 # `Basics`
 
@@ -21,4 +21,3 @@ The mode (sometimes called privilege level or ring) a processor is in controls w
 In kernel mode, anything goes: the CPU is allowed to execute any supported instruction and access any memory. In user mode, only a subset of instructions is allowed, I/O and memory access is limited, and many CPU settings are locked. Generally, the kernel and drivers run in kernel mode while applications run in user mode.
 
 # `What Even is a Syscall?`
-

@@ -1,6 +1,6 @@
 [Volver al Menú](root.md)
 
-# `Comandos`
+# `Comandos Windows`
 
 `Incio + r y taskmgr` se abre el administrador de tarea
 
@@ -43,3 +43,5 @@ https://www.makeuseof.com/difference-between-chkdsk-sfc-and-dism-in-windows-10/ 
 `netstat -ano | findstr :3000` Run the netstat command
 
 `tasklist | findstr 1234` Identify the process using the port.
+
+[TOP](#comandos)

@@ -2,7 +2,7 @@
 
 # `Comandos Windows`
 
-`Incio + r y taskmgr` se abre el administrador de tarea
+`Incio + r y taskmgr o ctrl + shift + esc` se abre el administrador de tarea
 
 `Incio + r y cmd` se abre la consola
 
@@ -30,9 +30,13 @@
 
 `netsh wlan show profile (nombre wifi) key=clear` ver clave de wifi
 
-`taskschd.msc` abrir programador de tareas y ver Task Scheduler Library > Microsoft > Windows and check if Command Prompt is there.
+`taskschd.msc` abrir programador de tareas y ver `Task Scheduler Library` > `Microsoft` > `Windows` and check if Command Prompt is there.
 
 `chkdsk + (letter)` CHKDSK (Check Disk) is the first Windows diagnostic tool you should try if your PC starts acting strangely.
+
+`gpedit.msc` Editor de directivas de grupo local
+
+`regedit` Editor de Registro
 
 https://www.makeuseof.com/difference-between-chkdsk-sfc-and-dism-in-windows-10/ MORE INFO
 
@@ -45,3 +49,4 @@ https://www.makeuseof.com/difference-between-chkdsk-sfc-and-dism-in-windows-10/ 
 `tasklist | findstr 1234` Identify the process using the port.
 
 [TOP](#comandos)
+https://drive.google.com/file/d/1MzDJAgmlPt0kUoVknPBjJdqrX5J5M2Sb/view

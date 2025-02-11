@@ -116,6 +116,39 @@ echo MyClass::myStaticMethod();
 
 In this example, we’re directly accessing `myStaticMethod` from `MyClass` without an instantiation.
 
+## `Scope Resolution Operator`
+
+The Scope Resolution Operator (also called Paamayim Nekudotayim) or in simpler terms, the double colon, is a token that allows access to a constant, static property, or static method of a class or one of its parents. Moreover, static properties or methods can be overriden via late static binding.
+
+```json
+<?php
+class MyClass {
+    const CONST_VALUE = 'A constant value';
+}
+
+$classname = 'MyClass';
+echo $classname::CONST_VALUE;
+
+echo MyClass::CONST_VALUE;
+?>
+```
+
+## `self`
+
+The `self` keyword refers to the current class itself. It is used to access static properties, constants, and methods within the same class. When using `self`, the class in which the keyword is written does not change, regardless of the context or inheritance.
+
+## `static`
+
+The `static` keyword behaves similarly to self, but with one crucial difference. It represents the class in which it is called, rather than the class in which it is written. This allows for late `static` binding, enabling late-bound method calls and property access.
+
+## `parent`
+
+The `parent` keyword is used to access members of the `parent` class within a child class. It is primarily used to invoke overridden methods or access overridden properties from the `parent` class.
+
+## `$this`
+
+The `$this` keyword refers to the current instance of the class. It is primarily used to access non-static properties and invoke non-static methods within the class.
+
 # `Inheritance`
 
 Inheritance, a fundamental concept in object-oriented programming (OOP), is a feature that PHP supports. It lets us create classes which are extensions of other classes, inheriting their methods and properties. This concept allows the creation of more flexible and maintainable code, as it promotes code reuse. For instance, consider we have a ‘Vehicle’ class and we want to create a ‘Car’ class. Since cars are a type of vehicle, it would make sense for our ‘Car’ class to inherit from the ‘Vehicle’ class.

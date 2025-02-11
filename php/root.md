@@ -16,3 +16,13 @@
 - [State Management](./state.md)
 - [Database](./db.md)
 - [OOP](./opp/oop.md)
+
+BUSCAR
+
+concatenación
+getType
+is_string...
+comentarios `//` `/**/`
+comillas
+!
+$array[] = 'hola'

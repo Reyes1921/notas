@@ -40,6 +40,7 @@ Constants in PHP are fixed values that do not change during the execution of the
 
 ```json
 define("PI", 3.14);
+const NOMBRE = 'Reyes'
 echo PI; // Outputs: 3.14
 ```
 

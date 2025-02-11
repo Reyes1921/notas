@@ -1585,11 +1585,13 @@ Geometría:
 
 - Ancho/alto de todo el documento, con la parte desplazada:
 
+```json
 let scrollHeight = Math.max(
 document.body.scrollHeight, document.documentElement.scrollHeight,
 document.body.offsetHeight, document.documentElement.offsetHeight,
 document.body.clientHeight, document.documentElement.clientHeight
 );
+```
 
 Desplazamiento:
 
@@ -1619,6 +1621,19 @@ Cuando la página se desplaza hasta el comienzo, de modo que la esquina superior
 
 ## `Coordenadas de elemento: getBoundingClientRect`
 
-[Mas Informacion](https://es.javascript.info/coordinates)
+El método `elem.getBoundingClientRect()` devuelve las coordenadas de la ventana para un rectángulo mínimo que encasilla a elem como un objeto de la clase interna DOMRect.
+
+Propiedades principales de DOMRect:
+
+- `x/y`: coordenadas X/Y del origen del rectángulo con relación a la ventana.
+- `width/height`: ancho/alto del rectángulo (pueden ser negativos).
+  Adicionalmente existen estas propiedades derivadas:
+
+- `top/bottom`: coordenada Y para el borde superior/inferior del rectángulo.
+- `left/right`: coordenada X para el borde izquierdo/derecho del rectángulo.
+
+Es decir se obtiene las medidas de `top`, `bottom`, `left` y `right` de el elemento que se le aplica el `elem.getBoundingClientRect()` con respecto a la ventana del navegador.
+
+[Mas Información](https://es.javascript.info/coordinates)
 
 [TOP](#entorno-del-navegador-especificaciones)

@@ -40,6 +40,20 @@ $d = 1_234.567; // as of PHP 7.4.0
 
 A string is a series of characters, where a character is the same as a byte. This means that PHP only supports a 256-character set, and hence does not offer native Unicode support.
 
+### `Concatenar String`
+
+Existen dos operadores para datos tipo string. El primero es el operador de concatenación ('.'), el cual retorna el resultado de concatenar sus argumentos derecho e izquierdo. El segundo es el operador de asignación sobre concatenación ('.='), el cual añade el argumento del lado derecho al argumento en el lado izquierdo.
+
+```json
+<?php
+$a = "Hola ";
+$b = $a . "Mundo!"; // Ahora $b contiene "Hola Mundo!"
+
+$a = "Hola ";
+$a .= "Mundo!";     // Ahora $a contiene "Hola Mundo!"
+?>
+```
+
 ## `Numeric strings`
 
 A PHP string is considered numeric if it can be interpreted as an int or a float.
@@ -113,5 +127,11 @@ The mixed type accepts every value. It is equivalent to the union type `object|r
 ## `Never`
 
 `never` is a return-only type indicating the function does not terminate. This means that it either calls exit(), throws an exception, or is an infinite loop. Therefore, it cannot be part of a union type declaration. Available as of PHP 8.1.0.
+
+# `gettype`
+
+Obtener el tipo de una variable
+
+# `is_array`, `is_bool`, `is_float`, `is_int`...
 
 [TOP](#data-types)

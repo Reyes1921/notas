@@ -650,4 +650,30 @@ $order->get_status();
 $order->get_checkout_order_received_url();
 ```
 
+# `class wpdb {}`;
+
+En WordPress, wpdb es una clase global de PHP que te permite interactuar con la base de datos de WordPress de manera segura y eficiente. Aquí te explico los puntos clave:
+
+## `Metodos`
+
+- `$wpdb->get_results()`: Para obtener resultados de una consulta SELECT.
+- `$wpdb->insert()`: Para insertar datos en una tabla.
+- `$wpdb->update()`: Para actualizar datos existentes.
+- `$wpdb->delete()`: Para eliminar datos.
+- `$wpdb->prepare()`: Para preparar consultas de forma segura.
+
+# `class WP_Query {}`
+
+# `get_posts()`
+
+Retrieves an array of the latest posts, or posts matching the given criteria.
+
+# `set_query_var()`
+
+Sets the value of a query variable in the WP_Query class.
+
+# `get_the_ID()`
+
+Retrieves the ID of the current item in the WordPress Loop.
+
 [TOP](#wordpress)

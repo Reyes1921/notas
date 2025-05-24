@@ -26,15 +26,17 @@
 
 - [Color](color/color.md)
 
+- [Transform](transform/transform.md)
+
 - [Animations](animations/animations.md)
 
 - [Transiciones](transiciones/transiciones.md)
 
 - [Filtros](filtros/filtros.md)
 
-- [Transform](transform/transform.md)
-
 - [Fondos](fondos/fondos.md)
+
+- [Sombras](sombras/sombras.md)
 
 # `Making layouts`
 

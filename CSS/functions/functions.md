@@ -17,22 +17,4 @@ El nombre de la custom property a la que se hace referencia, representada por un
 `<declaration-value>`
 El valor por defecto de la custom property en caso de que la custom property referenciada sea inválida. Este valor puede contener cualquier caracter salvo algunos con significado especial como saltos de linea, llaves sin cerrar, exclamaciones o puntos y comas .
 
-## `hsl()`
-
-The hsl() functional notation expresses a color in the sRGB color space according to its hue, saturation, and lightness components. An optional alpha component represents the color's transparency.
-
-```
-
-/* Absolute values */
-hsl(120deg 75% 25%)
-hsl(120 75 25) /* deg and % units are optional */
-hsl(120deg 75% 25% / 60%)
-hsl(none 75% 25%)
-
-/* Relative values */
-hsl(from green h s l / 0.5)
-hsl(from #0000FF h s calc(l + 20))
-hsl(from rgb(200 0 0) calc(h + 30) s calc(l + 30))
-```
-
 [TOP](#functions)

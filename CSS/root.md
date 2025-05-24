@@ -14,15 +14,33 @@
 
 - [Inheritance](Inheritance/Inheritance.md)
 
-- [Functions](functions/functions.md)
-
-- [Color](color/color.md)
-
 - [Sizing Units](sizingUnits/sizingUnits.md)
+
+- [Functions](functions/functions.md)
 
 - [Concentration](concentration/concentration.md)
 
+# `Styles`
+
+- [Fonts](fonts/fonts.md)
+
+- [Color](color/color.md)
+
+- [Animations](animations/animations.md)
+
+- [Transiciones](transiciones/transiciones.md)
+
+- [Filtros](filtros/filtros.md)
+
+- [Transform](transform/transform.md)
+
+- [Fondos](fondos/fondos.md)
+
 # `Making layouts`
+
+- [Espaciado](espaciado/espaciado.md)
+
+- [Propiedades lógicas](propiedades-logicas/propiedades-logicas.md)
 
 - [Floats](floats/floats.md)
 

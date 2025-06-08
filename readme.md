@@ -24,6 +24,8 @@
 
 [DOM](/DOM/root.md)
 
+[SEO](/SEO/root.md)
+
 [PHP](/php/root.md)
 
 [Software design architecture](/Software%20design%20architecture/root.md)

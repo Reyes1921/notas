@@ -38,6 +38,8 @@
 
 - [Sombras](sombras/sombras.md)
 
+- [Gradientes](gradientes/gradientes.md)
+
 # `Making layouts`
 
 - [Espaciado](espaciado/espaciado.md)

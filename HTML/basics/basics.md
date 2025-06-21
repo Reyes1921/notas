@@ -53,7 +53,18 @@ El elemento `<head>` contiene información sobre el documento, como sus metadato
 </head>
 ```
 
-# `<meta charset="UTF-8">`
+# `<meta>: The metadata element`
+
+The `<meta>` HTML element represents metadata that cannot be represented by other meta-related elements, such as `<base>`, `<link>`, `<script>`, `<style>`, or `<title>`.
+
+The type of metadata provided by the `<meta>` element can be one of the following:
+
+- If the `name` attribute is set, the `<meta>` element provides document-level metadata that applies to the whole page.
+- If the `http-equiv` attribute is set, the `<meta>` element acts as a pragma directive to simulate directives that could otherwise be given by an HTTP header.
+- If the `charset` attribute is set, the `<meta>` element is a charset declaration, giving the character encoding in which the document is encoded.
+- If the `itemprop` attribute is set, the `<meta>` element provides user-defined metadata.
+
+## `<meta charset="UTF-8">`
 
 The very first element in the `<head>` should be the charset character encoding declaration. It comes before the title to ensure the browser can render the characters in that title and all the characters in the rest of the document.
 
@@ -63,17 +74,21 @@ By declaring UTF-8 (case-insensitive), you can even include emojis in your title
 
 The character encoding is inherited into everything in the document, even `<style>` and `<script>`. This little declaration means you can include emojis in class names and the selectorAPI (again, please don't). If you do use emojis, make sure to use them in a way that enhances usability without harming accessibility.
 
-# `<meta http-equiv="X-UA-Compatible" content="IE=edge">`
+## `<meta http-equiv="X-UA-Compatible" content="IE=edge">`
 
 El atributo http-equiv se utiliza para indicar al navegador que el documento debe ser renderizado en modo de compatibilidad con el navegador especificado.
 
-# `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+## `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
 
 The other meta tag that should be considered essential is the viewport meta tag, which helps site responsiveness, enabling content to render well by default, no matter the viewport width. While the viewport meta tag has been around since June 2007, when the first iPhone came out, it's only recently been documented in a specification. As it enables controlling a viewport's size and scale, and prevents the site's content from being sized down to fit a 960px site onto a 320px screen, it is definitely recommended.
 
 Viewport is part of the Lighthouse accessibility audit; your site will pass if it is scalable and has no maximum size set.
 
-# `<link rel="icon" sizes="16x16 32x32 48x48" href="img/favicon.png" type="image/x-icon">`
+# `<link>: The External Resource Link element`
+
+The `<link>` HTML element specifies relationships between the current document and an external resource. This element is most commonly used to link to stylesheets, but is also used to establish site icons (both "favicon" style icons and icons for the home screen and apps on mobile devices) among other things.
+
+## `<link rel="icon" sizes="16x16 32x32 48x48" href="img/favicon.png" type="image/x-icon">`
 
 Use the `<link>` tag, with the rel="icon" attribute/value pair to identify the favicon to be used for your document. A favicon is a very small icon that appears on the browser tab, generally to the left of the document title. When you have an unwieldy number of tabs open, the tabs will shrink and the title may disappear altogether, but the icon always remains visible. Most favicons are company or application logos.
 

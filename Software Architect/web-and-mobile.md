@@ -8,6 +8,31 @@
 
 `Reactive programming` describes a design paradigm that relies on asynchronous programming logic to handle real-time updates to otherwise static content. It provides an efficient means — the use of automated data streams — to handle data updates to content whenever a user makes an inquiry.
 
+# `Functional Programming`
+
+Functional programming is a programming paradigm that emphasizes the use of pure functions and immutable data. It is a way of writing computer programs that emphasizes the use of functions and mathematical concepts, such as recursion, rather than using objects and classes like in object-oriented programming. In functional programming, functions are first-class citizens, which means they can be passed as arguments to other functions and returned as values.
+
+Functional programming encourages immutability, which means that once a variable is assigned a value, it cannot be changed. This can simplify code, as it eliminates the need for state management and the bugs that can come with it.
+
+## `The 7 Core Functional Programming Concepts`
+
+- `Pure Functions (Funciones Puras)`: Son funciones que, dado el mismo input, siempre producen el mismo output y no tienen efectos secundarios (side effects) observables fuera de la función. Esto significa que no modifican variables globales, no realizan operaciones de I/O (como imprimir en pantalla o leer archivos) y no alteran el estado interno de objetos.
+
+- `First-Class Functions (Funciones de Primera Clase)`: En un lenguaje que soporta funciones de primera clase, las funciones son tratadas como cualquier otro valor. Esto significa que pueden ser asignadas a variables, pasadas como argumentos a otras funciones y retornadas como resultado de otras funciones.
+
+- `Higher-Order Functions (Funciones de Orden Superior)`: Son funciones que cumplen al menos una de las siguientes condiciones:
+
+  - Aceptan una o más funciones como argumentos.
+  - Retornan una función como resultado.
+
+- `Immutability (Inmutabilidad):` Se refiere a la propiedad de que los datos, una vez creados, no pueden ser modificados. En lugar de cambiar un objeto existente, las operaciones que parecen modificarlo en realidad crean un nuevo objeto con los cambios.
+
+- `Recursion (Recursión)`: Es una técnica donde una función se llama a sí misma dentro de su propia definición. Se utiliza para resolver problemas que pueden descomponerse en subproblemas más pequeños y similares. Es importante tener una condición de base para evitar una recursión infinita.
+
+- `Function Composition (Composición de Funciones)`: Es el proceso de combinar dos o más funciones para crear una nueva función. El resultado de una función se pasa como argumento a la siguiente función en la composición. Si tenemos funciones f y g, su composición h se denota como h(x)=f(g(x)).
+
+- `Referential Transparency (Transparencia Referencial)`: Una expresión es referencialmente transparente si puede ser reemplazada por su valor resultante sin cambiar el comportamiento del programa. Esto se cumple para las llamadas a funciones puras, ya que siempre producen el mismo resultado para la misma entrada.
+
 # `React`
 
 React is the most popular front-end JavaScript library for building user interfaces. React can also render on the server using Node and power mobile apps using React Native.

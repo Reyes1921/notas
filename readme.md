@@ -4,17 +4,11 @@
 
 [JavaScript](/JavaScript/root.md)
 
+[PHP](/php/root.md)
+
 [TypeScript](/TypeScript/root.md)
 
-[React](/React/root.md)
-
-[Node JS](/Node%20JS/root.md)
-
 [SQL](/SQL/root.md)
-
-[MongoDB](/mongodb/root.md)
-
-[APIs](/api/root.md)
 
 [HTML](/HTML/root.md)
 
@@ -22,17 +16,29 @@
 
 [GIT](/Git/root.md)
 
+[Linux](/linux/root.md)
+
+[WordPress](/WordPress/root.md)
+
 [DOM](/DOM/root.md)
 
 [SEO](/SEO/root.md)
 
-[PHP](/php/root.md)
+[Frontend Performance](/frontend-performance/root.md)
 
 [Software design architecture](/Software%20design%20architecture/root.md)
 
 [Data Structures & Algorithms](/Data%20Structures%20&%20Algorithms/root.md)
 
 [Software Architect ](/Software%20Architect/root.md)
+
+[APIs](/api/root.md)
+
+[React](/React/root.md)
+
+[Node JS](/Node%20JS/root.md)
+
+[MongoDB](/mongodb/root.md)
 
 # `EXTRAS`
 
@@ -49,8 +55,6 @@
 [Markdown](/Markdown/Markdown.md)
 
 [Math](/Math/Notas%20Matematicas.md)
-
-[WordPress](/WordPress/root.md)
 
 [Web Security Knowledge](/Web%20Security%20Knowledge/root.md)
 

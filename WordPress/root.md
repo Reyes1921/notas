@@ -2,6 +2,9 @@
 
 # `WordPress`
 
+- [Notas](notas.md)
+- [Estructura](estructura/root.md)
+
 `Displays information about the current site.` `name`, `description`,`wpurl`,`url`,`admin_email`,`version`...`
 
 ```bash

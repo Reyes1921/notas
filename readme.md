@@ -18,6 +18,8 @@
 
 [Linux](/linux/root.md)
 
+[Terminal](/terminal/root.md)
+
 [WordPress](/WordPress/root.md)
 
 [DOM](/DOM/root.md)
@@ -47,8 +49,6 @@
 [Build Tools](/Build%20Tools/root.md)
 
 [Internet](/internet/root.md)
-
-[Terminal](/terminal/root.md)
 
 [PC](/PC/root.md)
 

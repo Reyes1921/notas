@@ -327,4 +327,6 @@ El comando top también puede ayudarte a identificar y terminar un proceso que p
 
 `htop` El comando htop es un programa interactivo que monitoriza los recursos del sistema y los procesos del servidor en tiempo real. Está disponible en la mayoría de las distribuciones de Linux y puedes instalarlo con el gestor de paquetes predeterminado.
 
+<img src="terminal-cheat-sheet_7a00f515-1b56-4303-bf50-b1949e89e51c.webp">
+
 [TOP](#comandos)

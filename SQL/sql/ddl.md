@@ -29,12 +29,14 @@ CREATE TABLE Employees (
 The `ALTER TABLE` command in SQL is used to add, delete/drop, or modify columns in an existing table. It’s also useful for adding and dropping constraints such as primary key, foreign key, etc.
 
 `Add Column`
+
 ```
 ALTER TABLE tableName
 ADD columnName datatype;
 ```
 
 `Drop Column`
+
 ```
 ALTER TABLE tableName
 DROP COLUMN columnName;
@@ -49,12 +51,14 @@ DROP (columnName1,
 ```
 
 `Modify Column`
+
 ```
 ALTER TABLE tableName
 ALTER COLUMN columnName TYPE newDataType;
 ```
 
 `Add/Drop Constraints`
+
 ```
 ALTER TABLE tableName
 ADD CONSTRAINT constraintName
@@ -95,5 +99,11 @@ Truncate preserves the structure of the table for future use. But you can’t tr
 - Is published by using transactional replication or merge replication.
 
 If you try to truncate a table with a foreign key constraint, SQL Server will prevent you from doing so and you will have to use the DELETE statement instead.
+
+# `Drop Table`
+
+The `DROP TABLE` statement is a Data Definition Language (DDL) operation that is used to completely remove a table from the database. This operation deletes the table structure along with all the data in it, effectively removing the table from the database system.
+
+When you execute the `DROP TABLE` statement, it eliminates both the table and its data, as well as any associated indexes, constraints, and triggers. Unlike the TRUNCATE TABLE statement, which only removes data but keeps the table structure, `DROP TABLE` removes everything associated with the table.
 
 [TOP](#data-definition-language-ddl)

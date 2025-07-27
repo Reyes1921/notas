@@ -20,7 +20,7 @@
 
 [Terminal](/terminal/root.md)
 
-[WordPress](/wordpress%20copy/root.md)
+[WordPress](/wordpress/root.md)
 
 [DOM](/DOM/root.md)
 

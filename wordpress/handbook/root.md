@@ -27,19 +27,21 @@ Algunos de los archivos que componen la carpeta wp-admin son:
 
 - ## `wp-content`
 
-Si bien es cierto que el contenido de texto de WordPress se almacena en la Base de Datos, hay contenido que son archivos físicos, por ejemplo: imágenes, videos u otros recursos de tu sitio web, terminarán almacenados en esta carpeta.
+Si bien es cierto que el contenido de texto de WordPress se almacena en la Base de Datos, hay contenido que son `archivos físicos`, por ejemplo: `imágenes`, `videos` u otros recursos de tu sitio web, terminarán almacenados en esta carpeta.
 
-Además los plugins y temas que instales también se almacenan dentro de esta carpeta.
+Además los `plugins` y `temas` que instales también se almacenan dentro de esta carpeta.
 
 - ## `wp-includes`
 
-Este directorio contiene los archivos y carpetas que dan la funcionalidad al core de WordPress, como por ejemplo proveer de una API que hace extensible la funcionalidad a través de Hooks. Nunca deberías modificar los archivos de esta carpeta.
+Este directorio contiene los archivos y carpetas que dan la funcionalidad al core de WordPress, como por ejemplo proveer de una API que hace extensible la funcionalidad a través de Hooks.
+
+<p style="color:red">Nunca deberías modificar los archivos de esta carpeta.</p>
 
 ---
 
 # `Principales subcarpetas de WordPress`
 
-Existen algunas subcarpetas con las que frecuentemente trabajarás o al menos necesitaras conocer en donde están ubicadas y para que sirven, estas carpetas son carpetas de contenido, es decir están dentro de la carpeta wp-content.
+Existen algunas subcarpetas con las que frecuentemente trabajarás o al menos necesitaras conocer en donde están ubicadas y para que sirven, estas carpetas son carpetas de contenido, es decir están dentro de la carpeta `wp-content`.
 
 - ## `Plugins`
 
@@ -90,11 +92,11 @@ Es una de esas palabras que la mayoría de la gente nunca escucha o usa. Básica
 
 ## `Categoría`
 
-La taxonomía 'category' (tal es su nombre interno en WordPress y por eso la nombraremos así) te permite agrupar entradas ordenándolas en varias categorías. Estas categorías pueden luego ser vistas en el sitio usando URLs del tipo /category/nombre. Las categorías tienden a ser predefinidas y abarcar un amplio rango.
+La taxonomía '`category`' (tal es su nombre interno en WordPress y por eso la nombraremos así) te permite agrupar entradas ordenándolas en varias categorías. Estas categorías pueden luego ser vistas en el sitio usando URLs del tipo /category/nombre. Las categorías tienden a ser predefinidas y abarcar un amplio rango.
 
 ## `Etiqueta`
 
-La taxonomía 'post_tag' es similar a la de las categorías pero más abierta. Las etiquetas pueden ser creadas en el momento, simplemente tipeando su nombre. Pueden ser vistas en el sitio con URLs del tipo /tag/nombre. Las entradas tienden a tener muchas etiquetas, y generalmente se muestran cerca de las entradas o en forma de nubes de etiquetas.
+La taxonomía '`post_tag`' es similar a la de las categorías pero más abierta. Las etiquetas pueden ser creadas en el momento, simplemente tipeando su nombre. Pueden ser vistas en el sitio con URLs del tipo /tag/nombre. Las entradas tienden a tener muchas etiquetas, y generalmente se muestran cerca de las entradas o en forma de nubes de etiquetas.
 
 ## `Categorías de links`
 

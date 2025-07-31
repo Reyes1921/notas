@@ -14,3 +14,12 @@
 - AJAX
 - Security
 - [Archive](./archive/root.md)
+
+plugin
+rest
+ajax
+seguridad
+
+handbook
+hooks
+bd

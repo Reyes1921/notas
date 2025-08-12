@@ -9,6 +9,8 @@ DML is a subcategory of SQL which stands for Data Manipulation Language. The pur
 - `UPDATE`
 - `DELETE FROM`
 
+---
+
 # `SELECT`
 
 The `SELECT` statement in SQL is majorly used for fetching data from the database. It is one of the most essential elements of SQL.
@@ -30,6 +32,8 @@ SELECT statement combined with WHERE gives us the ability to filter records base
 
 Using `SELECT` statement in conjunction with ORDER BY, we can sort the result-set in ascending or descending order.
 
+---
+
 # `FROM`
 
 The FROM clause in SQL specifies the tables from which the retrieval should be made. It is an integral part of SELECT statements and variants of SELECT like SELECT INTO and SELECT WHERE. FROM can be used to join tables as well.
@@ -37,22 +41,26 @@ The FROM clause in SQL specifies the tables from which the retrieval should be m
 Typically, FROM is followed by space delimited list of tables in which the SELECT operation is to be executed. If you need to pull data from multiple tables, you would separate each table with a comma.
 
 ```
-SELECT employees.name, departments.department 
-FROM employees, departments 
+SELECT employees.name, departments.department
+FROM employees, departments
 WHERE employees.dept_id = departments.dept_id;
 ```
 
 ```
-SELECT e.name, d.department 
+SELECT e.name, d.department
 FROM employees AS e, departments AS d
 WHERE e.dept_id = d.dept_id;
 ```
+
+---
 
 # `WHERE`
 
 SQL provides a `WHERE` clause that is basically used to filter the records. If the condition specified in the `WHERE` clause satisfies, then only it returns the specific value from the table. You should use the `WHERE` clause to filter the records and fetching only the necessary records.
 
 The `WHERE` clause is not only used in `SELECT` statement, but it is also used in UPDATE, DELETE statement, etc., which we will learn in subsequent chapters.
+
+---
 
 # `ORDER BY`
 
@@ -67,6 +75,8 @@ ORDER BY NAME ASC;
 SELECT * FROM Customers
 ORDER BY AGE ASC, SALARY DESC;
 ```
+
+---
 
 # `GROUP BY`
 
@@ -98,6 +108,8 @@ GROUP BY Item
 HAVING SUM(Amount) > 150;
 ```
 
+---
+
 # `HAVING`
 
 `HAVING` is a clause in SQL that allows you to filter result sets in a GROUP BY clause. It is used to mention conditions on the groups being selected. In other words, `HAVING` is mainly used with the GROUP BY clause to filter the results that a GROUP BY returns.
@@ -125,6 +137,8 @@ In this query,
 - SUM(Quantity) would calculate total quantity sold for each product.
 - HAVING TotalQuantity > 100 would filter out the groups which have total quantity sold less than or equal to 100.
 
+---
+
 # `JOINs`
 
 SQL Joins are used to retrieve data from two or more data tables, based on a related column between them. The key types of JOINs include:
@@ -143,16 +157,20 @@ SQL Joins are used to retrieve data from two or more data tables, based on a rel
 
 Each type of JOIN allows for the retrieval of data in different situations, making them flexible and versatile for different SQL queries.
 
+---
+
 # `INSERT`
 
 The “INSERT” statement is used to add new rows of data to a table in a database. There are two main forms of the INSERT command: INSERT INTO which, if columns are not named, expects a full set of columns, and INSERT INTO table_name (column1, column2, ...) where only named columns will be filled with data.
 
 ```
 INSERT INTO table1 (column1, column2, ... , columnN)
-SELECT column1, column2, ... , columnN 
-FROM table2 
+SELECT column1, column2, ... , columnN
+FROM table2
 WHERE condition;
 ```
+
+---
 
 # `UPDATE`
 
@@ -163,6 +181,8 @@ UPDATE Students
 SET Age = 23
 WHERE StudentID = 2;
 ```
+
+---
 
 # `DELETE`
 

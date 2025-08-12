@@ -10,6 +10,8 @@ Data Definition Language (`DDL`) is a subset of SQL. Its primary function is to 
 - `TRUNCATE TABLE`
 - `RENAME TABLE`
 
+---
+
 # `Create Table`
 
 The `CREATE TABLE` statement in SQL is a Data Definition Language (DDL) command used to create a new table in the database.
@@ -23,6 +25,8 @@ CREATE TABLE Employees (
     Position varchar(255)
 );
 ```
+
+---
 
 # `Alter Table`
 
@@ -70,6 +74,8 @@ ALTER TABLE tableName
 DROP CONSTRAINT constraintName;
 ```
 
+---
+
 # `Truncate Table`
 
 The `TRUNCATE TABLE` statement is a Data Definition Language (DDL) operation that is used to mark the extents of a table for deallocation (empty for reuse). The result of this operation quickly removes all data from a table, typically bypassing a number of integrity enforcing mechanisms intended to protect data (like triggers).
@@ -99,6 +105,8 @@ Truncate preserves the structure of the table for future use. But you can’t tr
 - Is published by using transactional replication or merge replication.
 
 If you try to truncate a table with a foreign key constraint, SQL Server will prevent you from doing so and you will have to use the DELETE statement instead.
+
+---
 
 # `Drop Table`
 

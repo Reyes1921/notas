@@ -16,6 +16,8 @@
 
 - [Aggregate Queries](sql/queries.md)
 
+---
+
 - [Data Constraints](sql/constraints.md)
 
 - [JOIN Queries](sql/joins.md)

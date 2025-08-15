@@ -66,6 +66,8 @@ SELECT ProductName, Price, CEILING (Price) AS RoundedUpPrice
 FROM Products;
 ```
 
+---
+
 # `Conditional`
 
 In SQL, Conditional expressions can be used in the SELECT statement, WHERE clause, and ORDER BY clause to evaluate multiple conditions. These are SQL’s version of the common if…then…else statement in other programming languages.
@@ -75,13 +77,13 @@ In SQL, Conditional expressions can be used in the SELECT statement, WHERE claus
 `CASE` is a conditional statement in SQL that performs different actions based on different conditions. It allows you to perform IF-THEN-ELSE logic within SQL queries. It can be used in any statement or clause that allows a valid expression.
 
 ```
-SELECT column1, column2, 
-(CASE 
+SELECT column1, column2,
+(CASE
     WHEN condition1 THEN result1
     WHEN condition2 THEN result2
     ...
-    ELSE result 
-END) 
+    ELSE result
+END)
 FROM table_name;
 ```
 
@@ -90,10 +92,10 @@ FROM table_name;
 `NULLIF` is a built-in conditional function in SQL Server. The `NULLIF` function compares two expressions and returns NULL if they are equal or the first expression if they are not.
 
 ```
-SELECT 
+SELECT
     avg_salary,
     NULLIF(avg_salary, 0) AS avg_salary_no_zero
-FROM 
+FROM
     positions;
 ```
 
@@ -102,17 +104,19 @@ FROM
 The COALESCE function in SQL is used to manage `NULL` values in data. It scans from left to right through the arguments and returns the first argument that is not `NULL`.
 
 ```
-SELECT product_name, COALESCE(price, 0) AS Price 
+SELECT product_name, COALESCE(price, 0) AS Price
 FROM products;
 ```
 
-## `IF` 
+## `IF`
 
 IIF function returns value_true if the condition is TRUE, or value_false if the condition is FALSE.
 
 ```
 SELECT IIF (1>0, 'One is greater than zero', 'One is not greater than zero');
 ```
+
+---
 
 # `String Functions`
 
@@ -176,6 +180,8 @@ SELECT UPPER(name) as 'Upper Case Name' FROM students;
 ```
 SELECT LOWER('SQL is BAE!') AS LowerCaseString;
 ```
+
+---
 
 # `Date and Time`
 

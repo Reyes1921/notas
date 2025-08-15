@@ -24,11 +24,15 @@
 
 - [Sub Queries](sql/sub-queries.md)
 
+- [Views](sql/views.md)
+
 - [Advanced SQL Functions](sql/advanced.md)
 
 - [Indexes](sql/indexes.md)
 
 - [Transactions](sql/transactions.md)
+
+- [Data Integrity and Security](sql/data.md)
 
 # `PostgreSQL   `
 

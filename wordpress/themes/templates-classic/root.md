@@ -227,7 +227,7 @@ When you are using a child theme, any file you add to your child theme will over
 
 If a child theme contains the specific template such as `category-unicorns.php` and the parent theme contains lower prioritized template such as `category.php`, then child theme’s `category-unicorns.php` is used.
 
-Contrary, if a child theme contains general template only such as category.php and the parent theme contains the specific one such as `category-unicorns.php`, then parent’s template `category-unicorns.php` is used.
+Contrary, if a child theme contains general template only such as `category.php` and the parent theme contains the specific one such as `category-unicorns.php`, then parent’s template `category-unicorns.php` is used.
 
 <img src="../hierarchy.webp">
 

@@ -167,7 +167,18 @@ El meta de WordPress es una función que permite incluir información adicional 
   - Meta Box: Páginas de edición de entradas/páginas.
   - Term Meta: Páginas de edición de términos de taxonomía.
 - Finalidad:
+
   - Meta Box: Agregar información adicional a las publicaciones individuales.
   - Term Meta: Agregar información adicional a las clasificaciones de contenido.
+
+  ***
+
+# `URI vs. Path 🌐`
+
+The core difference is that a URI (Uniform Resource Identifier) is a URL (Uniform Resource Locator) and specifies the web address of a resource, while a path specifies the location of a file on the server's filesystem.
+
+A URI is what a web browser uses to access a file over the internet. It includes the protocol (like http:// or https://), the domain name, and the location of the file within the website's directory structure. For example: https://example.com/wp-content/themes/mytheme/style.css.
+
+A path is the physical location of the file on the web server's hard drive. It's used by the server itself to locate the file. For example: /var/www/html/wp-content/themes/mytheme/style.css.
 
 [TOP](#carpetas-principales-en-la-raíz-de-wordpress)

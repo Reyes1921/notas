@@ -273,15 +273,6 @@ A template may consist of none, one, or more parts.
 
 Go to `Appearance` > `Editor` > `Patterns` > `Template Parts` in your WordPress admin.
 
-Templates represent the top-level document structure for the front end of a website. But template parts represent smaller sections of content that can be included in one or more templates.
-
-Some common parts are:
-
-- Header
-- Footer
-- Sidebar
-- Comments
-
 # `How do template parts work?`
 
 Unlike templates, parts are not automatically loaded based on the currently-viewed page. They must be included as a part of the top-level template via the Template Part block.

@@ -10,13 +10,12 @@
 - [Classes](./classes/root.md)
 - [Functions](./functions/root.md)
 - [Shortcode](./shortcode/root.md)
-- REST API
+- [API Rest](./api/root.md)
 - AJAX
 - Security
 - [Archive](./archive/root.md)
 
 plugin
-rest
 ajax
 seguridad
 

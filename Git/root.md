@@ -1,6 +1,6 @@
 [Volver al Menú](/readme.md)
 
-# `GIT`
+# `git - the stupid content tracker`
 
 - [VCS](vcs.md)
 

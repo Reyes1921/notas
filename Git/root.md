@@ -6,8 +6,8 @@
 
 - [Git](git.md)
 
-- [GitHub](github.md)
+- [Pull Request - PR](pull.md)
 
-- [Git Pull](pull.md)
+- [Short](short.md)
 
 <img src="git.gif">

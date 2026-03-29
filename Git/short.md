@@ -54,7 +54,7 @@ Para que tu computadora sepa qué llave usar para cada cuenta, debes crear (o ed
 nano ~/.ssh/config
 ```
 
-Y añade algo como esto (ajustando las rutas):
+Y añade algo como esto (ajustando las rutas, revisa que el Host no choque con otra llave):
 
 ```sh
 Host github.com
@@ -63,20 +63,24 @@ Host github.com
   IdentityFile ~/.ssh/nombre_del_archivo
 ```
 
+Ejecuta este comando para confirmar que tu archivo config está usando la identidad correcta
+
+```sh
+ssh -T git@github.com
+```
+
 ## `Configuration`
 
 ```sh
 git init
 
-git clone <url> (Preferiblemente con SSH)
+git clone [url] (Preferiblemente con SSH)
 
 git config --list
 
 git config --global user.name "Tu Nombre"
 
 git config --global user.email "tu@email.com"
-
-git remote -v
 ```
 
 ## `Daily`
@@ -88,12 +92,13 @@ git add [archivo]
 git add .
 
 git commit -m "Mensaje descriptivo"
+git commit --amend -m "Nuevo mensaje corregido"
+git revert [hash-del-commit]
+git restore .
 
 git push origin [branch name]
 git push -u origin [branch name]
 git push
-
-git log
 ```
 
 ## `Branches`
@@ -104,6 +109,7 @@ git branch: list
 git branch [nombre-de-la-rama]: crea
 
 git branch -d [branch_name]: borra
+git push origin --delete [branch_name]: Remote
 
 git switch [nombre-de-la-rama]
 
@@ -117,8 +123,65 @@ git branch -r: Lista las ramas en remote
 ## `Remote`
 
 ```sh
+git remote
 
+git remote -v
 
+git remote add origin [url]
+
+git remote set-url origin [url]
+
+git fetch [remote_name]: Trae la información de remote sin tocar código
+
+git pull [remote_name] [remote_branch]
+
+git remote rm [remote_name]
+```
+
+## `Stashes`
+
+```sh
+git stash
+
+git stash pop
+```
+
+## `File Operations`
+
+```sh
+git rm <file(s)>: Remove files from working tree and staging area
+
+git mv [old_file] [new_file]: Move or rename a file
+
+git diff: Show differences between working tree and last commit
+```
+
+## `Commit History`
+
+```sh
+git log
+
+git log --oneline
+
+git log --author=<author_name>
+
+git log --since=<date>
+
+git log --until=<date>
+```
+
+## `Merge conflicts`
+
+```sh
+a = 1
+<<<<< HEAD
+b = 2  --> Mis cambios
+=======
+b = 0 --> Cambios de otra rama
+>>>>>> 5765816313646666asd5465616546546 --> El commit id
+c = 3
+d = 4
+e = 5
 ```
 
 

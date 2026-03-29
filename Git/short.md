@@ -34,6 +34,35 @@
   </tbody>
 </table>
 
+## `SSH Key`
+
+Crear llave en tu pc
+
+```sh
+ssh-keygen -t ed25519 -C "tu-correo-personal@ejemplo.com" -f ~/.ssh/nombre_del_archivo
+```
+
+Copia el contenido del archivo que creaste y págalo en SSH Keys en tu cuenta de github
+
+```sh
+cat ~/.ssh/nombre_del_archivo.pub
+```
+
+Para que tu computadora sepa qué llave usar para cada cuenta, debes crear (o editar) el archivo config en tu carpeta .ssh:
+
+```sh
+nano ~/.ssh/config
+```
+
+Y añade algo como esto (ajustando las rutas):
+
+```sh
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/nombre_del_archivo
+```
+
 ## `Configuration`
 
 ```sh

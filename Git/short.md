@@ -66,7 +66,7 @@ Host github.com
 Ejecuta este comando para confirmar que tu archivo config está usando la identidad correcta
 
 ```sh
-ssh -T git@github.com
+ssh -T git@nombre_del_host(ejemplo: github.com)
 ```
 
 ## `Configuration`
@@ -104,7 +104,7 @@ git push
 ## `Branches`
 
 ```sh
-git branch: list
+git branch: Lista
 
 git branch [nombre-de-la-rama]: crea
 
@@ -113,7 +113,7 @@ git push origin --delete [branch_name]: Remote
 
 git switch [nombre-de-la-rama]
 
-git switch -c [nombre-de-la-rama]: crea y  cambia de rama
+git switch -c [nombre-de-la-rama]: crea y cambia de rama
 
 git merge [nombre-de-la-rama]: Fusiona el historial de la rama especificada con la rama en la que te encuentras actualmente (generalmente se hace estando en main para integrar características nuevas).
 

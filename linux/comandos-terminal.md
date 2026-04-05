@@ -329,6 +329,4 @@ El comando top también puede ayudarte a identificar y terminar un proceso que p
 
 <img src="terminal-cheat-sheet_7a00f515-1b56-4303-bf50-b1949e89e51c.webp">
 
-# 1Server`
-
 [TOP](#comandos)

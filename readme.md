@@ -18,8 +18,6 @@
 
 [Linux](/linux/root.md)
 
-[Terminal](/terminal/root.md)
-
 [WordPress](/wordpress/root.md)
 
 [DOM](/DOM/root.md)

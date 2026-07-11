@@ -2,15 +2,27 @@
 
 # `LO IMPORTANTE NO ES SABER, SINO SABER QUIEN SABE`
 
+## `Lenguajes`
+
 [JavaScript](/JavaScript/root.md)
 
 [PHP](/php/root.md)
 
 [TypeScript](/TypeScript/root.md)
 
+## `Libreria JS`
+
 [React](/React/root.md)
 
+## `Fraemwork React`
+
 [Next](/Next/root.md)
+
+# `WordPress CMS`
+
+[WordPress](/wordpress/root.md)
+
+## `Siempre`
 
 [SQL](/SQL/root.md)
 
@@ -18,13 +30,11 @@
 
 [Linux](/linux/root.md)
 
-[WordPress](/wordpress/root.md)
-
 [SEO](/SEO/root.md)
 
 [Internet](/internet/root.md)
 
-# `Repasar`
+# `EXTRAS 1`
 
 [HTML](/HTML/root.md)
 
@@ -46,7 +56,7 @@
 
 [MongoDB](/mongodb/root.md)
 
-# `EXTRAS`
+# `EXTRAS 2`
 
 [Aditional Articles](/Additional%20articles/root.md)
 

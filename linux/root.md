@@ -2,4 +2,6 @@
 
 # `Linux`
 
-- [Short](comandos-terminal.md)
+- [Comandos](comandos-terminal.md)
+
+- [Short](short.md)

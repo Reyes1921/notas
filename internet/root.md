@@ -6,12 +6,14 @@
 
 - [Protocolos](protocolos/protocolos.md)
 
-- [Browser](browser/browser.md)
+- [Domain Name](domainName.md)
 
 - [DNS](dns.md)
 
-- [Domain Name](domainName.md)
+- [Browser](browser/browser.md)
 
 - [Hosting](hosting.md)
+
+- [CORS](../Web%20Security%20Knowledge/cors.md)
 
 - [Notas Generales](NotasGeneralInternet.md)

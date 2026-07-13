@@ -34,6 +34,8 @@
 
 [Internet](/internet/root.md)
 
+[Cosas Varias](/extra/root.md)
+
 # `EXTRAS 1`
 
 [HTML](/HTML/root.md)

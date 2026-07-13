@@ -273,6 +273,30 @@ Al utilizar sudo, el sistema pedirá a los usuarios que se autentiquen con una c
 
 `tar -xzvf mis_archivos.tar.gz Documentos`
 
+# `Important Folders in the Linux File System`
+
+- `/bin – Essential System Binaries  `
+
+The /bin directory houses essential system binaries, including fundamental commands like ls, cp, and mv. These binaries are required for the system to function correctly, and they are available to all users, making it possible to perform essential tasks even in single-user mode. 
+
+- `/etc – Configuration Files `
+
+Configuration files for the system and installed software are stored in /etc. These files control various aspects of the system’s behavior, such as network settings, user permissions, and software configurations. It is a crucial directory for system administrators. 
+
+- `/home – User Home Directories `
+
+Each user on a Linux system has their own directory under /home. For example, the home directory for the user “john” would be /home/john. Users store their personal files, documents, and configuration files in their respective home directories. 
+
+- `/var – Variable Data `
+
+The /var directory contains variable data that may change frequently during system operation. This includes log files, databases, and spool directories for print jobs and mail. 
+
+- `/tmp – Temporary Files `
+- `/usr – User System Resources`
+- `/sbin – System Binaries (Superuser) `
+- `/lib – Shared Libraries`
+- `/opt – Optional Software`
+
 # `Otros`
 
 `rmdir` Para eliminar permanentemente un directorio vacío, utiliza el comando rmdir. Recuerda que el usuario que ejecuta este comando debe tener privilegios sudo en el directorio padre.

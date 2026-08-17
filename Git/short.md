@@ -78,9 +78,9 @@ git clone [url] (Preferiblemente con SSH)
 
 git config --list
 
-git config --global user.name "Tu Nombre"
+git config user.name "Your Project Name"
 
-git config --global user.email "tu@email.com"
+git config user.email "your-project-email@example.com"
 ```
 
 ## `Daily`

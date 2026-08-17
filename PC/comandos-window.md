@@ -2,6 +2,8 @@
 
 # `Comandos Windows`
 
+`Inicio + r y cmd` curl ifconfig.me Ver IP Publica
+
 `Incio + r y taskmgr o ctrl + shift + esc` se abre el administrador de tarea
 
 `Incio + r y cmd` se abre la consola

@@ -74,7 +74,7 @@ ssh -T git@nombre_del_host(ejemplo: github.com)
 ```sh
 git init
 
-git clone [url] (Preferiblemente con SSH)
+git clone [url] (Preferiblemente con SSH) si es con SSH incluir en la url el host de la cuenta que va a acceder a ese repositorio, Ejemplo: si mi Host en config es Host 'github-nemo' la url seria 'git clone git@github-nemo:...'
 
 git config --list
 

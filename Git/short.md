@@ -94,7 +94,8 @@ git add .
 git commit -m "Mensaje descriptivo"
 git commit --amend -m "Nuevo mensaje corregido"
 git revert [hash-del-commit]
-git restore .
+git restore [file name] "Descarta el cambio local de un archivo"
+git restore . "Descarta el cambio local"
 
 git push origin [branch name]
 git push -u origin [branch name]

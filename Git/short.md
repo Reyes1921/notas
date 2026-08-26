@@ -78,9 +78,16 @@ git clone [url] (Preferiblemente con SSH) si es con SSH incluir en la url el hos
 
 git config --list
 
+Agregarlos
+
 git config user.name "Your Project Name"
 
 git config user.email "your-project-email@example.com"
+
+Revisarlos
+
+git config user.name
+git config user.email
 ```
 
 ## `Daily`
@@ -93,6 +100,7 @@ git add .
 
 git commit -m "Mensaje descriptivo"
 git commit --amend -m "Nuevo mensaje corregido"
+git commit --amend --reset-author --no-edit Este comando es como una "operación rápida" para tu último commit. Básicamente, toma tu último commit y lo reescribe para actualizar quién lo hizo, pero sin alterar el trabajo ni el mensaje que ya habías puesto.
 git revert [hash-del-commit]
 git restore [file name] "Descarta el cambio local de un archivo"
 git restore . "Descarta el cambio local"

@@ -125,7 +125,7 @@ export default App;
 
 In this example, the Mouse component is a functional component that uses the useState hook to manage the state of the mouse position. It accepts a render prop, which is a function that returns a React element based on the mouse position. The App component then uses the Mouse component and provides the rendering logic for displaying the mouse position.
 
-## `PropTypes`
+## `PropTypes (Deprecated use TypeScript)`
 
 In React are used to define and validate the types of data being passed as props to components. They help in creating strict rules for the data being passed in the props, which can be especially useful for larger applications to validate the data, aid in debugging, and avoid bugs in the future.
 

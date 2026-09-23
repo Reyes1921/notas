@@ -79,7 +79,7 @@ Each `React` component is a `JavaScript` function that may contain some markup t
 
 # `1. Return a single root element `
 
-To return multiple elements from a component, wrap them with a single parent tag. If you don’t want to add an extra `<div>` to your markup, you can write `<>` and `</>` instea. This empty tag is called a Fragment. `Fragments` let you group things without leaving any trace in the browser HTML tree.
+To return multiple elements from a component, wrap them with a single parent tag. If you don’t want to add an extra `<div>` to your markup, you can write `<>` and `</>` instead. This empty tag is called a Fragment. `Fragments` let you group things without leaving any trace in the browser HTML tree.
 
 ```
 <>

@@ -86,6 +86,8 @@ git config user.email "your-project-email@example.com"
 
 Revisarlos
 
+git config --show-origin --get user.email
+
 git config user.name
 git config user.email
 ```
@@ -145,6 +147,8 @@ git fetch [remote_name]: Trae la información de remote sin tocar código
 git pull [remote_name] [remote_branch]
 
 git remote rm [remote_name]
+
+git rm -r --cached nombre_de_la_carpeta: El flag --cached le dice a Git que elimine la carpeta de su índice pero la conserve intacta en tu disco local
 ```
 
 ## `Stashes`
@@ -191,6 +195,45 @@ b = 0 --> Cambios de otra rama
 c = 3
 d = 4
 e = 5
+```
+
+## `Reset the code`
+
+<p style="color:red">Running these commands will permanently delete any lines of code you've written today that you haven't saved in a commit. These changes cannot be recovered.</p>
+
+Run the following command to remove the files from the staging area (unstage) and revert all their contents to their original state:
+```sh
+git reset --hard HEAD
+```
+
+If you also created files or folders that didn't exist in the project before, the command above won't delete them. To delete them completely, run:
+```sh
+git clean -fd
+```
+
+Make sure your branch is completely clean:
+```sh
+git status
+```
+
+## `worktree - Manage multiple working trees`
+
+Update data first to read all branches
+
+```sh
+git fetch [remote_name]
+```
+
+Create a file project from a single branch
+
+```sh
+$ git worktree add ../(project-name) branch-name
+```
+
+Example
+
+```sh
+$ git worktree add ../twilight-us-staging staging
 ```
 
 

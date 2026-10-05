@@ -216,6 +216,19 @@ Make sure your branch is completely clean:
 git status
 ```
 
+## `Reset a branch to be exactly as main`
+
+```json
+git checkout main
+git pull origin main
+
+git checkout staging
+
+git reset --hard main
+
+git push origin staging --force
+```
+
 ## `worktree - Manage multiple working trees`
 
 Update data first to read all branches
